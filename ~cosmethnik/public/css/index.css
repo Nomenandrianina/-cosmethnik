@@ -1,0 +1,148 @@
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+/* .form-control {
+    width: 50%;
+} */
+
+#list-site li a {
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block;
+}
+
+#data-ul li a {
+    /* border: 1px solid #ddd; Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+  }
+
+  #data-ul li a:hover:not(.header) {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+
+button.nav-link.dropdown-toggle:focus {
+    outline: none !important;
+    border: none;
+}
+
+button.nav-link.dropdown-toggle{
+    border: none !important;
+}
+
+.one-span {
+    display: flex;
+}
+
+.two-span {
+    margin-right: 44px;
+    align-items:center;
+    display: flex;
+    width: 20px;
+}
+
+.two-span i {
+    color: #3c8dbc;
+}
+
+.one-emb {
+    display: flex;
+}
+
+.two-emb {
+    margin-right: 71px;
+    align-items:center;
+    display: flex;
+    width: 20px;
+}
+
+.two-emb i {
+    color: #095a1a;
+}
+
+.one-mp {
+    display: flex;
+}
+
+.two-mp {
+    margin-right: 71px;
+    align-items:center;
+    display: flex;
+    width: 20px;
+}
+
+.two-mp i {
+    color: #da4408;
+}
+
+.one-prod {
+    display: flex;
+}
+
+.two-prod {
+    margin-right: 71px;
+    align-items:center;
+    display: flex;
+    width: 20px;
+}
+
+.two-prod i {
+    color: #3c8dbc;
+}
+
+.one-site {
+    display: flex;
+}
+
+.two-site {
+    margin-right: 34px;
+    align-items:center;
+    display: flex;
+    width: 20px;
+}
+
+.two-site i {
+    color: #4c4d4d;
+}
+
+#link-modal {
+    cursor: pointer;
+}
+
+.d-flex {
+    padding: 20px 20px 0;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #1a4a51 !important;
+    border-color: #1a4a51 !important;
+}
+
+a.page-link {
+    color: #1a4a51 !important;
+}
+
+
