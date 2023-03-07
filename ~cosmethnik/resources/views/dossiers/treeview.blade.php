@@ -1,6 +1,6 @@
 @extends('clients.layouts.app')
 
-
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
     <section class="content-header">
         <div class="card">
@@ -20,6 +20,7 @@
         </div>
     </section>
 
+
     <div class="content px-3">
 
         @include('flash::message')
@@ -27,20 +28,32 @@
         <div class="clearfix"></div>
 
         <div class="card">
+            <div class="card-header">
+                <i class="fas fa-folder"></i> | Documents
+              </div>
+
             <div class="card-body p-0">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="list-group list-group-flush" id="data-ul">
                     @foreach($doc as $category)
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link">
-                                <p>
-                                    {{ $category->title }}
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            @if(count($category->childs))
-                                @include('dossiers.child',['childs' => $category->childs])
-                            @endif
-                        </li>
+                        @foreach ( $category->childs as $child )
+                            <li class="list-group-item">
+                                <a href="#">
+                                    <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                                        <span class="three-span">
+                                            {{ $child->title }} <br>
+                                            @if ($child->description)
+                                                <small>Modifié il y a 10 jours </small>
+                                            @else
+                                                <small>Aucune description </small>
+                                            @endif
+
+                                        </span>
+                                    </span>
+
+                                </a>
+                            </li>
+                        @endforeach
                     @endforeach
                 </ul>
 
