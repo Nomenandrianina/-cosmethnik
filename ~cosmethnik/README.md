@@ -45,20 +45,14 @@ Following things are ready to be used directly with AdminLTE Theme.
 5. Run `php artisan migrate --seed`
 6. Run `php artisan serve`
 7. Login account:
-- Supper Admin: hau@hau.xyz/123@123@1234
+- Supper Admin: nomenandrianinaantonio@gmail.com/Ant0ni0
 
 Once everything is installed, you are ready to go with generator.
 
-see: https://hau.xyz
 
 ## Vue 3 + bootstrap 5 + Bootstrap Icons: 
 
 https://github.com/devhau/hoya
-Contact: nguyenvanhaudev@gmail.com
+Contact: nomenandrianinaantonio@gmail.com
 
-Donate:
-
-https://www.patreon.com/devhau
-
-http://paypal.me/haudev
 
