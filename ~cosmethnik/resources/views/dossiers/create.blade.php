@@ -36,4 +36,6 @@
 
         </div>
     </div>
+    @include('dossiers.script_treeview')
 @endsection
+

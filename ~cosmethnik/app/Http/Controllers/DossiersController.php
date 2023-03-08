@@ -8,11 +8,13 @@ use App\Http\Requests;
 use App\Http\Requests\CreateDossiersRequest;
 use App\Http\Requests\UpdateDossiersRequest;
 use App\Repositories\DossiersRepository;
+use Illuminate\Http\Request;
 use App\Models\Sites;
 use App\Models\Dossiers;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Symfony\Component\Console\Input\Input;
 
 class DossiersController extends AppBaseController
 {
@@ -35,11 +37,52 @@ class DossiersController extends AppBaseController
         return $dossiersDataTable->render('dossiers.index');
     }
 
+
+    public function ajaxRequest(Request $request){
+        $id = intval($request->dossier_id);
+        $result = '';
+        $doc = Dossiers::where('parent_id', '=' ,$id)->get();
+        if($doc->isEmpty() == true){
+            $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
+        }else{
+            $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
+            $li = '';
+            foreach($doc as $item){
+                $li .="<li class='list-group-item'>
+                                <a onclick='actions(".$item->id.")' style='cursor:pointer'>
+                                <span class='one-span'>
+                                        <span class='two-span'><i class='fas fa-folder fa-3x'></i></span>
+                                        <span class='three-span'>".$item->title."
+                                             <br>";
+                                            if ($item->description){
+                                                $li = $li."<small>".$item->description."</small></span>
+                                                </span>
+                                                </a>
+                                                </li>";
+                                            }
+                                            else{
+                                                $li = $li."<small>Aucune description</small></span>
+                                                        </span>
+                                                        </a>
+                                                        </li>";
+                                            }
+            }
+
+            $endul = "</ul>";
+            $result = $ul.$li.$endul;
+        }
+        return response()->json(['success'=> 200,'results' => $result]);
+    }
     public function treeview()
     {
+        $all = Sites::all();
+        $sites = [];
+        foreach($all as $item){
+            $sites[$item->id] = $item->nom;
+        }
         $doc = Dossiers::where('parent_id', '=', 0)->get();
         $allDoc = Dossiers::pluck('title','id')->all();
-        return view('dossiers.treeview',compact('doc','allDoc'));
+        return view('dossiers.treeview',compact('sites','doc','allDoc'));
     }
 
     /**
@@ -74,7 +117,7 @@ class DossiersController extends AppBaseController
         // $dossiers = $this->dossiersRepository->create($input);
 
         DB::table('dossiers')->insert(
-            ['sites_id' => $input['sites_id'],'name' => $input['name'], 'title' => $input['title'],'parent_id' => $input['parent_id'], 'description' => $input['description']]
+            ['sites_id' => $input['sites_id'],'name' => $input['name'], 'title' => $input['title'],'parent_id' => $input['parent_id'], 'description' => $input['description'], 'link' => $input['link']]
         );
 
         Flash::success(__('messages.saved', ['model' => __('models/dossiers.singular')]));

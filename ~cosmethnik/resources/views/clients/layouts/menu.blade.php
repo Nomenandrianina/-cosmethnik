@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
 @foreach($doc as $category)
 <li class="nav-item ">
-    <a href="#" class="nav-link">
+    <a onclick="actions({{ $category->id }})" class="nav-link" style="cursor: pointer">
         <p>
             {{ $category->title }}
             <i class="fas fa-angle-left right"></i>

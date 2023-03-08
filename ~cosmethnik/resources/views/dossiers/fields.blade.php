@@ -1,4 +1,5 @@
 <!-- Name Field -->
+
 @if (isset($dossiers))
     <div class="form-group col-sm-6">
         {!! Form::label('name', __('models/dossiers.fields.name').':',['class' => 'required']) !!}
@@ -47,6 +48,11 @@
     <div class="form-group col-sm-6">
         {!! Form::label('description', __('models/dossiers.fields.description').':') !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group col-sm-6">
+        {!! Form::label('link', __('models/dossiers.fields.link').':') !!}
+        {!! Form::text('link', null, ['class' => 'form-control link']) !!}
     </div>
 
 

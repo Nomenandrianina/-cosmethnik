@@ -24,7 +24,7 @@ class Dossiers extends Model
     public $table = 'dossiers';
 
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['created_at','deleted_at'];
 
 
 
@@ -32,6 +32,7 @@ class Dossiers extends Model
         'name',
         'title',
         'parent_id',
+        'link',
         'description'
     ];
 
@@ -45,6 +46,7 @@ class Dossiers extends Model
         'sites_id' => 'integer',
         'name' => 'string',
         'parent_id' => 'integer',
+        'link' => 'string',
         'title' => 'string',
         'description' => 'string'
     ];

@@ -9,6 +9,7 @@ return array (
     'sites_id' => 'Sites Id',
     'name' => 'Nom',
     'title' => 'Titre',
+    'link' => 'Lien',
     'description' => 'Description',
   ),
 );
