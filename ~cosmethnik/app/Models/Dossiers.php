@@ -57,7 +57,9 @@ class Dossiers extends Model
      * @var array
      */
     public static $rules = [
-
+        'name' => 'required',
+        'title' => 'required',
+        'sites_id' => 'required'
     ];
 
     /**

@@ -99,10 +99,132 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 @endcan
 
 
-{{-- @can('dossiers.index')
-<li class="nav-item"> <a href="{{ route('dossiers.index') }}" class="nav-link {{ Request::is('dossiers*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-folder"></i>
-        <p>@lang('models/dossiers.plural')</p>
+<li class="nav-item">
+    <a href="{{ route('commentaires.index') }}"
+       class="nav-link {{ Request::is('commentaires*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-comment"></i>
+        <p>@lang('models/commentaires.plural')</p>
     </a>
 </li>
-@endcan --}}
+
+<li class="nav-item">
+    <a href="{{ route('familles.index') }}"
+       class="nav-link {{ Request::is('familles*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-layer-group"></i>
+        <p>@lang('models/familles.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('marques.index') }}"
+       class="nav-link {{ Request::is('marques*') ? 'active' : '' }}">
+       <i class="nav-icon fab fa-maxcdn"></i>
+        <p>@lang('models/marques.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('monnaies.index') }}"
+       class="nav-link {{ Request::is('monnaies*') ? 'active' : '' }}">
+       <i class="nav-icon fab fa-monero"></i>
+        <p>@lang('models/monnaies.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('precautionEmplois.index') }}"
+       class="nav-link {{ Request::is('precautionEmplois*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-prescription"></i>
+        <p>@lang('models/precautionEmplois.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('conditionConservations.index') }}"
+       class="nav-link {{ Request::is('conditionConservations*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-exclamation"></i>
+        <p>@lang('models/conditionConservations.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('unites.index') }}"
+       class="nav-link {{ Request::is('unites*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-universal-access"></i>
+        <p>@lang('models/unites.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('geographiques.index') }}"
+       class="nav-link {{ Request::is('geographiques*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-globe-europe"></i>
+        <p>@lang('models/geographiques.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('usines.index') }}"
+       class="nav-link {{ Request::is('usines*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-industry"></i>
+        <p>@lang('models/usines.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('filiales.index') }}"
+       class="nav-link {{ Request::is('filiales*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-hospital-user"></i>
+        <p>@lang('models/filiales.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('etatProduits.index') }}"
+       class="nav-link {{ Request::is('etatProduits*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-user-md"></i>
+        <p>@lang('models/etatProduits.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('pays.index') }}"
+       class="nav-link {{ Request::is('pays*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-flag"></i>
+        <p>@lang('models/pays.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('clients.index') }}"
+       class="nav-link {{ Request::is('clients*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-user"></i>
+        <p>@lang('models/clients.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('emballages.index') }}"
+       class="nav-link {{ Request::is('emballages*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-box-open"></i>
+        <p>@lang('models/emballages.plural')</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('listeProcesses.index') }}"
+       class="nav-link {{ Request::is('listeProcesses*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-asterisk"></i>
+        <p>@lang('models/listeProcesses.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('ressources.index') }}"
+       class="nav-link {{ Request::is('ressources*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-user-cog"></i>
+        <p>@lang('models/ressources.plural')</p>
+    </a>
+</li>
+

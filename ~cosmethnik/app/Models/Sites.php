@@ -52,7 +52,7 @@ class Sites extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom' => 'required'
     ];
 
 

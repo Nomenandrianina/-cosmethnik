@@ -41,3 +41,38 @@ Route::resource('sites', App\Http\Controllers\SitesController::class);
 
 Route::resource('dossiers', App\Http\Controllers\DossiersController::class);
 
+
+
+Route::resource('commentaires', App\Http\Controllers\CommentairesController::class);
+
+Route::resource('familles', App\Http\Controllers\FamilleController::class);
+
+Route::resource('marques', App\Http\Controllers\MarquesController::class);
+
+Route::resource('monnaies', App\Http\Controllers\MonnaiesController::class);
+
+Route::resource('precautionEmplois', App\Http\Controllers\Precaution_emploiController::class);
+
+Route::resource('conditionConservations', App\Http\Controllers\Condition_conservationsController::class);
+
+Route::resource('unites', App\Http\Controllers\UnitesController::class);
+
+Route::resource('geographiques', App\Http\Controllers\GeographiquesController::class);
+
+Route::resource('usines', App\Http\Controllers\UsinesController::class);
+
+Route::resource('filiales', App\Http\Controllers\FilialesController::class);
+
+Route::resource('etatProduits', App\Http\Controllers\Etat_produitsController::class);
+
+Route::resource('pays', App\Http\Controllers\PaysController::class);
+
+Route::resource('clients', App\Http\Controllers\ClientsController::class);
+
+Route::resource('emballages', App\Http\Controllers\EmballagesController::class);
+
+Route::resource('modeleEmballages', App\Http\Controllers\Modele_emballagesController::class);
+
+Route::resource('listeProcesses', App\Http\Controllers\Liste_processController::class);
+
+Route::resource('ressources', App\Http\Controllers\RessourcesController::class);
