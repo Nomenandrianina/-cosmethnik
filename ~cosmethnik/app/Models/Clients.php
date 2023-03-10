@@ -32,7 +32,7 @@ class Clients extends Model
 
 
     public $table = 'clients';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -84,8 +84,16 @@ class Clients extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Pays()
+    {
+        return $this->belongsTo(Pays::class, 'pays_id');
+    }
+
+
 }

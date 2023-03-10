@@ -19,7 +19,7 @@ class Pays extends Model
 
 
     public $table = 'pays';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,11 @@ class Pays extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function Clients(){
+        return $this->hasMany(Clients::class,'pays_id','id');
+    }
+
 }

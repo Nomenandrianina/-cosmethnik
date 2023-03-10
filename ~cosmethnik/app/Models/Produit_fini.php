@@ -46,7 +46,7 @@ class Produit_fini extends Model
 
 
     public $table = 'produit_fini';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -124,8 +124,72 @@ class Produit_fini extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Dossiers()
+    {
+        return $this->belongsTo(Dossiers::class, 'dossier_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Etat_produits()
+    {
+        return $this->belongsTo(Etat_produits::class, 'etat_produit_id');
+    }
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Filiales()
+    {
+        return $this->belongsTo(Filiales::class, 'filiale_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Usines()
+    {
+        return $this->belongsTo(Usines::class, 'usine_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Geographique()
+    {
+        return $this->belongsTo(Geographiques::class, 'geographique_id');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Marque()
+    {
+        return $this->belongsTo(Marques::class, 'marque_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Client()
+    {
+        return $this->belongsTo(Clients::class, 'client_id');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function Unite()
+    {
+        return $this->belongsTo(Unites::class, 'unite_id');
+    }
 }
