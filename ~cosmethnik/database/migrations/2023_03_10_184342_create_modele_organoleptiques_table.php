@@ -20,7 +20,8 @@ class CreateModeleOrganoleptiquesTable extends Migration
             $table->string('valeur');
             $table->string('model_type');
             $table->integer('model_id');
-            $table->integer('organoleptique_id');
+            $table->integer('organoleptique_id')->unsigned();
+            $table->foreign('organoleptique_id')->references('id')->on('organoleptiques');
             $table->softDeletes();
         });
     }
