@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 
 /**
@@ -27,7 +28,7 @@ class Modele_emballages extends Model
 
 
     public $table = 'modele_emballages';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -69,8 +70,13 @@ class Modele_emballages extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+
 }

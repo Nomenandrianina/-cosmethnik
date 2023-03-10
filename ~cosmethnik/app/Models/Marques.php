@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Marques
  * @package App\Models
- * @version March 9, 2023, 1:45 pm +07
+ * @version March 10, 2023, 7:21 pm +07
  *
- * @property string $description
+ * @property integer $nom
  */
 class Marques extends Model
 {
@@ -26,7 +26,7 @@ class Marques extends Model
 
 
     public $fillable = [
-        'description'
+        'nom'
     ];
 
     /**
@@ -36,7 +36,7 @@ class Marques extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'description' => 'string'
+        'nom' => 'integer'
     ];
 
     /**

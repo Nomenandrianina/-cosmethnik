@@ -228,3 +228,95 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('ingredients.index') }}"
+       class="nav-link {{ Request::is('ingredients*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-filter"></i>
+        <p>@lang('models/ingredients.plural')</p>
+    </a>
+</li>
+
+
+
+<li class="nav-item">
+    <a href="{{ route('compositions.index') }}"
+       class="nav-link {{ Request::is('compositions*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-vial"></i>
+        <p>@lang('models/compositions.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('allergenes.index') }}"
+       class="nav-link {{ Request::is('allergenes*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-skull-crossbones"></i>
+        <p>@lang('models/allergenes.plural')</p>
+    </a>
+</li>
+
+{{-- <li class="nav-item">
+    <a href="{{ route('modeleAllergenes.index') }}"
+       class="nav-link {{ Request::is('modeleAllergenes*') ? 'active' : '' }}">
+        <p>@lang('models/modeleAllergenes.plural')</p>
+    </a>
+</li> --}}
+
+<li class="nav-item">
+    <a href="{{ route('couts.index') }}"
+       class="nav-link {{ Request::is('couts*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-yen-sign"></i>
+        <p>@lang('models/couts.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('organoleptiques.index') }}"
+       class="nav-link {{ Request::is('organoleptiques*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-bacterium"></i>
+        <p>@lang('models/organoleptiques.plural')</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('physicoChimiques.index') }}"
+       class="nav-link {{ Request::is('physicoChimiques*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-vial"></i>
+        <p>@lang('models/physicoChimiques.plural')</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('allegations.index') }}"
+       class="nav-link {{ Request::is('allegations*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-viruses"></i>
+        <p>@lang('models/allegations.plural')</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('materiauxes.index') }}"
+       class="nav-link {{ Request::is('materiauxes*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-wrench"></i>
+        <p>@lang('models/materiauxes.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('activités.index') }}"
+       class="nav-link {{ Request::is('activités*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-file-alt"></i>
+        <p>@lang('models/activités.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('casEmploies.index') }}"
+       class="nav-link {{ Request::is('casEmploies*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-signature"></i>
+        <p>@lang('models/casEmploies.plural')</p>
+    </a>
+</li>
+

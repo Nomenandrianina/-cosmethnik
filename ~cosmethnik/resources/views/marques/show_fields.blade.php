@@ -4,9 +4,9 @@
     <p>{{ $marques->id }}</p>
 </div>
 
-<!-- Description Field -->
+<!-- Nom Field -->
 <div class="col-sm-12">
-    {!! Form::label('description', __('models/marques.fields.description').':') !!}
-    <p>{{ $marques->description }}</p>
+    {!! Form::label('nom', __('models/marques.fields.nom').':') !!}
+    <p>{{ $marques->nom }}</p>
 </div>
 

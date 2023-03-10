@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class MarquesRepository
  * @package App\Repositories
- * @version March 9, 2023, 1:45 pm +07
+ * @version March 10, 2023, 7:21 pm +07
 */
 
 class MarquesRepository extends BaseRepository
@@ -17,7 +17,7 @@ class MarquesRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'description'
+        'nom'
     ];
 
     /**

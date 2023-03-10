@@ -89,7 +89,7 @@ class MarquesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'description' => new Column(['title' => __('models/marques.fields.description'), 'data' => 'description'])
+            'nom' => new Column(['title' => __('models/marques.fields.nom'), 'data' => 'nom'])
         ];
     }
 

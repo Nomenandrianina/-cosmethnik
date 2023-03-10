@@ -76,3 +76,35 @@ Route::resource('modeleEmballages', App\Http\Controllers\Modele_emballagesContro
 Route::resource('listeProcesses', App\Http\Controllers\Liste_processController::class);
 
 Route::resource('ressources', App\Http\Controllers\RessourcesController::class);
+
+Route::resource('ingredients', App\Http\Controllers\IngredientsController::class);
+
+Route::resource('modeleIngredients', App\Http\Controllers\Modele_ingredientsController::class);
+
+Route::resource('compositions', App\Http\Controllers\CompositionsController::class);
+
+Route::resource('allergenes', App\Http\Controllers\AllergenesController::class);
+
+Route::resource('modeleAllergenes', App\Http\Controllers\Modele_allergenesController::class);
+
+Route::resource('couts', App\Http\Controllers\CoutsController::class);
+
+Route::resource('organoleptiques', App\Http\Controllers\OrganoleptiquesController::class);
+
+Route::resource('modeleOrganoleptiques', App\Http\Controllers\Modele_organoleptiquesController::class);
+
+Route::resource('physicoChimiques', App\Http\Controllers\Physico_chimiquesController::class);
+
+Route::resource('modelePhysicoChimiques', App\Http\Controllers\Modele_physico_chimiqueController::class);
+
+Route::resource('allegations', App\Http\Controllers\AllegationsController::class);
+
+Route::resource('modeleAllegations', App\Http\Controllers\Modele_allegationsController::class);
+
+Route::resource('materiauxes', App\Http\Controllers\MateriauxController::class);
+
+Route::resource('modeleMateriauxes', App\Http\Controllers\Modele_materiauxController::class);
+
+Route::resource('activités', App\Http\Controllers\ActivitésController::class);
+
+Route::resource('casEmploies', App\Http\Controllers\Cas_emploiesController::class);
