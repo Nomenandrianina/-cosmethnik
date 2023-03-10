@@ -1,0 +1,38 @@
+<?php
+
+return array (
+  'singular' => 'Produit_fini',
+  'plural' => 'Produit_finis',
+  'fields' => 
+  array (
+    'id' => 'Id',
+    'nom' => 'Nom',
+    'libelle_commerciale' => 'Libelle Commerciale',
+    'libelle_legale' => 'Libelle Legale',
+    'description' => 'Description',
+    'modele' => 'Modele',
+    'code_bcpg' => 'Code Bcpg',
+    'code_erp' => 'Code Erp',
+    'ean' => 'Ean',
+    'ean_colis' => 'Ean Colis',
+    'ean_palette' => 'Ean Palette',
+    'quantite_nette' => 'Quantite Nette',
+    'poids_net_egoutte' => 'Poids Net Egoutte',
+    'freinte_produit' => 'Freinte Produit',
+    'taille_portion' => 'Taille Portion',
+    'unite_portion' => 'Unite Portion',
+    'texte_portion' => 'Texte Portion',
+    'nombre_portion' => 'Nombre Portion',
+    'cdc' => 'Cdc',
+    'date_limite_consommation' => 'Date Limite Consommation',
+    'ddm_dua' => 'Ddm Dua',
+    'dossier_id' => 'Dossier Id',
+    'etat_produit_id' => 'Etat Produit Id',
+    'filiale_id' => 'Filiale Id',
+    'usine_id' => 'Usine Id',
+    'geographique_id' => 'Geographique Id',
+    'marque_id' => 'Marque Id',
+    'client_id' => 'Client Id',
+    'unite_id' => 'Unite Id',
+  ),
+);

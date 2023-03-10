@@ -108,3 +108,5 @@ Route::resource('modeleMateriauxes', App\Http\Controllers\Modele_materiauxContro
 Route::resource('activités', App\Http\Controllers\ActivitésController::class);
 
 Route::resource('casEmploies', App\Http\Controllers\Cas_emploiesController::class);
+
+Route::resource('produitFinis', App\Http\Controllers\Produit_finiController::class);

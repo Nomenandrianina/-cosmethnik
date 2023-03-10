@@ -320,3 +320,10 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('produitFinis.index') }}"
+       class="nav-link {{ Request::is('produitFinis*') ? 'active' : '' }}">
+        <p>@lang('models/produitFinis.plural')</p>
+    </a>
+</li>
+
