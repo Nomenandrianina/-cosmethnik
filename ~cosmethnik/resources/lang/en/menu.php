@@ -17,13 +17,18 @@ return [
         'title'=>'Security',
         'users' => 'Users',
         'roles' => 'Roles',
-        'permissions' => 'permissions'
+        'permissions' => 'permissions',
+        'online' => 'Online'
     ],
     'generator_builder'=>[
         'title'=>'Generator Builder'
     ],
     'attendances'=>[
         'title'=>'Checkin/out'
+    ],
+    'author'=>[
+        'right' => 'Copyright © 2023 ',
+        'left' => 'All rights reserved.'
     ]
 
 

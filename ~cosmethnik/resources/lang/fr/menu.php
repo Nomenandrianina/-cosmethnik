@@ -15,18 +15,23 @@ return [
     'dashboard'=>'Tableau de bord',
     'user' => [
         'title'=>'Sécurité',
-        'users' => 'utilisateurs',
-        'roles' => 'rôles',
-        'permissions' => 'permissions'
+        'users' => 'Utilisateurs',
+        'roles' => 'Rôles',
+        'permissions' => 'Permissions',
+        'online' => 'En ligne'
     ],
     'generator_builder'=>[
         'title'=>'Générateur de CRUD'
     ],
     'attendances'=>[
-        'title'=>'Checkin/out'
+        'title'=>'Enregistrement/départ'
     ],
     'sites'=>[
         'title'=>'sites'
+    ],
+    'author'=>[
+        'right' => 'Copyright © 2023 ',
+        'left' => 'Tous les droits sont réservés.'
     ]
 
 

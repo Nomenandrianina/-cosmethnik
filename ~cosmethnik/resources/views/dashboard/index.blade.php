@@ -31,7 +31,7 @@
                         <i class="fas fa-users"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Users</span>
+                        <span class="info-box-text">{{ __('menu.user.users') }}</span>
                         <span class="info-box-number">
                             {{$dashboardInfo['user_count']}}
                         </span>
@@ -47,7 +47,7 @@
                         <i class="fas fa-user-shield"></i>
                     </span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Roles</span>
+                        <span class="info-box-text">{{ __('menu.user.roles') }}</span>
                         <span class="info-box-number">
                             {{$dashboardInfo['user_count']}}
                         </span>
@@ -68,7 +68,7 @@
                     </span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Perrmisons</span>
+                        <span class="info-box-text">{{ __('menu.user.permissions') }}</span>
                         <span class="info-box-number">
                             {{$dashboardInfo['permission_count']}}
                         </span>
@@ -85,7 +85,7 @@
                     </span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Online</span>
+                        <span class="info-box-text">{{ __('menu.user.online') }}</span>
                         <span class="info-box-number" id="user_online">{{$dashboardInfo['user_online']}}</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -100,7 +100,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">User checkin/out</h5>
+                        <h5 class="card-title">{{ __('menu.attendances.title') }}</h5>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">

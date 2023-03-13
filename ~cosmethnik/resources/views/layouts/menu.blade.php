@@ -305,8 +305,8 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('activités.index') }}"
-       class="nav-link {{ Request::is('activités*') ? 'active' : '' }}">
+    <a href="{{ route('activites.index') }}"
+       class="nav-link {{ Request::is('activites*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-file-alt"></i>
         <p>@lang('models/activités.plural')</p>
     </a>

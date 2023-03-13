@@ -135,8 +135,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2023 <a href="https://hau.xyz">Nomenandrianina Antonio</a>.</strong> All rights
-            reserved.
+            <strong>{{ __('menu.author.right') }}. <a href="#">NOA</a>.</strong> {{ __('menu.author.left') }}
         </footer>
     </div>
 
