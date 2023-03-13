@@ -16,10 +16,11 @@ class CreateCommentairesTable extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->increments('id');
+            // $table->integer('users_id')->unsigned();
+            $table->unsignedBigInteger('users_id');
             $table->string('description');
             $table->string('model_type');
             $table->integer('model_id');
-            $table->integer('users_id')->unsigned();
             $table->softDeletes();
             $table->foreign('users_id')->references('id')->on('users')
         ->onDelete('cascade');

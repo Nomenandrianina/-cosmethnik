@@ -19,7 +19,7 @@ class CreateModeleMateriauxTable extends Migration
             $table->string('model_type');
             $table->integer('model_id');
             $table->integer('poids');
-            $table->integer('materiaux_id');
+            $table->integer('materiaux_id')->unsigned();
             $table->softDeletes();
             $table->foreign('materiaux_id')->references('id')->on('materiaux')
             ->onDelete('cascade');

@@ -16,7 +16,7 @@ class CreateFilialesTable extends Migration
     {
         Schema::create('filiales', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('description');
+            $table->string('description');
             $table->softDeletes();
         });
     }

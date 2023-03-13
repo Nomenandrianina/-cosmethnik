@@ -23,7 +23,7 @@ class CreateModeleEmballagesTable extends Migration
             $table->string('unite');
             $table->integer('freinte');
             $table->boolean('maitre');
-            $table->increments('variantes');
+            $table->double('variantes');
             $table->string('description');
             $table->softDeletes();
             $table->foreign('emballage_id')->references('id')->on('emballages')
