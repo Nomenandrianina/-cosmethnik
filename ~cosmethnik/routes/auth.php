@@ -110,3 +110,5 @@ Route::resource('activites', App\Http\Controllers\ActivitesController::class);
 Route::resource('casEmploies', App\Http\Controllers\Cas_emploiesController::class);
 
 Route::resource('produitFinis', App\Http\Controllers\Produit_finiController::class);
+
+Route::resource('produitSemiFinis', App\Http\Controllers\Produit_semi_finisController::class);
