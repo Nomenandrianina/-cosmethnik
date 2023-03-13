@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Activités;
+use App\Models\Activites;
 use App\Repositories\BaseRepository;
 
 /**
@@ -11,7 +11,7 @@ use App\Repositories\BaseRepository;
  * @version March 10, 2023, 7:36 pm +07
 */
 
-class ActivitésRepository extends BaseRepository
+class ActivitesRepository extends BaseRepository
 {
     /**
      * @var array
@@ -38,6 +38,6 @@ class ActivitésRepository extends BaseRepository
      **/
     public function model()
     {
-        return Activités::class;
+        return Activites::class;
     }
 }

@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ActivitésDataTable;
+use App\DataTables\ActivitesDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreateActivitésRequest;
-use App\Http\Requests\UpdateActivitésRequest;
-use App\Repositories\ActivitésRepository;
+use App\Http\Requests\CreateActivitesRequest;
+use App\Http\Requests\UpdateActivitesRequest;
+use App\Repositories\ActivitesRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-class ActivitésController extends AppBaseController
+class ActivitesController extends AppBaseController
 {
-    /** @var  ActivitésRepository */
-    private $activitésRepository;
+    /** @var  ActivitesRepository */
+    private $activitesRepository;
 
-    public function __construct(ActivitésRepository $activitésRepo)
+    public function __construct(ActivitesRepository $activitesRepo)
     {
-        $this->activitésRepository = $activitésRepo;
+        $this->activitesRepository = $activitesRepo;
     }
 
     /**
@@ -27,9 +27,9 @@ class ActivitésController extends AppBaseController
      * @param ActivitésDataTable $activitésDataTable
      * @return Response
      */
-    public function index(ActivitésDataTable $activitésDataTable)
+    public function index(ActivitesDataTable $activitesDataTable)
     {
-        return $activitésDataTable->render('activités.index');
+        return $activitesDataTable->render('activites.index');
     }
 
     /**
@@ -39,25 +39,25 @@ class ActivitésController extends AppBaseController
      */
     public function create()
     {
-        return view('activités.create');
+        return view('activites.create');
     }
 
     /**
      * Store a newly created Activités in storage.
      *
-     * @param CreateActivitésRequest $request
+     * @param CreateActivitesRequest $request
      *
      * @return Response
      */
-    public function store(CreateActivitésRequest $request)
+    public function store(CreateActivitesRequest $request)
     {
         $input = $request->all();
 
-        $activités = $this->activitésRepository->create($input);
+        $activités = $this->activitesRepository->create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/activités.singular')]));
 
-        return redirect(route('activités.index'));
+        return redirect(route('activites.index'));
     }
 
     /**
@@ -69,15 +69,15 @@ class ActivitésController extends AppBaseController
      */
     public function show($id)
     {
-        $activités = $this->activitésRepository->find($id);
+        $activités = $this->activitesRepository->find($id);
 
         if (empty($activités)) {
             Flash::error(__('messages.not_found', ['model' => __('models/activités.singular')]));
 
-            return redirect(route('activités.index'));
+            return redirect(route('activites.index'));
         }
 
-        return view('activités.show')->with('activités', $activités);
+        return view('activites.show')->with('activites', $activités);
     }
 
     /**
@@ -89,28 +89,28 @@ class ActivitésController extends AppBaseController
      */
     public function edit($id)
     {
-        $activités = $this->activitésRepository->find($id);
+        $activites = $this->activitesRepository->find($id);
 
-        if (empty($activités)) {
+        if (empty($activites)) {
             Flash::error(__('messages.not_found', ['model' => __('models/activités.singular')]));
 
-            return redirect(route('activités.index'));
+            return redirect(route('activites.index'));
         }
 
-        return view('activités.edit')->with('activités', $activités);
+        return view('activites.edit')->with('activites', $activites);
     }
 
     /**
      * Update the specified Activités in storage.
      *
      * @param  int              $id
-     * @param UpdateActivitésRequest $request
+     * @param UpdateActivitesRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateActivitésRequest $request)
+    public function update($id, UpdateActivitesRequest $request)
     {
-        $activités = $this->activitésRepository->find($id);
+        $activités = $this->activitesRepository->find($id);
 
         if (empty($activités)) {
             Flash::error(__('messages.not_found', ['model' => __('models/activités.singular')]));
@@ -118,11 +118,11 @@ class ActivitésController extends AppBaseController
             return redirect(route('activités.index'));
         }
 
-        $activités = $this->activitésRepository->update($request->all(), $id);
+        $activités = $this->activitesRepository->update($request->all(), $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/activités.singular')]));
 
-        return redirect(route('activités.index'));
+        return redirect(route('activites.index'));
     }
 
     /**
@@ -134,18 +134,18 @@ class ActivitésController extends AppBaseController
      */
     public function destroy($id)
     {
-        $activités = $this->activitésRepository->find($id);
+        $activites = $this->activitesRepository->find($id);
 
-        if (empty($activités)) {
+        if (empty($activites)) {
             Flash::error(__('messages.not_found', ['model' => __('models/activités.singular')]));
 
-            return redirect(route('activités.index'));
+            return redirect(route('activites.index'));
         }
 
-        $this->activitésRepository->delete($id);
+        $this->activitesRepository->delete($id);
 
         Flash::success(__('messages.deleted', ['model' => __('models/activités.singular')]));
 
-        return redirect(route('activités.index'));
+        return redirect(route('activites.index'));
     }
 }

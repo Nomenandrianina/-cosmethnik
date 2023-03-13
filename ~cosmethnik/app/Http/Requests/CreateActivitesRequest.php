@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Activités;
+use App\Models\Activites;
 
-class CreateActivitésRequest extends FormRequest
+class CreateActivitesRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class CreateActivitésRequest extends FormRequest
      */
     public function rules()
     {
-        return Activités::$rules;
+        return Activites::$rules;
     }
 }

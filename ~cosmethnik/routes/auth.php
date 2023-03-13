@@ -105,7 +105,7 @@ Route::resource('materiauxes', App\Http\Controllers\MateriauxController::class);
 
 Route::resource('modeleMateriauxes', App\Http\Controllers\Modele_materiauxController::class);
 
-Route::resource('activités', App\Http\Controllers\ActivitésController::class);
+Route::resource('activites', App\Http\Controllers\ActivitesController::class);
 
 Route::resource('casEmploies', App\Http\Controllers\Cas_emploiesController::class);
 

@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Activités;
+use App\Models\Activites;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class ActivitésDataTable extends DataTable
+class ActivitesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -28,7 +28,7 @@ class ActivitésDataTable extends DataTable
      * @param \App\Models\Activités $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Activités $model)
+    public function query(Activites $model)
     {
         return $model->newQuery();
     }
