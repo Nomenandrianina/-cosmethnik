@@ -19,7 +19,7 @@ class Organoleptiques extends Model
 
 
     public $table = 'organoleptiques';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,11 @@ class Organoleptiques extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function mmodele_organoleptiques()
+    {
+        return $this->hasMany(Modele_organoleptiques::class);
+    }
 }

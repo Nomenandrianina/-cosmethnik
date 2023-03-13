@@ -19,7 +19,7 @@ class Materiaux extends Model
 
 
     public $table = 'materiaux';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,13 @@ class Materiaux extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_materiaux()
+    {
+        return $this->hasMany(Modele_materiaux::class);
+    }
+
+
 }

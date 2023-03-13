@@ -31,7 +31,8 @@ class Commentaires extends Model
     public $fillable = [
         'description',
         'model_type',
-        'model_id'
+        'model_id',
+        'user_id',
     ];
 
     /**
@@ -43,7 +44,8 @@ class Commentaires extends Model
         'id' => 'integer',
         'description' => 'string',
         'model_type' => 'string',
-        'model_id' => 'integer'
+        'model_id' => 'integer',
+        'user_id' => 'integer'
     ];
 
     /**
@@ -58,6 +60,10 @@ class Commentaires extends Model
     public function model(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 

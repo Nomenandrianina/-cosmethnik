@@ -19,7 +19,7 @@ class Etat_produits extends Model
 
 
     public $table = 'etat_produit';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,12 @@ class Etat_produits extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function produit_finis()
+    {
+        return $this->hasMany(Produit_fini::class);
+    }
+
 }

@@ -27,7 +27,7 @@ class Couts extends Model
 
 
     public $table = 'Couts';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -69,8 +69,13 @@ class Couts extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+
 }

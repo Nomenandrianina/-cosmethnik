@@ -35,7 +35,7 @@ class Cas_emploies extends Model
 
 
     public $table = 'cas_emploies';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -63,8 +63,13 @@ class Cas_emploies extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+
 }

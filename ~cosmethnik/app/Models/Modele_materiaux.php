@@ -22,15 +22,15 @@ class Modele_materiaux extends Model
 
 
     public $table = 'modele_materiaux';
-    
+
 
     protected $dates = ['deleted_at'];
 
 
 
     public $fillable = [
-        'modele_type',
-        'modele_id',
+        'model_type',
+        'model_id',
         'poids',
         'materiaux_id'
     ];
@@ -42,8 +42,8 @@ class Modele_materiaux extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'modele_type' => 'string',
-        'modele_id' => 'integer',
+        'model_type' => 'string',
+        'model_id' => 'integer',
         'poids' => 'integer',
         'materiaux_id' => 'integer'
     ];
@@ -54,8 +54,17 @@ class Modele_materiaux extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function materiaux(){
+        return $this->belongsTo(Materiaux::class, 'materiaux_id');
+    }
+
+
 }

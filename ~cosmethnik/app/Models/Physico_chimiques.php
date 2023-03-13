@@ -20,7 +20,7 @@ class Physico_chimiques extends Model
 
 
     public $table = 'physico_chimiques';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -48,8 +48,13 @@ class Physico_chimiques extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_physico_chimiques()
+    {
+        return $this->hasMany(Modele_physico_chimique::class);
+    }
+
+
 }

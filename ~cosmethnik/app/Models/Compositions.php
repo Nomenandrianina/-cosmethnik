@@ -25,7 +25,7 @@ class Compositions extends Model
 
 
     public $table = 'compositions';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -63,8 +63,12 @@ class Compositions extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo{
+        return $this->morphTo();
+    }
+
+
 }

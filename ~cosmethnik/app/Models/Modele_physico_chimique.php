@@ -26,7 +26,7 @@ class Modele_physico_chimique extends Model
 
 
     public $table = 'Modele_physico_chimiques';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -66,8 +66,17 @@ class Modele_physico_chimique extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function physico_chimique(){
+        return $this->belongsTo(Physico_chimiques::class, 'physico_chimique_id');
+    }
+
+
 }

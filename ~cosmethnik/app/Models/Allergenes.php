@@ -25,7 +25,7 @@ class Allergenes extends Model
 
 
     public $table = 'allergenes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -63,8 +63,17 @@ class Allergenes extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_allergenes()
+    {
+        return $this->hasMany(Modele_allergenes::class);
+    }
+
+    public function childs() {
+        return $this->hasMany(Allergenes::class,'allergene_enfant','id') ;
+    }
+
+
 }

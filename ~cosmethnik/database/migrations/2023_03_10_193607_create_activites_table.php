@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitésTable extends Migration
+class CreateActivitesTable extends Migration
 {
 
     /**
@@ -14,12 +14,14 @@ class CreateActivitésTable extends Migration
      */
     public function up()
     {
-        Schema::create('activités', function (Blueprint $table) {
+        Schema::create('activites', function (Blueprint $table) {
             $table->increments('id');
             $table->increments('model_type');
             $table->integer('model_id');
             $table->string('action');
-            $table->integer('user_id');
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users')
+            ->onDelete('cascade');
             $table->softDeletes();
         });
     }
@@ -31,6 +33,6 @@ class CreateActivitésTable extends Migration
      */
     public function down()
     {
-        Schema::drop('activités');
+        Schema::drop('activites');
     }
 }

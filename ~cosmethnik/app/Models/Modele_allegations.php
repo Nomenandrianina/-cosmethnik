@@ -25,7 +25,7 @@ class Modele_allegations extends Model
 
 
     public $table = 'modele_allegations';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -63,8 +63,17 @@ class Modele_allegations extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function allegation(){
+        return $this->belongsTo(Allegations::class, 'allegation_id');
+    }
+
+
 }

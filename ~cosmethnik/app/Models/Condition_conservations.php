@@ -18,7 +18,7 @@ class Condition_conservations extends Model
 
 
     public $table = 'condition_conservation';
-    
+
 
 
 
@@ -42,8 +42,12 @@ class Condition_conservations extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function produit_finis()
+    {
+        return $this->hasMany(Produit_fini::class);
+    }
+
 }

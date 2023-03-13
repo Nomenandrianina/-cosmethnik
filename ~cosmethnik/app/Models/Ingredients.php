@@ -22,7 +22,7 @@ class Ingredients extends Model
 
 
     public $table = 'ingredients';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,8 +54,13 @@ class Ingredients extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_ingredients()
+    {
+        return $this->hasMany(Modele_ingredients::class);
+    }
+
+
 }

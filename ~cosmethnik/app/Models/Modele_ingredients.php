@@ -75,5 +75,9 @@ class Modele_ingredients extends Model
         return $this->morphTo();
     }
 
+    public function ingredient(){
+        return $this->belongsTo(Ingredients::class, 'ingredient_id');
+    }
+
 
 }

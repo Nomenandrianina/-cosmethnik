@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -112,10 +113,13 @@ class Produit_fini extends Model
         'etat_produit_id' => 'integer',
         'filiale_id' => 'integer',
         'usine_id' => 'integer',
+        'monnaie_id' => 'integer',
         'geographique_id' => 'integer',
         'marque_id' => 'integer',
         'client_id' => 'integer',
-        'unite_id' => 'integer'
+        'unite_id' => 'integer',
+        'precaution_emploie_id' => 'integer',
+        'condition_conservation_id' => 'integer'
     ];
 
     /**
@@ -130,7 +134,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Dossiers()
+    public function dossier()
     {
         return $this->belongsTo(Dossiers::class, 'dossier_id');
     }
@@ -138,7 +142,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Etat_produits()
+    public function etat_produit()
     {
         return $this->belongsTo(Etat_produits::class, 'etat_produit_id');
     }
@@ -146,7 +150,7 @@ class Produit_fini extends Model
      /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Filiales()
+    public function filiale()
     {
         return $this->belongsTo(Filiales::class, 'filiale_id');
     }
@@ -154,7 +158,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Usines()
+    public function usine()
     {
         return $this->belongsTo(Usines::class, 'usine_id');
     }
@@ -162,7 +166,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Geographique()
+    public function geographique()
     {
         return $this->belongsTo(Geographiques::class, 'geographique_id');
     }
@@ -171,7 +175,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Marque()
+    public function marque()
     {
         return $this->belongsTo(Marques::class, 'marque_id');
     }
@@ -179,7 +183,7 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Client()
+    public function client()
     {
         return $this->belongsTo(Clients::class, 'client_id');
     }
@@ -188,8 +192,67 @@ class Produit_fini extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
-    public function Unite()
+    public function unite()
     {
         return $this->belongsTo(Unites::class, 'unite_id');
     }
+
+    public function monnaie(){
+        return $this->belongsTo(Monnaies::class, 'monnaie_id');
+    }
+
+    public function precaution_emploie(){
+        return $this->belongsTo(Precaution_emploi::class, 'precaution_emploie_id');
+    }
+
+    public function condition_conservation(){
+        return $this->belongsTo(Condition_conservations::class, 'condition_conservation_id');
+    }
+
+    public function commentaires(): MorphMany
+    {
+        return $this->morphMany(Commentaires::class, 'model');
+    }
+
+    public function familles(): MorphMany{
+        return $this->morphMany(Familles::class, 'model');
+    }
+
+    public function compositions(): MorphMany{
+        return $this->morphMany(Compositions::class, 'model');
+    }
+    public function activites(): MorphMany{
+        return $this->morphMany(Activites::class, 'model');
+    }
+    public function cas_emploies(): MorphMany{
+        return $this->morphMany(Cas_emploies::class, 'model');
+    }
+    public function mmodele_emballages(): MorphMany{
+        return $this->morphMany(Modele_emballages::class, 'model');
+    }
+    public function mmodele_ingredients(): MorphMany{
+        return $this->morphMany(Modele_ingredients::class, 'model');
+    }
+    public function mmodele_materiaux(): MorphMany{
+        return $this->morphMany(Modele_materiaux::class, 'model');
+    }
+    public function mmodele_allegations(): MorphMany{
+        return $this->morphMany(Modele_allegations::class, 'model');
+    }
+    public function mmodele_physico_chimiques(): MorphMany{
+        return $this->morphMany(Modele_physico_chimique::class, 'model');
+    }
+    public function mmodele_organoleptiques(): MorphMany{
+        return $this->morphMany(Modele_organoleptiques::class, 'model');
+    }
+    public function mmodele_allergenes(): MorphMany{
+        return $this->morphMany(Modele_allergenes::class, 'model');
+    }
+    public function couts(): MorphMany{
+        return $this->morphMany(Couts::class, 'model');
+    }
+    public function liste_process(): MorphMany{
+        return $this->morphMany(Liste_process::class, 'model');
+    }
+
 }

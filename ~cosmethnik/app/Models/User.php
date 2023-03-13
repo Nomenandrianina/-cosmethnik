@@ -94,9 +94,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Attendance::class);
     }
+    public function activites()
+    {
+        return $this->hasMany(Activites::class);
+    }
     public function sites()
     {
         return $this->hasMany(Sites::class);
+    }
+
+    public function commentaires()
+    {
+        return $this->hasMany(Commentaires::class);
     }
 
     public function checkIn()

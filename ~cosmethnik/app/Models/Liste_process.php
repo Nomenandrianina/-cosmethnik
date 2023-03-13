@@ -26,7 +26,7 @@ class Liste_process extends Model
 
 
     public $table = 'liste_process';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -66,8 +66,17 @@ class Liste_process extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function ressource(){
+        return $this->belongsTo(Ressources::class, 'ressource_id');
+    }
+
+
 }

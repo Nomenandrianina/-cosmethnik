@@ -95,5 +95,10 @@ class Clients extends Model
         return $this->belongsTo(Pays::class, 'pays_id');
     }
 
+    public function produit_finis()
+    {
+        return $this->hasMany(Produit_fini::class);
+    }
+
 
 }

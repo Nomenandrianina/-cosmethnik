@@ -22,7 +22,7 @@ class Emballages extends Model
 
 
     public $table = 'emballages';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,8 +54,13 @@ class Emballages extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_emballages()
+    {
+        return $this->hasMany(Modele_emballages::class);
+    }
+
+
 }

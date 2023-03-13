@@ -19,7 +19,7 @@ class Allegations extends Model
 
 
     public $table = 'allegations';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,13 @@ class Allegations extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function modele_allegations()
+    {
+        return $this->hasMany(Modele_allegations::class);
+    }
+
+
 }

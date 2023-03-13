@@ -78,5 +78,9 @@ class Modele_emballages extends Model
         return $this->morphTo();
     }
 
+    public function emballage(){
+        return $this->belongsTo(Emballages::class, 'emballage_id');
+    }
+
 
 }

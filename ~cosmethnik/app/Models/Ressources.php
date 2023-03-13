@@ -24,7 +24,7 @@ class Ressources extends Model
 
 
     public $table = 'ressources';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -60,8 +60,13 @@ class Ressources extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function liste_process()
+    {
+        return $this->hasMany(Liste_process::class);
+    }
+
+
 }

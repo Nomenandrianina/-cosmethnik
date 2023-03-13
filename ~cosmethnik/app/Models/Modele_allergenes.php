@@ -27,7 +27,7 @@ class Modele_allergenes extends Model
 
 
     public $table = 'modele_allergenes';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -69,8 +69,17 @@ class Modele_allergenes extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function allergene(){
+        return $this->belongsTo(Allergenes::class, 'allergene_id');
+    }
+
+
 }

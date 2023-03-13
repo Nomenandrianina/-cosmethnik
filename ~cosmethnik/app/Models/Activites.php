@@ -16,13 +16,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $action
  * @property integer $user_id
  */
-class Activités extends Model
+class Activites extends Model
 {
     use SoftDeletes;
 
 
-    public $table = 'activités';
-    
+    public $table = 'activites';
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,8 +54,17 @@ class Activités extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function model(): MorphTo{
+        return $this->morphTo();
+    }
+
+
 }

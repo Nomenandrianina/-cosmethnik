@@ -19,7 +19,7 @@ class Unites extends Model
 
 
     public $table = 'unites';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,13 @@ class Unites extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function produit_finis()
+    {
+        return $this->hasMany(Produit_fini::class);
+    }
+
+
 }

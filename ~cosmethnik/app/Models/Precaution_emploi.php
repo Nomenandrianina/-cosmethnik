@@ -19,7 +19,7 @@ class Precaution_emploi extends Model
 
 
     public $table = 'precaution_emploi';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,8 +45,13 @@ class Precaution_emploi extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function produit_finis()
+    {
+        return $this->hasMany(Produit_fini::class);
+    }
+
+
 }

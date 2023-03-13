@@ -23,7 +23,7 @@ class Modele_organoleptiques extends Model
 
 
     public $table = 'modele_organoleptiques';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -57,8 +57,16 @@ class Modele_organoleptiques extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function organoleptique(){
+        return $this->belongsTo(Organoleptiques::class, 'organoleptique_id');
+    }
+
 }

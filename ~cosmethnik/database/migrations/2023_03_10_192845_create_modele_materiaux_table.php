@@ -16,11 +16,13 @@ class CreateModeleMateriauxTable extends Migration
     {
         Schema::create('modele_materiaux', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('modele_type');
-            $table->integer('modele_id');
+            $table->string('model_type');
+            $table->integer('model_id');
             $table->integer('poids');
             $table->integer('materiaux_id');
             $table->softDeletes();
+            $table->foreign('materiaux_id')->references('id')->on('materiaux')
+            ->onDelete('cascade');
         });
     }
 
