@@ -45,6 +45,8 @@ class CreateProduitFiniTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->integer('unite_id')->unsigned();
             $table->integer('monnaie_id')->unsigned();
+            $table->integer('precaution_emploie_id')->unsigned();
+            $table->integer('condition_conservation_id')->unsigned();
             $table->foreign('dossier_id')->references('id')->on('dossiers');
             $table->foreign('etat_produit_id')->references('id')->on('etat_produit');
             $table->foreign('filiale_id')->references('id')->on('filiales');
@@ -55,6 +57,7 @@ class CreateProduitFiniTable extends Migration
             $table->foreign('unite_id')->references('id')->on('unites');
             $table->foreign('monnaie_id')->references('id')->on('monnaies');
             $table->foreign('precaution_emploie_id')->references('id')->on('precaution_emploi');
+            $table->foreign('condition_conservation_id')->references('id')->on('condition_conservation');
             $table->softDeletes();
         });
     }

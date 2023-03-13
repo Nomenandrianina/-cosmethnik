@@ -78,10 +78,13 @@ class Produit_fini extends Model
         'etat_produit_id',
         'filiale_id',
         'usine_id',
+        'monnaie_id',
         'geographique_id',
         'marque_id',
         'client_id',
-        'unite_id'
+        'unite_id',
+        'precaution_emploie_id',
+        'condition_conservation_id',
     ];
 
     /**
