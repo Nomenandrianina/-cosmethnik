@@ -2,14 +2,14 @@
 
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
+
     <section class="content-header">
         <div class="card">
             <div class="card-header">
-                <a class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i>  Créer </a>
+                <button class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i>  Créer </button>
             </div>
         </div>
     </section>
-
 
     <div class="content px-3">
 
@@ -40,10 +40,8 @@
                                             @else
                                                 <small>Aucune description </small>
                                             @endif
-
                                         </span>
                                     </span>
-
                                 </a>
                             </li>
                         @endforeach
@@ -51,6 +49,7 @@
                 </ul>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {!! Form::open(['route' => 'dossiers.store']) !!}
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -67,9 +66,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-
-
+                    {!! Form::close() !!}
+                </div>
             </div>
             <div class="card-footer">
                 <nav aria-label="Page navigation example">

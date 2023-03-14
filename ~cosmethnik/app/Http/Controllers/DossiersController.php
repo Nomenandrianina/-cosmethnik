@@ -15,6 +15,7 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
 
 class DossiersController extends AppBaseController
 {
@@ -75,6 +76,7 @@ class DossiersController extends AppBaseController
     }
     public function treeview()
     {
+
         $all = Sites::all();
         $sites = [];
         foreach($all as $item){
@@ -111,6 +113,7 @@ class DossiersController extends AppBaseController
      */
     public function store(CreateDossiersRequest $request)
     {
+
         $input = $request->all();
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
@@ -122,7 +125,12 @@ class DossiersController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/dossiers.singular')]));
 
-        return redirect(route('dossiers.index'));
+        $url_return="dossiers.index";
+        if(Auth::user()->role_text != "supper-admin"){
+            return back();
+        }
+
+        return redirect(route($url_return));
     }
 
     /**
