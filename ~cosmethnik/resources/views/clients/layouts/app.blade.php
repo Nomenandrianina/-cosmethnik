@@ -39,6 +39,9 @@
         .nav-link dropdown-toggle{
             cursor: pointer;
         }
+        .elements-create{
+            margin-left: 68px
+        }
     </style>
     @stack('page_css')
 

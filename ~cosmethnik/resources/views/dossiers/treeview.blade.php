@@ -5,8 +5,12 @@
 
     <section class="content-header">
         <div class="card">
-            <div class="card-header">
-                <button class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i>  Créer </button>
+            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
+                <span class="nav-icon fas fa-plus"></span> Créer
+            </a>
+            <div class="dropdown-menu elements-create" aria-labelledby="navbarDropdownMenuLink">
+                <button class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-file"> Dossier</i>
+                <button class="dropdown-item" id="link-modal-produit" data-bs-toggle="modal" data-bs-target="#produitmodal"><i class="fas fa-file"> Produit semi fini</i></button>
             </div>
         </div>
     </section>
@@ -48,7 +52,7 @@
                     @endforeach
                 </ul>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="produitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     {!! Form::open(['route' => 'dossiers.store']) !!}
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -68,6 +72,28 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="examplemodalsLabel" aria-hidden="true">
+                    {{--  {!! Form::open(['route' => 'dossiers.store']) !!}  --}}
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h2 class="modal-title fs-5" id="examplemodalsLabel">Créer un nouveau produit semi finis</h2>
+                        </div>
+                        <div class="modal-body">
+                          @include('dossiers.fields')
+                        </div>
+                        <div class="modal-footer">
+                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                            <a id="close" class="btn btn-default">
+                             @lang('crud.cancel')
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+                    {{--  {!! Form::close() !!}  --}}
+                </div>
+
             </div>
             <div class="card-footer">
                 <nav aria-label="Page navigation example">

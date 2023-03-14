@@ -9,13 +9,23 @@
     $(document).ready(function(){
         $('.loading').hide();
         $('#link-modal').on('click' , function(e){
-        e.preventDefault();
-        $('#exampleModal').modal();
+            e.preventDefault();
+            $('#exampleModal').modal();
         });
         $('#close').on('click' , function(e){
             e.preventDefault();
             $('#exampleModal').modal('hide');
         });
+
+        $('#link-modal-produit').on('click' , function(e){
+            e.preventDefault();
+            $('#produitmodal').modal();
+        });
+        $('#close').on('click' , function(e){
+            e.preventDefault();
+            $('#produitmodal').modal('hide');
+        });
+
     })
 
 
