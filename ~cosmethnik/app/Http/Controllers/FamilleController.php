@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\FamilleDataTable;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Requests\CreateFamilleRequest;
 use App\Http\Requests\UpdateFamilleRequest;
 use App\Repositories\FamilleRepository;
+use App\Models\Famille;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -39,7 +41,10 @@ class FamilleController extends AppBaseController
      */
     public function create()
     {
-        return view('familles.create');
+
+        $famille = Famille::where('parent_id', '=', 0)->get();
+        $childs = Famille::pluck('nom','id');
+        return view('familles.create',compact('famille','childs'));
     }
 
     /**
@@ -52,8 +57,11 @@ class FamilleController extends AppBaseController
     public function store(CreateFamilleRequest $request)
     {
         $input = $request->all();
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
-        $famille = $this->familleRepository->create($input);
+        DB::table('famille')->insert(
+            ['nom' => $input['nom'],'parent_id' => $input['parent_id']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/familles.singular')]));
 

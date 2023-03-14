@@ -12,7 +12,7 @@
 
 <!-- Parent  Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('parent__id', __('models/familles.fields.parent__id').':') !!}
+    {!! Form::label('parent__id', __('models/familles.fields.parent_id').':') !!}
     <p>{{ $famille->parent__id }}</p>
 </div>
 
