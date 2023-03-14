@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFamilleTable extends Migration
+class CreateModeleFamillesTable extends Migration
 {
 
     /**
@@ -14,11 +14,14 @@ class CreateFamilleTable extends Migration
      */
     public function up()
     {
-        Schema::create('famille', function (Blueprint $table) {
+        Schema::create('modele_familles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->integer('parent_id');
+            $table->string('model_type');
+            $table->integer('model_id');
+            $table->integer('famille_id')->unsigned();
             $table->softDeletes();
+            $table->foreign('famille_id')->references('id')->on('famille')
+            ->onDelete('cascade');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateFamilleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('famille');
+        Schema::drop('modele_familles');
     }
 }

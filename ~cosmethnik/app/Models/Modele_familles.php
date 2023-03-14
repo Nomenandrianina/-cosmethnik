@@ -4,34 +4,33 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 
 /**
- * Class Famille
+ * Class Modele_familles
  * @package App\Models
- * @version March 9, 2023, 1:33 pm +07
+ * @version March 14, 2023, 1:36 pm +07
  *
- * @property string $nom
- * @property integer $parent__id
  * @property string $model_type
  * @property integer $model_id
+ * @property integer $famille_id
  */
-class Famille extends Model
+class Modele_familles extends Model
 {
     use SoftDeletes;
 
 
-    public $table = 'famille';
-
+    public $table = 'modele_familles';
+    
 
     protected $dates = ['deleted_at'];
 
 
 
     public $fillable = [
-        'nom',
-        'parent_id',
+        'model_type',
+        'model_id',
+        'famille_id'
     ];
 
     /**
@@ -41,8 +40,9 @@ class Famille extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nom' => 'string',
-        'parent_id' => 'integer',
+        'model_type' => 'string',
+        'model_id' => 'integer',
+        'famille_id' => 'integer'
     ];
 
     /**
@@ -51,17 +51,8 @@ class Famille extends Model
      * @var array
      */
     public static $rules = [
-
+        
     ];
 
-    public function childs() {
-        return $this->hasMany(Famille::class,'parent_id','id') ;
-    }
-
-    public function model(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
-
+    
 }

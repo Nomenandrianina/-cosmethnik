@@ -335,4 +335,11 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         <p>@lang('models/produitSemiFinis.plural')</p>
     </a>
 </li>
+{{--
+<li class="nav-item">
+    <a href="{{ route('modeleFamilles.index') }}"
+       class="nav-link {{ Request::is('modeleFamilles*') ? 'active' : '' }}">
+        <p>@lang('models/modeleFamilles.plural')</p>
+    </a>
+</li> --}}
 

@@ -112,3 +112,6 @@ Route::resource('casEmploies', App\Http\Controllers\Cas_emploiesController::clas
 Route::resource('produitFinis', App\Http\Controllers\Produit_finiController::class);
 
 Route::resource('produitSemiFinis', App\Http\Controllers\Produit_semi_finisController::class);
+
+
+Route::resource('modeleFamilles', App\Http\Controllers\Modele_famillesController::class);

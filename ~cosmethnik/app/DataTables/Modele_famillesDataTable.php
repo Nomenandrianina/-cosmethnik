@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Famille;
+use App\Models\Modele_familles;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class FamilleDataTable extends DataTable
+class Modele_famillesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,16 +19,16 @@ class FamilleDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'familles.datatables_actions');
+        return $dataTable->addColumn('action', 'modele_familles.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Famille $model
+     * @param \App\Models\Modele_familles $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Famille $model)
+    public function query(Modele_familles $model)
     {
         return $model->newQuery();
     }
@@ -89,8 +89,9 @@ class FamilleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nom' => new Column(['title' => __('models/familles.fields.nom'), 'data' => 'nom']),
-            'parent_id' => new Column(['title' => __('models/familles.fields.parent_id'), 'data' => 'parent_id']),
+            'model_type' => new Column(['title' => __('models/modeleFamilles.fields.model_type'), 'data' => 'model_type']),
+            'model_id' => new Column(['title' => __('models/modeleFamilles.fields.model_id'), 'data' => 'model_id']),
+            'famille_id' => new Column(['title' => __('models/modeleFamilles.fields.famille_id'), 'data' => 'famille_id'])
         ];
     }
 
@@ -101,6 +102,6 @@ class FamilleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'familles_datatable_' . time();
+        return 'modele_familles_datatable_' . time();
     }
 }
