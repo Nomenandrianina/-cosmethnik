@@ -1,68 +1,85 @@
-<!-- Nom Field -->
-<div class="form-group col-sm-9">
-    {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':') !!}
-    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+<div class="row">
+    <!-- Nom Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':') !!}
+        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Libelle Commerciale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':') !!}
+        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control']) !!}
+    </div>
 </div>
 
-<!-- Libelle Commerciale Field -->
-<div class="form-group col-sm-9">
-    {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':') !!}
-    {!! Form::text('libelle_commerciale', null, ['class' => 'form-control']) !!}
+<div class="row">
+    <!-- Libelle Legale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', 'Famille:') !!}
+        {!! Form::select('sites_id', ['Albania' => 'Albania','Kosovo'=>'Kosovo','Germany'=>'Germany','France'=>'France'],null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', 'Sous Famille:') !!}
+        {!! Form::select('sites_id', ['Albania' => 'Albania','Kosovo'=>'Kosovo','Germany'=>'Germany','France'=>'France'],null, ['class' => 'form-control']) !!}
+    </div>
 </div>
 
-<!-- Libelle Legale Field -->
-<div class="form-group col-sm-9">
-    {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
-    {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
-</div>
+<div class="row">
+    <!-- Libelle Legale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
+    </div>
 
-<!-- Description Field -->
-<div class="form-group col-sm-9">
-    {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
-    {!! Form::text('description', null, ['class' => 'form-control']) !!}
+    <!-- Description Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
+        {!! Form::text('description', null, ['class' => 'form-control']) !!}
+    </div>
 </div>
-
 <!-- Description Conditionnement Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('description_conditionnement', __('models/produitSemiFinis.fields.description_conditionnement').':') !!}
     {!! Form::text('description_conditionnement', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Modele Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('modele', __('models/produitSemiFinis.fields.modele').':') !!}
     {!! Form::text('modele', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Code Bcepg Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':') !!}
     {!! Form::text('code_bcepg', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Code Erp Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('code_erp', __('models/produitSemiFinis.fields.code_erp').':') !!}
     {!! Form::text('code_erp', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Ean Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('ean', __('models/produitSemiFinis.fields.ean').':') !!}
     {!! Form::text('ean', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Ean Colis Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('ean_colis', __('models/produitSemiFinis.fields.ean_colis').':') !!}
     {!! Form::text('ean_colis', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Ean Palette Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('ean_palette', __('models/produitSemiFinis.fields.ean_palette').':') !!}
     {!! Form::text('ean_palette', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Dossier Id Field -->
 {{--  <div class="form-group col-sm-9">
@@ -77,10 +94,10 @@
 </div>  --}}
 
 <!-- Filiale Id Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('filiale_id', __('models/produitSemiFinis.fields.filiale_id').':') !!}
     {!! Form::text('filiale_id', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Usine Id Field -->
 {{--  <div class="form-group col-sm-9">
@@ -113,64 +130,64 @@
 </div>  --}}
 
 <!-- Quantite Nette Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('quantite_nette', __('models/produitSemiFinis.fields.quantite_nette').':') !!}
     {!! Form::text('quantite_nette', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Poids Nette Egoutte Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('poids_nette_egoutte', __('models/produitSemiFinis.fields.poids_nette_egoutte').':') !!}
     {!! Form::text('poids_nette_egoutte', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Freinte Produit Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('freinte_produit', __('models/produitSemiFinis.fields.freinte_produit').':') !!}
     {!! Form::text('freinte_produit', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Taille Portion Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('taille_portion', __('models/produitSemiFinis.fields.taille_portion').':') !!}
     {!! Form::text('taille_portion', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Unite Portion Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('unite_portion', __('models/produitSemiFinis.fields.unite_portion').':') !!}
     {!! Form::text('unite_portion', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Texte Portion Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('texte_portion', __('models/produitSemiFinis.fields.texte_portion').':') !!}
     {!! Form::text('texte_portion', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Nombre Portion Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('nombre_portion', __('models/produitSemiFinis.fields.nombre_portion').':') !!}
     {!! Form::text('nombre_portion', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Cahier De Charge Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('cahier_de_charge', __('models/produitSemiFinis.fields.cahier_de_charge').':') !!}
     {!! Form::text('cahier_de_charge', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Date Limite Consommation Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('date_limite_consommation', __('models/produitSemiFinis.fields.date_limite_consommation').':') !!}
     {!! Form::text('date_limite_consommation', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Ddm Dua Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('ddm_dua', __('models/produitSemiFinis.fields.ddm_dua').':') !!}
     {!! Form::text('ddm_dua', null, ['class' => 'form-control','id'=>'ddm_dua']) !!}
-</div>
+</div>  --}}
 
 @push('page_scripts')
     <script type="text/javascript">
@@ -183,16 +200,16 @@
 @endpush
 
 <!-- Pao Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('pao', __('models/produitSemiFinis.fields.pao').':') !!}
     {!! Form::text('pao', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Duree Vie Minimum Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('duree_vie_minimum', __('models/produitSemiFinis.fields.duree_vie_minimum').':') !!}
     {!! Form::text('duree_vie_minimum', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Condition Conservation Id Field -->
 {{--  <div class="form-group col-sm-9">
@@ -207,16 +224,16 @@
 </div>  --}}
 
 <!-- Conseil Preparation Utilisation Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('conseil_preparation_utilisation', __('models/produitSemiFinis.fields.conseil_preparation_utilisation').':') !!}
     {!! Form::text('conseil_preparation_utilisation', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Prix Vente Uv Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('prix_vente_uv', __('models/produitSemiFinis.fields.prix_vente_uv').':') !!}
     {!! Form::text('prix_vente_uv', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}
 
 <!-- Monnaie Id Field -->
 {{--  <div class="form-group col-sm-9">
@@ -225,7 +242,7 @@
 </div>  --}}
 
 <!-- Quantite Imprevisionnelle Field -->
-<div class="form-group col-sm-9">
+{{--  <div class="form-group col-sm-9">
     {!! Form::label('quantite_imprevisionnelle', __('models/produitSemiFinis.fields.quantite_imprevisionnelle').':') !!}
     {!! Form::text('quantite_imprevisionnelle', null, ['class' => 'form-control']) !!}
-</div>
+</div>  --}}

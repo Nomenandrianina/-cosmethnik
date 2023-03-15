@@ -57,7 +57,7 @@ class Produit_semi_finisController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/produitSemiFinis.singular')]));
 
-        return redirect(route('produitSemiFinis.index'));
+        return back();
     }
 
     /**

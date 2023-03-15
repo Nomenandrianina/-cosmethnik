@@ -42,6 +42,10 @@
         .elements-create{
             margin-left: 68px
         }
+
+        .modal-elements{
+            max-width: 750px;
+        }
     </style>
     @stack('page_css')
 

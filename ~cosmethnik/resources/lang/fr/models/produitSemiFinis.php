@@ -9,6 +9,7 @@ return array (
     'nom' => 'Nom',
     'unite' => 'Unité',
     'libelle_commerciale'=> 'libellé commerciale',
-    'libelle_legale'=> 'libellé legale'
+    'libelle_legale'=> 'libellé legale',
+    'description'=>'description'
 ),
 );
