@@ -9,8 +9,8 @@
                 <span class="nav-icon fas fa-plus"></span> Créer
             </a>
             <div class="dropdown-menu elements-create" aria-labelledby="navbarDropdownMenuLink">
-                <button class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-file"> Dossier</i>
-                <button class="dropdown-item" id="link-modal-produit" data-bs-toggle="modal" data-bs-target="#produitmodal"><i class="fas fa-file"> Produit semi fini</i></button>
+                <button class="dropdown-item" id="link-modal-dossier" data-bs-toggle="modal" data-bs-target="#dossier-modal"><i class="fas fa-file"> Dossier</i>
+                <button class="dropdown-item" id="link-modal-produit" data-bs-toggle="modal" data-bs-target="#produit-semi-fini-modal"><i class="fas fa-file"> Produit semi fini</i></button>
             </div>
         </div>
     </section>
@@ -51,47 +51,10 @@
                     @endforeach
                 </ul>
 
-                <div class="modal fade" id="produitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    {!! Form::open(['route' => 'produitSemiFinis.store']) !!}
-                        <div class="modal-dialog modal-elements">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h4>
-                                </div>
-                                <div class="modal-body">
-                                    @include('produit_semi_finis.fields')
-                                </div>
-                                <div class="modal-footer">
-                                    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
-                                    <a id="close" class="btn btn-default">
-                                    @lang('crud.cancel')
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {!! Form::close() !!}
-                </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="examplemodalsLabel" aria-hidden="true">
-                    {{--  {!! Form::open(['route' => 'dossiers.store']) !!}  --}}
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h2 class="modal-title fs-5" id="examplemodalsLabel">Créer un nouveau dossier</h2>
-                        </div>
-                        <div class="modal-body">
-                          @include('dossiers.fields')
-                        </div>
-                        <div class="modal-footer">
-                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
-                            <a id="close" class="btn btn-default">
-                             @lang('crud.cancel')
-                            </a>
-                        </div>
-                      </div>
-                    </div>
-                    {{--  {!! Form::close() !!}  --}}
-                </div>
+                @include('dossiers.modals.modal_create_dossier')
+                @include('dossiers.modals.modal_create_produit_semi_fini')
+
             </div>
             <div class="card-footer">
                 <nav aria-label="Page navigation example">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\FamilleDataTable;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateFamilleRequest;
 use App\Http\Requests\UpdateFamilleRequest;
 use App\Repositories\FamilleRepository;
@@ -41,10 +42,37 @@ class FamilleController extends AppBaseController
      */
     public function create()
     {
-
         $famille = Famille::where('parent_id', '=', 0)->get();
         $childs = Famille::pluck('nom','id');
         return view('familles.create',compact('famille','childs'));
+    }
+
+    /**
+     * Get child of famille.
+     *
+     * @return Response
+     */
+    public function getChilds(Request $request)
+    {
+        if (!$request->idfamille) {
+            $html = '<div class="form-group col-sm-6" id="sousfamille">
+                {!! Form::label("sous_famille", "Sous Famille:") !!}
+                {!! Form::select("sous_famille",[],null, ["class" => "form-control"]) !!}
+            </div>';
+        } else {
+            $html = '';
+            $childs = Famille::where('parent_id','=',$request->idfamille)->get();
+            foreach ($childs as $item) {
+                $html .= '<option value="'.$item->id.'">'.$item->nom.'</option>';
+            }
+            // $html .= '
+            // <div class="form-group col-sm-6" id="sousfamille">
+            //     {!! Form::label("sous_famille", "Sous Famille:") !!}
+            //     {!! Form::select("sous_famille",'.$child.',null, ["class" => "form-control"]) !!}
+            // </div>';
+        }
+
+        return response()->json(['html' => $html]);
     }
 
     /**

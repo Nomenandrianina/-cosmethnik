@@ -29,4 +29,6 @@ Route::get('/checkOnline', function (App\Repositories\AttendanceRepository $atte
 
 Route::get('dossiers/treeview/{id}', 'App\Http\Controllers\DossiersController@treeview')->name('dossiers.treeview');
 
+Route::get('famille/get_by_famille', 'App\Http\Controllers\FamilleController@getChilds')->name('famille.get_by_famille');
+
 Route::post('dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');

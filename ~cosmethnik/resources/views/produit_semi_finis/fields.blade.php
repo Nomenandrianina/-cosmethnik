@@ -15,14 +15,14 @@
 <div class="row">
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_legale', 'Famille:') !!}
-        {!! Form::select('sites_id', ['Albania' => 'Albania','Kosovo'=>'Kosovo','Germany'=>'Germany','France'=>'France'],null, ['class' => 'form-control']) !!}
+        {!! Form::label('famille', 'Famille:') !!}
+        {!! Form::select('famille', $famille,null, ['class' => 'form-control']) !!}
     </div>
 
     <!-- Description Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_legale', 'Sous Famille:') !!}
-        {!! Form::select('sites_id', ['Albania' => 'Albania','Kosovo'=>'Kosovo','Germany'=>'Germany','France'=>'France'],null, ['class' => 'form-control']) !!}
+        {!! Form::label('sous_famille', 'Sous Famille:') !!}
+        {!! Form::select('sous_famille',[],null, ['class' => 'form-control']) !!}
     </div>
 </div>
 

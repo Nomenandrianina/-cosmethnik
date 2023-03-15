@@ -9,6 +9,7 @@ use App\Http\Requests\CreateDossiersRequest;
 use App\Http\Requests\UpdateDossiersRequest;
 use App\Repositories\DossiersRepository;
 use Illuminate\Http\Request;
+use App\Models\Famille;
 use App\Models\Sites;
 use App\Models\Dossiers;
 use Flash;
@@ -77,6 +78,7 @@ class DossiersController extends AppBaseController
     public function treeview($id = null)
     {
         $all = Sites::all();
+        $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
         $sites = [];
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
@@ -87,7 +89,8 @@ class DossiersController extends AppBaseController
             'id'=> $id,
             'sites'=> $sites,
             'doc' => $doc,
-            'allDoc' => $allDoc
+            'allDoc' => $allDoc,
+            'famille' => $famille,
         );
         return view('dossiers.treeview',$view);
     }
