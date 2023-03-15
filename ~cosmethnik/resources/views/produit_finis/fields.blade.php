@@ -1,3 +1,75 @@
+<div class="row">
+    <!-- Nom Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('nom', __('models/produitFinis.fields.nom').':',['class' => 'required']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Libelle Commerciale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_commerciale', __('models/produitFinis.fields.libelle_commerciale').':') !!}
+        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-sm-6">
+        {!! Form::label('famille', __('models/produitFinis.fields.famille').':') !!}
+        {!! Form::select('famille', $famille,null, ['class' => 'form-control','id' => 'fini-famille']) !!}
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('sous_famille', __('models/produitFinis.fields.sous-famille').':') !!}
+        {!! Form::select('sous_famille',[],null, ['class' => 'form-control', 'id' => 'fini-sous-famille']) !!}
+    </div>
+</div>
+
+<div class="row">
+    <!-- Libelle Legale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="row">
+    <!-- Code Bcepg Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('code_bcepg', __('models/produitFinis.fields.code_bcepg').':') !!}
+        {!! Form::text('code_bcepg', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Code Erp Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('code_erp', __('models/produitFinis.fields.code_erp').':') !!}
+        {!! Form::text('code_erp', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="row">
+    <!-- Usine Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('usine_id', __('models/produitFinis.fields.usine_id').':') !!}
+        {!! Form::text('usine_id', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Geographique Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('geographique_id', __('models/produitFinis.fields.geographique_id').':') !!}
+        {!! Form::text('geographique_id', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+
+{{--
+
 <!-- Nom Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nom', __('models/produitFinis.fields.nom').':') !!}
@@ -164,4 +236,4 @@
 <div class="form-group col-sm-6">
     {!! Form::label('unite_id', __('models/produitFinis.fields.unite_id').':') !!}
     {!! Form::text('unite_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}

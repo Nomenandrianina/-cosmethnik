@@ -65,11 +65,6 @@ class FamilleController extends AppBaseController
             foreach ($childs as $item) {
                 $html .= '<option value="'.$item->id.'">'.$item->nom.'</option>';
             }
-            // $html .= '
-            // <div class="form-group col-sm-6" id="sousfamille">
-            //     {!! Form::label("sous_famille", "Sous Famille:") !!}
-            //     {!! Form::select("sous_famille",'.$child.',null, ["class" => "form-control"]) !!}
-            // </div>';
         }
 
         return response()->json(['html' => $html]);

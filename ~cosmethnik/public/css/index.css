@@ -145,4 +145,16 @@ a.page-link {
     color: #1a4a51 !important;
 }
 
+#link-modal-dossier i {
+    color: darkgray;
+}
+
+#link-modal-produit-fini i {
+    color: #4787f4;
+}
+
+#link-modal-produit-semi-fini i {
+    color: #ff6633;
+}
+
 

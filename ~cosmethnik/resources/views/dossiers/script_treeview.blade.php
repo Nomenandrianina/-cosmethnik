@@ -5,15 +5,6 @@
             $('#link').val('http://127.0.0.1:8000/~cosmethnik/admin/dossiers/'+this.value.replace(/\s+/g, '').toLowerCase());
         });
 
-        $('#famille').on('change', function() {
-            $.ajax({
-                url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
-                method: 'GET',
-                success: function(data) {
-                    $("#sous_famille").html(data.html);
-                }
-            });
-        });
     });
 
     $(document).ready(function(){
@@ -27,7 +18,16 @@
             $('#dossier-modal').modal('hide');
         });
 
-        $('#link-modal-produit').on('click' , function(e){
+        $('#link-modal-produit-fini').on('click' , function(e){
+            e.preventDefault();
+            $('#produit-fini-modal').modal();
+        });
+        $('#produit_fini_close').on('click' , function(e){
+            e.preventDefault();
+            $('#produit-fini-modal').modal('hide');
+        });
+
+        $('#link-modal-produit-semi-fini').on('click' , function(e){
             e.preventDefault();
             $('#produit-semi-fini-modal').modal();
         });
@@ -37,6 +37,28 @@
         });
 
     })
+
+
+    $(document).on('change','#famille', function() {
+            $.ajax({
+                url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $("#sous_famille").html(data.html);
+                }
+            });
+    });
+
+
+    $(document).on('change','#fini-famille', function() {
+            $.ajax({
+                url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $("#fini-sous-famille").html(data.html);
+                }
+            });
+    });
 
 
     function actions(id) {

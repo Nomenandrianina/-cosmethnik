@@ -9,8 +9,9 @@
                 <span class="nav-icon fas fa-plus"></span> Créer
             </a>
             <div class="dropdown-menu elements-create" aria-labelledby="navbarDropdownMenuLink">
-                <button class="dropdown-item" id="link-modal-dossier" data-bs-toggle="modal" data-bs-target="#dossier-modal"><i class="fas fa-file"> Dossier</i>
-                <button class="dropdown-item" id="link-modal-produit" data-bs-toggle="modal" data-bs-target="#produit-semi-fini-modal"><i class="fas fa-file"> Produit semi fini</i></button>
+                <button class="dropdown-item" id="link-modal-dossier" data-bs-toggle="modal" data-bs-target="#dossier-modal"><i class="fas fa-folder"></i> Dossier</button>
+                <button class="dropdown-item" id="link-modal-produit-fini" data-bs-toggle="modal" data-bs-target="#produit-fini-modal"><i class="fas fa-shopping-bag"></i> Produit fini</button>
+                <button class="dropdown-item" id="link-modal-produit-semi-fini" data-bs-toggle="modal" data-bs-target="#produit-semi-fini-modal"><i class="fas fa-flask"></i> Produit semi fini</button>
             </div>
         </div>
     </section>
@@ -54,6 +55,7 @@
                 @include('dossiers.modals.modal_create_dossier')
 
                 @include('dossiers.modals.modal_create_produit_semi_fini')
+                @include('dossiers.modals.modal_create_produit_fini')
 
             </div>
             <div class="card-footer">

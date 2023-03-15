@@ -52,8 +52,12 @@ class Produit_finiController extends AppBaseController
     public function store(CreateProduit_finiRequest $request)
     {
         $input = $request->all();
+        dd($input);
 
-        $produitFini = $this->produitFiniRepository->create($input);
+        // $produitFini = $this->produitFiniRepository->create($input);
+        DB::table('dossiers')->insert(
+            ['nom' => $input['nom'],'libelle_commerciale' => $input['libelle_commerciale'], 'title' => $input['title'],'parent_id' => $input['parent_id'], 'description' => $input['description'], 'link' => $input['link']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/produitFinis.singular')]));
 
