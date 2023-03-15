@@ -56,15 +56,13 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link"   role="button" style="margin: -5px;
+                    font-weight: 700;"><i class="fas fa-bar"></i>{{ $doc[0]->site->nom }}</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="{{ route('dossiers.treeview') }}"  style="cursor: pointer">
-                        <span class="nav-icon fas fa-folder"></span> Espace documentaire
-                    </a>
-
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                         <span class="nav-icon fas fa-globe"></span> Sites

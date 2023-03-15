@@ -74,17 +74,22 @@ class DossiersController extends AppBaseController
         }
         return response()->json(['success'=> 200,'results' => $result]);
     }
-    public function treeview()
+    public function treeview($id = null)
     {
-
         $all = Sites::all();
         $sites = [];
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
         }
-        $doc = Dossiers::where('parent_id', '=', 0)->get();
+        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->get();
         $allDoc = Dossiers::pluck('title','id')->all();
-        return view('dossiers.treeview',compact('sites','doc','allDoc'));
+        $view = array(
+            'id'=> $id,
+            'sites'=> $sites,
+            'doc' => $doc,
+            'allDoc' => $allDoc
+        );
+        return view('dossiers.treeview',$view);
     }
 
     /**

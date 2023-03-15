@@ -61,13 +61,7 @@
                     </a>
                 </li>
                 @endif
-                @if (Auth::user()->role_text == 'user-client' )
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="{{ route('dossiers.treeview') }}"  style="cursor: pointer">
-                        <span class="nav-icon fas fa-folder"></span> Espace documentaire
-                    </a>
-                </li>
-                @endif
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                         <span class="nav-icon fas fa-globe"></span> Sites

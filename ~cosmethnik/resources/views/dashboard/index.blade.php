@@ -209,7 +209,7 @@
                             <ul class="list-group list-group-flush" id="list-site">
                                 @foreach ($sites as $item)
                                     <li class="list-group-item">
-                                        <a href="#">
+                                        <a href="{{ route('dossiers.treeview',$item->id) }}">
                                             <span class="one-site">
                                                 <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
                                                 <span class="three-site">
