@@ -88,11 +88,20 @@
     {!! Form::text('dossier_id', null, ['class' => 'form-control']) !!}
 </div>  --}}
 
-<!-- Etat Produit Id Field -->
-{{--  <div class="form-group col-sm-6">
-    {!! Form::label('etat_produit_id', __('models/produitSemiFinis.fields.etat_produit_id').':') !!}
-    {!! Form::text('etat_produit_id', null, ['class' => 'form-control']) !!}
-</div>  --}}
+<div class="row">
+
+    <!-- Etat Produit Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('etat_produit_id', __('models/produitSemiFinis.fields.etat_produit_id').':') !!}
+        {!! Form::select('etat_produit_id', $famille,null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Etat Produit Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('etat_produit_id', 'Modele:') !!}
+        {!! Form::select('modele', $famille,null, ['class' => 'form-control']) !!}
+    </div>
+</div>
 
 <!-- Filiale Id Field -->
 {{--  <div class="form-group col-sm-6">
