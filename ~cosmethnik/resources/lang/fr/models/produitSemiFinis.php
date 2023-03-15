@@ -10,6 +10,10 @@ return array (
     'unite' => 'Unité',
     'libelle_commerciale'=> 'libellé commerciale',
     'libelle_legale'=> 'libellé legale',
-    'description'=>'description'
+    'description'=>'description',
+    'code_bcepg'=>'code bcepg',
+    'code_erp'=>'code erp',
+    'usine_id'=>'Usine',
+    'geographique_id'=>'origine geographique'
 ),
 );

@@ -10,6 +10,7 @@ use App\Repositories\Produit_semi_finisRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Produit_semi_finis;
 
 class Produit_semi_finisController extends AppBaseController
 {
@@ -51,9 +52,20 @@ class Produit_semi_finisController extends AppBaseController
      */
     public function store(CreateProduit_semi_finisRequest $request)
     {
-        $input = $request->all();
 
-        $produitSemiFinis = $this->produitSemiFinisRepository->create($input);
+        $input = $request->all();
+        // $produitSemiFinis = $this->produitSemiFinisRepository->create($input);
+        $produit_semi_fini= new Produit_semi_finis([
+            'nom' =>  $request->nom,
+            'libelle_commerciale' => $request->libelle_commerciale,
+            'famille' => $request->famille,
+            'libelle_legale' =>$request->libelle_legale,
+            'code_bcepg' =>$request->code_bcepg,
+            'code_erp' => $request->code_erp,
+            'usine_id' => $request->usine_id,
+            'usine_id' => $request->usine_id,
+        ]);
+        $produit_semi_fini->save();
 
         Flash::success(__('messages.saved', ['model' => __('models/produitSemiFinis.singular')]));
 

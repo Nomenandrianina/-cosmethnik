@@ -51,8 +51,8 @@
                     @endforeach
                 </ul>
 
-
                 @include('dossiers.modals.modal_create_dossier')
+
                 @include('dossiers.modals.modal_create_produit_semi_fini')
 
             </div>
