@@ -14,7 +14,6 @@
             </div>
         </div>
     </section>
-
     <div class="content px-3">
 
         @include('flash::message')
@@ -24,7 +23,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-folder"></i> | Documents
-              </div>
+            </div>
 
             <div class="card-body p-0" id="div-change">
                 <div class="loading" style="text-align:center">
@@ -54,22 +53,22 @@
 
                 <div class="modal fade" id="produitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     {!! Form::open(['route' => 'dossiers.store']) !!}
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h2 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau dossiers</h2>
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h2>
+                            </div>
+                            <div class="modal-body">
+                                @include('produit_semi_finis.fields')
+                            </div>
+                            <div class="modal-footer">
+                                {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                <a id="close" class="btn btn-default">
+                                @lang('crud.cancel')
+                                </a>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                          @include('dossiers.fields')
                         </div>
-                        <div class="modal-footer">
-                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
-                            <a id="close" class="btn btn-default">
-                             @lang('crud.cancel')
-                            </a>
-                        </div>
-                      </div>
-                    </div>
                     {!! Form::close() !!}
                 </div>
 
@@ -78,7 +77,7 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h2 class="modal-title fs-5" id="examplemodalsLabel">Créer un nouveau produit semi finis</h2>
+                          <h2 class="modal-title fs-5" id="examplemodalsLabel">Créer un nouveau dossier</h2>
                         </div>
                         <div class="modal-body">
                           @include('dossiers.fields')
@@ -93,7 +92,6 @@
                     </div>
                     {{--  {!! Form::close() !!}  --}}
                 </div>
-
             </div>
             <div class="card-footer">
                 <nav aria-label="Page navigation example">

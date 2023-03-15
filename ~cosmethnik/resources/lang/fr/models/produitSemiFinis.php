@@ -8,5 +8,7 @@ return array (
     'id' => 'Id',
     'nom' => 'Nom',
     'unite' => 'Unité',
+    'libelle_commerciale'=> 'libellé commerciale',
+    'libelle_legale'=> 'libellé legale'
 ),
 );
