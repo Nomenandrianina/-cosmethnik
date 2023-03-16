@@ -2,13 +2,13 @@
     <!-- Nom Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':') !!}
-        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation']) !!}
     </div>
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':') !!}
-        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control']) !!}
+        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale']) !!}
     </div>
 </div>
 
@@ -30,13 +30,13 @@
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
-        {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control','placeholder'=>'libellé legale']) !!}
     </div>
 
     <!-- Description Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control','placeholder'=>'Déscription']) !!}
     </div>
 </div>
 
@@ -44,13 +44,13 @@
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':') !!}
-        {!! Form::text('code_bcepg', null, ['class' => 'form-control']) !!}
+        {!! Form::text('code_bcepg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg']) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/produitSemiFinis.fields.code_erp').':') !!}
-        {!! Form::text('code_erp', null, ['class' => 'form-control']) !!}
+        {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp']) !!}
     </div>
 </div>
 
@@ -83,7 +83,7 @@
     <!-- Etat Produit Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('etat_produit_id', __('models/produitSemiFinis.fields.etat_produit_id').':') !!}
-        {!! Form::select('etat_produit_id', $famille,null, ['class' => 'form-control']) !!}
+        {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control']) !!}
     </div>
 
     <!-- Etat Produit Id Field -->
@@ -102,13 +102,14 @@
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/produitSemiFinis.fields.usine_id').':') !!}
-        {!! Form::text('usine_id', null, ['class' => 'form-control']) !!}
+        {!! Form::select('usine_id', $usines,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
+
     </div>
 
     <!-- Geographique Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('geographique_id', __('models/produitSemiFinis.fields.geographique_id').':') !!}
-        {!! Form::text('geographique_id', null, ['class' => 'form-control']) !!}
+        {!! Form::select('geographique_id', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
     </div>
 </div>
 

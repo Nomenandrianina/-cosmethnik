@@ -54,7 +54,8 @@ class Produit_semi_finisController extends AppBaseController
     {
 
         $input = $request->all();
-        // $produitSemiFinis = $this->produitSemiFinisRepository->create($input);
+        dd($input);
+
         $produit_semi_fini= new Produit_semi_finis([
             'nom' =>  $request->nom,
             'libelle_commerciale' => $request->libelle_commerciale,
@@ -63,7 +64,7 @@ class Produit_semi_finisController extends AppBaseController
             'code_bcepg' =>$request->code_bcepg,
             'code_erp' => $request->code_erp,
             'usine_id' => $request->usine_id,
-            'usine_id' => $request->usine_id,
+            'geographique_id' => $request->geographique_id,
         ]);
         $produit_semi_fini->save();
 
