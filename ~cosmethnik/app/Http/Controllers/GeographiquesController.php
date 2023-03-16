@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\GeographiquesDataTable;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Requests\CreateGeographiquesRequest;
 use App\Http\Requests\UpdateGeographiquesRequest;
@@ -53,7 +54,10 @@ class GeographiquesController extends AppBaseController
     {
         $input = $request->all();
 
-        $geographiques = $this->geographiquesRepository->create($input);
+        // $geographiques = $this->geographiquesRepository->create($input);
+        DB::table('geographique')->insert(
+            ['description' => $input['description']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/geographiques.singular')]));
 

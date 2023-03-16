@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProduit_finiRequest;
 use App\Repositories\Produit_finiRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Usines;
 use Response;
 
 class Produit_finiController extends AppBaseController

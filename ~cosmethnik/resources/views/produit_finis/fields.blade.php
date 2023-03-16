@@ -57,13 +57,13 @@
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/produitFinis.fields.usine_id').':') !!}
-        {!! Form::text('usine_id', null, ['class' => 'form-control']) !!}
+        {!! Form::select('usine_id', $usines,null, ['class' => 'form-control']) !!}
     </div>
 
     <!-- Geographique Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('geographique_id', __('models/produitFinis.fields.geographique_id').':') !!}
-        {!! Form::text('geographique_id', null, ['class' => 'form-control']) !!}
+        {!! Form::select('geographique_id', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
     </div>
 </div>
 

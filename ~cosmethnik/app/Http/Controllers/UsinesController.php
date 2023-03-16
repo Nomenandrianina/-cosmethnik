@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UsinesDataTable;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Requests\CreateUsinesRequest;
 use App\Http\Requests\UpdateUsinesRequest;
@@ -53,7 +54,11 @@ class UsinesController extends AppBaseController
     {
         $input = $request->all();
 
-        $usines = $this->usinesRepository->create($input);
+        // $usines = $this->usinesRepository->create($input);
+
+        DB::table('usines')->insert(
+            ['description' => $input['description']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/usines.singular')]));
 

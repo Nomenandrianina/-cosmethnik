@@ -10,10 +10,12 @@ use App\Http\Requests\UpdateDossiersRequest;
 use App\Repositories\DossiersRepository;
 use Illuminate\Http\Request;
 use App\Models\Famille;
+use App\Models\Usines;
 use App\Models\Sites;
 use App\Models\Dossiers;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Geographiques;
 use Response;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
@@ -79,6 +81,8 @@ class DossiersController extends AppBaseController
     {
         $all = Sites::all();
         $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
+        $usines = Usines::pluck('description','id');
+        $origines_geo = Geographiques::pluck('description','id');
         $sites = [];
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
@@ -91,6 +95,8 @@ class DossiersController extends AppBaseController
             'doc' => $doc,
             'allDoc' => $allDoc,
             'famille' => $famille,
+            'usines' => $usines,
+            'origines_geo' => $origines_geo,
         );
         return view('dossiers.treeview',$view);
     }
