@@ -6,6 +6,7 @@ return array (
   'fields' =>
   array (
     'id' => 'Id',
+    'nom' => 'Nom',
     'decription' => 'Description',
   ),
 );

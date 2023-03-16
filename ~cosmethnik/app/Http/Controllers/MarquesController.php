@@ -8,6 +8,7 @@ use App\Http\Requests\CreateMarquesRequest;
 use App\Http\Requests\UpdateMarquesRequest;
 use App\Repositories\MarquesRepository;
 use Flash;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -53,7 +54,10 @@ class MarquesController extends AppBaseController
     {
         $input = $request->all();
 
-        $marques = $this->marquesRepository->create($input);
+        // $marques = $this->marquesRepository->create($input);
+        DB::table('marques')->insert(
+            ['description' => $input['description']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/marques.singular')]));
 

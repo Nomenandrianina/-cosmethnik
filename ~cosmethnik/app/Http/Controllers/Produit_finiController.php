@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\DataTables\Produit_finiDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateProduit_finiRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UpdateProduit_finiRequest;
 use App\Repositories\Produit_finiRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Modele_familles;
+use App\Models\Produit_fini;
 use App\Models\Usines;
 use Response;
 
@@ -53,12 +56,19 @@ class Produit_finiController extends AppBaseController
     public function store(CreateProduit_finiRequest $request)
     {
         $input = $request->all();
-        dd($input);
+        $modele_famille = new Modele_familles;
+        $modele_famille->famille_id = $input['sous_famille'];
 
         // $produitFini = $this->produitFiniRepository->create($input);
-        DB::table('dossiers')->insert(
-            ['nom' => $input['nom'],'libelle_commerciale' => $input['libelle_commerciale'], 'title' => $input['title'],'parent_id' => $input['parent_id'], 'description' => $input['description'], 'link' => $input['link']]
+        $id = DB::table('produit_fini')->insertGetId(
+            ['nom' => $input['nom'],'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque']]
         );
+
+        $produit_fini = Produit_fini::find($id);
+        DB::table('modele_familles')->insert(
+            ['model_type' => get_class($produit_fini) , 'model_id' => $produit_fini->id,'famille_id' => $input['sous_famille']]
+        );
+
 
         Flash::success(__('messages.saved', ['model' => __('models/produitFinis.singular')]));
 

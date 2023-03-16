@@ -21,7 +21,7 @@ class Modele_familles extends Model
 
 
     public $table = 'modele_familles';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -51,8 +51,17 @@ class Modele_familles extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function famille(){
+        return $this->belongsTo(Modele_familles::class, 'famille_id') ;
+    }
+
+
 }
