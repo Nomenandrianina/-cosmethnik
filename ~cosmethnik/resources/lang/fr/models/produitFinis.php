@@ -16,6 +16,8 @@ return array (
     'code_bcepg'=>'Code beCPG',
     'code_erp'=>'Code ERP',
     'usine_id'=>'Usine',
-    'geographique_id'=>'Origine géographique'
+    'geographique_id' => 'Origine géographique',
+    'etat_produit_id' => 'Etat produit',
+    'modele' => 'Modèle'
 ),
 );

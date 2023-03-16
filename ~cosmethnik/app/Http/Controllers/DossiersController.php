@@ -15,7 +15,9 @@ use App\Models\Sites;
 use App\Models\Dossiers;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Etat_produits;
 use App\Models\Geographiques;
+use App\Models\Produit_fini;
 use Response;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +85,8 @@ class DossiersController extends AppBaseController
         $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
         $usines = Usines::pluck('description','id');
         $origines_geo = Geographiques::pluck('description','id');
+        $etat_prod = Etat_produits::pluck('designation','id');
+        $produitfini = Produit_fini::pluck('nom','id');
         $sites = [];
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
@@ -97,6 +101,8 @@ class DossiersController extends AppBaseController
             'famille' => $famille,
             'usines' => $usines,
             'origines_geo' => $origines_geo,
+            'etat_prod' => $etat_prod,
+            'modele' => $produitfini,
         );
         return view('dossiers.treeview',$view);
     }

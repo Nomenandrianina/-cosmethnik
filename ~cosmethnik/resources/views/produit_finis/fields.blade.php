@@ -54,6 +54,21 @@
 </div>
 
 <div class="row">
+
+    <!-- Etat Produit Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('etat_produit_id', __('models/produitFinis.fields.etat_produit_id').':') !!}
+        {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Etat Produit Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('modele', __('models/produitFinis.fields.modele').':') !!}
+        {!! Form::select('modele', $modele,null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="row">
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/produitFinis.fields.usine_id').':') !!}

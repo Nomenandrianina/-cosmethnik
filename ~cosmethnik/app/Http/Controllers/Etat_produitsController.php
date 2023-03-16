@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateEtat_produitsRequest;
 use App\Http\Requests\UpdateEtat_produitsRequest;
 use App\Repositories\Etat_produitsRepository;
+use Illuminate\Support\Facades\DB;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -53,7 +54,12 @@ class Etat_produitsController extends AppBaseController
     {
         $input = $request->all();
 
-        $etatProduits = $this->etatProduitsRepository->create($input);
+        // $etatProduits = $this->etatProduitsRepository->create($input);
+
+        DB::table('etat_produit')->insert(
+            ['designation' => $input['designation']]
+        );
+
 
         Flash::success(__('messages.saved', ['model' => __('models/etatProduits.singular')]));
 
