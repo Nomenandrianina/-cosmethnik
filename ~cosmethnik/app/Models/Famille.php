@@ -58,9 +58,9 @@ class Famille extends Model
         return $this->hasMany(Famille::class,'parent_id','id') ;
     }
 
-    public function model(): MorphTo
+    public function modele_famille()
     {
-        return $this->morphTo();
+        return $this->hasMany(Modele_familles::class);
     }
 
 

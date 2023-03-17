@@ -53,7 +53,10 @@ class ClientsController extends AppBaseController
     {
         $input = $request->all();
 
-        $clients = $this->clientsRepository->create($input);
+        // $clients = $this->clientsRepository->create($input);
+        DB::table('clients')->insert(
+            ['nom' => $input['nom'], 'titre' => $input['titre'], 'etat_client' => $input['etat_client'] , 'code_bcpg' => $input['code_bcpg'],'telephone'=> $input['telephone'], 'mail' => $input['mail'] , 'fax' => $input['fax'] , 'adress1' => $input['adress1'], 'adress2' => $input['adress2'],'adress3' => $input['adress3'], 'ville' => $input['ville'], 'code_postal' => $input['code_postal'], 'pays_id' => $input['pays_id']]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/clients.singular')]));
 

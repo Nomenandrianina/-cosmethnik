@@ -51,6 +51,8 @@ class Produit_fini extends Model
 
     protected $dates = ['deleted_at'];
 
+    public $timestamps = false;
+
 
 
     public $fillable = [
@@ -257,5 +259,7 @@ class Produit_fini extends Model
     public function liste_process(): MorphMany{
         return $this->morphMany(Liste_process::class, 'model');
     }
-
+    public function modele_familles(): MorphMany{
+        return $this->morphMany(Modele_familles::class, 'model');
+    }
 }
