@@ -8,6 +8,7 @@ use App\Http\Requests\CreateProduit_semi_finisRequest;
 use App\Http\Requests\UpdateProduit_semi_finisRequest;
 use App\Repositories\Produit_semi_finisRepository;
 use Flash;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AppBaseController;
 use Response;
 use App\Models\Produit_semi_finis;
@@ -54,19 +55,32 @@ class Produit_semi_finisController extends AppBaseController
     {
 
         $input = $request->all();
-        dd($input);
+        // dd($input);
 
-        $produit_semi_fini= new Produit_semi_finis([
-            'nom' =>  $request->nom,
-            'libelle_commerciale' => $request->libelle_commerciale,
-            'famille' => $request->famille,
-            'libelle_legale' =>$request->libelle_legale,
-            'code_bcepg' =>$request->code_bcepg,
-            'code_erp' => $request->code_erp,
-            'usine_id' => $request->usine_id,
-            'geographique_id' => $request->geographique_id,
-        ]);
-        $produit_semi_fini->save();
+        DB::table('produit_semi_finis')->insert(
+            [
+                'nom' =>  $request->nom,
+                'libelle_commerciale' => $request->libelle_commerciale,
+                // 'famille' => $request->famille,
+                'libelle_legale' =>$request->libelle_legale,
+                'code_bcepg' =>$request->code_bcepg,
+                'code_erp' => $request->code_erp,
+                'usine_id' => $request->usine_id,
+                'geographique_id' => $request->geographique_id,
+            ]
+        );
+
+        // $produit_semi_fini= new Produit_semi_finis([
+        //     'nom' =>  $request->nom,
+        //     'libelle_commerciale' => $request->libelle_commerciale,
+        //     'famille' => $request->famille,
+        //     'libelle_legale' =>$request->libelle_legale,
+        //     'code_bcepg' =>$request->code_bcepg,
+        //     'code_erp' => $request->code_erp,
+        //     'usine_id' => $request->usine_id,
+        //     'geographique_id' => $request->geographique_id,
+        // ]);
+        // $produit_semi_fini->save();
 
         Flash::success(__('messages.saved', ['model' => __('models/produitSemiFinis.singular')]));
 

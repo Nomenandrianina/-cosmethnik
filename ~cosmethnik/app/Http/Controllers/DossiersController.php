@@ -79,6 +79,7 @@ class DossiersController extends AppBaseController
         }
         return response()->json(['success'=> 200,'results' => $result]);
     }
+
     public function treeview($id = null)
     {
         $all = Sites::all();

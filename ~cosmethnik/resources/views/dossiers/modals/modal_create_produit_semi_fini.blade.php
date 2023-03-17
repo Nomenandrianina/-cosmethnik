@@ -3,7 +3,7 @@
         @include('adminlte-templates::common.errors')
         <div class="modal-content">
             {!! Form::open(['route' => 'produitSemiFinis.store']) !!}
-            <div class="modal-header">
+            <div class="modal-header modal-head-color">
                 <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h4>
             </div>
             <div class="modal-body">

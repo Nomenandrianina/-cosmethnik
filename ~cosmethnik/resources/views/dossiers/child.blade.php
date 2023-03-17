@@ -7,7 +7,7 @@
                     {{ $child->title }}
                 </p>
             </a>
-        @if(count($child->childs))
+            @if(count($child->childs))
                 @include('dossiers.child',['childs' => $child->childs])
             @endif
         </li>

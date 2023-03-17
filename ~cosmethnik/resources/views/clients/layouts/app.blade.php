@@ -46,6 +46,10 @@
         .modal-elements{
             max-width: 750px;
         }
+        .modal-head-color{
+            background: #75c8e7;
+            color: white;
+        }
     </style>
     @stack('page_css')
 
@@ -182,6 +186,25 @@
                 console.log($rs);
             })
         }, 10000);
+
+        $(document).ready(function() {
+            $('#ajax').submit(function(event){
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'comments',
+                    data: $('form#ajax').serialize(),
+                    dataType: 'json',
+                })
+
+                .done(function(data) {
+                    console.log(data);
+                });
+                //just to be sure its not submiting form
+                return false;
+            });
+        });
+
     </script>
 
     @stack('third_party_scripts')

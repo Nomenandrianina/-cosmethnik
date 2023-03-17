@@ -26,19 +26,6 @@
     </div>
 </div>
 
-<div class="row">
-    <!-- Libelle Legale Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
-        {!! Form::text('libelle_legale', null, ['class' => 'form-control','placeholder'=>'libellé legale']) !!}
-    </div>
-
-    <!-- Description Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control','placeholder'=>'Déscription']) !!}
-    </div>
-</div>
 
 <div class="row">
     <!-- Code Bcepg Field -->
@@ -111,6 +98,21 @@
         {!! Form::label('geographique_id', __('models/produitSemiFinis.fields.geographique_id').':') !!}
         {!! Form::select('geographique_id', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
     </div>
+</div>
+
+
+<div class="row">
+    <!-- Libelle Legale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control','placeholder'=>'libellé legale']) !!}
+    </div>
+</div>
+
+<!-- Description Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control','rows' => 3,'placeholder'=>'Déscription']) !!}
 </div>
 
 <!-- Marque Id Field -->

@@ -2,7 +2,7 @@
     {!! Form::open(['route' => 'produitFinis.store']) !!}
         <div class="modal-dialog modal-elements">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header modal-head-color">
                     <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit fini</h4>
                 </div>
                 <div class="modal-body">
