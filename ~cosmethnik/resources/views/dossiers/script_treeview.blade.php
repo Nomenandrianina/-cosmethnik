@@ -82,4 +82,25 @@
         });
     }
 
+    function getDetails(id,title) {
+        $('.loading').show();
+        $('#data-ul').remove();
+        $.ajax({
+               url: '{{ route('dossiers.navigate') }}',
+               type: 'POST',
+               data: {
+                   _token: "{{ csrf_token() }}",
+                   dossier_id: id,
+               },
+               dataType: 'json',
+                success: function(data){
+                    $('#data-ul').remove();
+                    $('#div-change').html(data.results);
+                },
+                complete: function(){
+                    $('.loading').hide();
+                }
+        });
+    }
+
 </script>

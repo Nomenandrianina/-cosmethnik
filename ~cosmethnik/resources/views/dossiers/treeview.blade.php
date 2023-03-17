@@ -34,7 +34,7 @@
                     @foreach($doc as $category)
                         @foreach ( $category->childs as $child )
                             <li class="list-group-item">
-                                <a onclick="actions({{ $child->id }})" style="cursor: pointer">
+                                <a onclick="getDetails({{ $child->id }} , {{ $child->title }})" style="cursor: pointer">
                                     <span class="one-span">
                                         <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
                                         <span class="three-span">

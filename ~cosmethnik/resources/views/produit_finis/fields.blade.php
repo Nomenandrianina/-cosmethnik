@@ -26,8 +26,7 @@
 </div>
 
 <div class="row">
-<<<<<<< HEAD
-=======
+
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
@@ -42,7 +41,7 @@
 </div>
 
 <div class="row">
->>>>>>> 982ae68a8b850a3fe235b11659c6374896a2b0a6
+
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':') !!}
@@ -116,7 +115,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <!-- Libelle Legale Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
@@ -127,7 +125,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3]) !!}
-=======
+
 <div class="row">
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
@@ -140,7 +138,7 @@
         {!! Form::label('client', __('models/produitFinis.fields.client').':') !!}
         {!! Form::select('client', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
     </div> --}}
->>>>>>> 982ae68a8b850a3fe235b11659c6374896a2b0a6
+
 </div>
 
 
