@@ -97,6 +97,11 @@
     </div>
 </div>
 
+@if (isset($doc))
+    {!! Form::hidden('sites_id',$doc[0]->site->id) !!}
+@endif
+
+
 <div class="row">
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">

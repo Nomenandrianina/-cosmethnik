@@ -137,7 +137,6 @@ class DossiersController extends AppBaseController
      */
     public function store(CreateDossiersRequest $request)
     {
-        dd('test');
         $input = $request->all();
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
