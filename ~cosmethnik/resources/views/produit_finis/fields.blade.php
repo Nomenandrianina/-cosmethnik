@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="row">
+{{--  <div class="row">
 
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
@@ -38,7 +38,7 @@
         {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
     </div>
-</div>
+</div>  --}}
 
 <div class="row">
 
@@ -115,18 +115,13 @@
     </div>
 </div>
 
-<!-- Libelle Legale Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
-    {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Description Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3]) !!}
-
 <div class="row">
+    <!-- Libelle Legale Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
+    </div>
+
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('marque', __('models/produitFinis.fields.marque').':') !!}
@@ -139,6 +134,13 @@
         {!! Form::select('client', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
     </div> --}}
 
+</div>
+
+
+<!-- Description Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3]) !!}
 </div>
 
 
