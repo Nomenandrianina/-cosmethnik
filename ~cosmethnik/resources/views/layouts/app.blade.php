@@ -177,6 +177,7 @@
                 console.log($rs);
             })
         }, 10000);
+
     </script>
 
     @stack('third_party_scripts')

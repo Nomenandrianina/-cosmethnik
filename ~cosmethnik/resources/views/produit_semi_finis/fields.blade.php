@@ -2,13 +2,17 @@
     <!-- Nom Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':') !!}
-        {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation','id'=>'nom']) !!}
+        {{--  <span class="text-danger" id="nomError"></span>  --}}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="nomError"></span>')) !!}
+
     </div>
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':') !!}
         {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeError"></span>')) !!}
     </div>
 </div>
 
@@ -32,12 +36,14 @@
     <div class="form-group col-sm-6">
         {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':') !!}
         {!! Form::text('code_bcepg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgError"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/produitSemiFinis.fields.code_erp').':') !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpError"></span>')) !!}
     </div>
 </div>
 
@@ -71,6 +77,7 @@
     <div class="form-group col-sm-6">
         {!! Form::label('etat_produit_id', __('models/produitSemiFinis.fields.etat_produit_id').':') !!}
         {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control']) !!}
+
     </div>
 
     <!-- Etat Produit Id Field -->
@@ -90,7 +97,6 @@
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/produitSemiFinis.fields.usine_id').':') !!}
         {!! Form::select('usine_id', $usines,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
-
     </div>
 
     <!-- Geographique Id Field -->
@@ -100,12 +106,12 @@
     </div>
 </div>
 
-
 <div class="row">
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
         {!! Form::text('libelle_legale', null, ['class' => 'form-control','placeholder'=>'libellé legale']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleError"></span>')) !!}
     </div>
 </div>
 
@@ -113,6 +119,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('description', __('models/produitSemiFinis.fields.description').':') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control','rows' => 3,'placeholder'=>'Déscription']) !!}
+    {!! Html::decode(Form::label('name','<span class="text-danger" id="descriptionError"></span>')) !!}
 </div>
 
 <!-- Marque Id Field -->

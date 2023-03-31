@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-elements">
         @include('adminlte-templates::common.errors')
         <div class="modal-content">
-            {!! Form::open(['route' => 'produitSemiFinis.store']) !!}
+            {{--  {!! Form::open(['route' => 'produitSemiFinis.store']) !!}  --}}
             <div class="modal-header modal-head-color">
                 <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h4>
             </div>
@@ -10,12 +10,13 @@
                 @include('produit_semi_finis.fields')
             </div>
             <div class="modal-footer">
-                {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                {{--  'onclick'=>'Store_produit_semi_fini();'  --}}
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_produit_semi_fini();']) !!}
                 <button id="produit_semi_fini_close" class="btn btn-default">
                     @lang('crud.cancel')
                 </button>
             </div>
-            {!! Form::close() !!}
+            {{--  {!! Form::close() !!}  --}}
         </div>
     </div>
 </div>

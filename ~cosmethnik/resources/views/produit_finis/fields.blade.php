@@ -143,7 +143,6 @@
     {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3]) !!}
 </div>
 
-
 {{--
 
 <!-- Nom Field -->
