@@ -240,6 +240,44 @@
                     "description":description,
                 },
                 success: function(data){
+                    {{--  console.log("success",data);  --}}
+                    {{--  window.location.replace(data);  --}}
+                },
+                error: function(data){
+                    var erros = data.responseJSON;
+                    if($.isEmptyObject(erros)== false){
+                        console.log('leserreurs',erros.errors);
+                        $.each(erros.errors, function(key,value){
+                            var ErrorID = '#' + key + 'Error';
+                            console.log('text',ErrorID);
+                            $(ErrorID).removeClass("d-none");
+                            $(ErrorID).text(value)
+                        })
+                    }
+                }
+            })
+        }
+
+        function Store_dossier(){
+            var CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
+            var name = $('#name').val();
+            var title = $('#title').val();
+            var sites_id = $('#sites_id').val();
+            var description = $('#description').val();
+
+            $("#nomError").addClass('d-none');
+            {{--  $("#nomError").text("test");  --}}
+            $.ajax({
+                type:'POST',
+                url: "{{ route('dossiers.store') }}",
+                data:{ "_token":"{{ csrf_token() }}",
+                    "name":name,
+                    "title":title,
+                    "famille":famille,
+                    "sites_id":sites_id,
+                    "description":description,
+                },
+                success: function(data){
 
                 },
                 error: function(data){

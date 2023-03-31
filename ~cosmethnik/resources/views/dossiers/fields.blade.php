@@ -3,24 +3,30 @@
 @if (isset($dossiers))
     <div class="form-group col-sm-6">
         {!! Form::label('name', __('models/dossiers.fields.name').':',['class' => 'required']) !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control','id'=>'name']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="nameError"></span>')) !!}
+
     </div>
 
     <!-- Title Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('title', __('models/dossiers.fields.title').':',['class' => 'required']) !!}
-        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+        {!! Form::text('title', null, ['class' => 'form-control','id'=>'title']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="titleError"></span>')) !!}
+
     </div>
 
     <div class="form-group col-sm-6">
         {!! Form::label('sites_id', 'Site:',['class' => 'required']) !!}
-        {!! Form::text('sites_id', $dossiers->site['nom'], ['disabled'=> 'disabled','class' => 'form-control']) !!}
+        {!! Form::text('sites_id', $dossiers->site['nom'], ['disabled'=> 'disabled','class' => 'form-control','id'=>'sites_id']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="sites_idError"></span>')) !!}
+
     </div>
 
     <!-- Description Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('description', __('models/dossiers.fields.description').':') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control','rows' => 3]) !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control','rows' => 3,'id'=>'sites_id']) !!}
     </div>
 @else
     <div class="row">
@@ -58,9 +64,5 @@
         {!! Form::label('description', __('models/dossiers.fields.description').':') !!}
         {!! Form::textarea('description', null, ['class' => 'form-control','rows' => 3]) !!}
     </div>
-
-
-
-
 @endif
 

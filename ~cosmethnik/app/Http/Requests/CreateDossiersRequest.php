@@ -25,6 +25,11 @@ class CreateDossiersRequest extends FormRequest
      */
     public function rules()
     {
-        return Dossiers::$rules;
+        return  [
+            'name'=>'required',
+            'title'=>'required',
+            'sites_id'=>'required'
+        ];
+        // return Dossiers::$rules;
     }
 }

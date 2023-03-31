@@ -1,5 +1,5 @@
 <div class="modal fade" id="dossier-modal" tabindex="-1" aria-labelledby="examplemodalsLabel" aria-hidden="true">
-     {!! Form::open(['route' => 'dossiers.store']) !!}
+     {{--  {!! Form::open(['route' => 'dossiers.store']) !!}  --}}
     <div class="modal-dialog modal-elements">
       <div class="modal-content">
         <div class="modal-header modal-head-color">
@@ -9,12 +9,12 @@
           @include('dossiers.fields')
         </div>
         <div class="modal-footer">
-            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_dossier();']) !!}
             <a id="dossier_close" class="btn btn-default">
              @lang('crud.cancel')
             </a>
         </div>
       </div>
     </div>
-     {!! Form::close() !!}
+     {{--  {!! Form::close() !!}  --}}
 </div>

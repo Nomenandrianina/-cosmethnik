@@ -55,7 +55,7 @@ class Produit_semi_finisController extends AppBaseController
     {
 
         $input = $request->all();
-
+        // dd($input);
         DB::table('produit_semi_finis')->insert(
             [
                 'nom' =>  $request->nom,

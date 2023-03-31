@@ -29,9 +29,9 @@ class CreateProduit_semi_finisRequest extends FormRequest
             'nom'=>'required',
             'libelle_commerciale'=>'required',
             'code_bcepg'=>'required',
-            'code_erp'=>'required',
+            // 'code_erp'=>'required',
             'libelle_legale'=>'required',
-            'description'=>'required'
+            // 'description'=>'required'
         ];
         // $this->validate()
         // return Produit_semi_finis::$rules;
