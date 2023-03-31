@@ -19,6 +19,7 @@ use App\Models\Etat_produits;
 use App\Models\Geographiques;
 use App\Models\Marques;
 use App\Models\Produit_fini;
+use App\Models\Produit_semi_finis;
 use Response;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
@@ -44,34 +45,118 @@ class DossiersController extends AppBaseController
         return $dossiersDataTable->render('dossiers.index');
     }
 
-
+    /**
+     * Get Folder child
+     */
     public function ajaxRequest(Request $request){
-        $id = intval($request->dossier_id);
+        $id_dossier = intval($request->dossier_id);
+        $id_site = intval($request->site_id);
         $result = '';
-        $doc = Dossiers::where('parent_id', '=' ,$id)->get();
+        // $doc = Dossiers::where('parent_id', '=' ,$id_dossier)->get();
+        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->get();
         if($doc->isEmpty() == true){
             $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
         }else{
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
             foreach($doc as $item){
-                $li .="<li class='list-group-item'>
-                                <a onclick='actions(".$item->id.")' style='cursor:pointer'>
-                                <span class='one-span'>
-                                        <span class='two-span'><i class='fas fa-folder fa-3x'></i></span>
-                                        <span class='three-span'>".$item->title."
-                                             <br>";
+                $li .='<li class="list-group-item">
+                                <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
+                                <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                                        <span class="three-span">'.$item->title.'
+                                             <br>';
                                             if ($item->description){
-                                                $li = $li."<small>".$item->description."</small></span>
+                                                $li = $li.'<small>'.$item->description.'</small></span>
                                                 </span>
                                                 </a>
-                                                </li>";
+                                                </li>';
                                             }
                                             else{
-                                                $li = $li."<small>Aucune description</small></span>
+                                                $li = $li.'<small>Aucune description</small></span>
                                                         </span>
                                                         </a>
-                                                        </li>";
+                                                        </li>';
+                                            }
+            }
+
+            $endul = '</ul>';
+            $result = $ul.$li.$endul;
+        }
+        return response()->json(['success'=> 200,'results' => $result]);
+    }
+    public function DeterminateObject($dossier_name){
+        switch ($dossier_name) {
+            case (strcasecmp($dossier_name, "produit fini") == 0 || strcasecmp($dossier_name, "produits finis") == 0 || strcasecmp($dossier_name, "produits fini") == 0 || strcasecmp($dossier_name, "produit finis") == 0):
+                return new Produit_fini();
+                break;
+            case (strcasecmp($dossier_name, "produit semi-fini") == 0 || strcasecmp($dossier_name, "produits semi-finis") == 0 || strcasecmp($dossier_name, "produits semi-fini") == 0 || strcasecmp($dossier_name, "produit semi-finis") ==0):
+                return new Produit_semi_finis();
+                break;
+       }
+
+    }
+    /**
+     * Get details of folder
+     */
+    public function ajaxDetails(Request $request){
+        $id_dossier = intval($request->dossier_id);
+        $id_site = intval($request->site_id);
+        $dossier_name = $request->dossier_title;
+
+        $result = '';
+        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->get();
+        if($doc->isEmpty() == true){
+            $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
+            $li = '';
+            $model = $this->DeterminateObject($dossier_name)::all();
+            if($model->isEmpty() == true){
+                $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
+            }else{
+                foreach($model as $item){
+                    $li .='<li class="list-group-item">
+                    <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->nom.'\')" style="cursor:pointer">
+                    <span class="one-span">
+                            <span class="two-span"><i class="fas fa-shopping-bag fa-3x"></i></span>
+                            <span class="three-span">'.$item->nom.'
+                                 <br>';
+                                if ($item->description){
+                                    $li = $li.'<small>'.$item->description.'</small></span>
+                                    </span>
+                                    </a>
+                                    </li>';
+                                }
+                                else{
+                                    $li = $li.'<small>Aucune description</small></span>
+                                            </span>
+                                            </a>
+                                            </li>';
+                                }
+                }
+                $endul = "</ul>";
+                $result = $ul.$li.$endul;
+            }
+        }else{
+            $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
+            $li = '';
+            foreach($doc as $item){
+                $li .='<li class="list-group-item">
+                                <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
+                                <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                                        <span class="three-span">'.$item->title.'
+                                             <br>';
+                                            if ($item->description){
+                                                $li = $li.'<small>'.$item->description.'</small></span>
+                                                </span>
+                                                </a>
+                                                </li>';
+                                            }
+                                            else{
+                                                $li = $li.'<small>Aucune description</small></span>
+                                                        </span>
+                                                        </a>
+                                                        </li>';
                                             }
             }
 

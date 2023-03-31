@@ -7,16 +7,30 @@
 
     });
 
-    $(document).ready(function(){
-        $('.loading').hide();
-        $('#link-modal-dossier').on('click' , function(e){
+    // $(document).ready(function(){
+        //link-modal-dossier
+        $(document).on('click','#link-modal-dossier', function(e) {
+            console.log("Link modal dossier");
             e.preventDefault();
-            $('#dossier-modal').modal();
+            $('#dossier-modal').modal('show');
+            //$('#dossier-modal').css('display:block')
         });
-        $('#dossier_close').on('click' , function(e){
+
+        $(document).on('click','#dossier_close', function(e) {
             e.preventDefault();
+            //$('#dossier-modal').css('display:none')
             $('#dossier-modal').modal('hide');
         });
+
+        $('.loading').hide();
+        // $('#link-modal-dossier').on('click' , function(e){
+        //     e.preventDefault();
+        //     $('#dossier-modal').modal();
+        // });
+        // $('#dossier_close').on('click' , function(e){
+        //     e.preventDefault();
+        //     $('#dossier-modal').modal('hide');
+        // });
 
         $('#link-modal-produit-fini').on('click' , function(e){
             e.preventDefault();
@@ -36,7 +50,7 @@
             $('#produit-semi-fini-modal').modal('hide');
         });
 
-    })
+    // })
 
 
     $(document).on('change','#famille', function() {
@@ -61,7 +75,7 @@
     });
 
 
-    function actions(id) {
+    function actions(id_dossier,id_site) {
         $('.loading').show();
         $('#data-ul').remove();
         $.ajax({
@@ -69,7 +83,8 @@
                type: 'POST',
                data: {
                    _token: "{{ csrf_token() }}",
-                   dossier_id: id,
+                   dossier_id: id_dossier,
+                   site_id: id_site
                },
                dataType: 'json',
                 success: function(data){
@@ -82,15 +97,17 @@
         });
     }
 
-    function getDetails(id,title) {
+    function getDetails(id_dossier,id_site,title) {
         $('.loading').show();
         $('#data-ul').remove();
         $.ajax({
-               url: '{{ route('dossiers.navigate') }}',
+               url: '{{ route('dossiers.navigate.details') }}',
                type: 'POST',
                data: {
                    _token: "{{ csrf_token() }}",
-                   dossier_id: id,
+                   dossier_id: id_dossier,
+                   site_id: id_site,
+                   dossier_title: title,
                },
                dataType: 'json',
                 success: function(data){
