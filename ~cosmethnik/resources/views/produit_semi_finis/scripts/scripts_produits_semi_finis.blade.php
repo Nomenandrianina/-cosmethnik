@@ -1,30 +1,32 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="text/javascript">
+<script>
         $('#link-modal-produit-semi-fini').on('click' , function(e){
             e.preventDefault();
-            $('#produit-semi-fini-modal').modal();
+            $('#create_produit_semi_fini').trigger("reset");
+            $('#produit-semi-fini-modal').modal('show');
         });
         $('#produit_semi_fini_close').on('click' , function(e){
             e.preventDefault();
+            $('#create_produit_semi_fini').trigger("reset");
             $('#produit-semi-fini-modal').modal('hide');
         });
 
+
         function Store_produit_semi_fini(){
-            var CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
-            var nom = $('#nom').val();
-            var libelle_commerciale = $('#libelle_commerciale').val();
-            var famille = $('#famille').val();
-            var sous_famille = $('#sous_famille').val();
-            var code_bcepg = $('#code_bcepg').val();
-            var code_erp = $('#code_erp').val();
-            var etat_produit_id = $('#etat_produit_id').val();
-            var usine_id = $('#usine_id').val();
-            var geographique_id = $('#geographique_id').val();
-            var libelle_legale = $('#libelle_legale').val();
-            var description = $('#description').val();
+            let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
+            let nom = $('#nom_semi_fini').val();
+            let libelle_commerciale = $('#lib_com_semi_fini').val();
+            let famille = $('#famille_semi_fini').val();
+            let sous_famille = $('#sous_famille_semi_fini').val();
+            let code_bcepg = $('#code_bcepg_semi_fini').val();
+            let code_erp = $('#code_erp_semi_fini').val();
+            let etat_produit_id = $('#etat_produit_id_semi_fini').val();
+            let usine_id = $('#usine_id_semi_fini').val();
+            let geographique_id = $('#geographique_id_semi_fini').val();
+            let libelle_legale = $('#lib_leg_semi_fini').val();
+            let description = $('#description_semi_fini').val();
+            let modele = $('#modele_semi_fini').val();
 
             $("#nomError").addClass('d-none');
-            {{--  $("#nomError").text("test");  --}}
             $.ajax({
                 type:'POST',
                 url: "{{ route('produitSemiFinis.store') }}",
@@ -46,11 +48,11 @@
                     {{--  window.location.replace(data);  --}}
                 },
                 error: function(data){
-                    var erros = data.responseJSON;
+                    let erros = data.responseJSON;
                     if($.isEmptyObject(erros)== false){
                         console.log('leserreurs',erros.errors);
                         $.each(erros.errors, function(key,value){
-                            var ErrorID = '#' + key + 'Error';
+                            let ErrorID = '#' + key + 'Error';
                             console.log('text',ErrorID);
                             $(ErrorID).removeClass("d-none");
                             $(ErrorID).text(value)

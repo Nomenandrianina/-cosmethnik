@@ -1,5 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="text/javascript">
+<script>
 
 $('.loading').hide();
 
@@ -10,12 +9,12 @@ $(function() {
 });
 
 
-$(document).on('change','#famille', function() {
+$(document).on('change','#famille_semi_fini', function() {
     $.ajax({
         url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
         method: 'GET',
         success: function(data) {
-            $("#sous_famille").html(data.html);
+            $("#sous_famille_semi_fini").html(data.html);
         }
     });
 });
@@ -32,12 +31,16 @@ $(document).on('change','#fini-famille', function() {
 });
 
 //Open modal create folder
-    $(document).on('click','#link-modal-dossier', function() {
-    $('#dossier-modal').modal('show');
+    $(document).on('click','#link-modal-dossier', function(e) {
+        e.preventDefault();
+        $('#create_dossier').trigger("reset");
+        $('#dossier-modal').modal('show');
     });
 
-    $(document).on('click','#dossier_close', function() {
-    $('#dossier-modal').modal('hide');
+    $(document).on('click','#dossier_close', function(e) {
+        e.preventDefault();
+        $('#create_dossier').trigger("reset");
+        $('#dossier-modal').modal('hide');
     });
 
 //Store a new folder

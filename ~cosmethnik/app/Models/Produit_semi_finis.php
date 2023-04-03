@@ -153,10 +153,10 @@ class Produit_semi_finis extends Model
      * @var array
      */
     public static $rules = [
-        // 'nom'=>'required',
-        // 'libelle_commerciale'=>'required',
-        // 'famille'=>'required',
-        // 'libelle_legale'=>'required'
+            'nom'=>'required',
+            'libelle_commerciale'=>'required',
+            'code_bcepg'=>'required',
+            'libelle_legale'=>'required',
     ];
 
      /**
