@@ -54,8 +54,10 @@
 
                 @include('dossiers.modals.modal_create_dossier')
 
-                @include('dossiers.modals.modal_create_produit_semi_fini')
-                @include('dossiers.modals.modal_create_produit_fini')
+                @include('produit_finis.modals.modal_create_produit_fini')
+
+                @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
+
 
             </div>
             <div class="card-footer">
@@ -79,7 +81,9 @@
             </div>
         </div>
     </div>
-    @include('dossiers.script_treeview')
+    @include('dossiers.scripts.scripts_dossiers')
+    @include('produit_finis.scripts.scripts_produits_finis')
+    @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
 @endsection
 
 

@@ -145,7 +145,7 @@
         </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
@@ -165,14 +165,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js" integrity="sha512-J+763o/bd3r9iW+gFEqTaeyi+uAphmzkE/zU8FxY6iAvD3nQKXa+ZAWkBI9QS9QkYEKddQoiy0I5GDxKf/ORBA==" crossorigin="anonymous"></script>
-    <!--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.js" integrity="sha512-P3/SDm/poyPMRBbZ4chns8St8nky2t8aeG09fRjunEaKMNEDKjK3BuAstmLKqM7f6L1j0JBYcIRL4h2G6K6Lew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript">
-        $(function() {
-            Turbolinks.start();
-        })
-    </script>
-    -->
+
     <script type="text/javascript">
         $(function() {
             bsCustomFileInput.init();
@@ -207,93 +200,6 @@
             });
         });
 
-        function Store_produit_semi_fini(){
-            var CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
-            var nom = $('#nom').val();
-            var libelle_commerciale = $('#libelle_commerciale').val();
-            var famille = $('#famille').val();
-            var sous_famille = $('#sous_famille').val();
-            var code_bcepg = $('#code_bcepg').val();
-            var code_erp = $('#code_erp').val();
-            var etat_produit_id = $('#etat_produit_id').val();
-            var usine_id = $('#usine_id').val();
-            var geographique_id = $('#geographique_id').val();
-            var libelle_legale = $('#libelle_legale').val();
-            var description = $('#description').val();
-
-            $("#nomError").addClass('d-none');
-            {{--  $("#nomError").text("test");  --}}
-            $.ajax({
-                type:'POST',
-                url: "{{ route('produitSemiFinis.store') }}",
-                data:{ "_token":"{{ csrf_token() }}",
-                    "nom":nom,
-                    "libelle_commerciale":libelle_commerciale,
-                    "famille":famille,
-                    "sous_famille":sous_famille,
-                    "code_bcepg":code_bcepg,
-                    "code_erp":code_erp,
-                    "etat_produit_id":etat_produit_id,
-                    "usine_id":usine_id,
-                    "geographique_id":geographique_id,
-                    "libelle_legale":libelle_legale,
-                    "description":description,
-                },
-                success: function(data){
-                    {{--  console.log("success",data);  --}}
-                    {{--  window.location.replace(data);  --}}
-                },
-                error: function(data){
-                    var erros = data.responseJSON;
-                    if($.isEmptyObject(erros)== false){
-                        console.log('leserreurs',erros.errors);
-                        $.each(erros.errors, function(key,value){
-                            var ErrorID = '#' + key + 'Error';
-                            console.log('text',ErrorID);
-                            $(ErrorID).removeClass("d-none");
-                            $(ErrorID).text(value)
-                        })
-                    }
-                }
-            })
-        }
-
-        function Store_dossier(){
-            var CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
-            var name = $('#name').val();
-            var title = $('#title').val();
-            var sites_id = $('#sites_id').val();
-            var description = $('#description').val();
-
-            $("#nomError").addClass('d-none');
-            {{--  $("#nomError").text("test");  --}}
-            $.ajax({
-                type:'POST',
-                url: "{{ route('dossiers.store') }}",
-                data:{ "_token":"{{ csrf_token() }}",
-                    "name":name,
-                    "title":title,
-                    "famille":famille,
-                    "sites_id":sites_id,
-                    "description":description,
-                },
-                success: function(data){
-
-                },
-                error: function(data){
-                    var erros = data.responseJSON;
-                    if($.isEmptyObject(erros)== false){
-                        console.log('leserreurs',erros.errors);
-                        $.each(erros.errors, function(key,value){
-                            var ErrorID = '#' + key + 'Error';
-                            console.log('text',ErrorID);
-                            $(ErrorID).removeClass("d-none");
-                            $(ErrorID).text(value)
-                        })
-                    }
-                }
-            })
-        }
 
     </script>
 
