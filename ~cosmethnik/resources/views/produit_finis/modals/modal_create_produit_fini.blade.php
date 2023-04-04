@@ -10,6 +10,9 @@
                     @include('produit_finis.fields')
                 </div>
                 <div class="modal-footer">
+                    <div class="loading-produit-semi-fini" style="text-align:center" >
+                        <div id="loading" class="lds-dual-ring"></div>
+                    </div>
                 {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_produit_fini();']) !!}
                     <button id="produit_fini_close" class="btn btn-default">
                     @lang('crud.cancel')

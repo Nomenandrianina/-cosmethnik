@@ -3,14 +3,14 @@
     <div class="form-group col-sm-6">
         {!! Form::label('nom', __('models/produitFinis.fields.nom').':',['class' => 'required']) !!}
         {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation','id' => 'nom_fini']) !!}
-        {!! Html::decode(Form::label('nom','<span class="text-danger" id="nomError"></span>')) !!}
+        {!! Html::decode(Form::label('nom','<span class="text-danger" id="nomErrorFini"></span>')) !!}
     </div>
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_commerciale', __('models/produitFinis.fields.libelle_commerciale').':') !!}
         {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale','id'=> 'lib_com_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeErrorFini"></span>')) !!}
     </div>
 </div>
 
@@ -48,14 +48,14 @@
     <div class="form-group col-sm-6">
         {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':') !!}
         {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgErrorFini"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/produitFinis.fields.code_erp').':') !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp','id'=>'code_erp_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpErrorFini"></span>')) !!}
     </div>
 </div>
 
@@ -124,7 +124,7 @@
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
         {!! Form::text('libelle_legale', null, ['class' => 'form-control','id'=>'lib_leg_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleErrorFini"></span>')) !!}
     </div>
 
     <!-- Usine Id Field -->

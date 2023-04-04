@@ -59,10 +59,7 @@
                     "dossier_id":dossier_id
                 },
                 success: function(data){
-                    {{--  alert("User Details Inserted Successfully");  --}}
-                    {{--  $("#message_success").show();  --}}
                     $("#message_success").css("display", "block");
-
                     setTimeout(function() { $("#message_success").hide(); }, 5000);
                     location.href = data.redirect;
                 },

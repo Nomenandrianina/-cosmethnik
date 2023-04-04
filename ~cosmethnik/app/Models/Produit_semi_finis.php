@@ -156,6 +156,7 @@ class Produit_semi_finis extends Model
             'nom'=>'required',
             'libelle_commerciale'=>'required',
             'code_bcepg'=>'required',
+            'code_erp'=>'required',
             'libelle_legale'=>'required',
     ];
 

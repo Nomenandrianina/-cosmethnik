@@ -3,7 +3,7 @@
         @include('adminlte-templates::common.errors')
 
         <div class="modal-content">
-             {!! Form::open(['id' => 'create_produit_semi_fini','onsubmit' => 'Store_produit_semi_fini(); return false']) !!}
+             {{-- {!! Form::open(['id' => 'create_produit_semi_fini','onsubmit' => 'Store_produit_semi_fini(); return false']) !!} --}}
             <div class="modal-header modal-head-color">
                 <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h4>
             </div>
@@ -18,9 +18,8 @@
             <div class="modal-footer">
                 <div class="loading-produit-semi-fini" style="text-align:center" >
                     <div id="loading" class="lds-dual-ring"></div>
-                    {{--  <img src="{{asset('images/loading.gif')}}" alt="" width="150px" height="90px">  --}}
                 </div>
-                {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_produit_semi_fini();']) !!}
                 <button id="produit_semi_fini_close" class="btn btn-default">
                     @lang('crud.cancel')
                 </button>

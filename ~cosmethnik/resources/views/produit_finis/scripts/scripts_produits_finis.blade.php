@@ -1,4 +1,5 @@
 <script>
+        $('.loading-produit-semi-fini').hide();
         $('#link-modal-produit-fini').on('click' , function(e){
             e.preventDefault();
             $('#create_produit_fini').trigger("reset");
@@ -6,7 +7,6 @@
         });
         $('#produit_fini_close').on('click' , function(e){
             e.preventDefault();
-            swal.fire("Done!", "Testttt", "success");
             $('#create_produit_fini').trigger("reset");
             $('#produit-fini-modal').modal('hide');
         });
@@ -23,6 +23,7 @@
 
 
         function Store_produit_fini(){
+            $('.loading-produit-semi-fini').show();
             let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
             let nom = $('#nom_fini').val();
             let libelle_commerciale = $('#lib_com_fini').val();
@@ -61,20 +62,41 @@
                 success: function(data){
                     {{--  console.log("success",data);  --}}
                     {{--  window.location.replace(data);  --}}
+                    swal.fire("Done!", results.message, "success");
                 },
                 error: function(data){
                     let erros = data.responseJSON;
                     if($.isEmptyObject(erros)== false){
                         console.log('leserreurs',erros.errors);
                         $.each(erros.errors, function(key,value){
-                            let ErrorID = '#' + key + 'Error';
+                            let ErrorID = '#' + key + 'ErrorFini';
                             console.log('text',ErrorID);
                             $(ErrorID).removeClass("d-none");
                             $(ErrorID).text(value)
                         })
                     }
+                },
+                complete:function(data){
+                    $('.loading-produit-semi-fini').hide();
                 }
             })
         }
+
+        //Message success
+        let timerInterval
+        Swal.fire({
+        title: 'Succèss!',
+        icon: 'success',
+        showConfirmButton:false,
+        html: '<p></p>',
+        timer: 1500,
+        didOpen: () => {
+            const p = Swal.getHtmlContainer().querySelector('p')
+            timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+        });
 
 </script>
