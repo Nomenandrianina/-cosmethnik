@@ -15,8 +15,8 @@
             </div>
         </div>
     </section>
-    <div class="content px-3">
 
+    <div class="content px-3">
         @include('flash::message')
 
         <div class="clearfix"></div>
@@ -27,9 +27,7 @@
             </div>
 
             <div class="card-body p-0" id="div-change">
-                <div class="loading" style="text-align:center">
-                    <img src="{{asset('images/loading.gif')}}" alt="" width="150px" height="90px">
-                </div>
+
                 <ul class="list-group list-group-flush" id="data-ul">
                     @foreach($doc as $category)
                         @foreach ( $category->childs as $child )
@@ -53,13 +51,15 @@
                 </ul>
 
                 @include('dossiers.modals.modal_create_dossier')
+
                 @include('produit_finis.modals.modal_create_produit_fini')
+
                 @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
 
 
             </div>
             <div class="card-footer">
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page nawgation example">
                     <ul class="pagination justify-content-center">
                       <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
@@ -82,7 +82,6 @@
     @include('dossiers.scripts.scripts_dossiers')
     @include('produit_finis.scripts.scripts_produits_finis')
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
-
 @endsection
 
 

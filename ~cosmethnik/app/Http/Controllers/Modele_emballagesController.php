@@ -60,6 +60,7 @@ class Modele_emballagesController extends AppBaseController
         return redirect(route('modeleEmballages.index'));
     }
 
+
     /**
      * Display the specified Modele_emballages.
      *

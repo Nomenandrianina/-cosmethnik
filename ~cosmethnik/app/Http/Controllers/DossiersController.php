@@ -61,23 +61,23 @@ class DossiersController extends AppBaseController
             $li = '';
             foreach($doc as $item){
                 $li .='<li class="list-group-item">
-                                <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
-                                <span class="one-span">
-                                        <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
-                                        <span class="three-span">'.$item->title.'
-                                             <br>';
-                                            if ($item->description){
-                                                $li = $li.'<small>'.$item->description.'</small></span>
-                                                </span>
-                                                </a>
-                                                </li>';
-                                            }
-                                            else{
-                                                $li = $li.'<small>Aucune description</small></span>
-                                                        </span>
-                                                        </a>
-                                                        </li>';
-                                            }
+                            <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
+                            <span class="one-span">
+                                    <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                                    <span class="three-span">'.$item->title.'
+                                            <br>';
+                                        if ($item->description){
+                                            $li = $li.'<small>'.$item->description.'</small></span>
+                                            </span>
+                                            </a>
+                                            </li>';
+                                        }
+                                        else{
+                                            $li = $li.'<small>Aucune description</small></span>
+                                                    </span>
+                                                    </a>
+                                                    </li>';
+                                        }
             }
 
             $endul = '</ul>';
@@ -85,6 +85,8 @@ class DossiersController extends AppBaseController
         }
         return response()->json(['success'=> 200,'results' => $result]);
     }
+
+
     public function DeterminateObject($dossier_name){
         switch ($dossier_name) {
             case (strcasecmp($dossier_name, "produit fini") == 0 || strcasecmp($dossier_name, "produits finis") == 0 || strcasecmp($dossier_name, "produits fini") == 0 || strcasecmp($dossier_name, "produit finis") == 0):

@@ -55,6 +55,20 @@
             background: #75c8e7;
             color: white;
         }
+
+        .success-msg{
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 3px 3px 3px 3px;
+            z-index: 10000;
+            position: relative
+        }
+
+        .success-msg {
+            color: #270;
+            background-color: #DFF2BF;
+        }
+
     </style>
     @stack('page_css')
 

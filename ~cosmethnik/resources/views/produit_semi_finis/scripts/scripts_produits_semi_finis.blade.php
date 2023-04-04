@@ -1,4 +1,5 @@
 <script>
+        $('.loading-produit-semi-fini').hide();
         $('#link-modal-produit-semi-fini').on('click' , function(e){
             e.preventDefault();
             $('#create_produit_semi_fini').trigger("reset");
@@ -10,8 +11,8 @@
             $('#produit-semi-fini-modal').modal('hide');
         });
 
-
         function Store_produit_semi_fini(){
+            $('.loading-produit-semi-fini').show();
             let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
             let nom = $('#nom_semi_fini').val();
             let libelle_commerciale = $('#lib_com_semi_fini').val();
@@ -25,8 +26,9 @@
             let libelle_legale = $('#lib_leg_semi_fini').val();
             let description = $('#description_semi_fini').val();
             let modele = $('#modele_semi_fini').val();
+            let dossier_id = $('#dossier_id').val();
+            console.log(dossier_id);
 
-            $("#nomError").addClass('d-none');
             $.ajax({
                 type:'POST',
                 url: "{{ route('produitSemiFinis.store') }}",
@@ -42,10 +44,15 @@
                     "geographique_id":geographique_id,
                     "libelle_legale":libelle_legale,
                     "description":description,
+                    "dossier_id":dossier_id
                 },
                 success: function(data){
-                    {{--  console.log("success",data);  --}}
-                    {{--  window.location.replace(data);  --}}
+                    {{--  alert("User Details Inserted Successfully");  --}}
+                    {{--  $("#message_success").show();  --}}
+                    $("#message_success").css("display", "block");
+
+                    setTimeout(function() { $("#message_success").hide(); }, 5000);
+                    location.href = data.redirect;
                 },
                 error: function(data){
                     let erros = data.responseJSON;
@@ -58,7 +65,12 @@
                             $(ErrorID).text(value)
                         })
                     }
+                },
+                complete:function(data){
+                    $('.loading-produit-semi-fini').hide();
                 }
             })
+            $("#nomError").addClass('d-none');
+
         }
 </script>
