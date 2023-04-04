@@ -26,10 +26,12 @@ class Dossiers extends Model
 
     protected $dates = ['created_at','deleted_at'];
 
+    public $timestamps = false;
 
 
     public $fillable = [
         'name',
+        'sites_id',
         'title',
         'parent_id',
         'link',
