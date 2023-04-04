@@ -282,4 +282,8 @@ class Produit_semi_finis extends Model
         return $this->morphMany(Liste_process::class, 'model');
     }
 
+    public function icon() {
+        return '<i class="fas fa-flask fa-3x" style="color: coral;"></i>';
+    }
+
 }

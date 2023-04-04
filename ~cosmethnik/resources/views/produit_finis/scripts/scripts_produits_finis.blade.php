@@ -36,6 +36,10 @@
             let geographique_id = $('#geographique_id_fini').val();
             let libelle_legale = $('#lib_leg_fini').val();
             let description = $('#description_fini').val();
+            let ean = $('#ean_fini').val();
+            let ean_colis = $('#ean_colis_fini').val();
+            let ean_palette = $('#ean_palette_fini').val();
+            let filiale = $('#filiale_fini').val();
             let marque = $('#marque_fini').val();
             let modele = $('#modele_fini').val();
             let sites = $('#sites_id').val();
@@ -55,14 +59,50 @@
                     "usine_id":usine_id,
                     "geographique_id":geographique_id,
                     "libelle_legale":libelle_legale,
+                    "ean": ean,
+                    "ean_colis": ean_colis,
+                    "ean_palette": ean_palette,
+                    "filiale": filiale,
                     "description":description,
-                    "marque_id": marque,
+                    "marque": marque,
                     "sites_id": sites,
                 },
                 success: function(data){
-                    {{--  console.log("success",data);  --}}
-                    {{--  window.location.replace(data);  --}}
-                    swal.fire("Done!", results.message, "success");
+                    var dataResult = JSON.parse(data);
+                    if(dataResult.status == 200){
+                        // let timerInterval
+                        Swal.fire({
+                        title: 'Succèss!',
+                        icon: 'success',
+                        showConfirmButton:false,
+                        html: '<p></p>',
+                        timer: 1500,
+                        didOpen: () => {
+                            const p = Swal.getHtmlContainer().querySelector('p')
+                            timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                        });
+                        location.reload();
+                    }
+                    else if(dataResult.status != 201){
+                        Swal.fire({
+                        title: 'Erreur!',
+                        icon: 'error',
+                        showConfirmButton:false,
+                        html: '<p></p>',
+                        timer: 1500,
+                        didOpen: () => {
+                            const p = Swal.getHtmlContainer().querySelector('p')
+                            timerInterval = setInterval(() => {p.textContent = "Erreur d'insertion!"}, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                        });
+                    }
                 },
                 error: function(data){
                     let erros = data.responseJSON;
@@ -82,21 +122,6 @@
             })
         }
 
-        //Message success
-        {{--  let timerInterval
-        Swal.fire({
-        title: 'Succèss!',
-        icon: 'success',
-        showConfirmButton:false,
-        html: '<p></p>',
-        timer: 1500,
-        didOpen: () => {
-            const p = Swal.getHtmlContainer().querySelector('p')
-            timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
-        },
-        willClose: () => {
-            clearInterval(timerInterval)
-        }
-        });  --}}
+
 
 </script>

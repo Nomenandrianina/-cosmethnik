@@ -48,7 +48,7 @@ class Produit_finiController extends AppBaseController
     }
 
     /**
-     * Store a newly created Produit_fini in storage.
+     * Store a new created Produit_fini in storage.
      *
      * @param CreateProduit_finiRequest $request
      *
@@ -57,45 +57,64 @@ class Produit_finiController extends AppBaseController
     public function store(CreateProduit_finiRequest $request)
     {
         $input = $request->all();
-        // $modele_famille = new Modele_familles;
-        // $modele_famille->famille_id = $input['sous_famille'];
+        $modele_famille = new Modele_familles;
+        $modele_famille->famille_id = $input['sous_famille'];
 
+        //Déterminer s'il y a déjà un dossier nommer Produits fini
         $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
             ->where('name','LIKE','%'.'produits fini'.'%')
             ->orWhere('name', 'LIKE', '%'.'produit finis'.'%')
             ->orWhere('name', 'LIKE', '%'.'produits finis'.'%')
             ->orWhere('name', 'LIKE', '%'.'produit fini'.'%')
             ->get();
-        dd($dossier);
+        //Si le dossie existe
         if($dossier){
+            //Créer un nouveau produit fini
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
-                    'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
+                    'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
                  ]
             );
 
+            //Créer le relation avec famille
             if($product){
                 $produit_fini = Produit_fini::find($product->id);
                 DB::table('modele_familles')->insert(
                     ['model_type' => get_class($produit_fini) , 'model_id' => $produit_fini->id,'famille_id' => $input['sous_famille']]
                 );
             }
-
+        //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
         }else{
-            Dossiers::firstOrCreate(
+            $doc = Dossiers::firstOrCreate(
                 ['name' => 'Produits fini'],
                 [
                     'sites_id' => $input['sites_id'], 'title' => 'Produits fini', 'parent_id' => 1, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitsfini'
                 ]
             );
+            //Si le dossier est créer
+            if($doc){
+                //Créer un nouveau produit fini
+                $product = Produit_fini::firstOrCreate(
+                    [ 'nom' => $input['nom'] ],
+                    [
+                        'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
+                    ]
+                );
+                if($product){
+                    $produit_fini = Produit_fini::find($product->id);
+                    DB::table('modele_familles')->insert(
+                        ['model_type' => get_class($produit_fini) , 'model_id' => $produit_fini->id,'famille_id' => $input['sous_famille']]
+                    );
+                }
+            }
         }
 
+        return json_encode(array("status"=>200, "dossier_id"=> $dossier[0]['id']));
 
+        // Flash::success(__('messages.saved', ['model' => __('models/produitFinis.singular')]));
 
-        Flash::success(__('messages.saved', ['model' => __('models/produitFinis.singular')]));
-
-        return redirect(route('produitFinis.index'));
+        // return redirect(route('produitFinis.index'));
     }
 
     /**

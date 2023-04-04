@@ -18,6 +18,9 @@
 
     <div class="content px-3">
         @include('flash::message')
+        <div class="loading-produit-semi-fini" style="text-align:center" >
+            <div id="loading" class="lds-dual-ring"></div>
+        </div>
 
         <div class="clearfix"></div>
 

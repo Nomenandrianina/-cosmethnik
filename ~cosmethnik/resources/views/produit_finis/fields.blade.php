@@ -8,7 +8,7 @@
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_commerciale', __('models/produitFinis.fields.libelle_commerciale').':') !!}
+        {!! Form::label('libelle_commerciale', __('models/produitFinis.fields.libelle_commerciale').':',['class' => 'required']) !!}
         {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale','id'=> 'lib_com_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeErrorFini"></span>')) !!}
     </div>
@@ -46,14 +46,14 @@
 
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':') !!}
+        {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':',['class' => 'required']) !!}
         {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgErrorFini"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_erp', __('models/produitFinis.fields.code_erp').':') !!}
+        {!! Form::label('code_erp', __('models/produitFinis.fields.code_erp').':',['class' => 'required']) !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp','id'=>'code_erp_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpErrorFini"></span>')) !!}
     </div>
@@ -122,7 +122,7 @@
 <div class="row">
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
+        {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':',['class' => 'required']) !!}
         {!! Form::text('libelle_legale', null, ['class' => 'form-control','id'=>'lib_leg_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleErrorFini"></span>')) !!}
     </div>

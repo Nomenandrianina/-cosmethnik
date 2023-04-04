@@ -265,4 +265,7 @@ class Produit_fini extends Model
     public function modele_familles(): MorphMany{
         return $this->morphMany(Modele_familles::class, 'model');
     }
+    public function icon() {
+        return '<i class="fas fa-shopping-bag fa-3x" style="color: #4787f4;"></i>';
+    }
 }

@@ -1,6 +1,6 @@
 <script>
 
-$('.loading').hide();
+$('.loading-produit-semi-fini').hide();
 
 $(function() {
     $('#name').on('change', function() {
@@ -60,7 +60,7 @@ $(function() {
     }
 //Navigate Treeview
     function actions(id_dossier,id_site) {
-        $('.loading').show();
+        $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
         $.ajax({
                url: '{{ route('dossiers.navigate') }}',
@@ -76,14 +76,14 @@ $(function() {
                     $('#div-change').html(data.results);
                 },
                 complete: function(){
-                    $('.loading').hide();
+                    $('.loading-produit-semi-fini').hide();
                 }
         });
     }
 
 //Children folder
     function getDetails(id_dossier,id_site,title) {
-        $('.loading').show();
+        $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
         $.ajax({
                url: '{{ route('dossiers.navigate.details') }}',
@@ -100,7 +100,7 @@ $(function() {
                     $('#div-change').html(data.results);
                 },
                 complete: function(){
-                    $('.loading').hide();
+                    $('.loading-produit-semi-fini').hide();
                 }
         });
     }

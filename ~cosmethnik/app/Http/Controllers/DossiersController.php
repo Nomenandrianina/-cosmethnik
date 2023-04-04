@@ -86,7 +86,10 @@ class DossiersController extends AppBaseController
         return response()->json(['success'=> 200,'results' => $result]);
     }
 
-
+    /**
+     * Déterminer si le dossier est un Produit fini | Produit semi-fini | Matière première | Autres
+     * Return un Model
+     */
     public function DeterminateObject($dossier_name){
         switch ($dossier_name) {
             case (strcasecmp($dossier_name, "produit fini") == 0 || strcasecmp($dossier_name, "produits finis") == 0 || strcasecmp($dossier_name, "produits fini") == 0 || strcasecmp($dossier_name, "produit finis") == 0):
@@ -107,19 +110,24 @@ class DossiersController extends AppBaseController
         $dossier_name = $request->dossier_title;
 
         $result = '';
+        //Vérifier si le dossier sélectionner à un enfant
         $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->get();
+        //Si le dossier n'a pas d'enfant
         if($doc->isEmpty() == true){
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
+            //Déterminer le Model du dossier
             $model = $this->DeterminateObject($dossier_name)::all();
+            //Si le Model est vide
             if($model->isEmpty() == true){
                 $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
+            //Si le model n'est pas vide alors il renvoye les listes du model en HTML
             }else{
                 foreach($model as $item){
                     $li .='<li class="list-group-item">
                     <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->nom.'\')" style="cursor:pointer">
                     <span class="one-span">
-                            <span class="two-span"><i class="fas fa-shopping-bag fa-3x"></i></span>
+                            <span class="two-span">'.$item->icon().'</span>
                             <span class="three-span">'.$item->nom.'
                                  <br>';
                                 if ($item->description){
@@ -138,6 +146,7 @@ class DossiersController extends AppBaseController
                 $endul = "</ul>";
                 $result = $ul.$li.$endul;
             }
+        //Si le dossier a un enfant
         }else{
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
