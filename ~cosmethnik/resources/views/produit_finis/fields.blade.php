@@ -2,26 +2,28 @@
     <!-- Nom Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('nom', __('models/produitFinis.fields.nom').':',['class' => 'required']) !!}
-        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation','id' => 'nom_fini']) !!}
+        {!! Html::decode(Form::label('nom','<span class="text-danger" id="nomError"></span>')) !!}
     </div>
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_commerciale', __('models/produitFinis.fields.libelle_commerciale').':') !!}
-        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control']) !!}
+        {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale','id'=> 'lib_com_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeError"></span>')) !!}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-sm-6">
         {!! Form::label('famille', __('models/produitFinis.fields.famille').':') !!}
-        {!! Form::select('famille', $famille,null, ['class' => 'form-control','id' => 'fini-famille']) !!}
+        {!! Form::select('famille', $famille,null, ['class' => 'form-control','id' => 'famille_fini']) !!}
     </div>
 
     <!-- Description Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('sous_famille', __('models/produitFinis.fields.sous-famille').':') !!}
-        {!! Form::select('sous_famille',[],null, ['class' => 'form-control', 'id' => 'fini-sous-famille']) !!}
+        {!! Form::select('sous_famille',[],null, ['class' => 'form-control', 'id' => 'sous_famille_fini']) !!}
     </div>
 </div>
 
@@ -45,13 +47,15 @@
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':') !!}
-        {!! Form::text('code_bcpg', null, ['class' => 'form-control']) !!}
+        {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgError"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/produitFinis.fields.code_erp').':') !!}
-        {!! Form::text('code_erp', null, ['class' => 'form-control']) !!}
+        {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp','id'=>'code_erp_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpError"></span>')) !!}
     </div>
 </div>
 
@@ -59,24 +63,24 @@
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('ean', __('models/produitFinis.fields.ean').':') !!}
-        {!! Form::text('ean', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ean', null, ['class' => 'form-control','id'=>'ean_fini']) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('ean_colis', __('models/produitFinis.fields.ean_colis').':') !!}
-        {!! Form::text('ean_colis', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ean_colis', null, ['class' => 'form-control','id'=>'ean_colis_fini']) !!}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-sm-6">
         {!! Form::label('ean_palette', __('models/produitFinis.fields.ean_palette').':') !!}
-        {!! Form::text('ean_palette', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ean_palette', null, ['class' => 'form-control','id'=>'ean_palette_fini']) !!}
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('filiale', __('models/produitFinis.fields.filiale').':') !!}
-        {!! Form::select('filiale', [],null, ['class' => 'form-control']) !!}
+        {!! Form::select('filiale', [],null, ['class' => 'form-control','id'=>'filiale_fini']) !!}
     </div>
 </div>
 
@@ -86,13 +90,13 @@
     <!-- Etat Produit Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('etat_produit_id', __('models/produitFinis.fields.etat_produit_id').':') !!}
-        {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control']) !!}
+        {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control','id'=>'etat_produit_id_fini']) !!}
     </div>
 
     <!-- Etat Produit Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('modele', __('models/produitFinis.fields.modele').':') !!}
-        {!! Form::select('modele', $modele,null, ['class' => 'form-control']) !!}
+        {!! Form::select('modele', $modele,null, ['class' => 'form-control','id'=>'modele_fini']) !!}
     </div>
 </div>
 
@@ -105,13 +109,13 @@
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/produitFinis.fields.usine_id').':') !!}
-        {!! Form::select('usine_id', $usines,null, ['class' => 'form-control']) !!}
+        {!! Form::select('usine_id', $usines,null, ['class' => 'form-control','id'=>'usine_id_fini']) !!}
     </div>
 
     <!-- Geographique Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('geographique_id', __('models/produitFinis.fields.geographique_id').':') !!}
-        {!! Form::select('geographique_id', $origines_geo,null, ['class' => 'form-control','icon' => '<i class="fas fa-globe-europe"></i>']) !!}
+        {!! Form::select('geographique_id', $origines_geo,null, ['class' => 'form-control','id'=>'geographique_id_fini']) !!}
     </div>
 </div>
 
@@ -119,13 +123,14 @@
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('libelle_legale', __('models/produitFinis.fields.libelle_legale').':') !!}
-        {!! Form::text('libelle_legale', null, ['class' => 'form-control']) !!}
+        {!! Form::text('libelle_legale', null, ['class' => 'form-control','id'=>'lib_leg_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleError"></span>')) !!}
     </div>
 
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('marque', __('models/produitFinis.fields.marque').':') !!}
-        {!! Form::select('marque', $marque,null, ['class' => 'form-control']) !!}
+        {!! Form::select('marque', $marque,null, ['class' => 'form-control','id'=>'marque_fini']) !!}
     </div>
 
     <!-- Geographique Id Field -->
@@ -140,7 +145,7 @@
 <!-- Description Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('description', __('models/produitFinis.fields.description').':') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3]) !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3,'id'=>'description_fini']) !!}
 </div>
 
 {{--

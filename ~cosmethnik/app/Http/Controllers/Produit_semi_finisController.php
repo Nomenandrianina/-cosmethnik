@@ -55,7 +55,6 @@ class Produit_semi_finisController extends AppBaseController
     {
 
         $input = $request->all();
-        // dd($input);
         DB::table('produit_semi_finis')->insert(
             [
                 'nom' =>  $request->nom,
@@ -69,17 +68,6 @@ class Produit_semi_finisController extends AppBaseController
             ]
         );
 
-        // $produit_semi_fini= new Produit_semi_finis([
-        //     'nom' =>  $request->nom,
-        //     'libelle_commerciale' => $request->libelle_commerciale,
-        //     'famille' => $request->famille,
-        //     'libelle_legale' =>$request->libelle_legale,
-        //     'code_bcepg' =>$request->code_bcepg,
-        //     'code_erp' => $request->code_erp,
-        //     'usine_id' => $request->usine_id,
-        //     'geographique_id' => $request->geographique_id,
-        // ]);
-        // $produit_semi_fini->save();
         if($request->ajax()){
             // $request->flash(array('success' =>))
             return ['redirect' => url('dossiers/treeview/'.$request->dossier_id), 'message' => 'success'];

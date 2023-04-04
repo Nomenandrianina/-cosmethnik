@@ -11,6 +11,18 @@
             $('#produit-semi-fini-modal').modal('hide');
         });
 
+        $(document).on('change','#famille_semi_fini', function() {
+            $.ajax({
+                url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
+                method: 'GET',
+                success: function(data) {
+                    $("#sous_famille_semi_fini").html(data.html);
+                }
+            });
+        });
+
+
+
         function Store_produit_semi_fini(){
             $('.loading-produit-semi-fini').show();
             let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');

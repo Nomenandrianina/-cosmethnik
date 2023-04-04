@@ -9,26 +9,6 @@ $(function() {
 });
 
 
-$(document).on('change','#famille_semi_fini', function() {
-    $.ajax({
-        url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
-        method: 'GET',
-        success: function(data) {
-            $("#sous_famille_semi_fini").html(data.html);
-        }
-    });
-});
-
-
-$(document).on('change','#fini-famille', function() {
-    $.ajax({
-        url: "{{ route('famille.get_by_famille') }}?idfamille=" + $(this).val(),
-        method: 'GET',
-        success: function(data) {
-            $("#fini-sous-famille").html(data.html);
-        }
-    });
-});
 
 //Open modal create folder
     $(document).on('click','#link-modal-dossier', function(e) {
@@ -52,14 +32,12 @@ $(document).on('change','#fini-famille', function() {
         var description = $('#description').val();
 
         $("#nomError").addClass('d-none');
-        {{--  $("#nomError").text("test");  --}}
         $.ajax({
             type:'POST',
             url: "{{ route('dossiers.store') }}",
             data:{ "_token":"{{ csrf_token() }}",
                 "name":name,
                 "title":title,
-                "famille":famille,
                 "sites_id":sites_id,
                 "description":description,
             },

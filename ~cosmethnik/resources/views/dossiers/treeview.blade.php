@@ -49,15 +49,12 @@
                         @endforeach
                     @endforeach
                 </ul>
-
-                @include('dossiers.modals.modal_create_dossier')
-
-                @include('produit_finis.modals.modal_create_produit_fini')
-
-                @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
-
-
             </div>
+
+            @include('dossiers.modals.modal_create_dossier')
+            @include('produit_finis.modals.modal_create_produit_fini')
+            @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
+
             <div class="card-footer">
                 <nav aria-label="Page nawgation example">
                     <ul class="pagination justify-content-center">

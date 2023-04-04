@@ -57,10 +57,16 @@ class Produit_finiController extends AppBaseController
     public function store(CreateProduit_finiRequest $request)
     {
         $input = $request->all();
-        $modele_famille = new Modele_familles;
-        $modele_famille->famille_id = $input['sous_famille'];
+        // $modele_famille = new Modele_familles;
+        // $modele_famille->famille_id = $input['sous_famille'];
 
-        $dossier = Dossiers::where('sites_id','=',$input['sites_id'])->where('name','=','Produits fini')->get();
+        $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
+            ->where('name','LIKE','%'.'produits fini'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produit finis'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produits finis'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produit fini'.'%')
+            ->get();
+        dd($dossier);
         if($dossier){
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],

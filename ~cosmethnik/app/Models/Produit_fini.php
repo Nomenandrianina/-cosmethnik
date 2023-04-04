@@ -133,7 +133,11 @@ class Produit_fini extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom'=>'required',
+        'libelle_commerciale'=>'required',
+        'code_bcepg'=>'required',
+        'code_erp'=> 'required',
+        'libelle_legale'=>'required',
     ];
 
     /**
