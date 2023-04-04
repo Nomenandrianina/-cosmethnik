@@ -45,7 +45,6 @@ class Produit_fini extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'produit_fini';
 
 

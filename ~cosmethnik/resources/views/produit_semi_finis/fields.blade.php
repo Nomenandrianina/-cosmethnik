@@ -1,7 +1,7 @@
 <div class="row">
     <!-- Nom Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':') !!}
+        {!! Form::label('nom', __('models/produitSemiFinis.fields.nom').':',['class' => 'required']) !!}
         {!! Form::text('nom', null, ['class' => 'form-control','placeholder'=>'Désignation','id' => 'nom_semi_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="nomError"></span>')) !!}
 
@@ -9,7 +9,7 @@
 
     <!-- Libelle Commerciale Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':') !!}
+        {!! Form::label('libelle_commerciale', __('models/produitSemiFinis.fields.libelle_commerciale').':',['class' => 'required']) !!}
         {!! Form::text('libelle_commerciale', null, ['class' => 'form-control','placeholder'=>'libellé commerciale','id'=> 'lib_com_semi_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_commercialeError"></span>')) !!}
     </div>
@@ -33,14 +33,14 @@
 <div class="row">
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':') !!}
+        {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':',['class' => 'required']) !!}
         {!! Form::text('code_bcepg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_semi_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgError"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_erp', __('models/produitSemiFinis.fields.code_erp').':') !!}
+        {!! Form::label('code_erp', __('models/produitSemiFinis.fields.code_erp').':',['class' => 'required']) !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Codeerp','id'=>'code_erp_semi_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="code_erpError"></span>')) !!}
     </div>
@@ -102,7 +102,7 @@
 <div class="row">
     <!-- Libelle Legale Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':') !!}
+        {!! Form::label('libelle_legale', __('models/produitSemiFinis.fields.libelle_legale').':',['class' => 'required']) !!}
         {!! Form::text('libelle_legale', null, ['class' => 'form-control','placeholder'=>'libellé legale',,'id'=> 'lib_leg_semi_fini']) !!}
         {!! Html::decode(Form::label('name','<span class="text-danger" id="libelle_legaleError"></span>')) !!}
     </div>

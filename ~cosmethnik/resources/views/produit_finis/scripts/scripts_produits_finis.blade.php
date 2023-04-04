@@ -83,7 +83,7 @@
         }
 
         //Message success
-        let timerInterval
+        {{--  let timerInterval
         Swal.fire({
         title: 'Succèss!',
         icon: 'success',
@@ -97,6 +97,6 @@
         willClose: () => {
             clearInterval(timerInterval)
         }
-        });
+        });  --}}
 
 </script>

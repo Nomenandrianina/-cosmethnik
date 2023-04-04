@@ -59,9 +59,26 @@
                     "dossier_id":dossier_id
                 },
                 success: function(data){
-                    $("#message_success").css("display", "block");
-                    setTimeout(function() { $("#message_success").hide(); }, 5000);
-                    location.href = data.redirect;
+                    {{--  location.href = data.redirect;  --}}
+
+
+                    let timerInterval
+                    Swal.fire({
+                    title: 'Succèss!',
+                    icon: 'success',
+                    showConfirmButton:false,
+                    html: '<p></p>',
+                    timer: 1500,
+                    didOpen: () => {
+                        const p = Swal.getHtmlContainer().querySelector('p')
+                        timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                    });
+
+                    location.reload();
                 },
                 error: function(data){
                     let erros = data.responseJSON;
