@@ -4,22 +4,21 @@
     <div class="form-group col-sm-6">
         {!! Form::label('name', __('models/dossiers.fields.name').':',['class' => 'required']) !!}
         {!! Form::text('name', null, ['class' => 'form-control','id'=>'name']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="nameError"></span>')) !!}
-
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="nameErrordossier"></span>')) !!}
     </div>
 
     <!-- Title Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('title', __('models/dossiers.fields.title').':',['class' => 'required']) !!}
         {!! Form::text('title', null, ['class' => 'form-control','id'=>'title']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="titleError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="titleErrordossier"></span>')) !!}
 
     </div>
 
     <div class="form-group col-sm-6">
         {!! Form::label('sites_id', 'Site:',['class' => 'required']) !!}
         {!! Form::text('sites_id', $dossiers->site['nom'], ['disabled'=> 'disabled','class' => 'form-control','id'=>'sites_id']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="sites_idError"></span>')) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="sites_idErrordossier"></span>')) !!}
 
     </div>
 
@@ -33,12 +32,14 @@
         <div class="form-group col-sm-6">
             {!! Form::label('name', __('models/dossiers.fields.name').':',['class' => 'required']) !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            {!! Html::decode(Form::label('name','<span class="text-danger" id="nameErrordossier"></span>')) !!}
         </div>
 
         <!-- Title Field -->
         <div class="form-group col-sm-6">
             {!! Form::label('title', __('models/dossiers.fields.title').':',['class' => 'required']) !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
+            {!! Html::decode(Form::label('name','<span class="text-danger" id="titleErrordossier"></span>')) !!}
         </div>
     </div>
 
@@ -46,6 +47,7 @@
         <div class="form-group col-sm-6">
             {!! Form::label('sites_id', 'Site:',['class' => 'required']) !!}
             {!! Form::select('sites_id', $sites,null, ['class' => 'form-control']) !!}
+            {!! Html::decode(Form::label('name','<span class="text-danger" id="sites_idErrordossier"></span>')) !!}
         </div>
 
         <div class="form-group col-sm-6">
