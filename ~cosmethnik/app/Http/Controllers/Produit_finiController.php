@@ -68,7 +68,7 @@ class Produit_finiController extends AppBaseController
             ->orWhere('name', 'LIKE', '%'.'produit fini'.'%')
             ->get();
         //Si le dossie existe
-        if($dossier){
+        if($dossier->isEmpty() != true){
             //Créer un nouveau produit fini
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
@@ -93,12 +93,12 @@ class Produit_finiController extends AppBaseController
                 ]
             );
             //Si le dossier est créer
-            if($doc){
+            if($doc->isEmpty() != true){
                 //Créer un nouveau produit fini
                 $product = Produit_fini::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
-                        'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
+                        'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
                     ]
                 );
                 if($product){
