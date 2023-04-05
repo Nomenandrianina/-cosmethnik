@@ -113,5 +113,4 @@ Route::resource('produitFinis', App\Http\Controllers\Produit_finiController::cla
 
 Route::resource('produitSemiFinis', App\Http\Controllers\Produit_semi_finisController::class);
 
-
 Route::resource('modeleFamilles', App\Http\Controllers\Modele_famillesController::class);

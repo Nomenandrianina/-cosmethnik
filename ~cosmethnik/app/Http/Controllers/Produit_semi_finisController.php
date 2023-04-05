@@ -11,6 +11,7 @@ use Flash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Dossiers;
 use App\Models\Produit_semi_finis;
 
 class Produit_semi_finisController extends AppBaseController
@@ -53,20 +54,77 @@ class Produit_semi_finisController extends AppBaseController
      */
     public function store(CreateProduit_semi_finisRequest $request)
     {
-
         $input = $request->all();
-        DB::table('produit_semi_finis')->insert(
-            [
-                'nom' =>  $request->nom,
-                'libelle_commerciale' => $request->libelle_commerciale,
-                // 'famille' => $request->famille,
-                'libelle_legale' =>$request->libelle_legale,
-                'code_bcepg' =>$request->code_bcepg,
-                'code_erp' => $request->code_erp,
-                'usine_id' => $request->usine_id,
-                'geographique_id' => $request->geographique_id,
-            ]
-        );
+        // dd($input);
+        $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
+            ->where('name','LIKE','%'.'produits semi-fini'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produit semi-finis'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produits semi-finis'.'%')
+            ->orWhere('name', 'LIKE', '%'.'produit semi-fini'.'%')
+            ->get();
+        // dd($dossier);
+        if($dossier->isEmpty() != true){
+            $product = Produit_semi_finis::firstOrCreate(
+                [ 'nom' => $input['nom'] ],
+                [
+                    'libelle_commerciale' => $request->libelle_commerciale,
+                    // 'famille' => $request->famille,
+                    'libelle_legale' =>$request->libelle_legale,
+                    'code_bcepg' =>$request->code_bcepg,
+                    'code_erp' => $request->code_erp,
+                    'usine_id' => $request->usine_id,
+                    'geographique_id' => $request->geographique_id,
+                    'dossier_id' => $dossier[0]['id']
+                ]
+            );
+
+            if($product){
+                $produit_fini = Produit_semi_finis::find($product->id);
+                DB::table('modele_familles')->insert(
+                    ['model_type' => get_class($produit_fini) ,
+                     'model_id' => $produit_fini->id,
+                     'famille_id' => $input['famille']]
+                );
+            }
+        }else{
+            $dossier = Dossiers::firstOrCreate(
+                ['name' => 'Produits semi-fini'],
+                [
+                    'sites_id' => $input['sites_id'],
+                    'title' =>
+                    'Produits semi-fini', 'parent_id' => 1,
+                    'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitsfini'
+                ]
+            );
+
+            if($dossier){
+                $product = Produit_semi_finis::firstOrCreate(
+                    [ 'nom' => $input['nom'] ],
+                    [
+                        'libelle_commerciale' => $request->libelle_commerciale,
+                        // 'famille' => $request->famille,
+                        'libelle_legale' =>$request->libelle_legale,
+                        'code_bcepg' =>$request->code_bcepg,
+                        'code_erp' => $request->code_erp,
+                        'usine_id' => $request->usine_id,
+                        'geographique_id' => $request->geographique_id,
+                        'dossier_id' => $dossier[0]['id']
+                    ]
+                );
+
+                if($product){
+                    $produit_semi_fini = Produit_semi_finis::find($product->id);
+                    DB::table('modele_familles')->insert([
+                        'model_type' => get_class($produit_semi_fini) ,
+                        'model_id' => $produit_semi_fini->id,
+                        'famille_id' => $input['famille']
+                        ]
+                    );
+                }
+            }
+
+        }
+
 
         if($request->ajax()){
             // $request->flash(array('success' =>))

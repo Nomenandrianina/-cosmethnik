@@ -39,6 +39,7 @@
             let description = $('#description_semi_fini').val();
             let modele = $('#modele_semi_fini').val();
             let dossier_id = $('#dossier_id').val();
+            let sites = $('#sites_id').val();
             console.log(dossier_id);
 
             $.ajax({
@@ -56,11 +57,11 @@
                     "geographique_id":geographique_id,
                     "libelle_legale":libelle_legale,
                     "description":description,
-                    "dossier_id":dossier_id
+                    "dossier_id":dossier_id,
+                    "sites_id":sites
                 },
                 success: function(data){
                     {{--  location.href = data.redirect;  --}}
-
 
                     let timerInterval
                     Swal.fire({

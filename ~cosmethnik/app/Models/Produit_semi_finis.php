@@ -56,6 +56,7 @@ class Produit_semi_finis extends Model
 
     public $table = 'produit_semi_finis';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 

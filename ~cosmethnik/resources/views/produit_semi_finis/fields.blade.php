@@ -84,7 +84,15 @@
         {!! Form::select('modele', $famille,null, ['class' => 'form-control','id'=>'modele_semi_fini']) !!}
     </div>
 </div>
-<input type="hidden" name="dossier_id" id="dossier_id" value="{{ $id }}">
+
+@if (isset($doc))
+    {!! Form::hidden('sites_id',$doc[0]->site->id) !!}
+@endif
+
+{!! Form::hidden('dossier_id',$id) !!}
+
+{{--  <input type="hidden" name="dossier_id" id="dossier_id" value="{{ $id }}">  --}}
+
 <div class="row">
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">

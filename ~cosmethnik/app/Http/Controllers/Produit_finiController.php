@@ -73,8 +73,20 @@ class Produit_finiController extends AppBaseController
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
-                    'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
-                 ]
+                    'libelle_commerciale' => $input['libelle_commerciale'],
+                    'libelle_legale' => $input['libelle_legale'],
+                    'description' => $input['description'],
+                    'code_bcepg' => $input['code_bcepg'],
+                    'code_erp' => $input['code_erp'],
+                    'ean' => $input['ean'],
+                    'ean_colis' => $input['ean_colis'],
+                    'ean_palette' => $input['ean_palette'],
+                    'etat_produit_id' => $input['etat_produit_id'],
+                    'usine_id' => $input['usine_id'],
+                    'geographique_id' => $input['geographique_id'],
+                    'marque_id' => $input['marque'],
+                    'dossier_id' => $dossier[0]['id']
+                ]
             );
 
             //Créer le relation avec famille
@@ -102,13 +114,29 @@ class Produit_finiController extends AppBaseController
                 $product = Produit_fini::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
-                        'libelle_commerciale' => $input['libelle_commerciale'],'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
+                        'libelle_commerciale' => $input['libelle_commerciale'],
+                        'libelle_commerciale' => $input['libelle_commerciale'],
+                        'libelle_legale' => $input['libelle_legale'],
+                        'description' => $input['description'],
+                        'code_bcepg' => $input['code_bcepg'],
+                        'code_erp' => $input['code_erp'],
+                        'ean' => $input['ean'],
+                        'ean_colis' => $input['ean_colis'],
+                        'ean_palette' => $input['ean_palette'],
+                        'etat_produit_id' => $input['etat_produit_id'],
+                        'usine_id' => $input['usine_id'],
+                        'geographique_id' => $input['geographique_id'],
+                        'marque_id' => $input['marque'],
+                        'dossier_id' => $doc['id']
                     ]
                 );
                 if($product){
                     $produit_fini = Produit_fini::find($product->id);
-                    DB::table('modele_familles')->insert(
-                        ['model_type' => get_class($produit_fini) , 'model_id' => $produit_fini->id,'famille_id' => $input['famille']]
+                    DB::table('modele_familles')->insert([
+                        'model_type' => get_class($produit_fini) ,
+                        'model_id' => $produit_fini->id,
+                        'famille_id' => $input['famille']
+                        ]
                     );
                 }
             }
