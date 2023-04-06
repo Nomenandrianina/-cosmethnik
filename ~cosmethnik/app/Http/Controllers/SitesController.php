@@ -61,14 +61,18 @@ class SitesController extends AppBaseController
     {
         $input = $request->all();
 
-        // $sites = $this->sitesRepository->create($input);
         DB::table('sites')->insert(
             ['user_id' => $input['user_id'], 'type' => $input['type'], 'nom' => $input['nom']]
         );
 
-        Flash::success(__('messages.saved', ['model' => __('models/sites.singular')]));
+        if($request->ajax()){
+            return [
+                'message' => 'success'
+            ];
+        }
+        // Flash::success(__('messages.saved', ['model' => __('models/sites.singular')]));
 
-        return redirect(route('sites.index'));
+        // return redirect(route('sites.index'));
     }
 
     /**

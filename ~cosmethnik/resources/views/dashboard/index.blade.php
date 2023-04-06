@@ -28,8 +28,8 @@
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1">
-                        <i class="fas fa-users"></i></span>
-
+                        <i class="fas fa-users"></i>
+                    </span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ __('menu.user.users') }}</span>
                         <span class="info-box-number">
@@ -149,8 +149,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <div class="loading-produit-semi-fini" style="text-align:center;display:none" >
+                            <div id="loading" class="lds-dual-ring"></div>
+                        </div>
                         <h4>DÉMARRAGE</h4>
-                        <p class="card-text">Le tableau de bord vous permet d'accéder rapidement à tous vos menus</p>
+                        <p class="card-text">Le tableau de bord vous permet d&#8217;accéder rapidement à tous vos menus </p>
                         <h5>Commençons...</h5>
                         <div class="row">
                             <div class="col">
@@ -160,171 +163,168 @@
                                         Produits <br> Créez de nouveaux produits <br> <small>Créer un produit</small>
                                     </span>
                                 </span>
-                              </div>
-                              <div class="col">
-                                <span class="one-emb">
-                                    <span class="two-emb"><i class="fas fa-inbox fa-4x"></i></span>
-                                    <span class="three-emb">
-                                        Emballage <br> Créez de nouveaux produits <br> <small>Créer un produit</small>
-                                    </span>
+                            </div>
+                            <div class="col">
+                            <span class="one-emb">
+                                <span class="two-emb"><i class="fas fa-inbox fa-4x"></i></span>
+                                <span class="three-emb">
+                                    Emballage <br> Créez de nouveaux produits <br> <small>Créer un produit</small>
                                 </span>
-                              </div>
-                              <div class="col">
-                                <span class="one-mp">
-                                    <span class="two-mp"><i class="fas fa-apple-alt fa-4x"></i></span>
-                                    <span class="three-mp">
-                                        Matière première <br> Créez de nouveaux matière <br> <small>Créer un produit</small>
-                                    </span>
+                            </span>
+                            </div>
+                            <div class="col">
+                            <span class="one-mp">
+                                <span class="two-mp"><i class="fas fa-apple-alt fa-4x"></i></span>
+                                <span class="three-mp">
+                                    Matière première <br> Créez de nouveaux matière <br> <small>Créer un produit</small>
                                 </span>
-                              </div>
+                            </span>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-header" style="background-color:#1a4a51">
-                            <h5 class="card-title" style="color: #f8f9fa">Mes sites</h5>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header" style="background-color:#1a4a51">
+                        <h5 class="card-title" style="color: #f8f9fa">Mes sites</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tous
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Collaboratif</a></li>
+                                    <li><a class="dropdown-item" href="#">Produit</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group has-search">
+                                    <a class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="nav-icon fas fa-solid fa-globe"></span> Créer un site </a>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Tous
-                                      </button>
-                                      <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="#">Collaboratif</a></li>
-                                      <li><a class="dropdown-item" href="#">Produit</a></li>
-                                      </ul>
-                              </div>
-                                <div class="col-md-4">
-                                    <div class="form-group has-search">
-                                        <a class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="nav-icon fas fa-solid fa-globe"></span> Créer un site </a>
-                                      </div>
-                                </div>
-                            </div>
-                            <ul class="list-group list-group-flush" id="list-site">
-                                @foreach ($sites as $item)
-                                    <li class="list-group-item">
-                                        <a href="{{ route('dossiers.treeview',$item->id) }}">
-                                            <span class="one-site">
-                                                <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
-                                                <span class="three-site">
-                                                    {{ $item->nom }} <br> <small>{{ $item->type }}</small>
-                                                </span>
+                        <ul class="list-group list-group-flush" id="list-site">
+                            @foreach ($sites as $item)
+                                <li class="list-group-item">
+                                    <a href="{{ route('dossiers.treeview',$item->id) }}">
+                                        <span class="one-site">
+                                            <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
+                                            <span class="three-site">
+                                                {{ $item->nom }} <br> <small>{{ $item->type }}</small>
                                             </span>
+                                        </span>
 
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <div class="d-flex justify-content-center">
-                                {{ $sites->links() }}
-                            </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="d-flex justify-content-center">
+                            {{ $sites->links() }}
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {!! Form::open(['route' => 'sites.store']) !!}
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
+            {{--  {!! Form::open(['route' => 'sites.store']) !!}  --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                         <div class="modal-header">
-                          <h2 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau sites</h2>
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau sites</h2>
                         </div>
                         <div class="modal-body">
-                          @include('sites.fields')
+                            @include('sites.fields')
                         </div>
                         <div class="modal-footer">
-                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_sites();']) !!}
                             <a id="close" class="btn btn-default">
-                             @lang('crud.cancel')
+                                @lang('crud.cancel')
                             </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {!! Form::close() !!}
-
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-header" style="background-color:#1a4a51">
-                            <h5 class="card-title" style="color: #f8f9fa">Catalogue produit</h5>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group has-search">
-                                        <span class="fa fa-search form-control-feedback"></span>
-                                        <input type="text" onkeyup="searchCatalogue()" id="search-catalogue" class="form-control" placeholder="Search">
-                                      </div>
-                                </div>
-                                <div class="col-md-3">
-                                      <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Validé
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">En cours</a></li>
-                                        <li><a class="dropdown-item" href="#">Terminer</a></li>
-                                        </ul>
-                                </div>
-                                <div class="col-md-4">
-                                        <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Produit fini
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Produit semi-fini</a></li>
-                                        <li><a class="dropdown-item" href="#">Produit semi-fini local</a></li>
-                                        <li><a class="dropdown-item" href="#">Matière première</a></li>
-                                        {{-- <li><hr class="dropdown-divider"></li> --}}
-                                        <li><a class="dropdown-item" href="#">Emballage</a></li>
-                                        </ul>
-
-                                </div>
-
-                            </div>
-                            <ul class="list-group list-group-flush" id="data-ul">
-                                <li class="list-group-item">
-                                    <a href="#">
-                                        <span class="one-span">
-                                            <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                            <span class="three-span">
-                                                Brownies <br> <small>Modifié il y a 10 jours </small>
-                                            </span>
-                                        </span>
-
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">
-                                        <span class="one-span">
-                                            <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                            <span class="three-span">
-                                                Soupe de courgettes <br> <small>Modifié il y a 6 jours </small>
-                                            </span>
-                                        </span>
-
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#">
-                                        <span class="one-span">
-                                            <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                            <span class="three-span">
-                                                Milk shake <br> <small>Modifié il y a 2 jours </small>
-                                            </span>
-                                        </span>
-
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+            {{--  {!! Form::close() !!}  --}}
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header" style="background-color:#1a4a51">
+                        <h5 class="card-title" style="color: #f8f9fa">Catalogue produit</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group has-search">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                    <input type="text" onkeyup="searchCatalogue()" id="search-catalogue" class="form-control" placeholder="Search">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                    <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Validé
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">En cours</a></li>
+                                    <li><a class="dropdown-item" href="#">Terminer</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Produit fini
+                                </button>
+                                <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Produit semi-fini</a></li>
+                                <li><a class="dropdown-item" href="#">Produit semi-fini local</a></li>
+                                <li><a class="dropdown-item" href="#">Matière première</a></li>
+                                {{-- <li><hr class="dropdown-divider"></li> --}}
+                                <li><a class="dropdown-item" href="#">Emballage</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <ul class="list-group list-group-flush" id="data-ul">
+                            <li class="list-group-item">
+                                <a href="#">
+                                    <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
+                                        <span class="three-span">
+                                            Brownies <br> <small>Modifié il y a 10 jours </small>
+                                        </span>
+                                    </span>
+
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">
+                                    <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
+                                        <span class="three-span">
+                                            Soupe de courgettes <br> <small>Modifié il y a 6 jours </small>
+                                        </span>
+                                    </span>
+
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">
+                                    <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
+                                        <span class="three-span">
+                                            Milk shake <br> <small>Modifié il y a 2 jours </small>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -332,6 +332,7 @@
 @endif
 
 @include('dashboard.script_search_catalogue')
+@include('dashboard.script_sites')
 
 <!-- /.content -->
 @endsection

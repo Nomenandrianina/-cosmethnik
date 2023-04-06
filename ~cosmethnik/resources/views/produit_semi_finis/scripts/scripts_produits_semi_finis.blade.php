@@ -21,8 +21,7 @@
             });
         });
 
-
-
+        // Fonction qui enregistre les informations d'in produit semin-finis
         function Store_produit_semi_fini(){
             $('.loading-produit-semi-fini').show();
             let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
@@ -61,24 +60,21 @@
                     "sites_id":sites
                 },
                 success: function(data){
-                    {{--  location.href = data.redirect;  --}}
-
                     let timerInterval
                     Swal.fire({
-                    title: 'Succèss!',
-                    icon: 'success',
-                    showConfirmButton:false,
-                    html: '<p></p>',
-                    timer: 1500,
-                    didOpen: () => {
-                        const p = Swal.getHtmlContainer().querySelector('p')
-                        timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
-                    }
+                        title: 'Succèss!',
+                        icon: 'success',
+                        showConfirmButton:false,
+                        html: '<p></p>',
+                        timer: 1500,
+                        didOpen: () => {
+                            const p = Swal.getHtmlContainer().querySelector('p')
+                            timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
                     });
-
                     location.reload();
                 },
                 error: function(data){

@@ -122,17 +122,11 @@ class Produit_semi_finisController extends AppBaseController
                     );
                 }
             }
-
         }
-
 
         if($request->ajax()){
-            // $request->flash(array('success' =>))
             return ['redirect' => url('dossiers/treeview/'.$request->dossier_id), 'message' => 'success'];
         }
-
-        // Flash::success(__('messages.saved', ['model' => __('models/produitSemiFinis.singular')]));
-        // return back();
     }
 
     /**
