@@ -100,9 +100,9 @@
     </div>
 </div>
 
-@if (isset($doc))
-    {!! Form::hidden('sites_id',$doc[0]->site->id) !!}
-@endif
+
+{!! Form::hidden('sites_id',$site_texte[0]->id) !!}
+
 
 
 <div class="row">

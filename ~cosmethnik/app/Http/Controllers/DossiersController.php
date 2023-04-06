@@ -180,6 +180,8 @@ class DossiersController extends AppBaseController
 
     public function treeview($id = null)
     {
+        // dd($id);
+        $site_texte = Sites::where('id','=', $id)->get();
         $all = Sites::all();
         $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
         $usines = Usines::pluck('description','id');
@@ -204,6 +206,7 @@ class DossiersController extends AppBaseController
             'etat_prod' => $etat_prod,
             'modele' => $produitfini,
             'marque' => $marque,
+            'site_texte' => $site_texte,
         );
         return view('dossiers.treeview',$view);
     }

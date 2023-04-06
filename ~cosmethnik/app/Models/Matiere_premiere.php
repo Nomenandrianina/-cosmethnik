@@ -3,35 +3,25 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
- * Class Produit_fini
+ * Class Matiere_premiere
  * @package App\Models
- * @version March 10, 2023, 8:01 pm +07
+ * @version April 5, 2023, 3:30 pm +07
  *
  * @property string $nom
  * @property string $libelle_commerciale
  * @property string $libelle_legale
  * @property string $description
+ * @property string $description_conditionnement
  * @property string $modele
- * @property string $code_bcpg
+ * @property string $code_becpg
  * @property string $code_erp
  * @property string $ean
  * @property string $ean_colis
  * @property string $ean_palette
- * @property integer $quantite_nette
- * @property integer $poids_net_egoutte
- * @property number $freinte_produit
- * @property number $taille_portion
- * @property string $unite_portion
- * @property string $texte_portion
- * @property integer $nombre_portion
- * @property string $cdc
- * @property string $date_limite_consommation
- * @property string $ddm_dua
  * @property integer $dossier_id
  * @property integer $etat_produit_id
  * @property integer $filiale_id
@@ -39,18 +29,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $geographique_id
  * @property integer $marque_id
  * @property integer $client_id
+ * @property integer $quantite_nette
  * @property integer $unite_id
+ * @property string $poids_net_egoutte
+ * @property string $freinte_produit
+ * @property string $taille_portion
+ * @property string $unite_portion
+ * @property string $texte_portion
+ * @property integer $nombre_portion
+ * @property string $cahier_charge
+ * @property string $date_limite_consommation
+ * @property string $ddm_dua
  */
-class Produit_fini extends Model
+class Matiere_premiere extends Model
 {
     use SoftDeletes;
 
-    public $table = 'produit_fini';
+
+    public $table = 'matiere_premiere';
 
 
     protected $dates = ['deleted_at'];
-
-    public $timestamps = false;
 
 
 
@@ -59,33 +58,31 @@ class Produit_fini extends Model
         'libelle_commerciale',
         'libelle_legale',
         'description',
+        'description_conditionnement',
         'modele',
-        'code_bcpg',
+        'code_becpg',
         'code_erp',
         'ean',
         'ean_colis',
         'ean_palette',
+        'dossier_id',
+        'etat_produit_id',
+        'filiale_id',
+        'usine_id',
+        'geographique_id',
+        'marque_id',
+        'client_id',
         'quantite_nette',
+        'unite_id',
         'poids_net_egoutte',
         'freinte_produit',
         'taille_portion',
         'unite_portion',
         'texte_portion',
         'nombre_portion',
-        'cdc',
+        'cahier_charge',
         'date_limite_consommation',
-        'ddm_dua',
-        'dossier_id',
-        'etat_produit_id',
-        'filiale_id',
-        'usine_id',
-        'monnaie_id',
-        'geographique_id',
-        'marque_id',
-        'client_id',
-        'unite_id',
-        'precaution_emploie_id',
-        'condition_conservation_id',
+        'ddm_dua'
     ];
 
     /**
@@ -99,31 +96,31 @@ class Produit_fini extends Model
         'libelle_commerciale' => 'string',
         'libelle_legale' => 'string',
         'description' => 'string',
+        'description_conditionnement' => 'string',
         'modele' => 'string',
-        'code_bcpg' => 'string',
+        'code_becpg' => 'string',
         'code_erp' => 'string',
         'ean' => 'string',
         'ean_colis' => 'string',
         'ean_palette' => 'string',
-        'quantite_nette' => 'integer',
-        'poids_net_egoutte' => 'integer',
-        'freinte_produit' => 'decimal:2',
-        'taille_portion' => 'decimal:2',
-        'unite_portion' => 'string',
-        'texte_portion' => 'string',
-        'nombre_portion' => 'integer',
-        'cdc' => 'string',
         'dossier_id' => 'integer',
         'etat_produit_id' => 'integer',
         'filiale_id' => 'integer',
         'usine_id' => 'integer',
-        'monnaie_id' => 'integer',
         'geographique_id' => 'integer',
         'marque_id' => 'integer',
         'client_id' => 'integer',
+        'quantite_nette' => 'integer',
         'unite_id' => 'integer',
-        'precaution_emploie_id' => 'integer',
-        'condition_conservation_id' => 'integer'
+        'poids_net_egoutte' => 'string',
+        'freinte_produit' => 'string',
+        'taille_portion' => 'string',
+        'unite_portion' => 'string',
+        'texte_portion' => 'string',
+        'nombre_portion' => 'integer',
+        'cahier_charge' => 'string',
+        'date_limite_consommation' => 'datetime',
+        'ddm_dua' => 'datetime'
     ];
 
     /**
@@ -139,7 +136,7 @@ class Produit_fini extends Model
         'libelle_legale'=>'required',
     ];
 
-    /**
+     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
     public function dossier()
@@ -266,29 +263,8 @@ class Produit_fini extends Model
         return $this->morphMany(Modele_familles::class, 'model');
     }
     public function icon() {
-        return '<i class="fas fa-shopping-bag fa-3x" style="color: #4787f4;"></i>';
+        return '<i class="fas fa-apple-alt fa-3x" style="color: #da4408;"></i>';
     }
 
-    /**
-     * Menu for produit fini
-     *
-     * @var array
-     */
-    public static $menu = [
-        'fiche_technique'=> 'Fiche technique',
-        'document'=> 'Documents',
-        'composition'=>'Composition',
-        'emballage'=> 'Emballage',
-        'liste_process'=>'Liste des process',
-        'etiquetage'=> 'Etiquetage',
-        'ingredient'=> 'Ingrédients',
-        'allergene'=>'Allergènes',
-        'cout'=> 'Coûts',
-        'nutriment'=>'Nutriments',
-        'organoleptique'=> 'Organoleptique',
-        'physico_chimique'=> 'Physico-chimiques',
-        'allegation'=>'Allégations',
-        'cas_emploi'=> 'Cas d\'emplois',
-        'activite'=>'Activités',
-    ];
+
 }

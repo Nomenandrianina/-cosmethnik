@@ -91,7 +91,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"   role="button" style="margin: -5px;
-                    font-weight: 700;"><i class="fas fa-bar"></i>{{ $doc[0]->site->nom }}</a>
+                    font-weight: 700;"><i class="fas fa-bar"></i>{{ $site_texte[0]->nom }}</a>
                 </li>
             </ul>
 

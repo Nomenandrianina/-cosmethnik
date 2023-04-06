@@ -12,6 +12,7 @@
                 <button class="dropdown-item" id="link-modal-dossier" data-bs-toggle="modal" data-bs-target="#dossier-modal"><i class="fas fa-folder"></i> Dossier</button>
                 <button class="dropdown-item" id="link-modal-produit-fini" data-bs-toggle="modal" data-bs-target="#produit-fini-modal"><i class="fas fa-shopping-bag"></i> Produit fini</button>
                 <button class="dropdown-item" id="link-modal-produit-semi-fini" data-bs-toggle="modal" data-bs-target="#produit-semi-fini-modal"><i class="fas fa-flask"></i> Produit semi fini</button>
+                <button class="dropdown-item" id="link-modal-matiere-premiere" data-bs-toggle="modal" data-bs-target="#matiere-premiere-modal"><i class="fas fa-apple-alt"></i> Matière première</button>
             </div>
         </div>
     </section>
@@ -32,31 +33,36 @@
             <div class="card-body p-0" id="div-change">
 
                 <ul class="list-group list-group-flush" id="data-ul">
-                    @foreach($doc as $category)
-                        @foreach ( $category->childs as $child )
-                            <li class="list-group-item">
-                                <a onclick="getDetails({{ $child->id }} ,{{ $doc[0]->sites_id }}, '{{ $child->title }}')" style="cursor: pointer">
-                                    <span class="one-span">
-                                        <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
-                                        <span class="three-span">
-                                            {{ $child->title }} <br>
-                                            @if ($child->description)
-                                                <small>{{ $child->description }}</small>
-                                            @else
-                                                <small>Aucune description </small>
-                                            @endif
+                    @if ($doc->isEmpty() != true)
+                            @foreach($doc as $category)
+                            @foreach ( $category->childs as $child )
+                                <li class="list-group-item">
+                                    <a onclick="getDetails({{ $child->id }} ,{{ $doc[0]->sites_id }}, '{{ $child->title }}')" style="cursor: pointer">
+                                        <span class="one-span">
+                                            <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                                            <span class="three-span">
+                                                {{ $child->title }} <br>
+                                                @if ($child->description)
+                                                    <small>{{ $child->description }}</small>
+                                                @else
+                                                    <small>Aucune description </small>
+                                                @endif
+                                            </span>
                                         </span>
-                                    </span>
-                                </a>
-                            </li>
-                        @endforeach
-                    @endforeach
+                                    </a>
+                                </li>
+                            @endforeach
+                            @endforeach
+                    @else
+                        <p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>
+                    @endif
                 </ul>
             </div>
 
             @include('dossiers.modals.modal_create_dossier')
             @include('produit_finis.modals.modal_create_produit_fini')
             @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
+            @include('matiere_premieres.modals.modal_create_matiere_premiere')
 
             <div class="card-footer">
                 <nav aria-label="Page nawgation example">
@@ -82,6 +88,7 @@
     @include('dossiers.scripts.scripts_dossiers')
     @include('produit_finis.scripts.scripts_produits_finis')
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
+    @include('matiere_premieres.scripts.scripts_matiere_premiere')
 @endsection
 
 
