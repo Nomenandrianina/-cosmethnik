@@ -87,9 +87,6 @@
 
 {!! Form::hidden('sites_id',$site_texte[0]->id) !!}
 
-{!! Form::hidden('dossier_id',$id) !!}
-
-{{--  <input type="hidden" name="dossier_id" id="dossier_id" value="{{ $id }}">  --}}
 
 <div class="row">
     <!-- Usine Id Field -->

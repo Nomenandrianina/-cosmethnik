@@ -100,7 +100,7 @@
             });
         }
 
-    //Children folder
+        //Children folder
         function getDetails(id_dossier,id_site,title) {
             $('.loading-produit-semi-fini').show();
             $('#data-ul').remove();
@@ -115,8 +115,42 @@
                    },
                    dataType: 'json',
                     success: function(data){
+                        document.getElementById("bread-change").innerHTML = title;
                         $('#data-ul').remove();
                         $('#div-change').html(data.results);
+                    },
+                    complete: function(){
+                        $('.loading-produit-semi-fini').hide();
+                    }
+            });
+        }
+
+        //Children folder
+        function getProprietes(id_model,id_site,id_dossier,dossier_parent,) {
+            $('.loading-produit-semi-fini').show();
+            $('#data-ul').remove();
+            $.ajax({
+                   url: '{{ route('dossiers.navigate.details.proprietes') }}',
+                   type: 'POST',
+                   data: {
+                       _token: "{{ csrf_token() }}",
+                       id_model: id_model,
+                       site_id: id_site,
+                       dossier_id: id_dossier,
+                       dossier_parent: dossier_parent,
+                   },
+                   dataType: 'json',
+                    success: function(data){
+                        if (data.status == 200) {
+                            let url = "{{ route('dossiers.show.details',[':id_model' ,':id_site',':id_dossier',':dossier_parent']) }}";
+                            url = url.replace(':id_model', data.id_model);
+                            url = url.replace(':id_site', data.id_site);
+                            url = url.replace(':id_dossier', data.id_dossier);
+                            url = url.replace(':dossier_parent', data.dossier_parent);
+                            document.location.href = url;
+                        } else {
+                            toastr.error(data.message);
+                        }
                     },
                     complete: function(){
                         $('.loading-produit-semi-fini').hide();

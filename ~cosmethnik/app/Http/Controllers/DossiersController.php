@@ -125,7 +125,7 @@ class DossiersController extends AppBaseController
             }else{
                 foreach($model as $item){
                     $li .='<li class="list-group-item">
-                    <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->nom.'\')" style="cursor:pointer">
+                    <a onclick="getProprietes('.$item->id.','.$id_site.','.$id_dossier.',\''.$dossier_name.'\')" style="cursor:pointer">
                     <span class="one-span">
                             <span class="two-span">'.$item->icon().'</span>
                             <span class="three-span">'.$item->nom.'
@@ -176,6 +176,42 @@ class DossiersController extends AppBaseController
         }
         return response()->json(['success'=> 200,'results' => $result]);
     }
+
+    public function ajaxProprietes(Request $request){
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->site_id);
+        $id_dossier = intval($request->dossier_id);
+        $dossier_parent = $request->dossier_parent;
+        $site_texte = Sites::where('id','=', $site_id)->get();
+
+        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->get();
+        $menu = $this->DeterminateObject($dossier_parent)::$menu;
+
+
+        return response()->json([
+            'status' => 200,
+            'id_model' => $id_model,
+            'id_site' => $site_id,
+            'id_dossier' => $id_dossier,
+            'dossier_parent' => $dossier_parent,
+            'message' => 'success',
+        ]);
+    }
+
+
+
+    public function showDetails(Request $request){
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $site_texte = Sites::where('id','=', $site_id)->get();
+
+        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->get();
+        $menu = $this->DeterminateObject($dossier_parent)::$menu;
+        return view('clients.layouts.models.model' , compact('menu','site_texte'));
+    }
+
 
 
     public function treeview($id = null)

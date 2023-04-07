@@ -34,3 +34,7 @@ Route::get('famille/get_by_famille', 'App\Http\Controllers\FamilleController@get
 Route::post('dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');
 
 Route::post('dossiers/navigate/details', 'App\Http\Controllers\DossiersController@ajaxDetails')->name('dossiers.navigate.details');
+
+Route::post('dossiers/navigate/details/proprietes', 'App\Http\Controllers\DossiersController@ajaxProprietes')->name('dossiers.navigate.details.proprietes');
+
+Route::get('dossiers/show/details/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\DossiersController@showDetails')->name('dossiers.show.details');

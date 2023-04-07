@@ -275,6 +275,7 @@ class Produit_fini extends Model
      * @var array
      */
     public static $menu = [
+        'propriete'=> 'Propriété',
         'fiche_technique'=> 'Fiche technique',
         'document'=> 'Documents',
         'composition'=>'Composition',

@@ -27,7 +27,7 @@
 
         <div class="card">
             <div class="card-header">
-                <i class="fas fa-folder"></i> | Documents
+                <i class="fas fa-folder"></i> | Documents | <span id="bread-change"></span>
             </div>
 
             <div class="card-body p-0" id="div-change">
