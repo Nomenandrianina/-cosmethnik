@@ -11,6 +11,7 @@ use Flash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AppBaseController;
 use Response;
+// use
 
 class MarquesController extends AppBaseController
 {
@@ -114,6 +115,7 @@ class MarquesController extends AppBaseController
      */
     public function update($id, UpdateMarquesRequest $request)
     {
+        // dd($request->all());
         $marques = $this->marquesRepository->find($id);
 
         if (empty($marques)) {

@@ -17,6 +17,7 @@ class Usines extends Model
 {
     use SoftDeletes;
 
+    public $timestamps = false;
 
     public $table = 'usines';
 
@@ -45,7 +46,7 @@ class Usines extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required',
     ];
 
     public function produit_finis()

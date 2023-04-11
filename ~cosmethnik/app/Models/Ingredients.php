@@ -23,6 +23,7 @@ class Ingredients extends Model
 
     public $table = 'ingredients';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
@@ -54,7 +55,7 @@ class Ingredients extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom'=>'required'
     ];
 
     public function modele_ingredients()

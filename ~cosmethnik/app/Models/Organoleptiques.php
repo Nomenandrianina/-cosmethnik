@@ -20,6 +20,7 @@ class Organoleptiques extends Model
 
     public $table = 'organoleptiques';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
@@ -45,7 +46,7 @@ class Organoleptiques extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom'=>'required',
     ];
 
     public function mmodele_organoleptiques()

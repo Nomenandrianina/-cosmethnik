@@ -20,6 +20,7 @@ class Filiales extends Model
 
     public $table = 'filiales';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
@@ -36,7 +37,7 @@ class Filiales extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'description' => 'integer'
+        'description' => 'string'
     ];
 
     /**

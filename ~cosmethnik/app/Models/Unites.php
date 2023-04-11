@@ -20,6 +20,7 @@ class Unites extends Model
 
     public $table = 'unites';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
@@ -45,7 +46,7 @@ class Unites extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required',
     ];
 
     public function produit_finis()

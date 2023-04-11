@@ -17,9 +17,9 @@ class Monnaies extends Model
 {
     use SoftDeletes;
 
+    public $timestamps = false;
 
     public $table = 'monnaies';
-
 
     protected $dates = ['deleted_at'];
 
@@ -45,7 +45,7 @@ class Monnaies extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required',
     ];
 
     public function produit_finis()

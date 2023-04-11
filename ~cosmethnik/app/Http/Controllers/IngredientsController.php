@@ -8,6 +8,7 @@ use App\Http\Requests\CreateIngredientsRequest;
 use App\Http\Requests\UpdateIngredientsRequest;
 use App\Repositories\IngredientsRepository;
 use Flash;
+use App\Models\Geographiques;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -39,7 +40,11 @@ class IngredientsController extends AppBaseController
      */
     public function create()
     {
-        return view('ingredients.create');
+        $origines_geo = Geographiques::select('description')->get();
+        // $views =array(
+        //     'origines_geo' => $origines_geo,
+        // );
+        return view('ingredients.create',compact('origines_geo'));
     }
 
     /**

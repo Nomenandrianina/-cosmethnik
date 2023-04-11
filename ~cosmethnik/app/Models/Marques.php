@@ -20,13 +20,13 @@ class Marques extends Model
 
     public $table = 'marques';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
-        'nom'
+        'description'
     ];
 
     /**
@@ -36,7 +36,7 @@ class Marques extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nom' => 'integer'
+        'description' => 'string'
     ];
 
     /**
@@ -45,7 +45,7 @@ class Marques extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required'
     ];
 
     public function produit_finis()

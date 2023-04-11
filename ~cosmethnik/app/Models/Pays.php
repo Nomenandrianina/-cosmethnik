@@ -20,6 +20,7 @@ class Pays extends Model
 
     public $table = 'pays';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
@@ -45,7 +46,7 @@ class Pays extends Model
      * @var array
      */
     public static $rules = [
-
+        'name'=>'required',
     ];
 
     public function Clients(){
