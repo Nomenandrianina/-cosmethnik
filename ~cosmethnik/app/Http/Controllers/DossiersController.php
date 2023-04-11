@@ -206,10 +206,11 @@ class DossiersController extends AppBaseController
         $id_dossier = intval($request->id_dossier);
         $dossier_parent = $request->dossier_parent;
         $site_texte = Sites::where('id','=', $site_id)->get();
-
-        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->get();
+        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
         $menu = $this->DeterminateObject($dossier_parent)::$menu;
-        return view('clients.layouts.models.model' , compact('menu','site_texte'));
+        $icon = $this->DeterminateObject($dossier_parent)->icon_menu();
+        // dd($model);
+        return view('clients.layouts.models.model' , compact('menu','site_texte','icon','dossier_parent','model'));
     }
 
 

@@ -126,8 +126,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
-                        <li class="user-header bg-primary">
-                            <img src="{{url('images/logo.png')}}" class="img-circle elevation-2" alt="User Image">
+                        <li class="user-header bg-primary" style="background-color: #28a745!important;">
+                            <img src="{{asset('images/avatar.jpg')}}" class="img-circle elevation-2" alt="User Image">
                             <p>
                                 {{ Auth::user()->name }}
                                 <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
@@ -147,6 +147,14 @@
                 </li>
             </ul>
         </nav>
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            @if (isset($model['etat_produit']))
+                <h4>{{ $model->nom }} [{{ $model['etat_produit']->designation }}] </h4>
+            @else
+                <h4>{{ $model->nom }}</h4>
+            @endif
+        </nav>
+
 
         <!-- Left side column. contains the logo and sidebar -->
         @include('clients.layouts.models.sidebar')
@@ -164,7 +172,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2023 <a href="https://hau.xyz">Nomenandrianina Antonio</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="https://hau.xyz">NOA</a>.</strong> All rights
             reserved.
         </footer>
     </div>

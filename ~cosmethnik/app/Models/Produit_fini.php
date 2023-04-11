@@ -268,6 +268,9 @@ class Produit_fini extends Model
     public function icon() {
         return '<i class="fas fa-shopping-bag fa-3x" style="color: #4787f4;"></i>';
     }
+    public function icon_menu() {
+        return '<i class="fas fa-shopping-bag" style="color: #4787f4;"></i>';
+    }
 
     /**
      * Menu for produit fini
