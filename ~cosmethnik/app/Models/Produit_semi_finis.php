@@ -291,23 +291,25 @@ class Produit_semi_finis extends Model
         return '<i class="fas fa-flask " style="color: coral;"></i>';
     }
 
-    public static $menu = [
-        'propriete'=> 'Propriété',
-        'fiche_technique'=> 'Fiche technique',
-        'document'=> 'Documents',
-        'composition'=>'Composition',
-        'emballage'=> 'Emballage',
-        'liste_process'=>'Liste des process',
-        'etiquetage'=> 'Etiquetage',
-        'ingredient'=> 'Ingrédients',
-        'allergene'=>'Allergènes',
-        'cout'=> 'Coûts',
-        'nutriment'=>'Nutriments',
-        'organoleptique'=> 'Organoleptique',
-        'physico_chimique'=> 'Physico-chimiques',
-        'allegation'=>'Allégations',
-        'cas_emploi'=> 'Cas d\'emplois',
-        'activite'=>'Activités',
+
+    public static $fields = [
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
+        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
+        ['menu' => ['props' => 'Documents', 'link' => '']],
+        ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
+        ['menu' => ['props' => 'Emballage', 'link' => '']],
+        ['menu' => ['props' => 'Liste des process', 'link' => '']],
+        ['menu' => ['props' => 'Etiquetage', 'link' => '']],
+        ['menu' => ['props' => 'Ingrédients', 'link' => '']],
+        ['menu' => ['props' => 'Allergènes', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Nutriments', 'link' => '']],
+        ['menu' => ['props' => 'Organoleptique', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
+        ['menu' => ['props' => 'Allégations', 'link' => '']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
+        ['menu' => ['props' => 'Activités', 'link' => '']],
     ];
+
 
 }

@@ -142,7 +142,7 @@
                    dataType: 'json',
                     success: function(data){
                         if (data.status == 200) {
-                            let url = "{{ route('dossiers.show.details',[':id_model' ,':id_site',':id_dossier',':dossier_parent']) }}";
+                            let url = "{{ route('proprietes.model',[':id_model' ,':id_site',':id_dossier',':dossier_parent']) }}";
                             url = url.replace(':id_model', data.id_model);
                             url = url.replace(':id_site', data.id_site);
                             url = url.replace(':id_dossier', data.id_dossier);

@@ -37,4 +37,6 @@ Route::post('dossiers/navigate/details', 'App\Http\Controllers\DossiersControlle
 
 Route::post('dossiers/navigate/details/proprietes', 'App\Http\Controllers\DossiersController@ajaxProprietes')->name('dossiers.navigate.details.proprietes');
 
-Route::get('dossiers/show/details/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\DossiersController@showDetails')->name('dossiers.show.details');
+Route::get('proprietes/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\DossiersController@showProprietes')->name('proprietes.model');
+
+Route::get('compositions/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\CompositionsController@model')->name('compositions.model');

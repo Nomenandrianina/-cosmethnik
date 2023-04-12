@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
 @foreach($menu as $item)
 <li class="nav-item ">
-    <a  class="nav-link" style="cursor: pointer">
+    @if ($item['menu']['link'])
+        <a  class="nav-link" href="{{  route($item['menu']['link'],['id_model'=>$data[0],'id_site'=>$data[1],'id_dossier'=>$data[2],'dossier_parent'=>$data[3]]) }}" style="cursor: pointer">
+    @else
+        <a  class="nav-link" style="cursor: pointer">
+    @endif
         <p>
-            {{ $item }}
+            {{ $item['menu']['props'] }}
         </p>
     </a>
 </li>

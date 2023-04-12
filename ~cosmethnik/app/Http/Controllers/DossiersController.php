@@ -23,6 +23,7 @@ use App\Models\Produit_semi_finis;
 use Response;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Helper;
 
 class DossiersController extends AppBaseController
 {
@@ -86,21 +87,7 @@ class DossiersController extends AppBaseController
         return response()->json(['success'=> 200,'results' => $result]);
     }
 
-    /**
-     * Déterminer si le dossier est un Produit fini | Produit semi-fini | Matière première | Autres
-     * Return un Model
-     */
-    public function DeterminateObject($dossier_name){
-        switch ($dossier_name) {
-            case (strcasecmp($dossier_name, "produit fini") == 0 || strcasecmp($dossier_name, "produits finis") == 0 || strcasecmp($dossier_name, "produits fini") == 0 || strcasecmp($dossier_name, "produit finis") == 0):
-                return new Produit_fini();
-                break;
-            case (strcasecmp($dossier_name, "produit semi-fini") == 0 || strcasecmp($dossier_name, "produits semi-finis") == 0 || strcasecmp($dossier_name, "produits semi-fini") == 0 || strcasecmp($dossier_name, "produit semi-finis") ==0):
-                return new Produit_semi_finis();
-                break;
-       }
 
-    }
     /**
      * Get details of folder
      */
@@ -117,7 +104,7 @@ class DossiersController extends AppBaseController
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
             //Déterminer le Model du dossier
-            $model = $this->DeterminateObject($dossier_name)::all();
+            $model = DeterminateObject($dossier_name)::all();
             //Si le Model est vide
             if($model->isEmpty() == true){
                 $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
@@ -184,9 +171,6 @@ class DossiersController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $site_texte = Sites::where('id','=', $site_id)->get();
 
-        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->get();
-        $menu = $this->DeterminateObject($dossier_parent)::$menu;
-
 
         return response()->json([
             'status' => 200,
@@ -200,17 +184,17 @@ class DossiersController extends AppBaseController
 
 
 
-    public function showDetails(Request $request){
+    public function showProprietes(Request $request){
         $id_model = intval($request->id_model);
         $site_id = intval($request->id_site);
         $id_dossier = intval($request->id_dossier);
         $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
-        $model = $this->DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
-        $menu = $this->DeterminateObject($dossier_parent)::$menu;
-        $icon = $this->DeterminateObject($dossier_parent)->icon_menu();
-        // dd($model);
-        return view('clients.layouts.models.model' , compact('menu','site_texte','icon','dossier_parent','model'));
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
     }
 
 
