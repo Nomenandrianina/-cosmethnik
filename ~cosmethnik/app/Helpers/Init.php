@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Matiere_premiere;
 use App\Models\Produit_fini;
 use App\Models\Produit_semi_finis;
 
@@ -23,6 +25,9 @@ if (!function_exists('DeterminateObject')) {
                     break;
                 case (strcasecmp($dossier_name, "produit semi-fini") == 0 || strcasecmp($dossier_name, "produits semi-finis") == 0 || strcasecmp($dossier_name, "produits semi-fini") == 0 || strcasecmp($dossier_name, "produit semi-finis") ==0):
                     return new Produit_semi_finis();
+                    break;
+                case (strcasecmp($dossier_name, "matière première") == 0 || strcasecmp($dossier_name, "matières première") == 0 || strcasecmp($dossier_name, "matière premières") == 0 || strcasecmp($dossier_name, "matières premières") ==0):
+                    return new Matiere_premiere();
                     break;
         }
 

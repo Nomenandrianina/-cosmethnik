@@ -92,8 +92,8 @@ class Produit_finiController extends AppBaseController
                 ['name' => 'Produits fini'],
                 [
                     'sites_id' => $input['sites_id'],
-                    'title' =>
-                    'Produits fini', 'parent_id' => 1,
+                    'title' =>'Produits fini',
+                    'parent_id' => 1,
                     'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitsfini'
                 ]
             );

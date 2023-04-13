@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateMatiere_premiereRequest;
 use App\Repositories\Matiere_premiereRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Matiere_premiere;
+use App\Models\Dossiers;
 use Response;
 
 class Matiere_premiereController extends AppBaseController
@@ -52,12 +54,52 @@ class Matiere_premiereController extends AppBaseController
     public function store(CreateMatiere_premiereRequest $request)
     {
         $input = $request->all();
+        // dd($input);
 
-        $matierePremiere = $this->matierePremiereRepository->create($input);
+        //Déterminer s'il y a déjà un dossier nommer Matière première
+        $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
+            ->where('name','LIKE','%'.'matières premières'.'%')
+            ->orWhere('name', 'LIKE', '%'.'matières première'.'%')
+            ->orWhere('name', 'LIKE', '%'.'matière premières'.'%')
+            ->orWhere('name', 'LIKE', '%'.'matière première'.'%')
+            ->get();
+        //Si le dossie existe
+        if($dossier->isEmpty() != true){
+            //Créer un nouveau produit fini
+            Matiere_premiere::firstOrCreate(
+                [ 'nom' => $input['nom'] ],
+                [
+                    'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
+                 ]
 
-        Flash::success(__('messages.saved', ['model' => __('models/matierePremieres.singular')]));
+            );
 
-        return redirect(route('matierePremieres.index'));
+            return json_encode(array("status"=>200, "dossier_id"=> $dossier[0]['id']));
+
+        //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
+        }else{
+            // dd($input['sites_id']);
+            $doc = Dossiers::firstOrCreate(
+                ['name' => 'Matières premières'],
+                [
+                    'sites_id' => $input['sites_id'],
+                    'title' =>'Matières premières',
+                    'parent_id' => 1,
+                    'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/matierepremiere'
+                ]
+            );
+            //Si le dossier est créer
+            if($doc){
+                //Créer un nouveau produit fini
+                Matiere_premiere::firstOrCreate(
+                    [ 'nom' => $input['nom'] ],
+                    [
+                        'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
+                    ]
+                );
+            }
+            return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
+        }
     }
 
     /**

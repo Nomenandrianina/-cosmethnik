@@ -13,7 +13,7 @@
                 <div class="loading-produit-semi-fini" style="text-align:center" >
                     <div id="loading" class="lds-dual-ring"></div>
                 </div>
-            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_produit_fini();']) !!}
+            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary','onclick'=>'Store_matiere_premiere();']) !!}
                 <button id="matiere_premiere_close" class="btn btn-default">
                 @lang('crud.cancel')
                 </button>
