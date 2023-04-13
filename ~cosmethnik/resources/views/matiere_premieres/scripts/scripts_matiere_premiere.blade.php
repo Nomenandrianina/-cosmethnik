@@ -22,37 +22,35 @@
     });
 
 
-    function Store_produit_fini(){
+    function Store_matiere_premiere(){
         $('.loading-produit-semi-fini').show();
         let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
-        let nom = $('#nom_fini').val();
-        let libelle_commerciale = $('#lib_com_fini').val();
-        let famille = $('#famille_fini').val();
-        let sous_famille = $('#sous_famille_fini').val();
-        let code_bcepg = $('#code_bcepg_fini').val();
-        let code_erp = $('#code_erp_fini').val();
-        let etat_produit_id = $('#etat_produit_id_fini').val();
-        let usine_id = $('#usine_id_fini').val();
-        let geographique_id = $('#geographique_id_fini').val();
-        let libelle_legale = $('#lib_leg_fini').val();
-        let description = $('#description_fini').val();
-        let ean = $('#ean_fini').val();
-        let ean_colis = $('#ean_colis_fini').val();
-        let ean_palette = $('#ean_palette_fini').val();
-        let filiale = $('#filiale_fini').val();
-        let marque = $('#marque_fini').val();
-        let modele = $('#modele_fini').val();
+        let nom = $('#nom_mp').val();
+        let libelle_commerciale = $('#lib_com_mp').val();
+        let famille = $('#famille_mp').val();
+        let sous_famille = $('#sous_famille_mp').val();
+        let code_bcepg = $('#code_bcpg_mp').val();
+        let code_erp = $('#code_erp_mp').val();
+        let etat_produit_id = $('#etat_produit_id_mp').val();
+        let usine_id = $('#usine_id_mp').val();
+        let geographique_id = $('#geographique_id_mp').val();
+        let libelle_legale = $('#lib_leg_mp').val();
+        let description = $('#description_mp').val();
+        let ean = $('#ean_mp').val();
+        let ean_colis = $('#ean_colis_mp').val();
+        let ean_palette = $('#ean_palette_mp').val();
+        let filiale = $('#filiale_id_mp').val();
+        let marque = $('#marque_id_mp').val();
+        let modele = $('#modele_mp').val();
         let sites = $('#sites_id').val();
 
         $("#nomError").addClass('d-none');
         $.ajax({
             type:'POST',
-            url: "{{ route('produitFinis.store') }}",
+            url: "{{ route('matierePremieres.store') }}",
             data:{ "_token":"{{ csrf_token() }}",
                 "nom":nom,
                 "libelle_commerciale":libelle_commerciale,
-                "famille":famille,
-                "sous_famille":sous_famille,
                 "code_bcepg":code_bcepg,
                 "code_erp":code_erp,
                 "etat_produit_id":etat_produit_id,
@@ -109,7 +107,7 @@
                 if($.isEmptyObject(erros)== false){
                     console.log('leserreurs',erros.errors);
                     $.each(erros.errors, function(key,value){
-                        let ErrorID = '#' + key + 'ErrorFini';
+                        let ErrorID = '#' + key + 'ErrorMp';
                         console.log('text',ErrorID);
                         $(ErrorID).removeClass("d-none");
                         $(ErrorID).text(value)

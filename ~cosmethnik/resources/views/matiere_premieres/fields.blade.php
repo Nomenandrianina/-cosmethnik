@@ -22,98 +22,98 @@
         {!! Html::decode(Form::label('libelle_legale','<span class="text-danger" id="libelle_legaleErrorMp"></span>')) !!}
     </div>
 
-    <!-- Description Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('description', __('models/matierePremieres.fields.description').':') !!}
-        {!! Form::text('description', null, ['class' => 'form-control','placeholder'=>'Description','id' => 'description_mp']) !!}
-    </div>
-</div>
-
-<div class="row">
     <!-- Modele Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('modele', __('models/matierePremieres.fields.modele').':') !!}
         {!! Form::text('modele', null, ['class' => 'form-control','id'=>'modele_mp']) !!}
     </div>
 
-    <!-- Code Becpg Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('code_becpg', __('models/matierePremieres.fields.code_becpg').':',['class' => 'required']) !!}
-        {!! Form::text('code_becpg', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_becpg_mp']) !!}
-        {!! Html::decode(Form::label('code_becpg','<span class="text-danger" id="code_becpgErrorMp"></span>')) !!}
-    </div>
 </div>
 
 <div class="row">
-        <!-- Code Erp Field -->
+    <!-- Code Becpg Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('code_bcpg', __('models/matierePremieres.fields.code_becpg').':',['class' => 'required']) !!}
+        {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_bcpg_mp']) !!}
+        {!! Html::decode(Form::label('code_bcpg','<span class="text-danger" id="code_bcepgErrorMp"></span>')) !!}
+    </div>
+
+    <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/matierePremieres.fields.code_erp').':',['class' => 'required']) !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_erp_mp']) !!}
         {!! Html::decode(Form::label('code_becpg','<span class="text-danger" id="code_erpErrorMp"></span>')) !!}
     </div>
+</div>
 
+<div class="row">
     <!-- Ean Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('ean', __('models/matierePremieres.fields.ean').':') !!}
-        {!! Form::text('ean', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ean', null, ['class' => 'form-control','id' => 'ean_mp']) !!}
+    </div>
+     <!-- Ean Colis Field -->
+     <div class="form-group col-sm-6">
+        {!! Form::label('ean_colis', __('models/matierePremieres.fields.ean_colis').':') !!}
+        {!! Form::text('ean_colis', null, ['class' => 'form-control','id' => 'ean_colis_mp']) !!}
     </div>
 </div>
 
 <div class="row">
-    <!-- Ean Colis Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('ean_colis', __('models/matierePremieres.fields.ean_colis').':') !!}
-        {!! Form::text('ean_colis', null, ['class' => 'form-control']) !!}
-    </div>
-
     <!-- Ean Palette Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('ean_palette', __('models/matierePremieres.fields.ean_palette').':') !!}
-        {!! Form::text('ean_palette', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ean_palette', null, ['class' => 'form-control','id' => 'ean_palette_mp']) !!}
     </div>
-</div>
 
-<div class="row">
     <!-- Etat Produit Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('etat_produit_id', __('models/matierePremieres.fields.etat_produit_id').':') !!}
-        {!! Form::text('etat_produit_id', null, ['class' => 'form-control']) !!}
-    </div>
-
-    <!-- Filiale Id Field -->
-    <div class="form-group col-sm-6">
-        {!! Form::label('filiale_id', __('models/matierePremieres.fields.filiale_id').':') !!}
-        {!! Form::text('filiale_id', null, ['class' => 'form-control','id'=>'filiale_id_mp']) !!}
+        {!! Form::select('etat_produit_id', $etat_prod,null, ['class' => 'form-control','id' => 'etat_produit_id_mp']) !!}
     </div>
 </div>
 
 <div class="row">
+    <!-- Filiale Id Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('filiale_id', __('models/matierePremieres.fields.filiale_id').':') !!}
+        {!! Form::select('filiale_id', [],null, ['class' => 'form-control','id'=>'filiale_id_mp']) !!}
+    </div>
+
     <!-- Usine Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('usine_id', __('models/matierePremieres.fields.usine_id').':') !!}
         {!! Form::select('usine_id', $usines,null, ['class' => 'form-control','id'=>'usine_id_mp']) !!}
     </div>
+</div>
 
+<div class="row">
     <!-- Geographique Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('geographique_id', __('models/matierePremieres.fields.geographique_id').':') !!}
         {!! Form::select('geographique_id',  $origines_geo,null, ['class' => 'form-control','id'=> 'geographique_id_mp']) !!}
     </div>
-</div>
-<div class="row">
+
     <!-- Marque Id Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('marque_id', __('models/matierePremieres.fields.marque_id').':') !!}
         {!! Form::select('marque_id',$marque ,null, ['class' => 'form-control','id'=>'marque_id_mp']) !!}
     </div>
+</div>
 
-    <!-- Client Id Field -->
+<div class="row">
+    <!-- Description Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('client_id', __('models/matierePremieres.fields.client_id').':') !!}
-        {!! Form::text('client_id', null, ['class' => 'form-control','id'=>'client_id_mp']) !!}
+        {!! Form::label('description', __('models/matierePremieres.fields.description').':') !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control','rows'=>3,'placeholder'=>'Description','id' => 'description_mp']) !!}
     </div>
 </div>
-<div class="row">
+
+{!! Form::hidden('sites_id',$site_texte[0]->id) !!}
+
+
+
+{{-- <div class="row">
     <!-- Quantite Nette Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('quantite_nette', __('models/matierePremieres.fields.quantite_nette').':') !!}
@@ -144,13 +144,13 @@
     <!-- Taille Portion Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('taille_portion', __('models/matierePremieres.fields.taille_portion').':') !!}
-        {!! Form::text('taille_portion', null, ['class' => 'form-control']) !!}
+        {!! Form::text('taille_portion', null, ['class' => 'form-control','id'=> 'taille_portion_mp']) !!}
     </div>
 
     <!-- Unite Portion Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('unite_portion', __('models/matierePremieres.fields.unite_portion').':') !!}
-        {!! Form::text('unite_portion', null, ['class' => 'form-control']) !!}
+        {!! Form::text('unite_portion', null, ['class' => 'form-control','id' => 'unite_portion_mp']) !!}
     </div>
 </div>
 
@@ -158,20 +158,20 @@
     <!-- Texte Portion Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('texte_portion', __('models/matierePremieres.fields.texte_portion').':') !!}
-        {!! Form::text('texte_portion', null, ['class' => 'form-control']) !!}
+        {!! Form::text('texte_portion', null, ['class' => 'form-control','id' => 'texte_portion_mp']) !!}
     </div>
 
     <!-- Nombre Portion Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('nombre_portion', __('models/matierePremieres.fields.nombre_portion').':') !!}
-        {!! Form::text('nombre_portion', null, ['class' => 'form-control']) !!}
+        {!! Form::number('nombre_portion', null, ['class' => 'form-control','id' => 'nombre_portion_mp']) !!}
     </div>
 </div>
 <div class="row">
     <!-- Cahier Charge Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('cahier_charge', __('models/matierePremieres.fields.cahier_charge').':') !!}
-        {!! Form::text('cahier_charge', null, ['class' => 'form-control']) !!}
+        {!! Form::text('cahier_charge', null, ['class' => 'form-control','id' => 'cahier_charge_mp']) !!}
     </div>
 
 
@@ -180,18 +180,17 @@
     <!-- Date Limite Consommation Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('date_limite_consommation', __('models/matierePremieres.fields.date_limite_consommation').':') !!}
-        {!! Form::text('date_limite_consommation', null, ['class' => 'form-control']) !!}
+        {!! Form::text('date_limite_consommation', null, ['class' => 'form-control','id' => 'date_limite_consommation']) !!}
     </div>
     <!-- Ddm Dua Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('ddm_dua', __('models/matierePremieres.fields.ddm_dua').':') !!}
-        {!! Form::text('ddm_dua', null, ['class' => 'form-control']) !!}
+        {!! Form::text('ddm_dua', null, ['class' => 'form-control','id' => 'ddm_dua_mp']) !!}
     </div>
-
-</div>
+</div> --}}
 
 <!-- Description Conditionnement Field -->
-{{-- <div class="form-group col-sm-6">
+ {{-- <div class="form-group col-sm-6">
     {!! Form::label('description_conditionnement', __('models/matierePremieres.fields.description_conditionnement').':') !!}
     {!! Form::text('description_conditionnement', null, ['class' => 'form-control']) !!}
 </div> --}}
