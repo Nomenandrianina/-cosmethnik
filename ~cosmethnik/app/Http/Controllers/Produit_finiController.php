@@ -73,21 +73,40 @@ class Produit_finiController extends AppBaseController
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
+<<<<<<< Updated upstream
                     'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
                  ]
 
+=======
+                    'libelle_commerciale' => $input['libelle_commerciale'],
+                    'libelle_legale' => $input['libelle_legale'],
+                    'description' => $input['description'],
+                    'code_bcepg' => $input['code_bcepg'],
+                    'code_erp' => $input['code_erp'],
+                    'ean' => $input['ean'],
+                    'ean_colis' => $input['ean_colis'],
+                    'ean_palette' => $input['ean_palette'],
+                    'etat_produit_id' => $input['etat_produit_id'],
+                    'usine_id' => $input['usine_id'],
+                    'geographique_id' => $input['geographique_id'],
+                    'marque_id' => $input['marque'],
+                    'dossier_id' => $dossier[0]['id']
+                ]
+>>>>>>> Stashed changes
             );
 
             //Créer le relation avec famille
             if($product){
                 $produit_fini = Produit_fini::find($product->id);
                 DB::table('modele_familles')->insert(
-                    ['model_type' => get_class($produit_fini) , 'model_id' => $produit_fini->id,'famille_id' => $input['sous_famille']]
+                    ['model_type' => get_class($produit_fini) ,
+                     'model_id' => $produit_fini->id,
+                     'famille_id' => $input['sous_famille']
+                    ]
                 );
             }
         //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
         }else{
-            // dd($input['sites_id']);
             $doc = Dossiers::firstOrCreate(
                 ['name' => 'Produits fini'],
                 [
@@ -97,13 +116,31 @@ class Produit_finiController extends AppBaseController
                     'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitsfini'
                 ]
             );
+
             //Si le dossier est créer
             if($doc){
                 //Créer un nouveau produit fini
                 $product = Produit_fini::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
+<<<<<<< Updated upstream
                         'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
+=======
+                        'libelle_commerciale' => $input['libelle_commerciale'],
+                        'libelle_commerciale' => $input['libelle_commerciale'],
+                        'libelle_legale' => $input['libelle_legale'],
+                        'description' => $input['description'],
+                        'code_bcepg' => $input['code_bcepg'],
+                        'code_erp' => $input['code_erp'],
+                        'ean' => $input['ean'],
+                        'ean_colis' => $input['ean_colis'],
+                        'ean_palette' => $input['ean_palette'],
+                        'etat_produit_id' => $input['etat_produit_id'],
+                        'usine_id' => $input['usine_id'],
+                        'geographique_id' => $input['geographique_id'],
+                        'marque_id' => $input['marque'],
+                        'dossier_id' => $doc['id']
+>>>>>>> Stashed changes
                     ]
                 );
                 if($product){

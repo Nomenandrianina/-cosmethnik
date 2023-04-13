@@ -45,13 +45,12 @@ class Geographiques extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required',
     ];
 
     public function produit_finis()
     {
         return $this->hasMany(Produit_fini::class);
     }
-
 
 }

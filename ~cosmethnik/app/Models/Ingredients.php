@@ -55,13 +55,13 @@ class Ingredients extends Model
      * @var array
      */
     public static $rules = [
-        'nom'=>'required'
+        'nom'=>'required',
+        'origine_biologique'=>'required'
     ];
 
     public function modele_ingredients()
     {
         return $this->hasMany(Modele_ingredients::class);
     }
-
 
 }

@@ -213,10 +213,14 @@ class DossiersController extends AppBaseController
     }
 
 
-
+    /**
+     * Fonction qui redirge vers une menu
+     *
+     * @param [int] $id
+     * @return void
+     */
     public function treeview($id = null)
     {
-        // dd($id);
         $site_texte = Sites::where('id','=', $id)->get();
         $all = Sites::all();
         $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');

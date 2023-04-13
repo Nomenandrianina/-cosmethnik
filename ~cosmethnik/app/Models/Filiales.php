@@ -46,7 +46,7 @@ class Filiales extends Model
      * @var array
      */
     public static $rules = [
-
+        'description'=>'required'
     ];
 
     public function produit_finis()

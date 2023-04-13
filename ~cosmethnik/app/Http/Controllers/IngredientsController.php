@@ -47,6 +47,7 @@ class IngredientsController extends AppBaseController
         return view('ingredients.create',compact('origines_geo'));
     }
 
+
     /**
      * Store a newly created Ingredients in storage.
      *

@@ -17,13 +17,11 @@ class Materiaux extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'materiaux';
-
 
     protected $dates = ['deleted_at'];
 
-
+    public $timestamps = false;
 
     public $fillable = [
         'nom'
@@ -45,7 +43,7 @@ class Materiaux extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom'=>'required'
     ];
 
     public function modele_materiaux()

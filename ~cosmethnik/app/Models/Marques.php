@@ -17,7 +17,6 @@ class Marques extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'marques';
 
     public $timestamps = false;
