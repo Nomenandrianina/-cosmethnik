@@ -13,6 +13,7 @@ return array (
     'libelle_commerciale'=> 'Libellé commerciale',
     'libelle_legale'=> 'Libellé legale',
     'description'=>'Description',
+    'decription_condit' => 'Description du conditionnement',
     'code_bcpg'=>'Code beCPG',
     'code_erp'=>'Code ERP',
     'usine_id'=>'Usine',
@@ -25,5 +26,6 @@ return array (
     'filiale' => 'Filiale',
     'marque' => 'Marque',
     'client' => 'Client',
+    'commentaire' => 'Commentaire',
 ),
 );

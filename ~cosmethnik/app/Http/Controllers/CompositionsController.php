@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CompositionsDataTable;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CreateCompositionsRequest;
 use App\Http\Requests\UpdateCompositionsRequest;
@@ -10,6 +11,7 @@ use App\Repositories\CompositionsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Sites;
 
 class CompositionsController extends AppBaseController
 {
@@ -40,6 +42,26 @@ class CompositionsController extends AppBaseController
     public function create()
     {
         return view('compositions.create');
+    }
+
+    /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,CompositionsDataTable $compositionsDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        // return view('compositions.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data'));
     }
 
     /**
