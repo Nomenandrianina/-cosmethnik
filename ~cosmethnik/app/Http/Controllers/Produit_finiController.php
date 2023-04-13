@@ -73,26 +73,8 @@ class Produit_finiController extends AppBaseController
             $product = Produit_fini::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
-<<<<<<< Updated upstream
                     'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
                  ]
-
-=======
-                    'libelle_commerciale' => $input['libelle_commerciale'],
-                    'libelle_legale' => $input['libelle_legale'],
-                    'description' => $input['description'],
-                    'code_bcepg' => $input['code_bcepg'],
-                    'code_erp' => $input['code_erp'],
-                    'ean' => $input['ean'],
-                    'ean_colis' => $input['ean_colis'],
-                    'ean_palette' => $input['ean_palette'],
-                    'etat_produit_id' => $input['etat_produit_id'],
-                    'usine_id' => $input['usine_id'],
-                    'geographique_id' => $input['geographique_id'],
-                    'marque_id' => $input['marque'],
-                    'dossier_id' => $dossier[0]['id']
-                ]
->>>>>>> Stashed changes
             );
 
             //Créer le relation avec famille
@@ -123,24 +105,7 @@ class Produit_finiController extends AppBaseController
                 $product = Produit_fini::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
-<<<<<<< Updated upstream
                         'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
-=======
-                        'libelle_commerciale' => $input['libelle_commerciale'],
-                        'libelle_commerciale' => $input['libelle_commerciale'],
-                        'libelle_legale' => $input['libelle_legale'],
-                        'description' => $input['description'],
-                        'code_bcepg' => $input['code_bcepg'],
-                        'code_erp' => $input['code_erp'],
-                        'ean' => $input['ean'],
-                        'ean_colis' => $input['ean_colis'],
-                        'ean_palette' => $input['ean_palette'],
-                        'etat_produit_id' => $input['etat_produit_id'],
-                        'usine_id' => $input['usine_id'],
-                        'geographique_id' => $input['geographique_id'],
-                        'marque_id' => $input['marque'],
-                        'dossier_id' => $doc['id']
->>>>>>> Stashed changes
                     ]
                 );
                 if($product){

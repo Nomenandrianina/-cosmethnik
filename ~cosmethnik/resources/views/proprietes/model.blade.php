@@ -58,7 +58,7 @@
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.etat_produit_id')}} :</div>
-                        @if (isset($model['etat_produit']))
+                        @if ($model['etat_produit'] != null)
                             <div style="margin: 5px 0 5px 20px;">{{ $model['etat_produit']->designation }}</div>
                         @endif
                     </div>
@@ -93,28 +93,30 @@
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.filiale')}} :</div>
-                        @if (isset($model['filiale']))
+                        @if ($model['filiale'] != null)
                             <div style="margin: 5px 0 5px 20px;">{{ $model['filiale'] }}</div>
                         @endif
                     </div>
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.marque')}} :</div>
-                        @if (isset($model['marque']))
+                        @if ($model['marque'] != null)
                             <div style="margin: 5px 0 5px 20px;">{{ $model['marque']->description }}</div>
                         @endif
                     </div>
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.usine_id')}} :</div>
-                        @if (isset($model['usine']))
+                        @if ($model['usine'] != null)
                             <div  style="margin: 5px 0 5px 20px;">{{ $model['usine']->description }}</div>
                         @endif
                     </div>
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.geographique_id')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
+                        @if ($model['geographique'] != null)
+                            <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
+                        @endif
                     </div>
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
