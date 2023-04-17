@@ -13,5 +13,6 @@ return array (
     'freinte' => 'Freinte',
     'model_type' => 'Modèle type',
     'model_id' => 'Modèle id',
+    'product' => 'Produit'
   ),
 );

@@ -2,16 +2,44 @@
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                   @lang('models/compositions.plural')
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('compositions.create') }}">
-                         @lang('crud.add_new')
-                    </a>
-                </div>
+            <div class="row">
+                    <div class="col-sm-2">
+                        <label for="inputPassword5" class="form-label">Produit: </label>
+                        <select name="" id="" class="form-control">
+                            <option value="1">Eau</option>
+                            <option value="2">Tomate</option>
+                            <option value="3">Fromage</option>
+                            <option value="4">Ognion</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-1">
+                        <label for="inputPassword5" class="form-label">Quantité: </label>
+                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                    </div>
+
+                    <div class="col-sm-1">
+                        <label for="inputPassword5" class="form-label">Unité: </label>
+                        <select name="unite" id="" class="form-control">
+                            <option value="1">Kg</option>
+                            <option value="2">L</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="inputPassword5" class="form-label">Rendement %: </label>
+                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="inputPassword5" class="form-label">Freinte %: </label>
+                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="inputPassword5" class="form-label">Poids: </label>
+                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                    </div>
             </div>
         </div>
     </section>

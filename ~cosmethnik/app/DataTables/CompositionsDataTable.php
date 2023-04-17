@@ -76,7 +76,7 @@ class CompositionsDataTable extends DataTable
                     ],
                 ],
                  'language' => [
-                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
+                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json'),
                  ],
             ]);
     }
@@ -89,13 +89,12 @@ class CompositionsDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'product' => new Column(['title' => __('models/compositions.fields.product'), 'data' => '']),
             'quantite' => new Column(['title' => __('models/compositions.fields.quantite'), 'data' => 'quantite']),
             'unite' => new Column(['title' => __('models/compositions.fields.unite'), 'data' => 'unite']),
             'poids' => new Column(['title' => __('models/compositions.fields.poids'), 'data' => 'poids']),
             'rendement' => new Column(['title' => __('models/compositions.fields.rendement'), 'data' => 'rendement']),
-            'freinte' => new Column(['title' => __('models/compositions.fields.freinte'), 'data' => 'freinte']),
-            'model_type' => new Column(['title' => __('models/compositions.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/compositions.fields.model_id'), 'data' => 'model_id'])
+            'freinte' => new Column(['title' => __('models/compositions.fields.freinte'), 'data' => 'freinte'])
         ];
     }
 
