@@ -1,4 +1,4 @@
-<ul class="nav nav-treeview">
+<ul class="nav nav-treeview" style="display: block;">
     @foreach($childs as $child)
         <li class="nav-item">
             <a onclick="getDetails({{ $child->id }} , {{ $id }} , '{{ $child->title }}')" class="nav-link" style="cursor: pointer">
