@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateClientsRequest;
 use App\Repositories\ClientsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pays;
 use Response;
 
 class ClientsController extends AppBaseController
@@ -39,7 +41,8 @@ class ClientsController extends AppBaseController
      */
     public function create()
     {
-        return view('clients.create');
+        $pays = Pays::pluck('name','id');
+        return view('clients.create',compact('pays'));
     }
 
     /**
@@ -53,13 +56,10 @@ class ClientsController extends AppBaseController
     {
         $input = $request->all();
 
-        // $clients = $this->clientsRepository->create($input);
         DB::table('clients')->insert(
-            ['nom' => $input['nom'], 'titre' => $input['titre'], 'etat_client' => $input['etat_client'] , 'code_bcpg' => $input['code_bcpg'],'telephone'=> $input['telephone'], 'mail' => $input['mail'] , 'fax' => $input['fax'] , 'adress1' => $input['adress1'], 'adress2' => $input['adress2'],'adress3' => $input['adress3'], 'ville' => $input['ville'], 'code_postal' => $input['code_postal'], 'pays_id' => $input['pays_id']]
+            ['nom' => $input['nom'], 'titre' => $input['titre'], 'etat_client' => $input['etat_client'] , 'code_bcpg' => $input['code_bcpg'],'code_erp' => $input['code_erp'],'telephone'=> $input['telephone'], 'mail' => $input['mail'] , 'fax' => $input['fax'] , 'adress1' => $input['adress1'], 'adress2' => $input['adress2'],'adress3' => $input['adress3'], 'ville' => $input['ville'], 'code_postal' => $input['code_postal'], 'pays_id' => $input['pays_id']]
         );
-
         Flash::success(__('messages.saved', ['model' => __('models/clients.singular')]));
-
         return redirect(route('clients.index'));
     }
 

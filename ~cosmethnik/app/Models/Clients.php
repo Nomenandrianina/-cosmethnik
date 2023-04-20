@@ -75,7 +75,9 @@ class Clients extends Model
         'adress3' => 'string',
         'ville' => 'string',
         'code_postal' => 'string',
-        'pays_id' => 'integer'
+        'pays_id' => 'integer',
+        'code_erp' => 'integer',
+
     ];
 
     /**
@@ -84,7 +86,14 @@ class Clients extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom' => 'required',
+        'titre' => 'required',
+        'code_bcpg' => 'required',
+        'code_bcpg' => 'required',
+        'telephone' => 'required',
+        'mail' => 'required',
+        'adress1' => 'required',
+        'pays_id' => 'required',
     ];
 
     /**

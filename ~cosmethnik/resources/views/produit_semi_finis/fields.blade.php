@@ -49,7 +49,7 @@
 <!-- Ean Field -->
 {{--  <div class="form-group col-sm-6">
     {!! Form::label('ean', __('models/produitSemiFinis.fields.ean').':') !!}
-    {!! Form::text('ean', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ean', null, ['class' => 'fo²rm-control']) !!}
 </div>  --}}
 
 <!-- Ean Colis Field -->
@@ -85,8 +85,13 @@
     </div>
 </div>
 
-{!! Form::hidden('sites_id',$site_texte[0]->id) !!}
+@if (isset($doc))
+    {!! Form::hidden('sites_id',$doc[0]->site->id) !!}
+@endif
 
+{!! Form::hidden('dossier_id',$id) !!}
+
+{{--  <input type="hidden" name="dossier_id" id="dossier_id" value="{{ $id }}">  --}}
 
 <div class="row">
     <!-- Usine Id Field -->
