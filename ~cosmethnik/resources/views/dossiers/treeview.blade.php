@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
-
     <section class="content-header">
         <div class="card">
             <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
@@ -31,10 +30,9 @@
             </div>
 
             <div class="card-body p-0" id="div-change">
-
                 <ul class="list-group list-group-flush" id="data-ul">
                     @if ($doc->isEmpty() != true)
-                            @foreach($doc as $category)
+                        @foreach($doc as $category)
                             @foreach ( $category->childs as $child )
                                 <li class="list-group-item">
                                     <a onclick="getDetails({{ $child->id }} ,{{ $doc[0]->sites_id }}, '{{ $child->title }}')" style="cursor: pointer">
@@ -52,7 +50,7 @@
                                     </a>
                                 </li>
                             @endforeach
-                            @endforeach
+                        @endforeach
                     @else
                         <p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>
                     @endif
@@ -64,24 +62,10 @@
             @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
             @include('matiere_premieres.modals.modal_create_matiere_premiere')
 
-            <div class="card-footer">
-                <nav aria-label="Page nawgation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
+            <div class="card-footer paginations-all">
+                <div class="paginations-all">
+                    {!! $doc->links() !!}
+                </div>
             </div>
         </div>
     </div>
@@ -90,5 +74,3 @@
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
     @include('matiere_premieres.scripts.scripts_matiere_premiere')
 @endsection
-
-

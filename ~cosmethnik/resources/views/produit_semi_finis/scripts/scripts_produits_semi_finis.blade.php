@@ -1,10 +1,12 @@
 <script>
         $('.loading-produit-semi-fini').hide();
+
         $('#link-modal-produit-semi-fini').on('click' , function(e){
             e.preventDefault();
             $('#create_produit_semi_fini').trigger("reset");
             $('#produit-semi-fini-modal').modal('show');
         });
+
         $('#produit_semi_fini_close').on('click' , function(e){
             e.preventDefault();
             $('#create_produit_semi_fini').trigger("reset");
@@ -67,7 +69,7 @@
                         showConfirmButton:false,
                         html: '<p></p>',
                         timer: 1500,
-                        didOpen: () => {
+                        didOpenw: () => {
                             const p = Swal.getHtmlContainer().querySelector('p')
                             timerInterval = setInterval(() => {p.textContent = "Insertion réussie!"}, 100)
                         },

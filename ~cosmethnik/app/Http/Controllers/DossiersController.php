@@ -64,21 +64,21 @@ class DossiersController extends AppBaseController
                 $li .='<li class="list-group-item">
                             <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
                             <span class="one-span">
-                                    <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
-                                    <span class="three-span">'.$item->title.'
-                                            <br>';
-                                        if ($item->description){
-                                            $li = $li.'<small>'.$item->description.'</small></span>
+                            <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
+                            <span class="three-span">'.$item->title.'
+                                    <br>';
+                                if ($item->description){
+                                    $li = $li.'<small>'.$item->description.'</small></span>
+                                    </span>
+                                    </a>
+                                    </li>';
+                                }
+                                else{
+                                    $li = $li.'<small>Aucune description</small></span>
                                             </span>
                                             </a>
                                             </li>';
-                                        }
-                                        else{
-                                            $li = $li.'<small>Aucune description</small></span>
-                                                    </span>
-                                                    </a>
-                                                    </li>';
-                                        }
+                                }
             }
 
             $endul = '</ul>';
@@ -199,7 +199,7 @@ class DossiersController extends AppBaseController
 
 
     /**
-     * Fonction qui redirge vers une menu
+     * Fonction qui redirige vers une menu
      *
      * @param [int] $id
      * @return void
@@ -218,7 +218,7 @@ class DossiersController extends AppBaseController
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
         }
-        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->get();
+        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->paginate(1);
         $allDoc = Dossiers::pluck('title','id')->all();
         $view = array(
             'id'=> $id,

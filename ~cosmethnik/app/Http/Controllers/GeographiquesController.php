@@ -47,10 +47,10 @@ class GeographiquesController extends AppBaseController
      * Store a newly created Geographiques in storage.
      *
      * @param CreateGeographiquesRequest $request
-     *
+     *function
      * @return Response
      */
-    public function store(CreateGeographiquesRequest $request)
+    public  store(CreateGeographiquesRequest $request)
     {
         $input = $request->all();
 

@@ -13,8 +13,6 @@
 
     <div class="content px-3">
 
-        @include('adminlte-templates::common.errors')
-
         <div class="card">
 
             {!! Form::open(['route' => 'physicoChimiques.store']) !!}
@@ -31,9 +29,7 @@
                  @lang('crud.cancel')
                 </a>
             </div>
-
             {!! Form::close() !!}
-
         </div>
     </div>
 @endsection

@@ -20,7 +20,6 @@
                 Désignation
             </div>
 
-
             <div class="card-body p-0" id="div-change">
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.nom')}} :</div>
@@ -58,23 +57,20 @@
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.etat_produit_id')}} :</div>
-                        @if ($model['etat_produit'] != null)
+                        @if ($model['etat_produit']!= null)
                             <div style="margin: 5px 0 5px 20px;">{{ $model['etat_produit']->designation }}</div>
                         @endif
                     </div>
-
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.code_bcpg')}} :</div>
                         <div style="margin: 5px 0 5px 20px;">{{ $model->code_bcpg }}</div>
                     </div>
 
-
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.code_erp')}} :</div>
                         <div style="margin: 5px 0 5px 20px;">{{ $model->code_erp }}</div>
                     </div>
-
 
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean')}} :</div>
@@ -101,7 +97,7 @@
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.marque')}} :</div>
                         @if ($model['marque'] != null)
-                            <div style="margin: 5px 0 5px 20px;">{{ $model['marque']->description }}</div>
+                            {{--  <div style="margin: 5px 0 5px 20px;">{{ $model['marque']->description }}</div>  --}}
                         @endif
                     </div>
 
@@ -115,7 +111,7 @@
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.geographique_id')}} :</div>
                         @if ($model['geographique'] != null)
-                            <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
+                        <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
                         @endif
                     </div>
 
@@ -128,9 +124,7 @@
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.modele')}} :</div>
                         <div style="margin: 5px 0 5px 20px;">{{ $model->modele }}</div>
                     </div>
-
             </div>
-
         </div>
 
     </div>

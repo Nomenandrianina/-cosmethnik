@@ -61,6 +61,7 @@
     padding:0px 0px 0px 0px;
     outline: 0;
 }
+
 .loading-produit-semi-fini img {
     z-index: 1000;
     position: relative;
@@ -89,7 +90,9 @@
     background: #000a;
 }
 
-
+.paginations-all{
+    padding-left: 43%;
+}
 
 .lds-dual-ring {
     display: flex;

@@ -20,12 +20,11 @@ class Sites extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'sites';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [

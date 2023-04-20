@@ -55,14 +55,14 @@ class Produit_semi_finisController extends AppBaseController
     public function store(CreateProduit_semi_finisRequest $request)
     {
         $input = $request->all();
-        // dd($input);
+
         $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
             ->where('name','LIKE','%'.'produits semi-fini'.'%')
             ->orWhere('name', 'LIKE', '%'.'produit semi-finis'.'%')
             ->orWhere('name', 'LIKE', '%'.'produits semi-finis'.'%')
             ->orWhere('name', 'LIKE', '%'.'produit semi-fini'.'%')
             ->get();
-        // dd($dossier);
+
         if($dossier->isEmpty() != true){
             $product = Produit_semi_finis::firstOrCreate(
                 [ 'nom' => $input['nom'] ],

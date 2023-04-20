@@ -21,9 +21,9 @@ class Physico_chimiques extends Model
 
     public $table = 'physico_chimiques';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
@@ -48,7 +48,8 @@ class Physico_chimiques extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom'=>'required',
+        'unite'=>'required'
     ];
 
     public function modele_physico_chimiques()
