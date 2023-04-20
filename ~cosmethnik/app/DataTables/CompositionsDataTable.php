@@ -30,7 +30,7 @@ class CompositionsDataTable extends DataTable
      */
     public function query(Compositions $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['matiere_premiere']);
     }
 
     /**
@@ -50,29 +50,24 @@ class CompositionsDataTable extends DataTable
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     [
-                       'extend' => 'create',
-                       'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-plus"></i> ' .__('auth.app.create').''
-                    ],
-                    [
                        'extend' => 'export',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-download"></i> ' .__('auth.app.export').''
+                       'text' => '<i class="fa fa-download"></i> ' .__('models/compositions.table.export').''
                     ],
                     [
                        'extend' => 'print',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-print"></i> ' .__('auth.app.print').''
+                       'text' => '<i class="fa fa-print"></i> ' .__('models/compositions.table.print').''
                     ],
                     [
                        'extend' => 'reset',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-undo"></i> ' .__('auth.app.reset').''
+                       'text' => '<i class="fa fa-undo"></i> ' .__('models/compositions.table.reset').''
                     ],
                     [
                        'extend' => 'reload',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
+                       'text' => '<i class="fa fa-refresh"></i> ' .__('models/compositions.table.reload').''
                     ],
                 ],
                  'language' => [
@@ -89,7 +84,7 @@ class CompositionsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'product' => new Column(['title' => __('models/compositions.fields.product'), 'data' => '']),
+            'product' => new Column(['title' => __('models/compositions.fields.product'), 'data' => 'matiere_premiere.nom']),
             'quantite' => new Column(['title' => __('models/compositions.fields.quantite'), 'data' => 'quantite']),
             'unite' => new Column(['title' => __('models/compositions.fields.unite'), 'data' => 'unite']),
             'poids' => new Column(['title' => __('models/compositions.fields.poids'), 'data' => 'poids']),

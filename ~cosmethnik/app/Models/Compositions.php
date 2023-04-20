@@ -29,10 +29,13 @@ class Compositions extends Model
 
     protected $dates = ['deleted_at'];
 
+    public $timestamps = false;
+
 
 
     public $fillable = [
         'quantite',
+        'matiere_premier_id',
         'unite',
         'poids',
         'rendement',
@@ -48,6 +51,7 @@ class Compositions extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'matiere_premier_id' => 'integer',
         'quantite' => 'integer',
         'unite' => 'string',
         'poids' => 'string',
@@ -68,6 +72,10 @@ class Compositions extends Model
 
     public function model(): MorphTo{
         return $this->morphTo();
+    }
+
+    public function matiere_premiere(){
+        return $this->belongsTo(Matiere_premiere::class, 'matiere_premier_id');
     }
 
 

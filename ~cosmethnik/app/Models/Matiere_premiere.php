@@ -146,6 +146,10 @@ class Matiere_premiere extends Model
         return $this->belongsTo(Dossiers::class, 'dossier_id');
     }
 
+    // public function composition(){
+    //     return $this->hasMany(Compositions::class);
+    // }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/

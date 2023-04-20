@@ -10,8 +10,11 @@ use App\Http\Requests\UpdateCompositionsRequest;
 use App\Repositories\CompositionsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Matiere_premiere;
+use Illuminate\Support\Facades\DB;
 use Response;
 use App\Models\Sites;
+use App\Models\Unites;
 
 class CompositionsController extends AppBaseController
 {
@@ -57,11 +60,13 @@ class CompositionsController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
+        $matiere_premier = Matiere_premiere::all();
+        $unite = Unites::all();
         $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
         $menu = DeterminateObject($dossier_parent)::$fields;
         $icon = DeterminateObject($dossier_parent)->icon_menu();
-        // return view('compositions.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
-        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data'));
+        $object = DeterminateObject($dossier_parent);
+        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data','matiere_premier','unite','object'));
     }
 
     /**
@@ -71,15 +76,36 @@ class CompositionsController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateCompositionsRequest $request)
+    public function store(CreateCompositionsRequest $request,CompositionsDataTable $compositionsDataTable)
     {
         $input = $request->all();
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
 
-        $compositions = $this->compositionsRepository->create($input);
+
+        DB::table('compositions')->insert(
+            ['matiere_premier_id' => $input['produit'],'unite' => $input['unite'], 'quantite' => $input['quantite'],'poids' => $input['poids'], 'rendement' => $input['rdt'], 'freinte' => $input['freinte'], 'model_type' => $input['model_type'],'model_id' => $id_model]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/compositions.singular')]));
 
-        return redirect(route('compositions.index'));
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $matiere_premier = Matiere_premiere::all();
+        $unite = Unites::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent);
+        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data','matiere_premier','unite','object'));
+
+        // $compositions = $this->compositionsRepository->create($input);
+
+        // Flash::success(__('messages.saved', ['model' => __('models/compositions.singular')]));
+
+        // return redirect(route('compositions.index'));
     }
 
     /**

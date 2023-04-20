@@ -3,6 +3,13 @@
 return array (
   'singular' => 'Composition',
   'plural' => 'Compositions',
+  'table' => array(
+    'create' => 'Créer',
+    'export' => 'Exporter',
+    'print' => 'Imprimer',
+    'reset' => 'Réinitialiser',
+    'reload' => 'Actualiser'
+  ),
   'fields' =>
   array (
     'id' => 'Id',

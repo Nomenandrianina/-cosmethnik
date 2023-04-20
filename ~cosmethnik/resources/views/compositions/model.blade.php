@@ -2,45 +2,56 @@
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
+            <form action="{{ route('compositions.store') }}" method="POST">
+                @csrf
             <div class="row">
+                <input type="hidden" name="id_model" value="{{ $data[0] }}">
+                <input type="hidden" name="id_site" value="{{ $data[1] }}">
+                <input type="hidden" name="id_dossier" value="{{ $data[2] }}">
+                <input type="hidden" name="dossier_parent" value="{{ $data[3] }}">
+                <input type="hidden" name="model_type" value="{{ $object }}">
                     <div class="col-sm-2">
                         <label for="inputPassword5" class="form-label">Produit: </label>
-                        <select name="" id="" class="form-control">
-                            <option value="1">Eau</option>
-                            <option value="2">Tomate</option>
-                            <option value="3">Fromage</option>
-                            <option value="4">Ognion</option>
+                        <select name="produit" id="produit" class="form-control">
+                            @foreach ($matiere_premier as $item)
+                                <option value="{{ $item->id }}">{{ $item->nom }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col-sm-1">
                         <label for="inputPassword5" class="form-label">Quantité: </label>
-                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                        <input type="number" name="quantite"  class="form-control">
                     </div>
 
                     <div class="col-sm-1">
                         <label for="inputPassword5" class="form-label">Unité: </label>
-                        <select name="unite" id="" class="form-control">
-                            <option value="1">Kg</option>
-                            <option value="2">L</option>
+                        <select name="unite" id="unite" class="form-control">
+                            @foreach ($unite as $item)
+                                <option value="{{ $item->description }}">{{ $item->description }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col-sm-2">
                         <label for="inputPassword5" class="form-label">Rendement %: </label>
-                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                        <input type="number" name="rdt" class="form-control">
                     </div>
 
                     <div class="col-sm-2">
                         <label for="inputPassword5" class="form-label">Freinte %: </label>
-                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                        <input type="number" name="freinte"  class="form-control">
                     </div>
 
                     <div class="col-sm-2">
                         <label for="inputPassword5" class="form-label">Poids: </label>
-                        <input type="number"  class="form-control" aria-labelledby="passwordHelpBlock">
+                        <input type="number" name="poids"  class="form-control">
                     </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 158px;margin: 32px 0px 0px 0px;height: 37px;">Ajouter</button>
+
             </div>
+        </form>
         </div>
     </section>
 
