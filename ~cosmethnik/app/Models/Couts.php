@@ -69,13 +69,14 @@ class Couts extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom' => 'required',
+        'valeur' => 'required',
+        'unite' => 'required',
     ];
 
     public function model(): MorphTo
     {
         return $this->morphTo();
     }
-
 
 }

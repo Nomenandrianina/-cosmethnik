@@ -238,13 +238,13 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 
 
 
-<li class="nav-item">
+{{--  <li class="nav-item">
     <a href="{{ route('compositions.index') }}"
        class="nav-link {{ Request::is('compositions*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-vial"></i>
         <p>@lang('models/compositions.plural')</p>
     </a>
-</li>
+</li>  --}}
 
 <li class="nav-item">
     <a href="{{ route('allergenes.index') }}"
@@ -261,13 +261,13 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li> --}}
 
-<li class="nav-item">
+{{--  <li class="nav-item">
     <a href="{{ route('couts.index') }}"
        class="nav-link {{ Request::is('couts*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-yen-sign"></i>
         <p>@lang('models/couts.plural')</p>
     </a>
-</li>
+</li>  --}}
 
 <li class="nav-item">
     <a href="{{ route('organoleptiques.index') }}"
@@ -320,22 +320,22 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
-<li class="nav-item">
+{{--  <li class="nav-item">
     <a href="{{ route('produitFinis.index') }}"
        class="nav-link {{ Request::is('produitFinis*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-box"></i>
         <p>@lang('models/produitFinis.plural')</p>
     </a>
-</li>
+</li>  --}}
 
-<li class="nav-item">
+{{--  <li class="nav-item">
     <a href="{{ route('produitSemiFinis.index') }}"
        class="nav-link {{ Request::is('produitSemiFinis*') ? 'active' : '' }}">
-       {{--  <i class="nav-icon fas fa-box"></i>  --}}
+       <i class="nav-icon fas fa-box"></i>
        <i class="nav-icon fas fa-file"></i>
         <p>@lang('models/produitSemiFinis.plural')</p>
     </a>
-</li>
+</li>  --}}
 {{--
 <li class="nav-item">
     <a href="{{ route('modeleFamilles.index') }}"
@@ -351,5 +351,3 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         <p>@lang('models/matierePremieres.plural')</p>
     </a>
 </li>
-
-
