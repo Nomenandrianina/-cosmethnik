@@ -16,7 +16,7 @@
         </div>
 
         <div class="card">
-            <div class="card-header" style="background-color: #1a4a51;">
+            <div class="card-header" style="background-color: #1a4a51;color: aliceblue;">
                 Désignation
             </div>
 

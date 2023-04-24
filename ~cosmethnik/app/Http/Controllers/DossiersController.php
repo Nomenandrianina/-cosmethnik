@@ -11,6 +11,7 @@ use App\Repositories\DossiersRepository;
 use Illuminate\Http\Request;
 use App\Models\Famille;
 use App\Models\Usines;
+use App\Models\Unites;
 use App\Models\Sites;
 use App\Models\Dossiers;
 use Flash;
@@ -191,10 +192,19 @@ class DossiersController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
-        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
-        $menu = DeterminateObject($dossier_parent)::$fields;
-        $icon = DeterminateObject($dossier_parent)->icon_menu();
-        return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+        if(DeterminateObject($dossier_parent)->relationLoaded('etat_produit') && DeterminateObject($dossier_parent)->relationLoaded('usine') && DeterminateObject($dossier_parent)->relationLoaded('filiale') && DeterminateObject($dossier_parent)->relationLoaded('marque') && DeterminateObject($dossier_parent)->relationLoaded('geographique') && DeterminateObject($dossier_parent)->relationLoaded('client')){
+            $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+            $menu = DeterminateObject($dossier_parent)::$fields;
+            $icon = DeterminateObject($dossier_parent)->icon_menu();
+            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+        }else{
+            $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->first();
+            $menu = DeterminateObject($dossier_parent)::$fields;
+            $icon = DeterminateObject($dossier_parent)->icon_menu();
+            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+        }
+
+
     }
 
 
@@ -214,6 +224,7 @@ class DossiersController extends AppBaseController
         $etat_prod = Etat_produits::pluck('designation','id');
         $produitfini = Produit_fini::pluck('nom','id');
         $marque = Marques::pluck('description','id');
+        $unite = Unites::all();
         $sites = [];
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
@@ -232,6 +243,7 @@ class DossiersController extends AppBaseController
             'modele' => $produitfini,
             'marque' => $marque,
             'site_texte' => $site_texte,
+            'unite' => $unite
         );
         return view('dossiers.treeview',$view);
     }

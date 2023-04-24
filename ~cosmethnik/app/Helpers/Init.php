@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Emballages;
 use App\Models\Matiere_premiere;
 use App\Models\Produit_fini;
 use App\Models\Produit_semi_finis;
@@ -28,6 +29,9 @@ if (!function_exists('DeterminateObject')) {
                     break;
                 case (strcasecmp($dossier_name, "matière première") == 0 || strcasecmp($dossier_name, "matières première") == 0 || strcasecmp($dossier_name, "matière premières") == 0 || strcasecmp($dossier_name, "matières premières") ==0):
                     return new Matiere_premiere();
+                    break;
+                case (strcasecmp($dossier_name, "emballage") == 0 || strcasecmp($dossier_name, "emballages") == 0):
+                    return new Emballages();
                     break;
         }
 

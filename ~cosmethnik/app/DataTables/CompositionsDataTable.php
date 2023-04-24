@@ -30,7 +30,7 @@ class CompositionsDataTable extends DataTable
      */
     public function query(Compositions $model)
     {
-        return $model->newQuery()->with(['matiere_premiere']);
+        return $model->newQuery()->with(['matiere_premiere'])->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**

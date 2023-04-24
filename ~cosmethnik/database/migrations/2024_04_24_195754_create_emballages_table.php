@@ -17,9 +17,12 @@ class CreateEmballagesTable extends Migration
         Schema::create('emballages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->string('titre');
-            $table->string('description');
-            $table->string('unite');
+            $table->string('titre')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('dossier_id')->unsigned();
+            $table->integer('unite')->unsigned()->nullable();
+            $table->foreign('dossier_id')->references('id')->on('dossiers');
+            $table->foreign('unite')->references('id')->on('unites');
             $table->softDeletes();
         });
     }

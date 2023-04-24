@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version March 10, 2023, 2:17 pm +07
  *
+ * @property interger $matiere_premier_id
  * @property integer $quantite
  * @property string $unite
  * @property string $poids

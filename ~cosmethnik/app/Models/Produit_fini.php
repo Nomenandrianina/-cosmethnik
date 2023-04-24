@@ -217,52 +217,52 @@ class Produit_fini extends Model
         return $this->belongsTo(Condition_conservations::class, 'condition_conservation_id');
     }
 
-    public function commentaires(): MorphMany
+    public function commentaires()
     {
         return $this->morphMany(Commentaires::class, 'model');
     }
 
-    public function familles(): MorphMany{
+    public function familles(){
         return $this->morphMany(Familles::class, 'model');
     }
 
-    public function compositions(): MorphMany{
+    public function compositions(){
         return $this->morphMany(Compositions::class, 'model');
     }
-    public function activites(): MorphMany{
+    public function activites(){
         return $this->morphMany(Activites::class, 'model');
     }
-    public function cas_emploies(): MorphMany{
+    public function cas_emploies(){
         return $this->morphMany(Cas_emploies::class, 'model');
     }
-    public function mmodele_emballages(): MorphMany{
+    public function mmodele_emballages(){
         return $this->morphMany(Modele_emballages::class, 'model');
     }
-    public function mmodele_ingredients(): MorphMany{
+    public function mmodele_ingredients(){
         return $this->morphMany(Modele_ingredients::class, 'model');
     }
-    public function mmodele_materiaux(): MorphMany{
+    public function mmodele_materiaux(){
         return $this->morphMany(Modele_materiaux::class, 'model');
     }
-    public function mmodele_allegations(): MorphMany{
+    public function mmodele_allegations(){
         return $this->morphMany(Modele_allegations::class, 'model');
     }
-    public function mmodele_physico_chimiques(): MorphMany{
+    public function mmodele_physico_chimiques(){
         return $this->morphMany(Modele_physico_chimique::class, 'model');
     }
-    public function mmodele_organoleptiques(): MorphMany{
+    public function mmodele_organoleptiques(){
         return $this->morphMany(Modele_organoleptiques::class, 'model');
     }
-    public function mmodele_allergenes(): MorphMany{
+    public function mmodele_allergenes(){
         return $this->morphMany(Modele_allergenes::class, 'model');
     }
-    public function couts(): MorphMany{
+    public function couts(){
         return $this->morphMany(Couts::class, 'model');
     }
-    public function liste_process(): MorphMany{
+    public function liste_process(){
         return $this->morphMany(Liste_process::class, 'model');
     }
-    public function modele_familles(): MorphMany{
+    public function modele_familles(){
         return $this->morphMany(Modele_familles::class, 'model');
     }
     public function icon() {

@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateCompositionsRequest;
 use App\Repositories\CompositionsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Compositions;
 use App\Models\Matiere_premiere;
 use Illuminate\Support\Facades\DB;
 use Response;
@@ -65,8 +66,8 @@ class CompositionsController extends AppBaseController
         $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
         $menu = DeterminateObject($dossier_parent)::$fields;
         $icon = DeterminateObject($dossier_parent)->icon_menu();
-        $object = DeterminateObject($dossier_parent);
-        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data','matiere_premier','unite','object'));
+        $object = DeterminateObject($dossier_parent)::class;
+        return $compositionsDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data','matiere_premier','unite','object'));
     }
 
     /**
@@ -84,10 +85,18 @@ class CompositionsController extends AppBaseController
         $id_dossier = intval($request->id_dossier);
         $dossier_parent = $request->dossier_parent;
 
+        $model = DeterminateObject($dossier_parent)::find($id_model);
 
-        DB::table('compositions')->insert(
-            ['matiere_premier_id' => $input['produit'],'unite' => $input['unite'], 'quantite' => $input['quantite'],'poids' => $input['poids'], 'rendement' => $input['rdt'], 'freinte' => $input['freinte'], 'model_type' => $input['model_type'],'model_id' => $id_model]
-        );
+        $composition = new Compositions;
+        $composition->matiere_premier_id = $input['produit'];
+        $composition->unite = $input['unite'];
+        $composition->quantite = $input['quantite'];
+        $composition->poids = $input['poids'];
+        $composition->rendement = $input['rdt'];
+        $composition->freinte = $input['freinte'];
+
+        $model->compositions()->save($composition);
+
 
         Flash::success(__('messages.saved', ['model' => __('models/compositions.singular')]));
 
@@ -98,14 +107,9 @@ class CompositionsController extends AppBaseController
         $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
         $menu = DeterminateObject($dossier_parent)::$fields;
         $icon = DeterminateObject($dossier_parent)->icon_menu();
-        $object = DeterminateObject($dossier_parent);
-        return $compositionsDataTable->render('compositions.model', compact('menu','site_texte','icon','dossier_parent','model','data','matiere_premier','unite','object'));
+        $object = DeterminateObject($dossier_parent)::class;
+        return back();
 
-        // $compositions = $this->compositionsRepository->create($input);
-
-        // Flash::success(__('messages.saved', ['model' => __('models/compositions.singular')]));
-
-        // return redirect(route('compositions.index'));
     }
 
     /**
