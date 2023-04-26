@@ -30,8 +30,9 @@ class Modele_emballagesDataTable extends DataTable
      */
     public function query(Modele_emballages $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('emballage')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
+
 
     /**
      * Optional method if you want to use html builder.
@@ -52,27 +53,27 @@ class Modele_emballagesDataTable extends DataTable
                     [
                        'extend' => 'create',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-plus"></i> ' .__('auth.app.create').''
+                       'text' => '<i class="fa fa-plus"></i> ' .__('models\modeleEmballages.table.create').''
                     ],
                     [
                        'extend' => 'export',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-download"></i> ' .__('auth.app.export').''
+                       'text' => '<i class="fa fa-download"></i> ' .__('models\modeleEmballages.table.export').''
                     ],
                     [
                        'extend' => 'print',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-print"></i> ' .__('auth.app.print').''
+                       'text' => '<i class="fa fa-print"></i> ' .__('models\modeleEmballages.table.print').''
                     ],
                     [
                        'extend' => 'reset',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-undo"></i> ' .__('auth.app.reset').''
+                       'text' => '<i class="fa fa-undo"></i> ' .__('models\modeleEmballages.table.reset').''
                     ],
                     [
                        'extend' => 'reload',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
+                       'text' => '<i class="fa fa-refresh"></i> ' .__('models\modeleEmballages.table.reload').''
                     ],
                 ],
                  'language' => [
@@ -89,15 +90,12 @@ class Modele_emballagesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'model_type' => new Column(['title' => __('models/modeleEmballages.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/modeleEmballages.fields.model_id'), 'data' => 'model_id']),
-            'emballage_id' => new Column(['title' => __('models/modeleEmballages.fields.emballage_id'), 'data' => 'emballage_id']),
+            'emballage_id' => new Column(['title' => __('models/modeleEmballages.fields.emballage_id'), 'data' => 'emballage.nom']),
             'quantite' => new Column(['title' => __('models/modeleEmballages.fields.quantite'), 'data' => 'quantite']),
             'unite' => new Column(['title' => __('models/modeleEmballages.fields.unite'), 'data' => 'unite']),
             'freinte' => new Column(['title' => __('models/modeleEmballages.fields.freinte'), 'data' => 'freinte']),
             'maitre' => new Column(['title' => __('models/modeleEmballages.fields.maitre'), 'data' => 'maitre']),
             'variantes' => new Column(['title' => __('models/modeleEmballages.fields.variantes'), 'data' => 'variantes']),
-            'description' => new Column(['title' => __('models/modeleEmballages.fields.description'), 'data' => 'description'])
         ];
     }
 

@@ -297,7 +297,7 @@ class Produit_semi_finis extends Model
         ['menu' => ['props' => 'Fiche technique', 'link' => '']],
         ['menu' => ['props' => 'Documents', 'link' => '']],
         ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
-        ['menu' => ['props' => 'Emballage', 'link' => '']],
+        ['menu' => ['props' => 'Emballage', 'link' => 'emballages.model']],
         ['menu' => ['props' => 'Liste des process', 'link' => '']],
         ['menu' => ['props' => 'Etiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => '']],

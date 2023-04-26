@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property string $unite
  * @property integer $freinte
  * @property boolean $maitre
- * @property integer $variantes
+ * @property string $variantes
  * @property string $description
  */
 class Modele_emballages extends Model
@@ -31,6 +31,8 @@ class Modele_emballages extends Model
 
 
     protected $dates = ['deleted_at'];
+
+    public $timestamps = false;
 
 
 
@@ -60,7 +62,7 @@ class Modele_emballages extends Model
         'unite' => 'string',
         'freinte' => 'integer',
         'maitre' => 'boolean',
-        'variantes' => 'integer',
+        'variantes' => 'string',
         'description' => 'string'
     ];
 

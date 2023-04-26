@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DataTables\CompositionsDataTable;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\CreateCompositionsRequest;
 use App\Http\Requests\UpdateCompositionsRequest;
 use App\Repositories\CompositionsRepository;

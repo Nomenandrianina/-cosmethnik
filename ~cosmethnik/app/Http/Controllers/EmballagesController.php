@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\EmballagesDataTable;
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateEmballagesRequest;
 use App\Http\Requests\UpdateEmballagesRequest;
 use App\Repositories\EmballagesRepository;
@@ -12,6 +12,10 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Emballages;
 use App\Models\Dossiers;
 use Response;
+use App\Models\Matiere_premiere;
+use Illuminate\Support\Facades\DB;
+use App\Models\Sites;
+use App\Models\Unites;
 
 class EmballagesController extends AppBaseController
 {
@@ -33,6 +37,7 @@ class EmballagesController extends AppBaseController
     {
         return $emballagesDataTable->render('emballages.index');
     }
+
 
     /**
      * Show the form for creating a new Emballages.

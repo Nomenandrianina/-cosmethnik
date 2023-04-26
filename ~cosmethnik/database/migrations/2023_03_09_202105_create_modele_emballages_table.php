@@ -19,12 +19,12 @@ class CreateModeleEmballagesTable extends Migration
             $table->string('model_type');
             $table->integer('model_id');
             $table->integer('emballage_id')->unsigned();
-            $table->integer('quantite');
-            $table->string('unite');
-            $table->integer('freinte');
-            $table->boolean('maitre');
-            $table->double('variantes');
-            $table->string('description');
+            $table->integer('quantite')->nullable();
+            $table->string('unite')->nullable();
+            $table->integer('freinte')->nullable();
+            $table->boolean('maitre')->nullable();
+            $table->string('variantes')->nullable();
+            $table->string('description')->nullable();
             $table->softDeletes();
             $table->foreign('emballage_id')->references('id')->on('emballages')
         ->onDelete('cascade');

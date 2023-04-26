@@ -40,3 +40,6 @@ Route::post('dossiers/navigate/details/proprietes', 'App\Http\Controllers\Dossie
 Route::get('proprietes/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\DossiersController@showProprietes')->name('proprietes.model');
 
 Route::get('compositions/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\CompositionsController@model')->name('compositions.model');
+
+Route::get('emballages/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_emballagesController@model')->name('emballages.model');
+

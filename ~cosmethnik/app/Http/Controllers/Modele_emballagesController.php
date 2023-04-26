@@ -10,6 +10,14 @@ use App\Repositories\Modele_emballagesRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Illuminate\Http\Request;
+use App\Models\Matiere_premiere;
+use Illuminate\Support\Facades\DB;
+use App\Models\Sites;
+use App\Models\Unites;
+use App\Models\Emballages;
+use App\Models\Modele_allergenes;
+use App\Models\Modele_emballages;
 
 class Modele_emballagesController extends AppBaseController
 {
@@ -33,6 +41,28 @@ class Modele_emballagesController extends AppBaseController
     }
 
     /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_emballagesDataTable $modeleEmballagesDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $emballages = Emballages::all();
+        $unite = Unites::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        return $modeleEmballagesDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('modele_emballages.model', compact('menu','site_texte','icon','dossier_parent','model','data','emballages','unite','object'));
+    }
+
+    /**
      * Show the form for creating a new Modele_emballages.
      *
      * @return Response
@@ -52,12 +82,26 @@ class Modele_emballagesController extends AppBaseController
     public function store(CreateModele_emballagesRequest $request)
     {
         $input = $request->all();
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
 
-        $modeleEmballages = $this->modeleEmballagesRepository->create($input);
+        $model = DeterminateObject($dossier_parent)::find($id_model);
 
-        Flash::success(__('messages.saved', ['model' => __('models/modeleEmballages.singular')]));
+        $modeleEmballages = new Modele_emballages;
+        $modeleEmballages->emballage_id = $input['emballage'];
+        $modeleEmballages->unite = $input['unite'];
+        $modeleEmballages->quantite = $input['quantite'];
+        $modeleEmballages->variantes = $input['variantes'];
+        $modeleEmballages->freinte = $input['freinte'];
+        $modeleEmballages->maitre =  ($input['maitre'] = "true") ? 1 : 0;
 
-        return redirect(route('modeleEmballages.index'));
+        $model->mmodele_emballages()->save($modeleEmballages);
+
+
+        Flash::success(__('messages.saved', ['model' => __('models/ModeleEmballages.singular')]));
+        return back();
     }
 
 

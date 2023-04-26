@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $nom
  * @property string $titre
  * @property string $description
- * @property string $unite
+ * @property integer $unite
  * @property integer $dossier_id
  */
 class Emballages extends Model
@@ -50,7 +50,7 @@ class Emballages extends Model
         'titre' => 'string',
         'dossier_id' => 'integer',
         'description' => 'string',
-        'unite' => 'string'
+        'unite' => 'integer'
     ];
 
     /**
@@ -59,7 +59,7 @@ class Emballages extends Model
      * @var array
      */
     public static $rules = [
-        'nom' => 'string',
+        'nom' => 'required',
     ];
 
     /**
