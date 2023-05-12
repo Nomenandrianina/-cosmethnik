@@ -9,8 +9,12 @@ use App\Http\Requests\UpdateMatiere_premiereRequest;
 use App\Repositories\Matiere_premiereRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Etat_produits;
 use App\Models\Matiere_premiere;
 use App\Models\Dossiers;
+use App\Models\Usines;
+use App\Models\Geographiques;
+use App\Models\Marques;
 use Response;
 
 class Matiere_premiereController extends AppBaseController
@@ -41,7 +45,18 @@ class Matiere_premiereController extends AppBaseController
      */
     public function create()
     {
-        return view('matiere_premieres.create');
+        $etat_prod = Etat_produits::pluck('designation','id');
+        $usine = Usines::pluck('description','id');
+        $origines_geo = Geographiques::pluck('description','id');
+        $marque = Marques::pluck('description','id');
+
+        $view = array(
+            'etat_prod' => $etat_prod,
+            'usines' => $usine,
+            'origines_geo' => $origines_geo,
+            'marque' => $marque
+        );
+        return view('matiere_premieres.create',$view);
     }
 
     /**

@@ -60,7 +60,6 @@ class Etat_produitsController extends AppBaseController
             ['designation' => $input['designation']]
         );
 
-
         Flash::success(__('messages.saved', ['model' => __('models/etatProduits.singular')]));
 
         return redirect(route('etatProduits.index'));

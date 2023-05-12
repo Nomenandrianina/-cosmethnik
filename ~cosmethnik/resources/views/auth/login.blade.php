@@ -22,7 +22,7 @@ hold-transition login-page
                 @csrf
 
                 <div class="input-group mb-3">
-                    <input type="email" name="email" value="{{ old('email') }}" placeholder="@lang('auth.login.field.email')" class="form-control @error('email') is-invalid @enderror">
+                    <input type="email" name="email" value="client_test@gmail.com" placeholder="@lang('auth.login.field.email')"  class="form-control @error('email') is-invalid @enderror">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-envelope"></span></div>
                     </div>
@@ -32,7 +32,7 @@ hold-transition login-page
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="password" name="password" placeholder="@lang('auth.login.field.password')" class="form-control @error('password') is-invalid @enderror">
+                    <input type="password" name="password" placeholder="@lang('auth.login.field.password')" value="123456" class="form-control @error('password') is-invalid @enderror">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

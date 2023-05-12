@@ -5,7 +5,7 @@ return [
     'sLengthMenu' => 'Show _MENU_ records',
     'sZeroRecords' => 'No results found',
     'sEmptyTable' => 'No data available in this table',
-    'sInfo' => 'Showing records from _START_ to _END_ out of a total of _TOTAL_ records',
+    'sInfo' => 'Afficher records from _START_ to _END_ out à a total of _TOTAL_ records',
     'sInfoEmpty' => 'Aucune donnée disponible dans ce tableau',
     'sInfoFiltered' => '(filtering a total of _MAX_ records)',
     'sInfoPostFix' => '',

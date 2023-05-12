@@ -53,14 +53,11 @@ class Produit_semi_finis extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'produit_semi_finis';
 
     public $timestamps = false;
 
     protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'nom',
@@ -97,7 +94,7 @@ class Produit_semi_finis extends Model
         'condition_conservation_id',
         'precaution_emploie_id',
         'conseil_preparation_utilisation',
-        'prix_vente_uv',
+        'prix_ventxe_uv',
         'monnaie_id',
         'quantite_imprevisionnelle'
     ];
@@ -242,74 +239,49 @@ class Produit_semi_finis extends Model
         return $this->morphMany(Commentaires::class, 'model');
     }
 
-    public function familles(){
+    public function familles(): MorphMany{
         return $this->morphMany(Familles::class, 'model');
     }
 
-    public function compositions(){
+    public function compositions(): MorphMany{
         return $this->morphMany(Compositions::class, 'model');
     }
-    public function activites(){
+    public function activites(): MorphMany{
         return $this->morphMany(Activites::class, 'model');
     }
-    public function cas_emploies(){
+    public function cas_emploies(): MorphMany{
         return $this->morphMany(Cas_emploies::class, 'model');
     }
-    public function mmodele_emballages(){
+    public function mmodele_emballages(): MorphMany{
         return $this->morphMany(Modele_emballages::class, 'model');
     }
-    public function mmodele_ingredients(){
+    public function mmodele_ingredients(): MorphMany{
         return $this->morphMany(Modele_ingredients::class, 'model');
     }
-    public function mmodele_materiaux(){
+    public function mmodele_materiaux(): MorphMany{
         return $this->morphMany(Modele_materiaux::class, 'model');
     }
-    public function mmodele_allegations(){
+    public function mmodele_allegations(): MorphMany{
         return $this->morphMany(Modele_allegations::class, 'model');
     }
-    public function mmodele_physico_chimiques(){
+    public function mmodele_physico_chimiques(): MorphMany{
         return $this->morphMany(Modele_physico_chimique::class, 'model');
     }
-    public function mmodele_organoleptiques(){
+    public function mmodele_organoleptiques(): MorphMany{
         return $this->morphMany(Modele_organoleptiques::class, 'model');
     }
-    public function mmodele_allergenes(){
+    public function mmodele_allergenes(): MorphMany{
         return $this->morphMany(Modele_allergenes::class, 'model');
     }
-    public function couts(){
+    public function couts(): MorphMany{
         return $this->morphMany(Couts::class, 'model');
     }
-    public function liste_process(){
+    public function liste_process(): MorphMany{
         return $this->morphMany(Liste_process::class, 'model');
     }
 
     public function icon() {
         return '<i class="fas fa-flask fa-3x" style="color: coral;"></i>';
     }
-
-    public function icon_menu() {
-        return '<i class="fas fa-flask " style="color: coral;"></i>';
-    }
-
-
-    public static $fields = [
-        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
-        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
-        ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
-        ['menu' => ['props' => 'Emballage', 'link' => 'emballages.model']],
-        ['menu' => ['props' => 'Liste des process', 'link' => '']],
-        ['menu' => ['props' => 'Etiquetage', 'link' => '']],
-        ['menu' => ['props' => 'Ingrédients', 'link' => '']],
-        ['menu' => ['props' => 'Allergènes', 'link' => '']],
-        ['menu' => ['props' => 'Coûts', 'link' => '']],
-        ['menu' => ['props' => 'Nutriments', 'link' => '']],
-        ['menu' => ['props' => 'Organoleptique', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
-        ['menu' => ['props' => 'Allégations', 'link' => '']],
-        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
-        ['menu' => ['props' => 'Activités', 'link' => '']],
-    ];
-
 
 }

@@ -21,7 +21,6 @@
         });
     });
 
-
     function Store_emballage(){
         $('.loading-produit-semi-fini').show();
         let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');

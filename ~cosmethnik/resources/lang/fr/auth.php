@@ -43,6 +43,13 @@ return [
             'reset-password' => 'Mot de passe oublié ?'
         ]
     ],
+    'app'=>[
+        'create'=>'Ajouter',
+        'export'=>'Exporter',
+        'print'=>'Imprimer',
+        'reload'=>'Recharger',
+        'reset'=>'Réinitialiser'
+    ],
     'verify' => [
         'title' => 'Vérifiez votre adresse e-mail',
         'message' => [

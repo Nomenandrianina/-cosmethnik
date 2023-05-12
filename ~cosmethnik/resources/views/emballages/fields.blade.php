@@ -2,7 +2,7 @@
     <!-- Nom Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('nom', __('models/emballages.fields.nom').':') !!}
-        {!! Form::text('nom', null, ['class' => 'form-control','id' => 'nom_emb']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control','id' => 'nom_emb','placeholder'=>'Désignation']) !!}
         {!! Html::decode(Form::label('nom','<span class="text-danger" id="nomErrorEmb"></span>')) !!}
     </div>
     {!! Form::hidden('sites_id',$site_texte[0]->id) !!}

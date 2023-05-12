@@ -344,10 +344,10 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li> --}}
 
-<li class="nav-item">
+{{--  <li class="nav-item">
     <a href="{{ route('matierePremieres.index') }}"
        class="nav-link {{ Request::is('matierePremieres*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-seedling"></i>
         <p>@lang('models/matierePremieres.plural')</p>
     </a>
-</li>
+</li>  --}}

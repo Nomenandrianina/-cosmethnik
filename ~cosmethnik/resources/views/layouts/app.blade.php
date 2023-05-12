@@ -28,20 +28,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @stack('third_party_stylesheets')
-    <style>
-        .dataTables_wrapper {
-            margin: 20px;
-        }
+        <style>
+            .dataTables_wrapper {
+                margin: 20px;
+            }
 
-        .required:after {
-            content: '(*)';
-            color: red;
-            padding-left: 5px;
-        }
-        .nav-link dropdown-toggle{
-            cursor: pointer;
-        }
-    </style>
+            .required:after {
+                content: '(*)';
+                color: red;
+                padding-left: 5px;
+            }
+            .nav-link dropdown-toggle{
+                cursor: pointer;
+            }
+        </style>
     @stack('page_css')
 
 </head>
@@ -106,7 +106,7 @@
                         <li class="user-footer">
                             <a href="{{route('users.profile')}}" class="btn btn-default btn-flat">Profile</a>
                             <a href="#" class="btn btn-default btn-flat float-right" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sign out
+                                Se déconnecter
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

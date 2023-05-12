@@ -29,8 +29,6 @@ class Emballages extends Model
 
     public $timestamps = false;
 
-
-
     public $fillable = [
         'nom',
         'titre',
@@ -62,35 +60,9 @@ class Emballages extends Model
         'nom' => 'required',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    **/
-    public function dossier()
-    {
-        return $this->belongsTo(Dossiers::class, 'dossier_id');
-    }
-
     public function modele_emballages()
     {
         return $this->hasMany(Modele_emballages::class);
     }
-
-    public function icon() {
-        return '<i class="fas fa-inbox fa-3x" style="color: #095a1a;"></i>';
-    }
-    public function icon_menu() {
-        return '<i class="fas fa-inbox" style="color: #095a1a;"></i>';
-    }
-
-    public static $fields = [
-        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
-        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
-        ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Coûts', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
-        ['menu' => ['props' => 'Allégations', 'link' => '']],
-        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
-    ];
-
 
 }
