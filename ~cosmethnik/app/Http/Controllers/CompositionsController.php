@@ -76,7 +76,7 @@ class CompositionsController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateCompositionsRequest $request,CompositionsDataTable $compositionsDataTable)
+    public function store(CreateCompositionsRequest $request)
     {
         $input = $request->all();
         $id_model = intval($request->id_model);
@@ -96,17 +96,8 @@ class CompositionsController extends AppBaseController
 
         $model->compositions()->save($composition);
 
-
-        Flash::success(__('messages.saved', ['model' => __('models/compositions.singular')]));
-
-        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
-        $site_texte = Sites::where('id','=', $site_id)->get();
-        $matiere_premier = Matiere_premiere::all();
-        $unite = Unites::all();
+        Flash::success(__('messages.save', ['model' => __('models/compositions.singular')]));
         $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
-        $menu = DeterminateObject($dossier_parent)::$fields;
-        $icon = DeterminateObject($dossier_parent)->icon_menu();
-        $object = DeterminateObject($dossier_parent)::class;
         return back();
 
     }
