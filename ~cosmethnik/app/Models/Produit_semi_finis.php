@@ -243,9 +243,10 @@ class Produit_semi_finis extends Model
         return $this->morphMany(Familles::class, 'model');
     }
 
-    public function compositions(): MorphMany{
+    public function compositions(){
         return $this->morphMany(Compositions::class, 'model');
     }
+
     public function activites(): MorphMany{
         return $this->morphMany(Activites::class, 'model');
     }
@@ -283,5 +284,28 @@ class Produit_semi_finis extends Model
     public function icon() {
         return '<i class="fas fa-flask fa-3x" style="color: coral;"></i>';
     }
+
+    public function icon_menu() {
+        return '<i class="fas fa-flask" style="color: coral;"></i>';
+    }
+
+    public static $fields = [
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
+        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
+        ['menu' => ['props' => 'Documents', 'link' => '']],
+        ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
+        ['menu' => ['props' => 'Emballage', 'link' => 'emballages.model']],
+        ['menu' => ['props' => 'Liste des process', 'link' => '']],
+        ['menu' => ['props' => 'Etiquetage', 'link' => '']],
+        ['menu' => ['props' => 'Ingrédients', 'link' => '']],
+        ['menu' => ['props' => 'Allergènes', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Nutriments', 'link' => '']],
+        ['menu' => ['props' => 'Organoleptique', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
+        ['menu' => ['props' => 'Allégations', 'link' => '']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
+        ['menu' => ['props' => 'Activités', 'link' => '']],
+    ];
 
 }
