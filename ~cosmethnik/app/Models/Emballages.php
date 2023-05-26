@@ -65,4 +65,14 @@ class Emballages extends Model
         return $this->hasMany(Modele_emballages::class);
     }
 
+    public function icon() {
+        return '<i class="fas fa-inbox fa-3x" style="color: #095a1a;"></i>';
+    }
+    public function icon_accueil() {
+        return '<i class="fas fa-inbox fa-2x" style="color: #095a1a;"></i>';
+    }
+    public function icon_menu() {
+        return '<i class="fas fa-inbox" style="color: #095a1a;"></i>';
+    }
+
 }

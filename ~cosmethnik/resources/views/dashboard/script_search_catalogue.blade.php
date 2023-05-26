@@ -20,6 +20,29 @@
             }
     }
 
+    function Catalogue(event) {
+        var model = event.target.innerText;
+        document.querySelector("#default-data").textContent = model;
+        $('.loading-produit-semi-fini').show();
+        $('#data-ul').remove();
+        $.ajax({
+                url: '{{ route('admin.catalogue') }}',
+                type: 'GET',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    model: model
+                },
+                dataType: 'json',
+                success: function(data){
+                    $('#data-ul').remove();
+                    $('#div-change').html(data.results);
+                },
+                complete: function(){
+                    $('.loading-produit-semi-fini').hide();
+                }
+        });
+    }
+
 $(document).ready(function () {
     $('#link-modal').on('click' , function(e){
         e.preventDefault();

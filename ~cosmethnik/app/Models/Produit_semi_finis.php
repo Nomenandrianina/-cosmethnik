@@ -285,6 +285,10 @@ class Produit_semi_finis extends Model
         return '<i class="fas fa-flask fa-3x" style="color: coral;"></i>';
     }
 
+    public function icon_accueil() {
+        return '<i class="fas fa-flask fa-2x" style="color: coral;"></i>';
+    }
+
     public function icon_menu() {
         return '<i class="fas fa-flask" style="color: coral;"></i>';
     }

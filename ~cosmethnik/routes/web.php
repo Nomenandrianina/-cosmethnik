@@ -33,6 +33,8 @@ Route::get('famille/get_by_famille', 'App\Http\Controllers\FamilleController@get
 
 Route::post('dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');
 
+Route::get('admin/catalogue', 'App\Http\Controllers\DashboardController@catalogue')->name('admin.catalogue');
+
 Route::post('dossiers/navigate/details', 'App\Http\Controllers\DossiersController@ajaxDetails')->name('dossiers.navigate.details');
 
 Route::post('dossiers/navigate/details/proprietes', 'App\Http\Controllers\DossiersController@ajaxProprietes')->name('dossiers.navigate.details.proprietes');

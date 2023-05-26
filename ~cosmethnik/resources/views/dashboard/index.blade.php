@@ -158,7 +158,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="one-prod">
-                                    <span class="two-prod"><i class="fas fa-solid fa-box-open fa-4x"></i></span>
+                                    <span class="two-prod"><i class="fas fa-shopping-bag fa-4x"></i></span>
                                     <span class="three-prod">
                                         Produits <br> Créez de nouveaux produits <br> <small>Créer un produit</small>
                                     </span>
@@ -187,7 +187,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="card">
+                <div class="card" style="height: 395px;">
                     <div class="card-header" style="background-color:#1a4a51">
                         <h5 class="card-title" style="color: #f8f9fa">Mes sites</h5>
                     </div>
@@ -208,24 +208,29 @@
                                     </div>
                             </div>
                         </div>
-                        <ul class="list-group list-group-flush" id="list-site">
-                            @foreach ($sites as $item)
-                                <li class="list-group-item">
-                                    <a href="{{ route('dossiers.treeview',$item->id) }}">
-                                        <span class="one-site">
-                                            <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
-                                            <span class="three-site">
-                                                {{ $item->nom }} <br> <small>{{ $item->type }}</small>
-                                            </span>
-                                        </span>
 
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <div class="d-flex justify-content-center">
-                            {{ $sites->links() }}
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush" id="list-site">
+                                @foreach ($sites as $item)
+                                    <li class="list-group-item">
+                                        <a href="{{ route('dossiers.treeview',$item->id) }}">
+                                            <span class="one-site">
+                                                <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
+                                                <span class="three-site">
+                                                    {{ $item->nom }} <br> <small>{{ $item->type }}</small>
+                                                </span>
+                                            </span>
+
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <div class="d-flex justify-content-center">
+                                {{ $sites->links() }}
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -252,7 +257,7 @@
             {{--  {!! Form::close() !!}  --}}
 
             <div class="col-sm-6">
-                <div class="card">
+                <div class="card" style="height: 395px;">
                     <div class="card-header" style="background-color:#1a4a51">
                         <h5 class="card-title" style="color: #f8f9fa">Catalogue produit</h5>
                     </div>
@@ -275,53 +280,43 @@
                                     </ul>
                             </div>
                             <div class="col-md-4">
-                                <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button  class="nav-link dropdown-toggle" id="default-data" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Produit fini
                                 </button>
                                 <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Produit semi-fini</a></li>
-                                <li><a class="dropdown-item" href="#">Produit semi-fini local</a></li>
-                                <li><a class="dropdown-item" href="#">Matière première</a></li>
-                                {{-- <li><hr class="dropdown-divider"></li> --}}
-                                <li><a class="dropdown-item" href="#">Emballage</a></li>
+                                    <li><a class="dropdown-item" value="Produit semi-fini" onclick="Catalogue(event)" style="cursor: pointer;">Produit semi-fini</a></li>
+                                    <li><a class="dropdown-item" value="Produit semi-fini local" onclick="Catalogue(event)" style="cursor: pointer;">Produit semi-fini local</a></li>
+                                    <li><a class="dropdown-item" value="Matière première" onclick="Catalogue(event)" style="cursor: pointer;">Matière première</a></li>
+                                    <li><a class="dropdown-item" value="Emballage" onclick="Catalogue(event)" style="cursor: pointer;">Emballage</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <ul class="list-group list-group-flush" id="data-ul">
-                            <li class="list-group-item">
-                                <a href="#">
-                                    <span class="one-span">
-                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                        <span class="three-span">
-                                            Brownies <br> <small>Modifié il y a 10 jours </small>
-                                        </span>
-                                    </span>
+                        <div class="card-body p-0" id="div-change">
+                            <ul class="list-group list-group-flush" id="data-ul">
+                                @foreach ($produit_fini as $item)
+                                    <li class="list-group-item">
+                                        <a href="#">
+                                            <span class="one-span">
+                                                <span class="two-span">{!! $item->icon_accueil() !!}</span>
+                                                <span class="three-span">
+                                                    {{ $item->nom }} <br>
+                                                    @if ($item->description)
+                                                        <small>{{ $item->description }} </small>
+                                                    @else
+                                                        <small>Aucune description</small>
+                                                    @endif
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
 
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#">
-                                    <span class="one-span">
-                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                        <span class="three-span">
-                                            Soupe de courgettes <br> <small>Modifié il y a 6 jours </small>
-                                        </span>
-                                    </span>
-
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#">
-                                    <span class="one-span">
-                                        <span class="two-span"><i class="fas fa-solid fa-box-open fa-2x"></i></span>
-                                        <span class="three-span">
-                                            Milk shake <br> <small>Modifié il y a 2 jours </small>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                            <div class="d-flex justify-content-center">
+                                {{ $produit_fini->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
