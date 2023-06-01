@@ -17,7 +17,6 @@ class Filiales extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'filiales';
 
     public $timestamps = false;

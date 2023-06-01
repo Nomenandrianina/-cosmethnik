@@ -30,7 +30,7 @@ class Modele_ingredientsDataTable extends DataTable
      */
     public function query(Modele_ingredients $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('ingredient')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);;
     }
 
     /**
@@ -89,14 +89,12 @@ class Modele_ingredientsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'model_type' => new Column(['title' => __('models/modeleIngredients.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/modeleIngredients.fields.model_id'), 'data' => 'model_id']),
+            'ingredient_id' => new Column(['title' => __('models/modeleIngredients.fields.ingredient_id'), 'data' => 'ingredient.nom']),
             'quantite' => new Column(['title' => __('models/modeleIngredients.fields.quantite'), 'data' => 'quantite']),
             'ogm' => new Column(['title' => __('models/modeleIngredients.fields.ogm'), 'data' => 'ogm']),
             'ionisation' => new Column(['title' => __('models/modeleIngredients.fields.ionisation'), 'data' => 'ionisation']),
             'auxilliaire_technologie' => new Column(['title' => __('models/modeleIngredients.fields.auxilliaire_technologie'), 'data' => 'auxilliaire_technologie']),
             'support' => new Column(['title' => __('models/modeleIngredients.fields.support'), 'data' => 'support']),
-            'ingredient_id' => new Column(['title' => __('models/modeleIngredients.fields.ingredient_id'), 'data' => 'ingredient_id'])
         ];
     }
 
@@ -109,4 +107,5 @@ class Modele_ingredientsDataTable extends DataTable
     {
         return 'modele_ingredients_datatable_' . time();
     }
+
 }

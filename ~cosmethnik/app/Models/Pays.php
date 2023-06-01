@@ -24,7 +24,6 @@ class Pays extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
         'name'
     ];

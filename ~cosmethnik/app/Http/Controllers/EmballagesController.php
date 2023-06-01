@@ -73,9 +73,7 @@ class EmballagesController extends AppBaseController
                 [
                     'titre' => $input['titre'], 'description' => $input['description'],'dossier_id' => $dossier[0]['id']
                 ]
-
             );
-
             return json_encode(array("status"=>200, "dossier_id"=> $dossier[0]['id']));
 
         //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
@@ -102,7 +100,6 @@ class EmballagesController extends AppBaseController
             }
             return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
         }
-
     }
 
     /**

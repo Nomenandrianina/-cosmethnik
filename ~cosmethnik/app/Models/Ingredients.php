@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version March 10, 2023, 1:52 pm +07
  *
  * @property string $nom
- * @property string $origine_geographique
- * @property string $pays_transformation
- * @property string $origine_biologique
+ * @property integer $origine_geographique
+ * @property integer $pays_transformation
+ * @property integer $origine_biologique
  */
 class Ingredients extends Model
 {
@@ -44,9 +44,9 @@ class Ingredients extends Model
     protected $casts = [
         'id' => 'integer',
         'nom' => 'string',
-        'origine_geographique' => 'string',
-        'pays_transformation' => 'string',
-        'origine_biologique' => 'string'
+        'origine_geographique' => 'integer',
+        'pays_transformation' => 'integer',
+        'origine_biologique' => 'integer'
     ];
 
     /**
@@ -55,8 +55,7 @@ class Ingredients extends Model
      * @var array
      */
     public static $rules = [
-        'nom'=>'required',
-        'origine_biologique'=>'required'
+        'nom'=>'required'
     ];
 
     public function modele_ingredients()

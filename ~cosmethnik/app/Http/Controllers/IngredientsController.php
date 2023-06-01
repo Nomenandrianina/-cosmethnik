@@ -40,13 +40,10 @@ class IngredientsController extends AppBaseController
      */
     public function create()
     {
-        $origines_geo = Geographiques::select('description')->get();
-        // $views =array(
-        //     'origines_geo' => $origines_geo,
-        // );
+        $origines_geo = Geographiques::all()->pluck('description', 'id');
+
         return view('ingredients.create',compact('origines_geo'));
     }
-
 
     /**
      * Store a newly created Ingredients in storage.

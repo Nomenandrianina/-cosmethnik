@@ -203,8 +203,6 @@ class DossiersController extends AppBaseController
             $icon = DeterminateObject($dossier_parent)->icon_menu();
             return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
         }
-
-
     }
 
 

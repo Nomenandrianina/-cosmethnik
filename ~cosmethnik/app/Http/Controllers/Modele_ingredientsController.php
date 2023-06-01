@@ -8,8 +8,15 @@ use App\Http\Requests\CreateModele_ingredientsRequest;
 use App\Http\Requests\UpdateModele_ingredientsRequest;
 use App\Repositories\Modele_ingredientsRepository;
 use Flash;
+use Illuminate\Http\Request;
+use App\Models\Sites;
+use App\Models\Unites;
+use App\Models\Emballages;
+use App\Models\Ingredients;
+use App\Models\Modele_ingredients;
 use App\Http\Controllers\AppBaseController;
 use Response;
+
 
 class Modele_ingredientsController extends AppBaseController
 {
@@ -43,7 +50,7 @@ class Modele_ingredientsController extends AppBaseController
     }
 
     /**
-     * Store a newly created Modele_ingredients in storage.
+     * Insertion d'une nouvelle modele ingredients
      *
      * @param CreateModele_ingredientsRequest $request
      *
@@ -53,12 +60,53 @@ class Modele_ingredientsController extends AppBaseController
     {
         $input = $request->all();
 
-        $modeleIngredients = $this->modeleIngredientsRepository->create($input);
+        // $modeleIngredients = $this->modeleIngredientsRepository->create($input);
+
+        $input = $request->all();
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+
+        $model = DeterminateObject($dossier_parent)::find($id_model);
+
+        $modeleingredients = new Modele_ingredients;
+        $modeleingredients->quantite = $input['quantite'];
+        $modeleingredients->ogm = $request->has('omg');
+        $modeleingredients->ionisation = $request->has('ionisation');
+        $modeleingredients->auxilliaire_technologie = $request->has('auxiliaire');
+        $modeleingredients->support = $request->has('support');
+        $modeleingredients->ingredient_id = $request->ingredient;
+        $model->mmodele_ingredients()->save($modeleingredients);
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleIngredients.singular')]));
 
-        return redirect(route('modeleIngredients.index'));
+        return back();
     }
+
+    /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_ingredientsDataTable $modeleIngredientsDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $emballages = Emballages::all();
+        $unite = Unites::all();
+        $ingredients = Ingredients::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        return $modeleIngredientsDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('modele_ingredients.model', compact('menu','ingredients','site_texte','icon','dossier_parent','model','data','emballages','unite','object'));
+    }
+
 
     /**
      * Display the specified Modele_ingredients.

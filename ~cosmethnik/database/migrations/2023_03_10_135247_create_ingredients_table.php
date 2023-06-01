@@ -17,9 +17,9 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->string('origine_geographique');
-            $table->string('pays_transformation');
-            $table->string('origine_biologique');
+            $table->integer('origine_geographique');
+            $table->integer('pays_transformation');
+            $table->integer('origine_biologique');
             $table->softDeletes();
         });
     }

@@ -124,5 +124,22 @@
     100% {
         transform: rotate(360deg);
     }
+}
 
-    }
+.checkbox-ingredients{
+    width: 25%!important;
+}
+
+.checkbox-auxiliaire{
+    width: 9%!important;
+}
+
+.auxiliaire{
+    max-width: 20%!important;
+}
+
+.btn-validation{
+    width: 67px;
+    margin: 32px 0px 0px 0px;
+    height: 37px;
+}

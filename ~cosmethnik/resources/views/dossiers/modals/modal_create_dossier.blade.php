@@ -1,5 +1,4 @@
 <div class="modal fade" id="dossier-modal" tabindex="-1" aria-labelledby="examplemodalsLabel" aria-hidden="true">
-      {{-- {!! Form::open(['id' => 'create_dossier']) !!} --}}
     <div class="modal-dialog modal-elements">
       <div class="modal-content">
         <div class="modal-header modal-head-color">
@@ -16,5 +15,4 @@
         </div>
       </div>
     </div>
-     {{--  {!! Form::close() !!}  --}}
 </div>

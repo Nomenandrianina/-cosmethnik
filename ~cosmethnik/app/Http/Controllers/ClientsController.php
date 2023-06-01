@@ -45,6 +45,7 @@ class ClientsController extends AppBaseController
         return view('clients.create',compact('pays'));
     }
 
+
     /**
      * Store a newly created Clients in storage.
      *

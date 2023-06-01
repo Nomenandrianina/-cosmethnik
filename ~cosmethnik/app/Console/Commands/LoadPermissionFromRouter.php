@@ -29,7 +29,6 @@ class LoadPermissionFromRouter extends Command
      *
      * @return void
      */
-
     public function __construct(PermissionRepository $permissionRepo)
     {
         $this->permissionRepository = $permissionRepo;

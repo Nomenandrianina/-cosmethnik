@@ -25,12 +25,11 @@ class Modele_ingredients extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'modele_ingredients';
 
+    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
@@ -67,7 +66,7 @@ class Modele_ingredients extends Model
      * @var array
      */
     public static $rules = [
-
+        'quantite' => 'required',
     ];
 
     public function model(): MorphTo
@@ -78,6 +77,5 @@ class Modele_ingredients extends Model
     public function ingredient(){
         return $this->belongsTo(Ingredients::class, 'ingredient_id');
     }
-
 
 }

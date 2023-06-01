@@ -12,21 +12,7 @@
     </section>
 
     <div class="content px-3">
-
-        {{--  @include('adminlte-templates::common.errors')  --}}
-        @if(!empty($errors))
-            @if($errors->any())
-                {{--  @if($errors->all())  --}}
-                {{--  <span class="text-danger">{{ $errors-> }}</span>  --}}
-                {{--  @endif  --}}
-            @endif
-        @endif
-
-        {{--  @error('nom')
-
-        @enderror  --}}
         <div class="card">
-
             {!! Form::open(['route' => 'ingredients.store']) !!}
 
             <div class="card-body">

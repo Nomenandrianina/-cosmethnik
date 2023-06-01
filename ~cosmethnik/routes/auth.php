@@ -41,8 +41,6 @@ Route::resource('sites', App\Http\Controllers\SitesController::class);
 
 Route::resource('dossiers', App\Http\Controllers\DossiersController::class);
 
-
-
 Route::resource('commentaires', App\Http\Controllers\CommentairesController::class);
 
 Route::resource('familles', App\Http\Controllers\FamilleController::class);

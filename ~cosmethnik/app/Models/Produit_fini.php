@@ -283,7 +283,7 @@ class Produit_fini extends Model
         ['menu' => ['props' => 'Emballage', 'link' => 'emballages.model']],
         ['menu' => ['props' => 'Liste des process', 'link' => '']],
         ['menu' => ['props' => 'Etiquetage', 'link' => '']],
-        ['menu' => ['props' => 'Ingrédients', 'link' => '']],
+        ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
         ['menu' => ['props' => 'Allergènes', 'link' => '']],
         ['menu' => ['props' => 'Coûts', 'link' => '']],
         ['menu' => ['props' => 'Nutriments', 'link' => '']],

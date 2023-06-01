@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'singular' => 'Ingédient',
-  'plural' => 'Ingédients',
+  'singular' => 'Ingrédient',
+  'plural' => 'Ingrédients',
   'fields' =>
   array (
     'id' => 'Id',

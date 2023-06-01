@@ -45,3 +45,5 @@ Route::get('compositions/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent
 
 Route::get('emballages/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_emballagesController@model')->name('emballages.model');
 
+Route::get('ingredients/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_ingredientsController@model')->name('ingredients.model');
+

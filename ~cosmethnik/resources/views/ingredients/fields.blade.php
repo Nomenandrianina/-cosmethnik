@@ -10,13 +10,13 @@
 <!-- Origine Geographique Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('origine_geographique', __('models/ingredients.fields.origine_geographique').':') !!}
-    {!! Form::select('origine_geographique', $origines_geo->pluck('description'),null, ['class' => 'form-control']) !!}
+    {!! Form::select('origine_geographique', $origines_geo,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Pays Transformation Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('pays_transformation', __('models/ingredients.fields.pays_transformation').':') !!}
-    {!! Form::select('pays_transformation',  $origines_geo->pluck('description'),null, ['class' => 'form-control']) !!}
+    {!! Form::select('pays_transformation',  $origines_geo,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Origine Biologique Field -->

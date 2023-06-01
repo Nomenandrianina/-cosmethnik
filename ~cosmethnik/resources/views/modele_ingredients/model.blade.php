@@ -2,8 +2,8 @@
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
-            <form action="{{ route('modeleEmballages.store') }}" method="POST">
-                    @csrf
+            <form action="{{ route('modeleIngredients.store') }}" method="POST">
+                @csrf
                 <div class="row">
                     <input type="hidden" name="id_model" value="{{ $data[0] }}">
                     <input type="hidden" name="id_site" value="{{ $data[1] }}">
@@ -12,9 +12,9 @@
                     <input type="hidden" name="model_type" value="{{ $object }}">
 
                     <div class="col-sm-2">
-                        <label for="inputPassword5" class="form-label">Emballage: </label>
-                        <select name="emballage" id="emballage" class="form-control">
-                            @foreach ($emballages as $item)
+                        <label for="inputPassword5" class="form-label">Ingrédients: </label>
+                        <select name="ingredient" id="ingredient" class="form-control">
+                            @foreach ($ingredients as $item)
                                 <option value="{{ $item->id }}">{{ $item->nom }}</option>
                             @endforeach
                         </select>
@@ -22,7 +22,10 @@
 
                     <div class="col-sm-1">
                         <label for="inputPassword5" class="form-label">Quantité: </label>
-                        <input type="number" name="quantite" min="1" class="form-control">
+                        <input type="number" name="quantite" placeholder="1" min="1"  class="form-control">
+                        @if($errors->has('quantite'))
+                            <span class="text-danger">{{ $errors->first('quantite') }}</span>
+                        @endif
                     </div>
 
                     <div class="col-sm-1">
@@ -35,26 +38,25 @@
                     </div>
 
                     <div class="col-sm-1">
-                        <label for="inputPassword5" class="form-label">Freinte%: </label>
-                        <input type="number" name="freinte" class="form-control">
+                        <label for="inputPassword5" class="form-label">OGM: </label>
+                        <input class="form-control checkbox-ingredients" type="checkbox" name="omg" value="1" >
                     </div>
 
-                    <div class="col-sm-3">
-                        <label for="inputPassword5" class="form-label">Niveau d&apos;emballage: </label>
-                        <select name="variantes" id="variantes" class="form-control">
-                            <option value="Primaire">Primaire</option>
-                            <option value="Secondaire">Secondaire</option>
-                            <option value="Tertiaire">Tertiaire</option>
-                        </select>
+                    <div class="col-sm-1">
+                        <label for="inputPassword5" class="form-label">Ionisation: </label>
+                        <input class="form-control checkbox-ingredients" type="checkbox" name="ionisation"  value="1" >
                     </div>
 
-                    <div class="col-sm-2">
-                        <label for="inputPassword5" class="form-label">Maître: </label>
-                        <select name="maitre" id="maitre" class="form-control">
-                            <option value="true">Oui</option>
-                            <option value="false">Non</option>
-                        </select>
+                    <div class="col-sm-3 auxiliaire">
+                        <label for="inputPassword5" class="form-label">Auxiliaire technologique: </label>
+                        <input class="form-control checkbox-auxiliaire" type="checkbox" name="auxiliaire" value="1"  >
                     </div>
+
+                    <div class="col-sm-1">
+                        <label for="inputPassword5" class="form-label">Support: </label>
+                        <input class="form-control checkbox-ingredients" type="checkbox" name="support" value="1"  >
+                    </div>
+
                     <button type="submit" class="btn btn-primary btn-validation">Ajouter</button>
                 </div>
             </form>
@@ -69,7 +71,7 @@
 
         <div class="card">
             <div class="card-body p-0">
-                @include('modele_emballages.table')
+                @include('ingredients.table')
 
                 <div class="card-footer clearfix float-right">
                     <div class="float-right">
@@ -81,6 +83,4 @@
     </div>
 
 @endsection
-
-
 
