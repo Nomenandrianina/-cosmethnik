@@ -253,31 +253,31 @@ class Produit_semi_finis extends Model
     public function cas_emploies(): MorphMany{
         return $this->morphMany(Cas_emploies::class, 'model');
     }
-    public function mmodele_emballages(): MorphMany{
+    public function mmodele_emballages(){
         return $this->morphMany(Modele_emballages::class, 'model');
     }
-    public function mmodele_ingredients(): MorphMany{
+    public function mmodele_ingredients(){
         return $this->morphMany(Modele_ingredients::class, 'model');
     }
-    public function mmodele_materiaux(): MorphMany{
+    public function mmodele_materiaux(){
         return $this->morphMany(Modele_materiaux::class, 'model');
     }
-    public function mmodele_allegations(): MorphMany{
+    public function mmodele_allegations(){
         return $this->morphMany(Modele_allegations::class, 'model');
     }
-    public function mmodele_physico_chimiques(): MorphMany{
+    public function mmodele_physico_chimiques(){
         return $this->morphMany(Modele_physico_chimique::class, 'model');
     }
-    public function mmodele_organoleptiques(): MorphMany{
+    public function mmodele_organoleptiques(){
         return $this->morphMany(Modele_organoleptiques::class, 'model');
     }
-    public function mmodele_allergenes(): MorphMany{
+    public function mmodele_allergenes(){
         return $this->morphMany(Modele_allergenes::class, 'model');
     }
-    public function couts(): MorphMany{
+    public function couts(){
         return $this->morphMany(Couts::class, 'model');
     }
-    public function liste_process(): MorphMany{
+    public function liste_process(){
         return $this->morphMany(Liste_process::class, 'model');
     }
 
@@ -302,7 +302,7 @@ class Produit_semi_finis extends Model
         ['menu' => ['props' => 'Liste des process', 'link' => '']],
         ['menu' => ['props' => 'Etiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
-        ['menu' => ['props' => 'Allergènes', 'link' => '']],
+        ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
         ['menu' => ['props' => 'Coûts', 'link' => '']],
         ['menu' => ['props' => 'Nutriments', 'link' => '']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],

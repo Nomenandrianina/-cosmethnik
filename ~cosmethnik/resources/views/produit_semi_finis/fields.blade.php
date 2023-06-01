@@ -85,7 +85,7 @@
     </div>
 </div>
 
-@if (isset($doc))
+@if (isset($doc) && $doc->isEmpty() != true)
     {!! Form::hidden('sites_id',$doc[0]->site->id) !!}
 @endif
 

@@ -30,7 +30,7 @@ class Modele_allergenesDataTable extends DataTable
      */
     public function query(Modele_allergenes $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('allergene')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**
@@ -76,7 +76,7 @@ class Modele_allergenesDataTable extends DataTable
                     ],
                 ],
                  'language' => [
-                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
+                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json'),
                  ],
             ]);
     }
@@ -89,15 +89,28 @@ class Modele_allergenesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'model_type' => new Column(['title' => __('models/modeleAllergenes.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/modeleAllergenes.fields.model_id'), 'data' => 'model_id']),
+            'allergene_id' => new Column(['title' => __('models/modeleAllergenes.fields.allergene_id'), 'data' => 'allergene.nom']),
             'quantite' => new Column(['title' => __('models/modeleAllergenes.fields.quantite'), 'data' => 'quantite']),
-            'pres_volontaire' => new Column(['title' => __('models/modeleAllergenes.fields.pres_volontaire'), 'data' => 'pres_volontaire']),
-            'pres_fortuite' => new Column(['title' => __('models/modeleAllergenes.fields.pres_fortuite'), 'data' => 'pres_fortuite']),
-            'arbre_decision' => new Column(['title' => __('models/modeleAllergenes.fields.arbre_decision'), 'data' => 'arbre_decision']),
+            'pres_volontaire' => new Column(['title' => __('models/modeleAllergenes.fields.pres_volontaire'), 'data' => 'pres_volontaire','render' => 'function() {
+                var value = full.pres_volontaire;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }',]),
+            'pres_fortuite' => new Column(['title' => __('models/modeleAllergenes.fields.pres_fortuite'), 'data' => 'pres_fortuite',
+            'render' => 'function() {
+                var value = full.pres_fortuite;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }']),
             'source_pres_volontaire' => new Column(['title' => __('models/modeleAllergenes.fields.source_pres_volontaire'), 'data' => 'source_pres_volontaire']),
             'source_pres_fortuite' => new Column(['title' => __('models/modeleAllergenes.fields.source_pres_fortuite'), 'data' => 'source_pres_fortuite']),
-            'allergene_id' => new Column(['title' => __('models/modeleAllergenes.fields.allergene_id'), 'data' => 'allergene_id'])
+
         ];
     }
 

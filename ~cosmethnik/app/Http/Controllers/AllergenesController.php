@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AllergenesDataTable;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Requests\CreateAllergenesRequest;
 use App\Http\Requests\UpdateAllergenesRequest;
 use App\Repositories\AllergenesRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Allergenes;
 use Response;
 
 class AllergenesController extends AppBaseController
@@ -39,7 +41,8 @@ class AllergenesController extends AppBaseController
      */
     public function create()
     {
-        return view('allergenes.create');
+        $allergenes = Allergenes::pluck('nom','id')->all();
+        return view('allergenes.create')->with('allergenes', $allergenes);
     }
 
     /**
@@ -52,8 +55,15 @@ class AllergenesController extends AppBaseController
     public function store(CreateAllergenesRequest $request)
     {
         $input = $request->all();
+        $input['allergene_enfant'] = empty($input['allergene_enfant']) ? 0 : $input['allergene_enfant'];
 
-        $allergenes = $this->allergenesRepository->create($input);
+        DB::table('allergenes')->insert(
+            [
+                'nom' => $input['nom'], 'description' => $input['description'], 'libelle_legale' => $input['libelle_legale'],
+                'type' => $input['type'], 'code_allergene' => $input['code_allergene'], 'seuil_reglementaire' => $input['seuil_reglementaire'],
+                'allergene_enfant' => $input['allergene_enfant']
+            ]
+        );
 
         Flash::success(__('messages.saved', ['model' => __('models/allergenes.singular')]));
 

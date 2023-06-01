@@ -9,6 +9,13 @@ use App\Http\Requests\UpdateModele_allergenesRequest;
 use App\Repositories\Modele_allergenesRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Allergenes;
+use App\Models\Matiere_premiere;
+use App\Models\Modele_allergenes;
+use App\Models\Ressources;
+use Illuminate\Http\Request;
+use App\Models\Sites;
+use App\Models\Unites;
 use Response;
 
 class Modele_allergenesController extends AppBaseController
@@ -33,6 +40,29 @@ class Modele_allergenesController extends AppBaseController
     }
 
     /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_allergenesDataTable $modeleAllergenesDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $allergenes = Allergenes::all();
+        $mp = Matiere_premiere::all();
+        $ressource = Ressources::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        return $modeleAllergenesDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('modele_allergenes.model', compact('menu','site_texte','icon','dossier_parent','model','data','allergenes','mp','object','ressource'));
+    }
+
+    /**
      * Show the form for creating a new Modele_allergenes.
      *
      * @return Response
@@ -52,12 +82,31 @@ class Modele_allergenesController extends AppBaseController
     public function store(CreateModele_allergenesRequest $request)
     {
         $input = $request->all();
+        $input['pres_volontaire'] = $request->has('pres_volontaire');
+        $input['pres_fortuite'] = $request->has('pres_fortuite');
 
-        $modeleAllergenes = $this->modeleAllergenesRepository->create($input);
+        $id_model = intval($request->id_model);
+        $dossier_parent = $request->dossier_parent;
+
+        $model = DeterminateObject($dossier_parent)::find($id_model);
+
+        $modeleAllergenes = new Modele_allergenes;
+        $modeleAllergenes->allergene_id = $input['allergenes'];
+        $modeleAllergenes->quantite = $input['quantite'];
+        $modeleAllergenes->pres_volontaire = $input['pres_volontaire'];
+        $modeleAllergenes->pres_fortuite = $input['pres_fortuite'];
+        $modeleAllergenes->arbre_decision = $input['arbre_decision'];
+        if($request->has('source_volontaire') && $request->has('source_fortuite')){
+            $modeleAllergenes->source_pres_volontaire = $input['source_volontaire'];
+            $modeleAllergenes->source_pres_fortuite = $input['source_fortuite'];
+        }
+
+
+        $model->mmodele_allergenes()->save($modeleAllergenes);
+
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleAllergenes.singular')]));
-
-        return redirect(route('modeleAllergenes.index'));
+        return back();
     }
 
     /**

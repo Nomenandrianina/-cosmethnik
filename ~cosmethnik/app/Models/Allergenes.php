@@ -63,7 +63,9 @@ class Allergenes extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom' => 'required',
+        'code_allergene' => 'required',
+        'type' => 'required'
     ];
 
     public function modele_allergenes()

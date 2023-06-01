@@ -17,11 +17,11 @@ class CreateAllergenesTable extends Migration
         Schema::create('allergenes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->string('description');
-            $table->string('libelle_legale');
+            $table->string('description')->nullable();
+            $table->string('libelle_legale')->nullable();
             $table->string('type');
             $table->string('code_allergene');
-            $table->string('seuil_reglementaire');
+            $table->string('seuil_reglementaire')->nullable();
             $table->integer('allergene_enfant');
             $table->softDeletes();
         });

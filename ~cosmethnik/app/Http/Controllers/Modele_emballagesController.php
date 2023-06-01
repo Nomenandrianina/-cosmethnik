@@ -83,8 +83,6 @@ class Modele_emballagesController extends AppBaseController
     {
         $input = $request->all();
         $id_model = intval($request->id_model);
-        $site_id = intval($request->id_site);
-        $id_dossier = intval($request->id_dossier);
         $dossier_parent = $request->dossier_parent;
 
         $model = DeterminateObject($dossier_parent)::find($id_model);

@@ -75,4 +75,14 @@ class Emballages extends Model
         return '<i class="fas fa-inbox" style="color: #095a1a;"></i>';
     }
 
+    public static $fields = [
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
+        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
+        ['menu' => ['props' => 'Documents', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
+        ['menu' => ['props' => 'Activités', 'link' => '']],
+    ];
+
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 
 /**
@@ -30,6 +31,8 @@ class Modele_allergenes extends Model
 
 
     protected $dates = ['deleted_at'];
+
+    public $timestamps = false;
 
 
 
