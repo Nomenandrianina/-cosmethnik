@@ -7,26 +7,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
- * Class Geographiques
+ * Class Origine_biologique
  * @package App\Models
- * @version March 9, 2023, 4:02 pm +07
+ * @version June 5, 2023, 1:28 pm +07
  *
- * @property string $description
+ * @property string $nom
  */
-class Geographiques extends Model
+class Origine_biologique extends Model
 {
     use SoftDeletes;
 
+    public $timestamps = false;
 
-    public $table = 'geographique';
-
+    public $table = 'origine_biologique';
 
     protected $dates = ['deleted_at'];
 
-    public $timestamps = false;
+
 
     public $fillable = [
-        'description'
+        'nom'
     ];
 
     /**
@@ -36,7 +36,7 @@ class Geographiques extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'description' => 'string'
+        'nom' => 'string'
     ];
 
     /**
@@ -45,17 +45,8 @@ class Geographiques extends Model
      * @var array
      */
     public static $rules = [
-        'description'=>'required',
+        'nom' => 'required',
     ];
 
-    public function produit_finis()
-    {
-        return $this->hasMany(Produit_fini::class);
-    }
-
-    public function ingredients()
-    {
-        return $this->hasMany(Ingredients::class);
-    }
 
 }

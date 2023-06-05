@@ -20,6 +20,9 @@ class CreateIngredientsTable extends Migration
             $table->integer('origine_geographique');
             $table->integer('pays_transformation');
             $table->integer('origine_biologique');
+            $table->foreign('origine_geographique')->references('id')->on('Geographiques');
+            $table->foreign('pays_transformation')->references('id')->on('Geographiques');
+            $table->foreign('origine_biologique')->references('id')->on('origine_biologique');
             $table->softDeletes();
         });
     }

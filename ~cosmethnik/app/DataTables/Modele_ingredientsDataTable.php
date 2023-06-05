@@ -30,7 +30,7 @@ class Modele_ingredientsDataTable extends DataTable
      */
     public function query(Modele_ingredients $model)
     {
-        return $model->newQuery()->with('ingredient')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);;
+        return $model->newQuery()->with('ingredient')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**
@@ -91,10 +91,42 @@ class Modele_ingredientsDataTable extends DataTable
         return [
             'ingredient_id' => new Column(['title' => __('models/modeleIngredients.fields.ingredient_id'), 'data' => 'ingredient.nom']),
             'quantite' => new Column(['title' => __('models/modeleIngredients.fields.quantite'), 'data' => 'quantite']),
-            'ogm' => new Column(['title' => __('models/modeleIngredients.fields.ogm'), 'data' => 'ogm']),
-            'ionisation' => new Column(['title' => __('models/modeleIngredients.fields.ionisation'), 'data' => 'ionisation']),
-            'auxilliaire_technologie' => new Column(['title' => __('models/modeleIngredients.fields.auxilliaire_technologie'), 'data' => 'auxilliaire_technologie']),
-            'support' => new Column(['title' => __('models/modeleIngredients.fields.support'), 'data' => 'support']),
+            'ogm' => new Column(['title' => __('models/modeleIngredients.fields.ogm'), 'data' => 'ogm',
+            'render' => 'function() {
+                var value = full.ogm;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }']),
+            'ionisation' => new Column(['title' => __('models/modeleIngredients.fields.ionisation'), 'data' => 'ionisation',
+            'render' => 'function() {
+                var value = full.ionisation;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }']),
+            'auxilliaire_technologie' => new Column(['title' => __('models/modeleIngredients.fields.auxilliaire_technologie'), 'data' => 'auxilliaire_technologie',
+            'render' => 'function() {
+                var value = full.auxilliaire_technologie;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }']),
+            'support' => new Column(['title' => __('models/modeleIngredients.fields.support'), 'data' => 'support',
+            'render' => 'function() {
+                var value = full.support;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }']),
         ];
     }
 
@@ -107,5 +139,4 @@ class Modele_ingredientsDataTable extends DataTable
     {
         return 'modele_ingredients_datatable_' . time();
     }
-
 }

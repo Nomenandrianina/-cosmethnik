@@ -115,3 +115,6 @@ Route::resource('modeleFamilles', App\Http\Controllers\Modele_famillesController
 
 Route::resource('matierePremieres', App\Http\Controllers\Matiere_premiereController::class);
 
+
+
+Route::resource('origineBiologiques', App\Http\Controllers\Origine_biologiqueController::class);

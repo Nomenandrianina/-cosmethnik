@@ -16,8 +16,8 @@ return [
     'oPaginate' => [
         'sFirst' => 'First',
         'sLast' => 'Last',
-        'sNext' => 'Next',
-        'sPrevious' => 'Previous'
+        'sNext' => 'Suivant',
+        'sPrevious' => 'Précedant'
     ],
     'oAria' => [
         'sSortAscending' => ': Activate to sort the column in ascending order',

@@ -320,6 +320,14 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('origineBiologiques.index') }}" class="nav-link {{ Request::is('origineBiologiques*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-leaf"></i>
+        <p>@lang('models/origineBiologiques.plural')</p>
+    </a>
+</li>
+
+
 {{--  <li class="nav-item">
     <a href="{{ route('produitFinis.index') }}"
        class="nav-link {{ Request::is('produitFinis*') ? 'active' : '' }}">
@@ -351,3 +359,4 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         <p>@lang('models/matierePremieres.plural')</p>
     </a>
 </li>  --}}
+

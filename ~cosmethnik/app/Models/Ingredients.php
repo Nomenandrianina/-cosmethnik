@@ -20,7 +20,6 @@ class Ingredients extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'ingredients';
 
     public $timestamps = false;
@@ -61,6 +60,18 @@ class Ingredients extends Model
     public function modele_ingredients()
     {
         return $this->hasMany(Modele_ingredients::class);
+    }
+
+    public function geographique(){
+        return $this->belongsTo(Geographiques::class, 'origine_geographique');
+    }
+
+    public function transformation(){
+        return $this->belongsTo(Geographiques::class, 'pays_transformation');
+    }
+
+    public function biologique(){
+        return $this->belongsTo(Origine_biologique::class, 'origine_biologique');
     }
 
 }

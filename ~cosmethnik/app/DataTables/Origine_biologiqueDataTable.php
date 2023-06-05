@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Ingredients;
+use App\Models\Origine_biologique;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class IngredientsDataTable extends DataTable
+class Origine_biologiqueDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,18 +19,18 @@ class IngredientsDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'ingredients.datatables_actions');
+        return $dataTable->addColumn('action', 'origine_biologiques.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Ingredients $model
+     * @param \App\Models\Origine_biologique $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Ingredients $model)
+    public function query(Origine_biologique $model)
     {
-        return $model->newQuery()->with(['geographique','transformation','biologique']);
+        return $model->newQuery();
     }
 
     /**
@@ -89,10 +89,7 @@ class IngredientsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nom' => new Column(['title' => __('models/ingredients.fields.nom'), 'data' => 'nom']),
-            'origine_geographique' => new Column(['title' => __('models/ingredients.fields.origine_geographique'), 'data' => 'geographique.description']),
-            'pays_transformation' => new Column(['title' => __('models/ingredients.fields.pays_transformation'), 'data' => 'transformation.description']),
-            'origine_biologique' => new Column(['title' => __('models/ingredients.fields.origine_biologique'), 'data' => 'biologique.nom'])
+            'nom' => new Column(['title' => __('models/origineBiologiques.fields.nom'), 'data' => 'nom'])
         ];
     }
 
@@ -103,6 +100,6 @@ class IngredientsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'ingredients_datatable_' . time();
+        return 'origine_biologiques_datatable_' . time();
     }
 }

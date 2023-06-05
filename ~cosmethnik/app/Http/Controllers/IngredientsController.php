@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateIngredientsRequest;
 use App\Repositories\IngredientsRepository;
 use Flash;
 use App\Models\Geographiques;
+use App\Models\Origine_biologique;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -41,8 +42,9 @@ class IngredientsController extends AppBaseController
     public function create()
     {
         $origines_geo = Geographiques::all()->pluck('description', 'id');
+        $origine_biologique = Origine_biologique::all()->pluck('nom', 'id');
 
-        return view('ingredients.create',compact('origines_geo'));
+        return view('ingredients.create',compact('origines_geo','origine_biologique'));
     }
 
     /**

@@ -9,6 +9,6 @@ return array (
     'nom' => 'Nom',
     'origine_geographique' => 'Origine géographique',
     'pays_transformation' => 'Pays de transformation',
-    'origine_biologique' => 'Orignie biologique',
+    'origine_biologique' => 'Origine biologique',
   ),
 );
