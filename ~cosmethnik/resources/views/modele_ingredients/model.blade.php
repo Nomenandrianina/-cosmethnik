@@ -42,12 +42,12 @@
                         <input class="form-control checkbox-ingredients" type="checkbox" name="omg" value="1" >
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <label for="inputPassword5" class="form-label">Ionisation: </label>
-                        <input class="form-control checkbox-ingredients" type="checkbox" name="ionisation"  value="1" >
+                        <input class="form-control" type="checkbox" name="ionisation"  value="1" style="max-width: 12% !important;">
                     </div>
 
-                    <div class="col-sm-3 auxiliaire">
+                    <div class="col-sm-4 auxiliaire">
                         <label for="inputPassword5" class="form-label">Auxiliaire technologique: </label>
                         <input class="form-control checkbox-auxiliaire" type="checkbox" name="auxiliaire" value="1"  >
                     </div>
