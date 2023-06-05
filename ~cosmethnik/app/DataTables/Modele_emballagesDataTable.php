@@ -53,27 +53,27 @@ class Modele_emballagesDataTable extends DataTable
                     [
                        'extend' => 'create',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-plus"></i> ' .__('models\modeleEmballages.table.create').''
+                       'text' => '<i class="fa fa-plus"></i> ' .__('auth.app.create').''
                     ],
                     [
                        'extend' => 'export',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-download"></i> ' .__('models\modeleEmballages.table.export').''
+                       'text' => '<i class="fa fa-download"></i> ' .__('auth.app.export').''
                     ],
                     [
                        'extend' => 'print',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-print"></i> ' .__('models\modeleEmballages.table.print').''
+                       'text' => '<i class="fa fa-print"></i> ' .__('auth.app.print').''
                     ],
                     [
                        'extend' => 'reset',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-undo"></i> ' .__('models\modeleEmballages.table.reset').''
+                       'text' => '<i class="fa fa-undo"></i> ' .__('auth.app.reset').''
                     ],
                     [
                        'extend' => 'reload',
                        'className' => 'btn btn-default btn-sm no-corner',
-                       'text' => '<i class="fa fa-refresh"></i> ' .__('models\modeleEmballages.table.reload').''
+                       'text' => '<i class="fa fa-refresh"></i> ' .__('auth.app.reload').''
                     ],
                 ],
                  'language' => [
