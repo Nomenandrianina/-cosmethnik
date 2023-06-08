@@ -146,10 +146,6 @@ class Matiere_premiere extends Model
         return $this->belongsTo(Dossiers::class, 'dossier_id');
     }
 
-    // public function composition(){
-    //     return $this->hasMany(Compositions::class);
-    // }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
@@ -281,12 +277,12 @@ class Matiere_premiere extends Model
         ['menu' => ['props' => 'Fiche technique', 'link' => '']],
         ['menu' => ['props' => 'Documents', 'link' => '']],
         ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
-        ['menu' => ['props' => 'Emballage', 'link' => 'emballages.model']],
+        ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model']],
         ['menu' => ['props' => 'Liste des process', 'link' => '']],
-        ['menu' => ['props' => 'Etiquetage', 'link' => '']],
+        ['menu' => ['props' => 'Étiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
-        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
         ['menu' => ['props' => 'Nutriments', 'link' => '']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],

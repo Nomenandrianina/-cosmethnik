@@ -9,6 +9,10 @@ use App\Http\Requests\UpdateRessourcesRequest;
 use App\Repositories\RessourcesRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Dossiers;
+use App\Models\Modele_familles;
+use App\Models\Ressources;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class RessourcesController extends AppBaseController
@@ -52,12 +56,68 @@ class RessourcesController extends AppBaseController
     public function store(CreateRessourcesRequest $request)
     {
         $input = $request->all();
+        $modele_famille = new Modele_familles;
+        $modele_famille->famille_id = $input['famille'];
 
-        $ressources = $this->ressourcesRepository->create($input);
+        //Déterminer s'il y a déjà un dossier nommer Produits fini
+        $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
+            ->where('name','LIKE','%'.'ressources'.'%')
+            ->orWhere('name', 'LIKE', '%'.'ressource'.'%')
+            ->get();
+        //Si le dossie existe
+        if($dossier->isEmpty() != true){
+            //Créer un nouveau produit fini
+            $ressource = Ressources::firstOrCreate(
+                [ 'nom' => $input['nom'] ],
+                [
+                    'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $dossier[0]['id']
+                 ]
+            );
 
-        Flash::success(__('messages.saved', ['model' => __('models/ressources.singular')]));
+            //Créer le relation avec famille
+            if($ressource){
+                $ressources_model = Ressources::find($ressource->id);
+                DB::table('modele_familles')->insert(
+                    ['model_type' => get_class($ressources_model) ,
+                     'model_id' => $ressources_model->id,
+                     'famille_id' => $input['famille']
+                    ]
+                );
+            }
+        //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
+        }else{
+            $doc = Dossiers::firstOrCreate(
+                ['name' => 'Produits fini'],
+                [
+                    'sites_id' => $input['sites_id'],
+                    'title' =>'Ressources',
+                    'parent_id' => 1,
+                    'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/ressource'
+                ]
+            );
 
-        return redirect(route('ressources.index'));
+            //Si le dossier est créer
+            if($doc){
+                //Créer un nouveau produit fini
+                $ressource = Ressources::firstOrCreate(
+                    [ 'nom' => $input['nom'] ],
+                    [
+                        'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $doc['id']
+                    ]
+                );
+                if($ressource){
+                    $ressources_modele = Ressources::find($ressource->id);
+                    DB::table('modele_familles')->insert([
+                        'model_type' => get_class($ressources_modele) ,
+                        'model_id' => $ressources_modele->id,
+                        'famille_id' => $input['famille']
+                        ]
+                    );
+                }
+            }
+        }
+
+        // return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
     }
 
     /**

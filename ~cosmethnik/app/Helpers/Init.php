@@ -4,7 +4,7 @@ use App\Models\Emballages;
 use App\Models\Matiere_premiere;
 use App\Models\Produit_fini;
 use App\Models\Produit_semi_finis;
-
+use App\Models\Ressources;
 
 if (!function_exists('fast_trans')) {
 
@@ -32,6 +32,9 @@ if (!function_exists('DeterminateObject')) {
                     break;
                 case (strcasecmp($dossier_name, "emballage") == 0 || strcasecmp($dossier_name, "emballages") == 0):
                     return new Emballages();
+                    break;
+                case (strcasecmp($dossier_name, "ressource") == 0 || strcasecmp($dossier_name, "ressources") == 0):
+                    return new Ressources();
                     break;
         }
 

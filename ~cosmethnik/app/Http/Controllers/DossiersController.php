@@ -9,6 +9,7 @@ use App\Http\Requests\CreateDossiersRequest;
 use App\Http\Requests\UpdateDossiersRequest;
 use App\Repositories\DossiersRepository;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Famille;
 use App\Models\Usines;
 use App\Models\Unites;
@@ -25,6 +26,7 @@ use Response;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
+use App\Models\Ressources;
 
 class DossiersController extends AppBaseController
 {
@@ -192,7 +194,14 @@ class DossiersController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
-        if(DeterminateObject($dossier_parent)->relationLoaded('etat_produit') && DeterminateObject($dossier_parent)->relationLoaded('usine') && DeterminateObject($dossier_parent)->relationLoaded('filiale') && DeterminateObject($dossier_parent)->relationLoaded('marque') && DeterminateObject($dossier_parent)->relationLoaded('geographique') && DeterminateObject($dossier_parent)->relationLoaded('client')){
+        $object = DeterminateObject($dossier_parent);
+        if($object::class == "App\Models\Ressources"){
+            $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','unite'])->first();
+            $menu = DeterminateObject($dossier_parent)::$fields;
+            $icon = DeterminateObject($dossier_parent)->icon_menu();
+            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+        }
+        if($object::class == "App\Models\Produit_fini" || $object::class == "App\Models\Produit_semi_finis" || $object::class == "App\Models\Matiere_premiere"){
             $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
             $menu = DeterminateObject($dossier_parent)::$fields;
             $icon = DeterminateObject($dossier_parent)->icon_menu();
@@ -221,6 +230,7 @@ class DossiersController extends AppBaseController
         $origines_geo = Geographiques::pluck('description','id');
         $etat_prod = Etat_produits::pluck('designation','id');
         $produitfini = Produit_fini::pluck('nom','id');
+        $ressource = Ressources::pluck('nom','id');
         $marque = Marques::pluck('description','id');
         $unite = Unites::all();
         $sites = [];
@@ -239,6 +249,7 @@ class DossiersController extends AppBaseController
             'origines_geo' => $origines_geo,
             'etat_prod' => $etat_prod,
             'modele' => $produitfini,
+            'ressource' => $ressource,
             'marque' => $marque,
             'site_texte' => $site_texte,
             'unite' => $unite

@@ -79,7 +79,7 @@ class Emballages extends Model
         ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
         ['menu' => ['props' => 'Fiche technique', 'link' => '']],
         ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
         ['menu' => ['props' => 'Activités', 'link' => '']],

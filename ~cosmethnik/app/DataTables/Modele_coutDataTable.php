@@ -30,7 +30,7 @@ class Modele_coutDataTable extends DataTable
      */
     public function query(Modele_cout $model)
     {
-        return $model->newQuery()->with('couts');
+        return $model->newQuery()->with('couts')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**

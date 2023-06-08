@@ -54,5 +54,10 @@ class Unites extends Model
         return $this->hasMany(Produit_fini::class);
     }
 
+    public function ressources()
+    {
+        return $this->hasMany(Ressources::class);
+    }
+
 
 }

@@ -13,6 +13,7 @@
                 <button class="dropdown-item" id="link-modal-produit-semi-fini" data-bs-toggle="modal" data-bs-target="#produit-semi-fini-modal"><i class="fas fa-flask"></i> Produit semi fini</button>
                 <button class="dropdown-item" id="link-modal-matiere-premiere" data-bs-toggle="modal" data-bs-target="#matiere-premiere-modal"><i class="fas fa-apple-alt"></i> Matière première</button>
                 <button class="dropdown-item" id="link-modal-emballage" data-bs-toggle="modal" data-bs-target="#emballage-modal"><i class="fas fa-inbox"></i> Emballage</button>
+                <button class="dropdown-item" id="link-modal-ressource" data-bs-toggle="modal" data-bs-target="#ressource-modal"><i class="fas fa-user-alt"></i> Ressource</button>
             </div>
         </div>
     </section>
@@ -63,6 +64,7 @@
             @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
             @include('matiere_premieres.modals.modal_create_matiere_premiere')
             @include('emballages.modals.modal_create_emballage')
+            @include('ressources.modals.modal_create_ressource')
 
             <div class="card-footer paginations-all">
                 <div class="paginations-all">
@@ -76,4 +78,5 @@
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
     @include('matiere_premieres.scripts.scripts_matiere_premiere')
     @include('emballages.scripts.scripts_emballage')
+    @include('ressources.scripts.scripts_ressources')
 @endsection

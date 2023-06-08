@@ -41,7 +41,6 @@
             let modele = $('#modele_semi_fini').val();
             let dossier_id = $('#dossier_id').val();
             let sites = $('#sites_id').val();
-            console.log(dossier_id);
 
             $.ajax({
                 type:'POST',

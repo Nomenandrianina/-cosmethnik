@@ -19,27 +19,36 @@
             <div class="card-header" style="background-color: #1a4a51;color: aliceblue;">
                 Désignation
             </div>
-
             <div class="card-body p-0" id="div-change">
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
+                    <div  style="display: grid; grid-template-columns: 80% 20%;margin: 12px 0 -6px 0;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.nom')}} :</div>
                         <div style="margin: 5px 0 5px 20px;">{{ $model->nom }}</div>
                     </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.libelle_commerciale')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model->libelle_commerciale }}</div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.famille')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;"></div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.sous-famille')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;"></div>
-                    </div>
+
+                    @if ($model->libelle_commerciale)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.libelle_commerciale')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model->libelle_commerciale }}</div>
+                        </div>
+                    @endif
+
+                    @if ($model->famille)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.famille')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;"></div>
+                        </div>
+                    @endif
+
+                    @if ($model->famille)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.sous-famille')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;"></div>
+                        </div>
+                    @endif
+
                     <hr>
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.libelle_legale')}} :</div>
@@ -53,14 +62,13 @@
                         <div style="margin: 5px 0 5px 20px;">{{ $model->description }}</div>
                     </div>
 
-                    <hr>
-
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
+                    @if ($model['etat_produit'])
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.etat_produit_id')}} :</div>
-                        @if ($model['etat_produit']!= null)
                             <div style="margin: 5px 0 5px 20px;">{{ $model['etat_produit']->designation }}</div>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                     <hr>
                     <div  style="display: grid; grid-template-columns: 80% 20%;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.code_bcpg')}} :</div>
@@ -71,59 +79,66 @@
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.code_erp')}} :</div>
                         <div style="margin: 5px 0 5px 20px;">{{ $model->code_erp }}</div>
                     </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model->ean }}</div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean_colis')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model->ean_colis }}</div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean_palette')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model->ean_palette }}</div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.filiale')}} :</div>
-                        @if ($model['filiale'] != null)
-                            <div style="margin: 5px 0 5px 20px;">{{ $model['filiale'] }}</div>
-                        @endif
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.marque')}} :</div>
-                        @if ($model['marque'] != null)
-                             <div style="margin: 5px 0 5px 20px;">{{ $model['marque']->description }}</div>
-                        @endif
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.usine_id')}} :</div>
-                        @if ($model['usine'] != null)
-                            <div  style="margin: 5px 0 5px 20px;">{{ $model['usine']->description }}</div>
-                        @endif
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.geographique_id')}} :</div>
-                        @if ($model['geographique'] != null)
-                        <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
-                        @endif
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.client')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model['client'] }}</div>
-                    </div>
-                    <hr>
-                    <div  style="display: grid; grid-template-columns: 80% 20%;">
-                        <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.modele')}} :</div>
-                        <div style="margin: 5px 0 5px 20px;">{{ $model->modele }}</div>
-                    </div>
+                    @if ($model->ean)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model->ean }}</div>
+                        </div>
+                    @endif
+
+                    @if ($model->ean_coli)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean_colis')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model->ean_colis }}</div>
+                        </div>
+                    @endif
+
+                    @if ($model->ean_palette)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.ean_palette')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model->ean_palette }}</div>
+                        </div>
+                    @endif
+
+                    @if ($model['filiale'] != null)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.filiale')}} :</div>
+                                <div style="margin: 5px 0 5px 20px;">{{ $model['filiale'] }}</div>
+                        </div>
+                    @endif
+                    @if ($model['marque'] != null)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.marque')}} :</div>
+                                <div style="margin: 5px 0 5px 20px;">{{ $model['marque']->description }}</div>
+                        </div>
+                    @endif
+                    @if ($model['usine'] != null)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.usine_id')}} :</div>
+                                <div  style="margin: 5px 0 5px 20px;">{{ $model['usine']->description }}</div>
+                        </div>
+                    @endif
+                    @if ($model['geographique'] != null)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.geographique_id')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model['geographique']->description }}</div>
+                        </div>
+                    @endif
+                    @if ($model['client'] != null)
+                        <hr>
+                        <div  style="display: grid; grid-template-columns: 80% 20%;">
+                            <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.client')}} :</div>
+                            <div style="margin: 5px 0 5px 20px;">{{ $model['client'] }}</div>
+                        </div>
+                    @endif
+
 
             </div>
         </div>

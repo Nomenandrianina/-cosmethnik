@@ -7,10 +7,18 @@ return array (
   array (
     'id' => 'Id',
     'nom' => 'Nom',
-    'etape' => 'Etape',
-    'type_parametre' => 'Type de paramètre',
-    'parametre' => 'Paramètre',
-    'valeur' => 'Valeur',
-    'unite' => 'Unité',
+    'titre' => 'Titre',
+    'libelle_legal' => 'Libellé légale',
+    'description' => 'Description',
+    'commentaires' => 'Commentaires',
+    'famille' => 'Famille',
+    'sous_famille' => 'Sous famille',
+    'etat_produit' => 'Etat produit',
+    'unite' => 'Unite',
+    'code_bcpg' => 'Code beCPG',
+    'code_erp' => 'Code ERP',
+    'ean' => 'Ean',
+    'modele' => 'Modèle',
+
   ),
 );

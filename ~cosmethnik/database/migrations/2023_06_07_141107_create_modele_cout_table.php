@@ -19,12 +19,12 @@ class CreateModeleCoutTable extends Migration
             $table->string('model_type');
             $table->integer('model_id');
             $table->integer('cout_id')->unsigned();
-            $table->decimal('valeur');
+            $table->decimal('valeur')->nullable();
             $table->string('unite');
-            $table->decimal('valeur1');
-            $table->decimal('valeur2');
-            $table->decimal('euv');
-            $table->boolean('manuel');
+            $table->decimal('valeur1')->nullable();
+            $table->decimal('valeur2')->nullable();
+            $table->decimal('euv')->nullable();
+            $table->boolean('manuel')->nullable();
             $table->foreign('cout_id')->references('id')->on('couts');
             $table->softDeletes();
             $table->timestamps();
