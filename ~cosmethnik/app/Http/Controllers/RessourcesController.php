@@ -87,7 +87,7 @@ class RessourcesController extends AppBaseController
         //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
         }else{
             $doc = Dossiers::firstOrCreate(
-                ['name' => 'Produits fini'],
+                ['name' => 'Ressources'],
                 [
                     'sites_id' => $input['sites_id'],
                     'title' =>'Ressources',
