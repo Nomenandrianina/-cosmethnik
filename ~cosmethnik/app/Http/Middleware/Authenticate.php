@@ -24,6 +24,7 @@ class Authenticate extends Middleware
         /** @var \App\User $user */
         $user = $request->user();
         // Like: users.index
+
         $route = app()->router->getCurrentRoute()->getName();
 
         $guest_perrmission = config('fast.guest_perrmission');

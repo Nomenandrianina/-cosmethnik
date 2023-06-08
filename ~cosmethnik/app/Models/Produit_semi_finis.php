@@ -303,7 +303,7 @@ class Produit_semi_finis extends Model
         ['menu' => ['props' => 'Etiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
-        ['menu' => ['props' => 'Coûts', 'link' => '']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
         ['menu' => ['props' => 'Nutriments', 'link' => '']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],

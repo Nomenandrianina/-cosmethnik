@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Couts;
+use App\Models\Modele_cout;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class CoutsDataTable extends DataTable
+class Modele_coutDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,18 +19,18 @@ class CoutsDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'couts.datatables_actions');
+        return $dataTable->addColumn('action', 'modele_couts.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Couts $model
+     * @param \App\Models\Modele_cout $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Couts $model)
+    public function query(Modele_cout $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('couts');
     }
 
     /**
@@ -89,15 +89,21 @@ class CoutsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nom' => new Column(['title' => __('models/couts.fields.nom'), 'data' => 'nom']),
-            // 'valeur' => new Column(['title' => __('models/couts.fields.valeur'), 'data' => 'valeur']),
-            // 'unite' => new Column(['title' => __('models/couts.fields.unite'), 'data' => 'unite']),
-            // 'valeur1' => new Column(['title' => __('models/couts.fields.valeur1'), 'data' => 'valeur1']),
-            // 'valeur2' => new Column(['title' => __('models/couts.fields.valeur2'), 'data' => 'valeur2']),
-            // 'euv' => new Column(['title' => __('models/couts.fields.euv'), 'data' => 'euv']),
-            // 'manuel' => new Column(['title' => __('models/couts.fields.manuel'), 'data' => 'manuel']),
-            // 'model_type' => new Column(['title' => __('models/couts.fields.model_type'), 'data' => 'model_type']),
-            // 'model_id' => new Column(['title' => __('models/couts.fields.model_id'), 'data' => 'model_id'])
+            'cout_id' => new Column(['title' => __('models/modeleCouts.fields.cout_id'), 'data' => 'couts.nom']),
+            'valeur' => new Column(['title' => __('models/modeleCouts.fields.valeur'), 'data' => 'valeur']),
+            'unite' => new Column(['title' => __('models/modeleCouts.fields.unite'), 'data' => 'unite']),
+            'valeur1' => new Column(['title' => __('models/modeleCouts.fields.valeur1'), 'data' => 'valeur1']),
+            'valeur2' => new Column(['title' => __('models/modeleCouts.fields.valeur2'), 'data' => 'valeur2']),
+            'euv' => new Column(['title' => __('models/modeleCouts.fields.euv'), 'data' => 'euv']),
+            'manuel' => new Column(['title' => __('models/modeleCouts.fields.manuel'), 'data' => 'manuel',
+            'render' => 'function() {
+                var value = full.manuel;
+                if (value === true || value === "1") {
+                    return "Oui";
+                } else {
+                    return "Non";
+                }
+            }'])
         ];
     }
 
@@ -108,6 +114,6 @@ class CoutsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'couts_datatable_' . time();
+        return 'modele_couts_datatable_' . time();
     }
 }

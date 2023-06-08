@@ -17,15 +17,8 @@ class CreateCoutsTable extends Migration
         Schema::create('Couts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->decimal('valeur');
-            $table->string('unite');
-            $table->decimal('valeur1');
-            $table->decimal('valeur2');
-            $table->decimal('euv');
-            $table->boolean('manuel');
-            $table->string('model_type');
-            $table->integer('model_id');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

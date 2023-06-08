@@ -261,13 +261,13 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li> --}}
 
-{{--  <li class="nav-item">
+<li class="nav-item">
     <a href="{{ route('couts.index') }}"
        class="nav-link {{ Request::is('couts*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-yen-sign"></i>
         <p>@lang('models/couts.plural')</p>
     </a>
-</li>  --}}
+</li>
 
 <li class="nav-item">
     <a href="{{ route('organoleptiques.index') }}"
@@ -359,4 +359,3 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         <p>@lang('models/matierePremieres.plural')</p>
     </a>
 </li>  --}}
-

@@ -22,12 +22,11 @@ class Ressources extends Model
 {
     use SoftDeletes;
 
+    public $timestamps = false;
 
     public $table = 'ressources';
 
-
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [

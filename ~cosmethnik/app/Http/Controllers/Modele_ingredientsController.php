@@ -58,8 +58,8 @@ class Modele_ingredientsController extends AppBaseController
      */
     public function store(CreateModele_ingredientsRequest $request)
     {
+        dd('test');
         $input = $request->all();
-
         // $modeleIngredients = $this->modeleIngredientsRepository->create($input);
 
         $input = $request->all();

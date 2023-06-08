@@ -27,7 +27,6 @@ class Ingredients extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
         'nom',
         'origine_geographique',

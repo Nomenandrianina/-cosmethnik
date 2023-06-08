@@ -49,3 +49,5 @@ Route::get('ingredients/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}
 
 Route::get('allergenes/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_allergenesController@model')->name('allergenes.model');
 
+Route::get('couts/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_coutController@model')->name('couts.model');
+
