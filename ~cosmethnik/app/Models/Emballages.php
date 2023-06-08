@@ -60,6 +60,8 @@ class Emballages extends Model
         'nom' => 'required',
     ];
 
+
+
     public function modele_emballages()
     {
         return $this->hasMany(Modele_emballages::class);

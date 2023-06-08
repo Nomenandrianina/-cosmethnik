@@ -55,7 +55,7 @@ class Modele_allergenesController extends AppBaseController
         $allergenes = Allergenes::all();
         $mp = Matiere_premiere::all();
         $ressource = Ressources::all();
-        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->first();
         $menu = DeterminateObject($dossier_parent)::$fields;
         $icon = DeterminateObject($dossier_parent)->icon_menu();
         $object = DeterminateObject($dossier_parent)::class;
