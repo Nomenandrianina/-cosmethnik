@@ -30,7 +30,7 @@ class Modele_physico_chimiqueDataTable extends DataTable
      */
     public function query(Modele_physico_chimique $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('physico_chimique');
     }
 
     /**
@@ -89,14 +89,12 @@ class Modele_physico_chimiqueDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'physico_chimique_id' => new Column(['title' => __('models/modelePhysicoChimiques.fields.physico_chimique_id'), 'data' => 'physico_chimique.nom']),
             'caracteristique' => new Column(['title' => __('models/modelePhysicoChimiques.fields.caracteristique'), 'data' => 'caracteristique']),
             'valeur' => new Column(['title' => __('models/modelePhysicoChimiques.fields.valeur'), 'data' => 'valeur']),
             'mini' => new Column(['title' => __('models/modelePhysicoChimiques.fields.mini'), 'data' => 'mini']),
             'maxi' => new Column(['title' => __('models/modelePhysicoChimiques.fields.maxi'), 'data' => 'maxi']),
             'critere_texte' => new Column(['title' => __('models/modelePhysicoChimiques.fields.critere_texte'), 'data' => 'critere_texte']),
-            'model_type' => new Column(['title' => __('models/modelePhysicoChimiques.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/modelePhysicoChimiques.fields.model_id'), 'data' => 'model_id']),
-            'physico_chimique_id' => new Column(['title' => __('models/modelePhysicoChimiques.fields.physico_chimique_id'), 'data' => 'physico_chimique_id'])
         ];
     }
 

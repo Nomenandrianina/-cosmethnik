@@ -8,6 +8,10 @@ use App\Http\Requests\CreateModele_allegationsRequest;
 use App\Http\Requests\UpdateModele_allegationsRequest;
 use App\Repositories\Modele_allegationsRepository;
 use Flash;
+use Illuminate\Http\Request;
+use App\Models\Allegations;
+use App\Models\Sites;
+use App\Models\Modele_allegations;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -53,11 +57,24 @@ class Modele_allegationsController extends AppBaseController
     {
         $input = $request->all();
 
-        $modeleAllegations = $this->modeleAllegationsRepository->create($input);
+        $input = $request->all();
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+
+        $model = DeterminateObject($dossier_parent)::find($id_model);
+
+        $modeleAllegation = new Modele_allegations;
+        $modeleAllegation->revendique = $request->revendique;
+        $modeleAllegation->information = $request->information;
+        $modeleAllegation->date_certification = $request->date_certification;
+        $modeleAllegation->allegation_id = $request->allegation_id;
+        $model->mmodele_ingredients()->save($modeleAllegation);
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleAllegations.singular')]));
 
-        return redirect(route('modeleAllegations.index'));
+        return back();
     }
 
     /**
@@ -98,6 +115,27 @@ class Modele_allegationsController extends AppBaseController
         }
 
         return view('modele_allegations.edit')->with('modeleAllegations', $modeleAllegations);
+    }
+
+     /**
+     * Redirection vers la liste de modele d'allégation existant
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_allegationsDataTable $modeleAllegation)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        $allegation = Allegations::all()->pluck('nom', 'id');
+        return $modeleAllegation->with(['model_id' => $id_model,'model_type' => $object])->render('modele_allegations.model', compact('menu','allegation','site_texte','icon','dossier_parent','model','data','object'));
     }
 
     /**

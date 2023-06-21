@@ -30,7 +30,9 @@ class Modele_allegationsDataTable extends DataTable
      */
     public function query(Modele_allegations $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('allegation')
+                        ->where('model_id', $this->attributes['model_id'])
+                            ->where('model_type', $this->attributes['model_type']);
     }
 
     /**
@@ -89,13 +91,16 @@ class Modele_allegationsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'allegation' => new Column(['title' => __('models/modeleAllegations.fields.allegation'), 'data' => 'allegation']),
+            'allegation_id' => new Column(['title' => __('models/modeleAllegations.fields.allegation_id'), 'data' => 'allegation.nom']),
             'revendique' => new Column(['title' => __('models/modeleAllegations.fields.revendique'), 'data' => 'revendique']),
             'information' => new Column(['title' => __('models/modeleAllegations.fields.information'), 'data' => 'information']),
-            'date_certification' => new Column(['title' => __('models/modeleAllegations.fields.date_certification'), 'data' => 'date_certification']),
-            'model_type' => new Column(['title' => __('models/modeleAllegations.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/modeleAllegations.fields.model_id'), 'data' => 'model_id']),
-            'allegation_id' => new Column(['title' => __('models/modeleAllegations.fields.allegation_id'), 'data' => 'allegation_id'])
+            'date_certification' => new Column(['title' => __('models/modeleAllegations.fields.date_certification'), 'data' => 'date_certification',
+            'render' =>'function(){
+                return new date(full.date_certification)
+            }'
+        ]),
+            // 'model_type' => new Column(['title' => __('models/modeleAllegations.fields.model_type'), 'data' => 'model_type']),
+            // 'model_id' => new Column(['title' => __('models/modeleAllegations.fields.model_id'), 'data' => 'model_id'])
         ];
     }
 

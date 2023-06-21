@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreatePhysico_chimiquesRequest;
 use App\Http\Requests\UpdatePhysico_chimiquesRequest;
 use App\Repositories\Physico_chimiquesRepository;
+use App\Models\Unites;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -39,7 +40,8 @@ class Physico_chimiquesController extends AppBaseController
      */
     public function create()
     {
-        return view('physico_chimiques.create');
+        $unite = Unites::all()->pluck('description', 'id');
+        return view('physico_chimiques.create',compact('unite'));
     }
 
     /**

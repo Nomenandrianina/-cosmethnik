@@ -24,12 +24,9 @@ class Modele_physico_chimique extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'Modele_physico_chimiques';
 
-
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
@@ -66,7 +63,10 @@ class Modele_physico_chimique extends Model
      * @var array
      */
     public static $rules = [
-
+        'caracteristique' => 'required',
+        'valeur' => 'required',
+        'mini' => 'required',
+        'maxi' => 'required',
     ];
 
     public function model(): MorphTo

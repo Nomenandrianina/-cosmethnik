@@ -30,7 +30,7 @@ class Physico_chimiquesDataTable extends DataTable
      */
     public function query(Physico_chimiques $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('unite');
     }
 
     /**
@@ -90,7 +90,7 @@ class Physico_chimiquesDataTable extends DataTable
     {
         return [
             'nom' => new Column(['title' => __('models/physicoChimiques.fields.nom'), 'data' => 'nom']),
-            'unite' => new Column(['title' => __('models/physicoChimiques.fields.unite'), 'data' => 'unite'])
+            'unite' => new Column(['title' => __('models/physicoChimiques.fields.unite'), 'data' => 'unite.description'])
         ];
     }
 

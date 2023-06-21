@@ -17,14 +17,16 @@ class CreateModelePhysicoChimiquesTable extends Migration
         Schema::create('Modele_physico_chimiques', function (Blueprint $table) {
             $table->increments('id');
             $table->string('caracteristique');
-            $table->string('valeur');
+            $table->integer('valeur');
             $table->integer('mini');
             $table->integer('maxi');
             $table->string('critere_texte');
             $table->string('model_type');
             $table->integer('model_id');
             $table->integer('physico_chimique_id');
+            $table->foreign('physico_chimique_id')->references('id')->on('physico_chimiques');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

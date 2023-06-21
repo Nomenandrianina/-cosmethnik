@@ -288,8 +288,8 @@ class Produit_fini extends Model
         ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
         ['menu' => ['props' => 'Nutriments', 'link' => '']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
-        ['menu' => ['props' => 'Allégations', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
+        ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
         ['menu' => ['props' => 'Activités', 'link' => '']],
     ];

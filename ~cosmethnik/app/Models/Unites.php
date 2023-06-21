@@ -59,5 +59,9 @@ class Unites extends Model
         return $this->hasMany(Ressources::class);
     }
 
+    public function physico_chimique()
+    {
+        return $this->hasMany(Physico_chimiques::class);
+    }
 
 }

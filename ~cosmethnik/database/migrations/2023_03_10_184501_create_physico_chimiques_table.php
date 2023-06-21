@@ -16,9 +16,11 @@ class CreatePhysicoChimiquesTable extends Migration
     {
         Schema::create('physico_chimiques', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nom');
-            $table->string('unite');
+            $table->string('nom');
+            $table->integer('unite_id');
+            $table->foreign('unite_id')->references('id')->on('unite');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

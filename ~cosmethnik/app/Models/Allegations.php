@@ -24,7 +24,6 @@ class Allegations extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
         'nom'
     ];
@@ -45,7 +44,7 @@ class Allegations extends Model
      * @var array
      */
     public static $rules = [
-
+        'nom' => 'required'
     ];
 
     public function modele_allegations()

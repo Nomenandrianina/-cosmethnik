@@ -11,24 +11,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version March 10, 2023, 6:45 pm +07
  *
- * @property integer $nom
+ * @property string $nom
  * @property string $unite
  */
 class Physico_chimiques extends Model
 {
     use SoftDeletes;
 
-
     public $table = 'physico_chimiques';
-
-    public $timestamps = false;
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
         'nom',
-        'unite'
+        'unite_id'
     ];
 
     /**
@@ -38,8 +34,8 @@ class Physico_chimiques extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nom' => 'integer',
-        'unite' => 'string'
+        'nom' => 'string',
+        'unite_id' => 'integer'
     ];
 
     /**
@@ -49,7 +45,7 @@ class Physico_chimiques extends Model
      */
     public static $rules = [
         'nom'=>'required',
-        'unite'=>'required'
+        'unite_id'=>'required'
     ];
 
     public function modele_physico_chimiques()
@@ -57,5 +53,8 @@ class Physico_chimiques extends Model
         return $this->hasMany(Modele_physico_chimique::class);
     }
 
+    public function unite(){
+        return $this->belongsTo(Unites::class, 'unite_id');
+    }
 
 }

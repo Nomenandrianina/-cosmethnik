@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version March 10, 2023, 7:11 pm +07
  *
- * @property string $allegation
  * @property string $revendique
  * @property string $information
  * @property string $date_certification
@@ -30,9 +29,7 @@ class Modele_allegations extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
-        'allegation',
         'revendique',
         'information',
         'date_certification',
@@ -48,7 +45,6 @@ class Modele_allegations extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'allegation' => 'string',
         'revendique' => 'string',
         'information' => 'string',
         'date_certification' => 'date',
@@ -63,7 +59,9 @@ class Modele_allegations extends Model
      * @var array
      */
     public static $rules = [
-
+        'revendique' => 'required',
+        'information' => 'required',
+        'date_certification' => 'required',
     ];
 
     public function model(): MorphTo
@@ -74,6 +72,5 @@ class Modele_allegations extends Model
     public function allegation(){
         return $this->belongsTo(Allegations::class, 'allegation_id');
     }
-
 
 }

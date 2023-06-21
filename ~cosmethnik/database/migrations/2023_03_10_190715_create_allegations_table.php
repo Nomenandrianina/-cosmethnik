@@ -18,6 +18,7 @@ class CreateAllegationsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
