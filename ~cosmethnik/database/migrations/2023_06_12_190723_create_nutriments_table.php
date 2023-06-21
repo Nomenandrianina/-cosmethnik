@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhysicoChimiquesTable extends Migration
+class CreateNutrimentsTable extends Migration
 {
 
     /**
@@ -14,13 +14,11 @@ class CreatePhysicoChimiquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('physico_chimiques', function (Blueprint $table) {
+        Schema::create('nutriments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->integer('unite_id')->unsigned();
-            $table->foreign('unite_id')->references('id')->on('unites');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,6 @@ class CreatePhysicoChimiquesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('physico_chimiques');
+        Schema::drop('nutriments');
     }
 }

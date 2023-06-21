@@ -30,7 +30,7 @@ class Liste_processDataTable extends DataTable
      */
     public function query(Liste_process $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['ressource'])->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**
@@ -89,9 +89,8 @@ class Liste_processDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'model_type' => new Column(['title' => __('models/listeProcesses.fields.model_type'), 'data' => 'model_type']),
-            'model_id' => new Column(['title' => __('models/listeProcesses.fields.model_id'), 'data' => 'model_id']),
-            'ressource_id' => new Column(['title' => __('models/listeProcesses.fields.ressource_id'), 'data' => 'ressource_id']),
+            'etape' => new Column(['title' => __('models/listeProcesses.fields.etape'), 'data' => 'etape']),
+            'ressource_id' => new Column(['title' => __('models/listeProcesses.fields.ressource_id'), 'data' => 'ressource.nom']),
             'quantite' => new Column(['title' => __('models/listeProcesses.fields.quantite'), 'data' => 'quantite']),
             'cadence' => new Column(['title' => __('models/listeProcesses.fields.cadence'), 'data' => 'cadence']),
             'unite_cadence' => new Column(['title' => __('models/listeProcesses.fields.unite_cadence'), 'data' => 'unite_cadence']),

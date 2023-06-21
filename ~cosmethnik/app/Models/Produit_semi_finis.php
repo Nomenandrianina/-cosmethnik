@@ -253,6 +253,9 @@ class Produit_semi_finis extends Model
     public function cas_emploies(): MorphMany{
         return $this->morphMany(Cas_emploies::class, 'model');
     }
+    public function mmodele_nutriments(){
+        return $this->morphMany(Modele_nutriment::class, 'model');
+    }
     public function mmodele_emballages(){
         return $this->morphMany(Modele_emballages::class, 'model');
     }
@@ -299,12 +302,12 @@ class Produit_semi_finis extends Model
         ['menu' => ['props' => 'Documents', 'link' => '']],
         ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
         ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model']],
-        ['menu' => ['props' => 'Liste des process', 'link' => '']],
+        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model']],
         ['menu' => ['props' => 'Étiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
         ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Nutriments', 'link' => '']],
+        ['menu' => ['props' => 'Nutriments', 'link' => 'nutriments.model']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
         ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model']],

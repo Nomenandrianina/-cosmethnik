@@ -23,7 +23,7 @@ class CreateModelePhysicoChimiquesTable extends Migration
             $table->string('critere_texte');
             $table->string('model_type');
             $table->integer('model_id');
-            $table->integer('physico_chimique_id');
+            $table->integer('physico_chimique_id')->unsigned();
             $table->foreign('physico_chimique_id')->references('id')->on('physico_chimiques');
             $table->softDeletes();
             $table->timestamps();

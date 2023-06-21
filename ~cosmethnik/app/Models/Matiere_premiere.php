@@ -234,6 +234,9 @@ class Matiere_premiere extends Model
     public function cas_emploies(){
         return $this->morphMany(Cas_emploies::class, 'model');
     }
+    public function mmodele_nutriments(){
+        return $this->morphMany(Modele_nutriment::class, 'model');
+    }
     public function mmodele_emballages(){
         return $this->morphMany(Modele_emballages::class, 'model');
     }
@@ -278,15 +281,15 @@ class Matiere_premiere extends Model
         ['menu' => ['props' => 'Documents', 'link' => '']],
         ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
         ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model']],
-        ['menu' => ['props' => 'Liste des process', 'link' => '']],
+        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model']],
         ['menu' => ['props' => 'Étiquetage', 'link' => '']],
         ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
         ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Nutriments', 'link' => '']],
+        ['menu' => ['props' => 'Nutriments', 'link' => 'nutriments.model']],
         ['menu' => ['props' => 'Organoleptique', 'link' => '']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
-        ['menu' => ['props' => 'Allégations', 'link' => '']],
+        ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
         ['menu' => ['props' => 'Activités', 'link' => '']],
     ];

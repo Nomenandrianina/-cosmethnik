@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Modele_allegations;
+use App\Models\Modele_nutriment;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
-class Modele_allegationsDataTable extends DataTable
+class Modele_nutrimentDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,20 +19,18 @@ class Modele_allegationsDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'modele_allegations.datatables_actions');
+        return $dataTable->addColumn('action', 'modele_nutriments.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Modele_allegations $model
+     * @param \App\Models\Modele_nutriment $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Modele_allegations $model)
+    public function query(Modele_nutriment $model)
     {
-        return $model->newQuery()->with('allegation')
-                        ->where('model_id', $this->attributes['model_id'])
-                            ->where('model_type', $this->attributes['model_type']);
+        return $model->newQuery()->with('nutriment')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);
     }
 
     /**
@@ -78,7 +76,7 @@ class Modele_allegationsDataTable extends DataTable
                     ],
                 ],
                  'language' => [
-                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json'),
+                   'url' => url('//cdn.datatables.net/plug-ins/1.10.12/i18n/French.json'),
                  ],
             ]);
     }
@@ -91,16 +89,30 @@ class Modele_allegationsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'allegation_id' => new Column(['title' => __('models/modeleAllegations.fields.allegation_id'), 'data' => 'allegation.nom']),
-            'revendique' => new Column(['title' => __('models/modeleAllegations.fields.revendique'), 'data' => 'revendique']),
-            'information' => new Column(['title' => __('models/modeleAllegations.fields.information'), 'data' => 'information']),
-            'date_certification' => new Column(['title' => __('models/modeleAllegations.fields.date_certification'), 'data' => 'date_certification',
-            'render' =>'function(){
-                const dateObject = new Date(full.date_certification)
-                const formattedDate = dateObject.toLocaleDateString();
-                return formattedDate;
-            }'
-        ]),
+            'nutriment_id' => new Column(['title' => __('models/modeleNutriments.fields.nutriment_id'), 'data' => 'nutriment.nom']),
+            'valeur' => new Column(['title' => __('models/modeleNutriments.fields.valeur'), 'data' => 'valeur',
+            'render' => 'function() {
+                var value = full.valeur+""+full.unite;
+                return value;
+            }']),
+            'mini' => new Column(['title' => __('models/modeleNutriments.fields.mini'), 'data' => 'mini']),
+            'maxi' => new Column(['title' => __('models/modeleNutriments.fields.maxi'), 'data' => 'maxi']),
+            'portion' => new Column(['title' => __('models/modeleNutriments.fields.portion'), 'data' => 'portion',
+            'render' => 'function() {
+                var value = full.portion+""+full.unite_portion;
+                return value;
+            }']),
+            'ajr_portion' => new Column(['title' => __('models/modeleNutriments.fields.ajr_portion'), 'data' => 'ajr_portion',
+            'render' => 'function() {
+                var value = full.ajr_portion;
+                var unite_potion = full.unite_portion;
+                var progressBar = `<div class="progress">
+                    <div class="progress-bar" role="progressbar" style="color: dark !important;width: ${value}%;" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100">${value}% de 2000${unite_potion}</div>
+                </div>`;
+                return progressBar;
+            }']),
+            'perte' => new Column(['title' => __('models/modeleNutriments.fields.perte'), 'data' => 'perte']),
+            'methode' => new Column(['title' => __('models/modeleNutriments.fields.methode'), 'data' => 'methode'])
         ];
     }
 
@@ -111,6 +123,6 @@ class Modele_allegationsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'modele_allegations_datatable_' . time();
+        return 'modele_nutriments_datatable_' . time();
     }
 }

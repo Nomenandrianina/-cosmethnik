@@ -98,6 +98,7 @@ class Ressources extends Model
         return $this->belongsTo(Etat_produits::class, 'etat_produit_id');
     }
 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
@@ -110,7 +111,11 @@ class Ressources extends Model
         return $this->morphMany(Modele_familles::class, 'model');
     }
 
-    public function liste_process()
+    public function liste_process(){
+        return $this->morphMany(Liste_process::class, 'model');
+    }
+
+    public function liste_processes()
     {
         return $this->hasMany(Liste_process::class);
     }
@@ -130,12 +135,12 @@ class Ressources extends Model
         ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
         ['menu' => ['props' => 'Fiches techniques', 'link' => '']],
         ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Liste des process', 'link' => '']],
+        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model']],
         ['menu' => ['props' => 'Paramètres ressource', 'link' => '']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
         ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
         ['menu' => ['props' => 'Prix d\'achat', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
         ['menu' => ['props' => 'Activités', 'link' => '']],
     ];

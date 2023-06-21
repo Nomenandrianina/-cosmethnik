@@ -120,3 +120,7 @@ Route::resource('matierePremieres', App\Http\Controllers\Matiere_premiereControl
 Route::resource('origineBiologiques', App\Http\Controllers\Origine_biologiqueController::class);
 
 Route::resource('modeleCouts', App\Http\Controllers\Modele_coutController::class);
+
+Route::resource('nutriments', App\Http\Controllers\NutrimentsController::class);
+
+Route::resource('modeleNutriments', App\Http\Controllers\Modele_nutrimentController::class);

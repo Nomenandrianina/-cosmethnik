@@ -131,7 +131,7 @@ class Modele_physico_chimiqueController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
-        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit'])->first();
         $menu = DeterminateObject($dossier_parent)::$fields;
         $icon = DeterminateObject($dossier_parent)->icon_menu();
         $object = DeterminateObject($dossier_parent)::class;

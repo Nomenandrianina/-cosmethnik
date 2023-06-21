@@ -67,6 +67,14 @@ class Emballages extends Model
         return $this->hasMany(Modele_emballages::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    **/
+    public function etat_produit()
+    {
+        return $this->belongsTo(Etat_produits::class, 'etat_produit_id');
+    }
+
     public function icon() {
         return '<i class="fas fa-inbox fa-3x" style="color: #095a1a;"></i>';
     }
@@ -82,7 +90,7 @@ class Emballages extends Model
         ['menu' => ['props' => 'Fiche technique', 'link' => '']],
         ['menu' => ['props' => 'Documents', 'link' => '']],
         ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => '']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
         ['menu' => ['props' => 'Activités', 'link' => '']],
     ];

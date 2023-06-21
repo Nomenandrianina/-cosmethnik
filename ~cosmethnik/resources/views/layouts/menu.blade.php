@@ -327,6 +327,14 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('nutriments.index') }}"
+       class="nav-link {{ Request::is('nutriments*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-vial"></i>
+        <p>@lang('models/nutriments.plural')</p>
+    </a>
+</li>
+
 
 {{--  <li class="nav-item">
     <a href="{{ route('produitFinis.index') }}"
@@ -359,3 +367,5 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
         <p>@lang('models/matierePremieres.plural')</p>
     </a>
 </li>  --}}
+
+

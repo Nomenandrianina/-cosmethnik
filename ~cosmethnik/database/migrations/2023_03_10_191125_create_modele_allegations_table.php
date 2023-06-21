@@ -21,7 +21,7 @@ class CreateModeleAllegationsTable extends Migration
             $table->date('date_certification');
             $table->string('model_type');
             $table->integer('model_id');
-            $table->integer('allegation_id');
+            $table->integer('allegation_id')->unsigned();
             $table->foreign('allegation_id')->references('id')->on('allegations');
             $table->softDeletes();
             $table->timestamps();

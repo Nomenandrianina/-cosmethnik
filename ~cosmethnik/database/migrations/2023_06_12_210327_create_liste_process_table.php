@@ -18,6 +18,7 @@ class CreateListeProcessTable extends Migration
             $table->increments('id');
             $table->string('model_type');
             $table->integer('model_id');
+            $table->string('etape');
             $table->integer('ressource_id');
             $table->integer('quantite');
             $table->double('cadence');
@@ -25,6 +26,7 @@ class CreateListeProcessTable extends Migration
             $table->decimal('taux_horaire');
             $table->double('produit_heure');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

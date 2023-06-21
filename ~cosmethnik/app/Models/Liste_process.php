@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $model_type
  * @property integer $model_id
  * @property integer $ressource_id
+ * @property string etape
  * @property integer $quantite
  * @property number $cadence
  * @property string $unite_cadence
@@ -35,6 +36,7 @@ class Liste_process extends Model
     public $fillable = [
         'model_type',
         'model_id',
+        'etape',
         'ressource_id',
         'quantite',
         'cadence',
@@ -52,6 +54,7 @@ class Liste_process extends Model
         'id' => 'integer',
         'model_type' => 'string',
         'model_id' => 'integer',
+        'etape' => 'string',
         'ressource_id' => 'integer',
         'quantite' => 'integer',
         'cadence' => 'double',
@@ -66,7 +69,7 @@ class Liste_process extends Model
      * @var array
      */
     public static $rules = [
-
+        'etape' => 'required'
     ];
 
     public function model(): MorphTo
