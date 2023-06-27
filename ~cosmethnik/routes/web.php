@@ -31,7 +31,9 @@ Route::get('dossiers/treeview/{id}', 'App\Http\Controllers\DossiersController@tr
 
 Route::get('famille/get_by_famille', 'App\Http\Controllers\FamilleController@getChilds')->name('famille.get_by_famille');
 
-Route::post('dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');
+// Route::post('dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');
+
+Route::match(['GET', 'POST'], 'dossiers/navigate', 'App\Http\Controllers\DossiersController@ajaxRequest')->name('dossiers.navigate');
 
 Route::get('admin/catalogue', 'App\Http\Controllers\DashboardController@catalogue')->name('admin.catalogue');
 

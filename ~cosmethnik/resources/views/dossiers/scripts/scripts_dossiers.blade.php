@@ -125,6 +125,7 @@
                     $('#data-ul').remove();
                     $('#info-site').hide();
                     $('#div-change').html(data.results);
+                    $('.paginations-all').html(data.paginationLinks);
                     $('#header').show();
                     $('#document').show();
                 },

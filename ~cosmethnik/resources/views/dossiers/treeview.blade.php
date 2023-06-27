@@ -105,10 +105,8 @@
                 </ul>
             </div>
 
-
-            <div class="card-footer paginations-all">
+            <div class="card-footer paginations-all" style="margin-left: auto;margin-right: auto;">
                 <div class="paginations-all">
-                    {!! $doc->links() !!}
                 </div>
             </div>
         </div>

@@ -57,7 +57,8 @@ class DossiersController extends AppBaseController
         $id_site = intval($request->site_id);
         $result = '';
         // $doc = Dossiers::where('parent_id', '=' ,$id_dossier)->get();
-        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->get();
+        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->paginate(3);
+        $paginationLinks = $doc->links()->toHtml();
         if($doc->isEmpty() == true){
             $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
         }else{
@@ -87,7 +88,7 @@ class DossiersController extends AppBaseController
             $endul = '</ul>';
             $result = $ul.$li.$endul;
         }
-        return response()->json(['success'=> 200,'results' => $result]);
+        return response()->json(['success'=> 200,'results' => $result, 'paginationLinks' => $paginationLinks]);
     }
 
 
@@ -237,7 +238,12 @@ class DossiersController extends AppBaseController
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
         }
-        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->paginate(2);
+        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->get();
+        $childs = collect();
+        foreach ($doc as $dossier) {
+            $childs = $childs->merge($dossier->childs()->get());
+        }
+        // dd($childs);
         $allDoc = Dossiers::pluck('title','id')->all();
         $one_doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->get();
         $membres = DB::table('users')
