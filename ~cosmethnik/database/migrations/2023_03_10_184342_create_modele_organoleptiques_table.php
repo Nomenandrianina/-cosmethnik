@@ -23,6 +23,7 @@ class CreateModeleOrganoleptiquesTable extends Migration
             $table->integer('organoleptique_id')->unsigned();
             $table->foreign('organoleptique_id')->references('id')->on('organoleptiques');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

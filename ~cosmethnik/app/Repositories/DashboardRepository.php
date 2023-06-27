@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Attendance;
 use App\Models\Produit_fini;
+use App\Models\Produit_semi_finis;
 use Carbon\Carbon;
 use App\Models\Sites;
 use App\Models\User;
@@ -91,7 +92,7 @@ class DashboardRepository
         $dashboard['dashboardInfo'] = $this->getDashboardInfo();
         $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
         $dashboard['sites'] = Sites::with('user')->paginate(2);
-        $dashboard['produit_fini'] = Produit_fini::paginate(2);
+        $dashboard['produit_fini'] = Produit_fini::paginate(1);
         $user = User::all();
         $select = [];
         foreach($user as $item){

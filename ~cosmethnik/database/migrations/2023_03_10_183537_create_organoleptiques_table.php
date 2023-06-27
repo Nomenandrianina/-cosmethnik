@@ -18,6 +18,7 @@ class CreateOrganoleptiquesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

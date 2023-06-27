@@ -20,10 +20,7 @@ class Organoleptiques extends Model
 
     public $table = 'organoleptiques';
 
-    public $timestamps = false;
-
     protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [

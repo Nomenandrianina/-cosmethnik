@@ -8,6 +8,7 @@ use App\Repositories\DashboardRepository;
 use App\Repositories\SitesRepository;
 use App\Models\Sites;
 
+
 class DashboardController extends Controller
 {
     /** @var  DashboardRepository */
@@ -34,8 +35,15 @@ class DashboardController extends Controller
     public function index()
     {
         $data = $this->dashboardRepository->GetData();
-        return view('dashboard.index', $data);
-
+        $sites=$data['sites'];
+        $dashboardInfo = $data['dashboardInfo'] ;
+        $chartUserCheckin = $data['chartUserCheckin'];
+        $produit_finis =  $data['produit_fini'];
+        $users =  $data['users'];
+        if (request()->ajax()) {
+            return view('dashboard.index', compact('sites','produit_finis'))->render();
+        }
+        return view('dashboard.index', compact('sites','dashboardInfo','chartUserCheckin','produit_finis','users'));
     }
 
     public function catalogue(Request $request){

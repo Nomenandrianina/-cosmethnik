@@ -101,7 +101,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">{{ __('menu.attendances.title') }}</h5>
-
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -196,20 +195,19 @@
                             <div class="col-md-8">
                                 <button  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Tous
-                                    </button>
-                                    <ul class="dropdown-menu">
+                                </button>
+                                <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Collaboratif</a></li>
                                     <li><a class="dropdown-item" href="#">Produit</a></li>
-                                    </ul>
+                                </ul>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group has-search">
                                     <a class="dropdown-item" id="link-modal" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="nav-icon fas fa-solid fa-globe"></span> Créer un site </a>
-                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="card-body p-0">
+                        <div class="card-body p-0" id="site-data">
                             <ul class="list-group list-group-flush" id="list-site">
                                 @foreach ($sites as $item)
                                     <li class="list-group-item">
@@ -220,17 +218,16 @@
                                                     {{ $item->nom }} <br> <small>{{ $item->type }}</small>
                                                 </span>
                                             </span>
-
                                         </a>
                                     </li>
                                 @endforeach
                             </ul>
-
                             <div class="d-flex justify-content-center">
-                                {{ $sites->links() }}
+                                <div class="pagination-site">
+                                    {{ $sites->links() }}
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -294,7 +291,7 @@
 
                         <div class="card-body p-0" id="div-change">
                             <ul class="list-group list-group-flush" id="data-ul">
-                                @foreach ($produit_fini as $item)
+                                @foreach ($produit_finis as $item)
                                     <li class="list-group-item">
                                         <a href="#">
                                             <span class="one-span">
@@ -314,7 +311,9 @@
                             </ul>
 
                             <div class="d-flex justify-content-center">
-                                {{ $produit_fini->links() }}
+                                <div class="pagination-produit">
+                                    {{ $produit_finis->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -339,8 +338,58 @@
 @endpush
 @push('page_scripts')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-var userCheckinChart = new Chart(document.getElementById('userCheckinChart').getContext('2d'), @json($chartUserCheckin));
+
+{{--  var userCheckinChart = new Chart(document.getElementById('userCheckinChart').getContext('2d'), @json($chartUserCheckin));  --}}
+
+</script>
+<script>
+
+    $(document).on('click', '.pagination-site a', function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        loadPaginatedContent(url);
+    });
+
+    $(document).on('click', '.pagination-produit a', function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        loadPaginatedContentProduit(url);
+    });
+
+    // Function to load the paginated content via AJAX
+    function loadPaginatedContent(url) {
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function(response) {
+                $('#list-site').html($(response).find('#list-site').html());
+
+                $('.pagination-site').html($(response).find('.pagination-site').html());
+
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function loadPaginatedContentProduit(url) {
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function(response) {
+                $('#data-ul').html($(response).find('#data-ul').html());
+
+                $('.pagination-produit').html($(response).find('.pagination-produit').html());
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+
 </script>
 
 @endpush
