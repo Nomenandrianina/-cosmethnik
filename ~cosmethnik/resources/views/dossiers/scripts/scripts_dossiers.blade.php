@@ -2,6 +2,7 @@
 
     $('.loading-produit-semi-fini').show();
     $('#document').hide();
+    $('#header').hide();
 
     $(function() {
         $('#name').on('change', function() {
@@ -97,6 +98,7 @@
                 },
                 dataType: 'json',
                 success: function(data){
+                    $('#header').hide();
                     $('#document').hide();
                     $('#info-site').show();
                 },
@@ -123,6 +125,7 @@
                     $('#data-ul').remove();
                     $('#info-site').hide();
                     $('#div-change').html(data.results);
+                    $('#header').show();
                     $('#document').show();
                 },
                 complete: function(){
