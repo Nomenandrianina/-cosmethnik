@@ -83,7 +83,7 @@ class Produit_finiController extends AppBaseController
                 DB::table('modele_familles')->insert(
                     ['model_type' => get_class($produit_fini) ,
                      'model_id' => $produit_fini->id,
-                     'famille_id' => $input['sous_famille']
+                     'famille_id' =>  isset($input['sous_famille']) ? $input['sous_famille'] : $input['famille']
                     ]
                 );
             }

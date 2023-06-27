@@ -26,9 +26,17 @@
                     Détails du site
                 </div>
                 <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <li class="list-group-item">
+                            <span class="one-span">
+                                <span class="two-span"><i class="fas fa-globe fa-3x"></i></span>
+                                <span class="three-span">
+                                    {{ $site_texte[0]->nom }}
+                                    <br>
+                                    <small>{{ $site_texte[0]->type }} (créer par {{ $site_texte[0]->user->name }} )</small>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
                 </div>
             </div>
             </div>
@@ -37,20 +45,20 @@
                 <div class="card-header">
                     Membres du site
                 </div>
-                <div class="card-body p-0">
-                    <ul class="list-group list-group-flush" id="data-ul">
+                <div class="card-body">
                             @foreach($membres as $membre)
                                     <li class="list-group-item">
                                             <span class="one-span">
                                                 <span class="two-span"><i class="fas fa-user fa-3x"></i></span>
                                                 <span class="three-span">
                                                     {{ $membre->name }}
+                                                    <br>
+                                                    <small>Membre depuis le {{ dateParse($membre->created_at) }}</small>
                                                 </span>
                                             </span>
                                         </a>
                                     </li>
                             @endforeach
-                    </ul>
                 </div>
             </div>
             </div>

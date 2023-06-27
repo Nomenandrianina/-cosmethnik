@@ -21,6 +21,7 @@ class CreateSiteUserTable extends Migration
             $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

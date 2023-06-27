@@ -54,3 +54,11 @@ if (!function_exists('DefaultDossier')) {
         return $data;
     }
 }
+
+function dateParse($date){
+    $dateTime = new DateTime($date);
+    // Formater la date dans le format souhaité
+    $formattedDate = $dateTime->format('d F Y');
+
+    return $formattedDate;
+}
