@@ -107,7 +107,7 @@ class DossiersController extends AppBaseController
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
             //Déterminer le Model du dossier
-            $model = DeterminateObject($dossier_name)::all();
+            $model = DeterminateObject($dossier_name)::where('dossier_id','=',$id_dossier)->get();
             //Si le Model est vide
             if($model->isEmpty() == true){
                 $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
@@ -237,14 +237,23 @@ class DossiersController extends AppBaseController
         foreach($all as $item){
             $sites[$item->id] = $item->nom;
         }
-        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->paginate(1);
+        $doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->with('site')->paginate(2);
         $allDoc = Dossiers::pluck('title','id')->all();
+        $one_doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->get();
+        $membres = DB::table('users')
+        ->join('site_user', 'users.id', '=', 'site_user.user_id')
+        ->join('sites', 'site_user.site_id', '=', 'sites.id')
+        ->where('sites.id', $id)
+        ->select('users.*','sites.*')
+        ->get();
         $view = array(
             'id'=> $id,
             'sites'=> $sites,
             'doc' => $doc,
             'allDoc' => $allDoc,
             'famille' => $famille,
+            'document_one' => $one_doc,
+            'membres' => $membres,
             'usines' => $usines,
             'origines_geo' => $origines_geo,
             'etat_prod' => $etat_prod,
@@ -286,7 +295,7 @@ class DossiersController extends AppBaseController
         $input = $request->all();
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
 
-        // $dossiers = $this->dossiersRepository->create($input);
+
 
         DB::table('dossiers')->insert(
             ['sites_id' => $input['sites_id'],'name' => $input['name'], 'title' => $input['title'],'parent_id' => $input['parent_id'], 'description' => $input['description'], 'link' => $input['link']]

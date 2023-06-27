@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
-    <section class="content-header">
+    <section class="content-header" id="header">
         <div class="card">
             <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                 <span class="nav-icon fas fa-plus"></span> Créer
@@ -18,11 +18,49 @@
         </div>
     </section>
 
-    <div class="content px-3">
-        @include('flash::message')
-        <div class="loading-produit-semi-fini" style="text-align:center" >
-            <div id="loading" class="lds-dual-ring"></div>
+    <div class="content px-3" id="info-site">
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-header">
+                    Détails du site
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Membres du site
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush" id="data-ul">
+                            @foreach($membres as $membre)
+                                    <li class="list-group-item">
+                                            <span class="one-span">
+                                                <span class="two-span"><i class="fas fa-user fa-3x"></i></span>
+                                                <span class="three-span">
+                                                    {{ $membre->name }}
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                            @endforeach
+                    </ul>
+                </div>
+            </div>
+            </div>
         </div>
+    </div>
+    <div class="loading-produit-semi-fini" style="text-align:center" >
+        <div id="loading" class="lds-dual-ring"></div>
+    </div>
+    <div class="content px-3" id="document">
+        @include('flash::message')
 
         <div class="clearfix"></div>
 

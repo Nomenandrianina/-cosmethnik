@@ -43,16 +43,23 @@
         </div>
     </div>
 
+
+
     <div class="row">
         <div class="form-group col-sm-6">
             {!! Form::label('sites_id', 'Site:',['class' => 'required']) !!}
-            {!! Form::select('sites_id', $sites,null, ['class' => 'form-control']) !!}
+            <select name="sites_id" id="sites_id" class="form-control" disabled>
+                <option value="{{ $site_texte[0]['id'] }}" selected>{{ $site_texte[0]['nom'] }}</option>
+              </select>
             {!! Html::decode(Form::label('name','<span class="text-danger" id="sites_idErrordossier"></span>')) !!}
         </div>
 
+
         <div class="form-group col-sm-6">
             {!! Form::label('Category', 'Categories:') !!}
-            {!! Form::select('parent_id',$allDoc ,null, ['class' => 'form-control']) !!}
+            <select name="parent_id" id="parent_id" class="form-control" disabled>
+                <option value="{{ $document_one->isEmpty() ? 0 : $document_one[0]['id'] }}" selected>{{ $document_one->isEmpty() ? 0 : $document_one[0]['name'] }}</option>
+            </select>
         </div>
     </div>
 

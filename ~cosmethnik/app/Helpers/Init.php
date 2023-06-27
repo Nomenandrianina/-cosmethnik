@@ -40,3 +40,17 @@ if (!function_exists('DeterminateObject')) {
 
     }
 }
+
+if (!function_exists('DefaultDossier')) {
+    function DefaultDossier($id_site,$id_racine){
+        $data = [
+            ['sites_id' => $id_site, 'name' => 'Produits fini', 'title' => 'Produits fini', 'description' => '', 'parent_id' => $id_racine, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitsfini'],
+            ['sites_id' => $id_site, 'name' => 'Produits semi-fini', 'title' => 'Produits semi-fini', 'description' => '', 'parent_id' => $id_racine, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/produitssemi-fini'],
+            ['sites_id' => $id_site, 'name' => 'Matières premières', 'title' => 'Matières premières', 'description' => '', 'parent_id' => $id_racine, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/matierepremiere'],
+            ['sites_id' => $id_site, 'name' => 'Emballages', 'title' => 'Emballages', 'description' => '', 'parent_id' => $id_racine, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/emballages'],
+            ['sites_id' => $id_site, 'name' => 'Ressources', 'title' => 'Ressources', 'description' => '', 'parent_id' => $id_racine, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/ressources']
+        ];
+
+        return $data;
+    }
+}

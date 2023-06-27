@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\DataTables\SitesDataTable;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateSitesRequest;
 use App\Http\Requests\UpdateSitesRequest;
 use App\Repositories\SitesRepository;
@@ -61,18 +62,25 @@ class SitesController extends AppBaseController
     {
         $input = $request->all();
 
-        DB::table('sites')->insert(
+        $id_site = DB::table('sites')->insertGetId(
             ['user_id' => $input['user_id'], 'type' => $input['type'], 'nom' => $input['nom']]
         );
+
+        DB::table('site_user')->insert(['site_id' => $id_site, 'user_id' => Auth::user()->id]);
+
+        $id_documents = DB::table('dossiers')->insertGetId(
+            ['sites_id' => $id_site, 'name' => 'Documents', 'title' => 'Documents', 'description' => '', 'parent_id' => 0, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/documents']
+        );
+
+        $sous_dossiers = DefaultDossier($id_site,$id_documents);
+        DB::table('dossiers')->insert($sous_dossiers);
+
 
         if($request->ajax()){
             return [
                 'message' => 'success'
             ];
         }
-        // Flash::success(__('messages.saved', ['model' => __('models/sites.singular')]));
-
-        // return redirect(route('sites.index'));
     }
 
     /**
@@ -171,5 +179,25 @@ class SitesController extends AppBaseController
         Flash::success(__('messages.deleted', ['model' => __('models/sites.singular')]));
 
         return redirect(route('sites.index'));
+    }
+
+     /**
+     * Remove the specified Sites from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function delete(Request $request)
+    {
+        $input = $request->all();
+        $deletedRows = DB::table('sites')->where('id', $input['id'])->delete();
+        if ($deletedRows > 0) {
+            if ($request->ajax()) {
+                return ['status' => 200];
+            }
+        } else {
+            return ['status' => 201];
+        }
     }
 }

@@ -20,9 +20,9 @@ class CreateModeleMateriauxTable extends Migration
             $table->integer('model_id');
             $table->integer('poids');
             $table->integer('materiaux_id')->unsigned();
+            $table->foreign('materiaux_id')->references('id')->on('materiaux')->onDelete('cascade');
             $table->softDeletes();
-            $table->foreign('materiaux_id')->references('id')->on('materiaux')
-            ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

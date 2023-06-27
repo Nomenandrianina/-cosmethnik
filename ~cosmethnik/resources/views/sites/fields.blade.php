@@ -2,7 +2,10 @@
 @if (isset($users))
     <div class="form-group col-sm-9">
         {!! Form::label('user_id', 'Membre:') !!}
-        {!! Form::select('user_id', $users,null, ['class' => 'form-control']) !!}
+        {{-- {!! Form::select('user_id', $users,null, ['class' => 'form-control']) !!} --}}
+        <select name="user_id" id="user_id" class="form-control" disabled>
+            <option value="{{ Auth::user()->id }}" selected>{{ Auth::user()->name}}</option>
+        </select>
     </div>
     <!-- Type Field -->
     <div class="form-group col-sm-9">

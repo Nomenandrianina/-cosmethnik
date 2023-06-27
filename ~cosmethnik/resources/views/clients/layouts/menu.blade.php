@@ -1,14 +1,20 @@
 <link rel="stylesheet" href="{{ asset('css/logo.css') }}">
 @foreach($doc as $category)
-<li class="nav-item menu-open">
-    <a onclick="actions({{ $category->id }}, {{ $id }})" class="nav-link" style="cursor: pointer">
+<li class="nav-item">
+    <a onclick="site_info({{ $category->id }}, {{ $id }})" class="nav-link" style="cursor: pointer">
         <p>
-            {{ $category->title }}
-            <i class="fas fa-angle-left right"></i>
+            <i class="fas fa-info-circle"></i>
+            Information du site
         </p>
     </a>
-    @if(count($category->childs))
-        @include('dossiers.child',['childs' => $category->childs])
-    @endif
+</li>
+
+<li class="nav-item">
+    <a onclick="actions({{ $category->id }}, {{ $id }})" class="nav-link" style="cursor: pointer">
+        <p>
+            <i class="fas fa-folder"></i>
+            {{ $category->title }}
+        </p>
+    </a>
 </li>
 @endforeach

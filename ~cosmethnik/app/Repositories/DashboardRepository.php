@@ -91,8 +91,8 @@ class DashboardRepository
         $dashboard = [];
         $dashboard['dashboardInfo'] = $this->getDashboardInfo();
         $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
-        $dashboard['sites'] = Sites::with('user')->paginate(2);
-        $dashboard['produit_fini'] = Produit_fini::paginate(1);
+        $dashboard['sites'] = Sites::with('user')->where('user_id', $dashboard['dashboardInfo']["user_count"])->paginate(2);
+        $dashboard['produit_fini'] = Produit_fini::paginate(2);
         $user = User::all();
         $select = [];
         foreach($user as $item){

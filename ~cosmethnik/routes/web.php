@@ -60,3 +60,4 @@ Route::get('listeProcesses/model/{id_model}/{id_site}/{id_dossier}/{dossier_pare
 
 Route::get('nutriments/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_nutrimentController@model')->name('nutriments.model');
 
+Route::post('sites/delete', 'App\Http\Controllers\SitesController@delete')->name('sites.delete');

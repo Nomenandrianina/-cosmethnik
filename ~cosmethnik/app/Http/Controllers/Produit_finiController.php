@@ -121,10 +121,6 @@ class Produit_finiController extends AppBaseController
         }
 
         return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
-
-        // Flash::success(__('messages.saved', ['model' => __('models/produitFinis.singular')]));
-
-        // return redirect(route('produitFinis.index'));
     }
 
     /**

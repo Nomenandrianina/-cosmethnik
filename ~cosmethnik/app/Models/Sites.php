@@ -59,6 +59,11 @@ class Sites extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function membres()
+    {
+        return $this->belongsToMany(User::class, 'site_user', 'site_id', 'user_id');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/

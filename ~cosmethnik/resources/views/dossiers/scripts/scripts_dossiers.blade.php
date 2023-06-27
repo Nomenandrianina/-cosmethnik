@@ -1,6 +1,7 @@
 <script>
 
     $('.loading-produit-semi-fini').show();
+    $('#document').hide();
 
     $(function() {
         $('#name').on('change', function() {
@@ -31,7 +32,10 @@
         var title = $('#title').val();
         var sites_id = $('#sites_id').val();
         var link = $('#link').val();
+        var parent_id = $('#parent_id').val();
         var description = $('#description').val();
+
+
 
         $.ajax({
             type:'POST',
@@ -40,6 +44,7 @@
                 "name":name,
                 "title":title,
                 "sites_id":sites_id,
+                "parent_id": parent_id,
                 "link":link,
                 "description":description,
             },
@@ -79,6 +84,28 @@
         })
     }
 
+    function site_info(id_dossier,id_site) {
+        $('.loading-produit-semi-fini').show();
+        $('#data-ul').remove();
+        $.ajax({
+                url: '{{ route('dossiers.navigate') }}',
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    dossier_id: id_dossier,
+                    site_id: id_site
+                },
+                dataType: 'json',
+                success: function(data){
+                    $('#document').hide();
+                    $('#info-site').show();
+                },
+                complete: function(){
+                    $('.loading-produit-semi-fini').hide();
+                }
+        });
+    }
+
     //Navigate Treeview
     function actions(id_dossier,id_site) {
         $('.loading-produit-semi-fini').show();
@@ -94,7 +121,9 @@
                 dataType: 'json',
                 success: function(data){
                     $('#data-ul').remove();
+                    $('#info-site').hide();
                     $('#div-change').html(data.results);
+                    $('#document').show();
                 },
                 complete: function(){
                     $('.loading-produit-semi-fini').hide();

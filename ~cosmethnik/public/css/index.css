@@ -22,6 +22,7 @@
     margin-top: -1px; /* Prevent double borders */
     background-color: #f6f6f6; /* Grey background color */
     padding: 12px; /* Add some padding */
+    width: 100%;
     text-decoration: none; /* Remove default text underline */
     font-size: 18px; /* Increase the font-size */
     color: black; /* Add a black text color */
@@ -224,3 +225,14 @@ a.page-link {
     }
 }
 
+.list-group-flush .list-group-item.site{
+    border-top-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+span.site-remove {
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+}

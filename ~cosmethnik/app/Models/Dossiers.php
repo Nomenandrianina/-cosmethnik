@@ -77,6 +77,11 @@ class Dossiers extends Model
         return $this->hasMany(Produit_fini::class);
     }
 
+    public function produit_semi_finis()
+    {
+        return $this->hasMany(Produit_semi_finis::class);
+    }
+
     public function childs() {
         return $this->hasMany(Dossiers::class,'parent_id','id') ;
     }
