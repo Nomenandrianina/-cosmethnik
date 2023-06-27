@@ -87,6 +87,8 @@ class Produit_finiController extends AppBaseController
                     ]
                 );
             }
+
+            return json_encode(array("status"=>200, "dossier_id"=> $dossier[0]['id']));
         //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
         }else{
             $doc = Dossiers::firstOrCreate(
@@ -118,9 +120,8 @@ class Produit_finiController extends AppBaseController
                     );
                 }
             }
+            return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
         }
-
-        return json_encode(array("status"=>200, "dossier_id"=> $doc['id']));
     }
 
     /**
