@@ -97,12 +97,6 @@
                 </ul>
             </div>
 
-            @include('dossiers.modals.modal_create_dossier')
-            @include('produit_finis.modals.modal_create_produit_fini')
-            @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
-            @include('matiere_premieres.modals.modal_create_matiere_premiere')
-            @include('emballages.modals.modal_create_emballage')
-            @include('ressources.modals.modal_create_ressource')
 
             <div class="card-footer paginations-all">
                 <div class="paginations-all">
@@ -111,6 +105,13 @@
             </div>
         </div>
     </div>
+
+    @include('dossiers.modals.modal_create_dossier')
+    @include('produit_finis.modals.modal_create_produit_fini')
+    @include('produit_semi_finis.modals.modal_create_produit_semi_fini')
+    @include('matiere_premieres.modals.modal_create_matiere_premiere')
+    @include('emballages.modals.modal_create_emballage')
+    @include('ressources.modals.modal_create_ressource')
     @include('dossiers.scripts.scripts_dossiers')
     @include('produit_finis.scripts.scripts_produits_finis')
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
