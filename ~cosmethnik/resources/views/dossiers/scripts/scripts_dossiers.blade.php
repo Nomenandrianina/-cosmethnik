@@ -4,6 +4,90 @@
     $('#document').hide();
     $('#header').hide();
 
+    var itemsPerPage = 3; // Nombre d'éléments par page
+    var listContainer = document.getElementById('div-change');
+    var currentPage = 1;
+    var numItems; // Nombre total d'éléments (initialisé plus tard)
+    var numPages; // Nombre total de pages (initialisé plus tard)
+
+    // Afficher les éléments de la page spécifiée, masquer les autres
+    function showPage(page) {
+        var items = listContainer.querySelectorAll('.list-group-item');
+        var startIndex = (page - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+
+        currentPage = page;
+
+        // Masquer tous les éléments de la liste
+        items.forEach(function(item) {
+            item.style.display = 'none';
+        });
+
+        // Afficher les éléments de la page spécifiée
+        for (var i = startIndex; i < endIndex; i++) {
+            if (items[i]) {
+                items[i].style.display = 'block';
+            }
+        }
+    }
+
+    // Générer les liens de pagination
+    function createPagination() {
+        var pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        for (var i = 1; i <= numPages; i++) {
+            var link = document.createElement('a');
+            link.href = '#';
+            link.innerHTML = i;
+
+            link.className = 'page-item page-link'; // Ajouter les classes "page-item" et "page-link" au lien
+
+            if (i === currentPage) {
+                link.classList.add('active-page'); // Ajoute la classe "active-page" au lien actif
+            }
+
+            // Gérer le clic sur le lien pour afficher la page correspondante
+            link.addEventListener('click', (function(page) {
+                return function() {
+                    var activeLinks = pagination.getElementsByClassName('active-page');
+                    for (var j = 0; j < activeLinks.length; j++) {
+                        activeLinks[j].classList.remove('active-page');
+                    }
+
+                    // Ajouter la classe "active-page" au lien correspondant à la page cliquée
+                    this.classList.add('active-page');
+                    showPage(page);
+                };
+            })(i));
+
+            pagination.appendChild(link); // Ajouter le lien directement dans l'élément de pagination
+        }
+    }
+
+    // Mettre à jour le nombre total d'éléments et générer la pagination
+    function updatePagination() {
+        var items = listContainer.querySelectorAll('.list-group-item');
+        numItems = items.length;
+        numPages = Math.ceil(numItems / itemsPerPage);
+
+        // Masquer tous les éléments au chargement de la page
+        items.forEach(function(item) {
+            item.style.display = 'none';
+        });
+        // Afficher la première page
+        showPage(1);
+        // Générer la pagination
+        createPagination();
+    }
+
+    function resetPagination() {
+        var paginationContainer = document.getElementById('pagination');
+        paginationContainer.innerHTML = ''; // Supprimer le contenu HTML de l'élément pagination
+    }
+
+
+
     $(function() {
         $('#name').on('change', function() {
             $('#link').val('http://127.0.0.1:8000/~cosmethnik/admin/dossiers/'+this.value.replace(/\s+/g, '').toLowerCase());
@@ -112,6 +196,7 @@
     function actions(id_dossier,id_site) {
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
+        resetPagination();
         $.ajax({
                 url: '{{ route('dossiers.navigate') }}',
                 type: 'POST',
@@ -122,12 +207,11 @@
                 },
                 dataType: 'json',
                 success: function(data){
-                    $('#data-ul').remove();
                     $('#info-site').hide();
                     $('#div-change').html(data.results);
-                    $('.paginations-all').html(data.paginationLinks);
                     $('#header').show();
                     $('#document').show();
+                    updatePagination();
                 },
                 complete: function(){
                     $('.loading-produit-semi-fini').hide();
@@ -135,10 +219,13 @@
         });
     }
 
+
+
     //Children folder
     function getDetails(id_dossier,id_site,title) {
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
+        resetPagination();
         $.ajax({
                 url: '{{ route('dossiers.navigate.details') }}',
                 type: 'POST',
@@ -153,6 +240,7 @@
                     document.getElementById("bread-change").innerHTML = title;
                     $('#data-ul').remove();
                     $('#div-change').html(data.results);
+                    updatePagination();
                 },
                 complete: function(){
                     $('.loading-produit-semi-fini').hide();

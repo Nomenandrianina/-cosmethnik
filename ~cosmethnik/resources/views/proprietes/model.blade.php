@@ -20,7 +20,6 @@
                 Désignation
             </div>
 
-            @dd($model)
             <div class="card-body p-0" id="div-change">
                     <div  style="display: grid; grid-template-columns: 80% 20%;margin: 12px 0 -6px 0;">
                         <div style="margin: 5px 0 5px 60px;color: gray;">{{__('models/produitFinis.fields.nom')}} :</div>

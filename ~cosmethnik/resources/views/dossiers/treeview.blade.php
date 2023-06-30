@@ -78,35 +78,16 @@
             </div>
 
             <div class="card-body p-0" id="div-change">
-                <ul class="list-group list-group-flush" id="data-ul">
-                    @if ($doc->isEmpty() != true)
-                        @foreach($doc as $category)
-                            @foreach ( $category->childs as $child )
-                                <li class="list-group-item">
-                                    <a onclick="getDetails({{ $child->id }} ,{{ $doc[0]->sites_id }}, '{{ $child->title }}')" style="cursor: pointer">
-                                        <span class="one-span">
-                                            <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
-                                            <span class="three-span">
-                                                {{ $child->title }} <br>
-                                                @if ($child->description)
-                                                    <small>{{ $child->description }}</small>
-                                                @else
-                                                    <small>Aucune description </small>
-                                                @endif
-                                            </span>
-                                        </span>
-                                    </a>
-                                </li>
-                            @endforeach
-                        @endforeach
-                    @else
-                        <p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>
-                    @endif
-                </ul>
             </div>
 
+
+
+
+
             <div class="card-footer paginations-all" style="margin-left: auto;margin-right: auto;">
-                <div class="paginations-all">
+                <div id="pagination" style="display: flex;">
+                        <a href="#" class="previous-link"><i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="next-link"><i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -124,4 +105,5 @@
     @include('matiere_premieres.scripts.scripts_matiere_premiere')
     @include('emballages.scripts.scripts_emballage')
     @include('ressources.scripts.scripts_ressources')
+    @include('dossiers.scripts.scripts_delete')
 @endsection

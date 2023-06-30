@@ -57,16 +57,15 @@ class DossiersController extends AppBaseController
         $id_site = intval($request->site_id);
         $result = '';
         // $doc = Dossiers::where('parent_id', '=' ,$id_dossier)->get();
-        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->paginate(3);
-        $paginationLinks = $doc->links()->toHtml();
+        $doc = Dossiers::where('sites_id','=',$id_site)->where('parent_id', '=', $id_dossier)->with('site')->get();
         if($doc->isEmpty() == true){
             $result = "<p style='text-align:center;margin: revert;'>Aucun élément trouvé</p>";
         }else{
             $ul = "<ul class='list-group list-group-flush' id='data-ul'>";
             $li = '';
             foreach($doc as $item){
-                $li .='<li class="list-group-item">
-                            <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer">
+                $li .='<li class="list-group-item" id="document-item'.$item->id.'" style="align-items: center;">
+                            <a onclick="getDetails('.$item->id.','.$id_site.',\''.$item->title.'\')" style="cursor:pointer;flex-grow: 1 !important;">
                             <span class="one-span">
                             <span class="two-span"><i class="fas fa-folder fa-3x"></i></span>
                             <span class="three-span">'.$item->title.'
@@ -81,6 +80,9 @@ class DossiersController extends AppBaseController
                                     $li = $li.'<small>Aucune description</small></span>
                                             </span>
                                             </a>
+                                            <div class="item">
+                                                <i class="fas fa-trash" onclick="deleteItem('.$item->id.')"></i>
+                                            </div>
                                             </li>';
                                 }
             }
@@ -88,7 +90,7 @@ class DossiersController extends AppBaseController
             $endul = '</ul>';
             $result = $ul.$li.$endul;
         }
-        return response()->json(['success'=> 200,'results' => $result, 'paginationLinks' => $paginationLinks]);
+        return response()->json(['success'=> 200,'results' => $result]);
     }
 
 
@@ -410,5 +412,24 @@ class DossiersController extends AppBaseController
         Flash::success(__('messages.deleted', ['model' => __('models/dossiers.singular')]));
 
         return redirect(route('dossiers.index'));
+    }
+    /**
+     * Remove the specified Sites from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function delete(Request $request)
+    {
+        $input = $request->all();
+        $deletedRows = DB::table('dossiers')->where('id', $input['id'])->delete();
+        if ($deletedRows > 0) {
+            if ($request->ajax()) {
+                return ['status' => 200];
+            }
+        } else {
+            return ['status' => 201];
+        }
     }
 }

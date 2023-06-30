@@ -236,3 +236,36 @@ span.site-remove {
     right: 2rem;
     cursor: pointer;
 }
+
+.page-item.page-link.active-page  {
+    color: #ffffff !important;
+    background-color: #1a4a51;
+    /* Ajoutez d'autres styles selon vos besoins */
+  }
+
+
+  .item {
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-8px);
+  }
+
+
+  .popover {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 150px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+
+
