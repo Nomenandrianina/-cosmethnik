@@ -189,9 +189,7 @@ class Produit_semi_finisController extends AppBaseController
 
         $produitSemiFinis = $this->produitSemiFinisRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/produitSemiFinis.singular')]));
-
-        return redirect(route('produitSemiFinis.index'));
+        return json_encode(array("status"=>200));
     }
 
     /**

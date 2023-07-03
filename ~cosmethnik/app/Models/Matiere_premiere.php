@@ -54,7 +54,6 @@ class Matiere_premiere extends Model
     public $timestamps = false;
 
 
-
     public $fillable = [
         'nom',
         'libelle_commerciale',
@@ -133,12 +132,12 @@ class Matiere_premiere extends Model
     public static $rules = [
         'nom'=>'required',
         'libelle_commerciale'=>'required',
-        'code_bcepg'=>'required',
+        'code_becpg'=>'required',
         'code_erp'=> 'required',
         'libelle_legale'=>'required',
     ];
 
-     /**
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     **/
     public function dossier()

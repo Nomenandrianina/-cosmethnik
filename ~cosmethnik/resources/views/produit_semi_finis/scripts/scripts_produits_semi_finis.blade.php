@@ -23,7 +23,7 @@
             });
         });
 
-        // Fonction qui enregistre les informations d'in produit semin-finis
+        // Fonction qui enregistre les informations d'un produit semin-finis
         function Store_produit_semi_fini(){
             $('.loading-produit-semi-fini').show();
             let CSRF_TOKEN =  $('meta[name="csrf_token"]').attr('content');
@@ -95,6 +95,5 @@
                 }
             })
             $("#nomError").addClass('d-none');
-
         }
 </script>

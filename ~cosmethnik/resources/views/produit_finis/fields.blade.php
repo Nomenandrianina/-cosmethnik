@@ -46,9 +46,9 @@
 
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':',['class' => 'required']) !!}
-        {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgErrorFini"></span>')) !!}
+        {!! Form::label('code_becpg', __('models/produitFinis.fields.code_becpg').':',['class' => 'required']) !!}
+        {!! Form::text('code_becpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_becpgErrorFini"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
@@ -182,8 +182,8 @@
 
 <!-- Code Bcpg Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('code_bcpg', __('models/produitFinis.fields.code_bcpg').':') !!}
-    {!! Form::text('code_bcpg', null, ['class' => 'form-control']) !!}
+    {!! Form::label('code_becpg', __('models/produitFinis.fields.code_becpg').':') !!}
+    {!! Form::text('code_becpg', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Code Erp Field -->

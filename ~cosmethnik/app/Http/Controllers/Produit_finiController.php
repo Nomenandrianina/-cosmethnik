@@ -175,7 +175,6 @@ class Produit_finiController extends AppBaseController
     public function update($id, UpdateProduit_finiRequest $request)
     {
         $produitFini = $this->produitFiniRepository->find($id);
-
         if (empty($produitFini)) {
             Flash::error(__('messages.not_found', ['model' => __('models/produitFinis.singular')]));
 
@@ -184,9 +183,7 @@ class Produit_finiController extends AppBaseController
 
         $produitFini = $this->produitFiniRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/produitFinis.singular')]));
-
-        return redirect(route('produitFinis.index'));
+        return json_encode(array("status"=>200));
     }
 
     /**

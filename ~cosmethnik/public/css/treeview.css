@@ -147,3 +147,71 @@
 .unite{
     flex: 0 0 9.333333%!important;
 }
+
+.link-dossier:hover{
+    color: #407be9;
+}
+
+.link-document{
+    cursor: pointer
+}
+
+.link-document:hover{
+    color: #407be9;
+}
+
+.name-fields{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin: 12px 0 -6px 0;
+}
+
+.name-description{
+    margin: 5px 0 5px 60px;
+    color: gray;
+}
+
+.name-description-second{
+    margin: 5px 0 5px 20px;
+}
+
+#link-modal-edit i{
+    color:white
+}
+
+.dataTables_wrapper {
+    margin: 20px;
+}
+
+.required:after {
+    content: '(*)';
+    color: red;
+    padding-left: 5px;
+}
+.nav-link dropdown-toggle{
+    cursor: pointer;
+}
+.elements-create{
+    margin-left: 68px
+}
+
+.modal-elements{
+    max-width: 750px;
+}
+.modal-head-color{
+    background: #75c8e7;
+    color: white;
+}
+
+.success-msg{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    z-index: 10000;
+    position: relative
+}
+
+.success-msg {
+    color: #270;
+    background-color: #DFF2BF;
+}

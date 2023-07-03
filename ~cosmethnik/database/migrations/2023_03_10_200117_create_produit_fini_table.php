@@ -21,7 +21,7 @@ class CreateProduitFiniTable extends Migration
             $table->string('libelle_legale')->nullable();
             $table->string('description')->nullable();
             $table->string('modele')->nullable();
-            $table->string('code_bcpg')->nullable();
+            $table->string('code_becpg')->nullable();
             $table->string('code_erp')->nullable();
             $table->string('ean')->nullable();
             $table->string('ean_colis')->nullable();

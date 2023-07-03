@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $description
  * @property string $description_conditionnement
  * @property string $modele
- * @property string $code_bcepg
+ * @property string $code_becpg
  * @property string $code_erp
  * @property string $ean
  * @property string $ean_colis
@@ -66,7 +66,7 @@ class Produit_semi_finis extends Model
         'description',
         'description_conditionnement',
         'modele',
-        'code_bcepg',
+        'code_becpg',
         'code_erp',
         'ean',
         'ean_colis',
@@ -112,7 +112,7 @@ class Produit_semi_finis extends Model
         'description' => 'string',
         'description_conditionnement' => 'string',
         'modele' => 'string',
-        'code_bcepg' => 'string',
+        'code_becpg' => 'string',
         'code_erp' => 'string',
         'ean' => 'string',
         'ean_colis' => 'string',
@@ -153,7 +153,7 @@ class Produit_semi_finis extends Model
     public static $rules = [
             'nom'=>'required',
             'libelle_commerciale'=>'required',
-            'code_bcepg'=>'required',
+            // 'code_becpg'=>'required',
             'code_erp'=>'required',
             'libelle_legale'=>'required',
     ];

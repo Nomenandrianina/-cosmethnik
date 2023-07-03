@@ -33,9 +33,9 @@
 <div class="row">
     <!-- Code Bcepg Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcepg', __('models/produitSemiFinis.fields.code_bcepg').':',['class' => 'required']) !!}
-        {!! Form::text('code_bcepg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_bcepg_semi_fini']) !!}
-        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_bcepgError"></span>')) !!}
+        {!! Form::label('code_becpg', __('models/produitSemiFinis.fields.code_becpg').':',['class' => 'required']) !!}
+        {!! Form::text('code_becpg', null, ['class' => 'form-control','placeholder'=>'Code Bcepg','id'=>'code_becpg_semi_fini']) !!}
+        {!! Html::decode(Form::label('name','<span class="text-danger" id="code_becpgError"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->

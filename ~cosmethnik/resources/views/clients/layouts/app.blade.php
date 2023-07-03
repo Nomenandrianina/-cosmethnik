@@ -31,51 +31,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
-
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="icon" href="{{asset('/images/logo-icon.png')}}">
 
     @stack('third_party_stylesheets')
-    <style>
-        .dataTables_wrapper {
-            margin: 20px;
-        }
 
-        .required:after {
-            content: '(*)';
-            color: red;
-            padding-left: 5px;
-        }
-        .nav-link dropdown-toggle{
-            cursor: pointer;
-        }
-        .elements-create{
-            margin-left: 68px
-        }
-
-        .modal-elements{
-            max-width: 750px;
-        }
-        .modal-head-color{
-            background: #75c8e7;
-            color: white;
-        }
-
-        .success-msg{
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 3px 3px 3px 3px;
-            z-index: 10000;
-            position: relative
-        }
-
-        .success-msg {
-            color: #270;
-            background-color: #DFF2BF;
-        }
-
-    </style>
     @stack('page_css')
 
 </head>

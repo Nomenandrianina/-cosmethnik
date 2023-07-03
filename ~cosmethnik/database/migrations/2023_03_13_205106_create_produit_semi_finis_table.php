@@ -22,7 +22,7 @@ class CreateProduitSemiFinisTable extends Migration
             $table->string('description')->nullable();;
             $table->string('description_conditionnement')->nullable();;
             $table->string('modele')->nullable();;
-            $table->string('code_bcepg')->nullable();;
+            $table->string('code_becpg')->nullable();;
             $table->string('code_erp')->nullable();;
             $table->string('ean')->nullable();;
             $table->string('ean_colis')->nullable();;

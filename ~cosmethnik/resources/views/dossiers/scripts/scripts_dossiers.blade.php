@@ -121,7 +121,6 @@
         var description = $('#description').val();
 
 
-
         $.ajax({
             type:'POST',
             url: "{{ route('dossiers.store') }}",
@@ -219,13 +218,96 @@
         });
     }
 
-
+     //Navigation de dossier
+    function actions_treeview(id_dossier,id_site) {
+        $('.loading-produit-semi-fini').show();
+        $('#data-ul').remove();
+        $.ajax({
+                url: '{{ route('dossiers.navigate') }}',
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    dossier_id: id_dossier,
+                    site_id: id_site
+                },
+                dataType: 'json',
+                success: function(data){
+                    $('#data-ul').remove();
+                    $('#info-site').hide();
+                    $('#div-change').html(data.results);
+                    $('#header').show();
+                    $('#document').show();
+                    $('#bread-change').hide();
+                },
+                complete: function(){
+                    $('.loading-produit-semi-fini').hide();
+                }
+        });
+    }
 
     //Children folder
     function getDetails(id_dossier,id_site,title) {
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
         resetPagination();
+        $.ajax({
+                url: '{{ route('dossiers.navigate.details') }}',
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    dossier_id: id_dossier,
+                    site_id: id_site,
+                    dossier_title: title,
+                },
+                dataType: 'json',
+                success: function(data){
+                    var element = $( '<span class="link-dossier" id="bread-change">'+title+'</span>'); // Create a new clickable element
+                    element.css('cursor', 'pointer'); // Set the cursor style to indicate it's clickable
+                    element.on('click', function() {
+                        // Handle the onclick event inside the new element
+                        // Perform AJAX request or any other desired action
+                        $('.loading-produit-semi-fini').show();
+                        $('#data-ul').remove();
+                        $.ajax({
+                            url: '{{ route('dossiers.navigate.details') }}',
+                            type: 'POST',
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                dossier_id: id_dossier,
+                                site_id: id_site,
+                                dossier_title: title,
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                $('#data-ul').remove();
+                                $('#div-change').html(response.results);
+                            },
+                            error: function() {
+                                // Handle the error case
+                                alert('Error performing AJAX action.');
+                            },
+                            complete: function(){
+                                $('.loading-produit-semi-fini').hide();
+                            }
+                            });
+                    });
+
+                    $('#bread-change').replaceWith(element);
+                    $('#bread-change').show();
+                    $('#data-ul').remove();
+                    $('#div-change').html(data.results);
+                },
+                complete: function(){
+                    $('.loading-produit-semi-fini').hide();
+                }
+        });
+    }
+
+
+     //Children folder
+     function getAllDetails(id_dossier,id_site,title) {
+        $('.loading-produit-semi-fini').show();
+        $('#data-ul').remove();
         $.ajax({
                 url: '{{ route('dossiers.navigate.details') }}',
                 type: 'POST',

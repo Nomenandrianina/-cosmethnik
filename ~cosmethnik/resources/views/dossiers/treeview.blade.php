@@ -21,46 +21,46 @@
     <div class="content px-3" id="info-site" style="padding: 13px 0 0 0;">
         <div class="row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="card">
-                <div class="card-header">
-                    Détails du site
-                </div>
-                <div class="card-body">
-                    <li class="list-group-item">
-                            <span class="one-span">
-                                <span class="two-span"><i class="fas fa-globe fa-3x"></i></span>
-                                <span class="three-span">
-                                    {{ $site_texte[0]->nom }}
-                                    <br>
-                                    <small>{{ $site_texte[0]->type }} (créer par {{ $site_texte[0]->user->name }} )</small>
+                <div class="card">
+                    <div class="card-header">
+                        Détails du site
+                    </div>
+                    <div class="card-body">
+                        <li class="list-group-item">
+                                <span class="one-span">
+                                    <span class="two-span"><i class="fas fa-globe fa-3x"></i></span>
+                                    <span class="three-span">
+                                        {{ $site_texte[0]->nom }}
+                                        <br>
+                                        <small>{{ $site_texte[0]->type }} (créer par {{ $site_texte[0]->user->name }} )</small>
+                                    </span>
                                 </span>
-                            </span>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    Membres du site
+                <div class="card">
+                    <div class="card-header">
+                        Membres du site
+                    </div>
+                    <div class="card-body">
+                        @foreach($membres as $membre)
+                            <li class="list-group-item">
+                                    <span class="one-span">
+                                        <span class="two-span"><i class="fas fa-user fa-3x"></i></span>
+                                        <span class="three-span">
+                                            {{ $membre->name }}
+                                            <br>
+                                            <small>Membre depuis le {{ dateParse($membre->created_at) }}</small>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="card-body">
-                            @foreach($membres as $membre)
-                                    <li class="list-group-item">
-                                            <span class="one-span">
-                                                <span class="two-span"><i class="fas fa-user fa-3x"></i></span>
-                                                <span class="three-span">
-                                                    {{ $membre->name }}
-                                                    <br>
-                                                    <small>Membre depuis le {{ dateParse($membre->created_at) }}</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                            @endforeach
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -74,15 +74,17 @@
 
         <div class="card">
             <div class="card-header">
-                <i class="fas fa-folder"></i> | Documents | <span id="bread-change"></span>
+                <i class="fas fa-folder"></i>
+                @foreach($doc as $category)
+                    | <a class="link-document" onclick="actions_treeview({{ $category->id }}, {{ $id }})" >
+                            Documents
+                        </a>
+                    |
+                @endforeach
+                <span id="bread-change"></span>
             </div>
-
             <div class="card-body p-0" id="div-change">
             </div>
-
-
-
-
 
             <div class="card-footer paginations-all" style="margin-left: auto;margin-right: auto;">
                 <div id="pagination" style="display: flex;">

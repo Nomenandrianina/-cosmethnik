@@ -14,7 +14,7 @@ return array (
     'libelle_legale'=> 'Libellé legale',
     'description'=>'Description',
     'decription_condit' => 'Description du conditionnement',
-    'code_bcpg'=>'Code beCPG',
+    'code_becpg'=>'Code beCPG',
     'code_erp'=>'Code ERP',
     'usine_id'=>'Usine',
     'geographique_id' => 'Origine géographique',

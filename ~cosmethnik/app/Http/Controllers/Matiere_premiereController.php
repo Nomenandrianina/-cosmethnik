@@ -177,9 +177,7 @@ class Matiere_premiereController extends AppBaseController
 
         $matierePremiere = $this->matierePremiereRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/matierePremieres.singular')]));
-
-        return redirect(route('matierePremieres.index'));
+        return json_encode(array("status"=>200));
     }
 
     /**

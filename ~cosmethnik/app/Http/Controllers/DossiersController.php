@@ -197,23 +197,30 @@ class DossiersController extends AppBaseController
         $dossier_parent = $request->dossier_parent;
         $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
         $site_texte = Sites::where('id','=', $site_id)->get();
+        $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
+        $unite = Unites::all();
+        $usines = Usines::pluck('description','id');
+        $origines_geo = Geographiques::pluck('description','id');
+        $etat_prod = Etat_produits::pluck('designation','id');
+        $marque = Marques::pluck('description','id');
+
         $object = DeterminateObject($dossier_parent);
         if($object::class == "App\Models\Ressources"){
             $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','unite'])->first();
             $menu = DeterminateObject($dossier_parent)::$fields;
             $icon = DeterminateObject($dossier_parent)->icon_menu();
-            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+            return view('proprietes.model' , compact('menu','site_texte','icon','marque','usines','famille','origines_geo','etat_prod','dossier_parent','model','data'));
         }
         if($object::class == "App\Models\Produit_fini" || $object::class == "App\Models\Produit_semi_finis" || $object::class == "App\Models\Matiere_premiere"){
             $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
             $menu = DeterminateObject($dossier_parent)::$fields;
             $icon = DeterminateObject($dossier_parent)->icon_menu();
-            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+            return view('proprietes.model' , compact('menu','site_texte','icon','marque','usines','famille','origines_geo','etat_prod','dossier_parent','model','data'));
         }else{
             $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->first();
             $menu = DeterminateObject($dossier_parent)::$fields;
             $icon = DeterminateObject($dossier_parent)->icon_menu();
-            return view('proprietes.model' , compact('menu','site_texte','icon','dossier_parent','model','data'));
+            return view('proprietes.model' , compact('menu','site_texte','icon','marque','usines','famille','origines_geo','etat_prod','dossier_parent','model','data'));
         }
     }
 

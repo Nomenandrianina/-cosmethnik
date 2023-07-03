@@ -65,3 +65,5 @@ Route::get('nutriments/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}'
 Route::post('sites/delete', 'App\Http\Controllers\SitesController@delete')->name('sites.delete');
 
 Route::post('dossiers/delete', 'App\Http\Controllers\DossiersController@delete')->name('dossiers.delete');
+
+// Route::post('produitFinis/{id}', 'App\Http\Controllers\Produit_finiController@update')->name('produitFinis.update');
