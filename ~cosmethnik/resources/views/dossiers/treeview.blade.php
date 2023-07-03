@@ -81,9 +81,6 @@
             </div>
 
 
-
-
-
             <div class="card-footer paginations-all" style="margin-left: auto;margin-right: auto;">
                 <div id="pagination" style="display: flex;">
                         <a href="#" class="previous-link"><i class="fas fa-chevron-left"></i></a>
