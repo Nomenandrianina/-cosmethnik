@@ -87,7 +87,6 @@
     }
 
 
-
     $(function() {
         $('#name').on('change', function() {
             $('#link').val('http://127.0.0.1:8000/~cosmethnik/admin/dossiers/'+this.value.replace(/\s+/g, '').toLowerCase());
@@ -222,6 +221,7 @@
     function actions_treeview(id_dossier,id_site) {
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
+        resetPagination();
         $.ajax({
                 url: '{{ route('dossiers.navigate') }}',
                 type: 'POST',
@@ -238,6 +238,7 @@
                     $('#header').show();
                     $('#document').show();
                     $('#bread-change').hide();
+                    updatePagination();
                 },
                 complete: function(){
                     $('.loading-produit-semi-fini').hide();
@@ -264,8 +265,7 @@
                     var element = $( '<span class="link-dossier" id="bread-change">'+title+'</span>'); // Create a new clickable element
                     element.css('cursor', 'pointer'); // Set the cursor style to indicate it's clickable
                     element.on('click', function() {
-                        // Handle the onclick event inside the new element
-                        // Perform AJAX request or any other desired action
+                        resetPagination();
                         $('.loading-produit-semi-fini').show();
                         $('#data-ul').remove();
                         $.ajax({
@@ -281,6 +281,7 @@
                             success: function(response) {
                                 $('#data-ul').remove();
                                 $('#div-change').html(response.results);
+                                updatePagination();
                             },
                             error: function() {
                                 // Handle the error case
@@ -289,13 +290,14 @@
                             complete: function(){
                                 $('.loading-produit-semi-fini').hide();
                             }
-                            });
+                        });
                     });
 
                     $('#bread-change').replaceWith(element);
                     $('#bread-change').show();
                     $('#data-ul').remove();
                     $('#div-change').html(data.results);
+                    updatePagination();
                 },
                 complete: function(){
                     $('.loading-produit-semi-fini').hide();
@@ -335,31 +337,32 @@
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
         $.ajax({
-                url: '{{ route('dossiers.navigate.details.proprietes') }}',
-                type: 'POST',
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    id_model: id_model,
-                    site_id: id_site,
-                    dossier_id: id_dossier,
-                    dossier_parent: dossier_parent,
-                },
-                dataType: 'json',
-                success: function(data){
-                    if (data.status == 200) {
-                        let url = "{{ route('proprietes.model',[':id_model' ,':id_site',':id_dossier',':dossier_parent']) }}";
-                        url = url.replace(':id_model', data.id_model);
-                        url = url.replace(':id_site', data.id_site);
-                        url = url.replace(':id_dossier', data.id_dossier);
-                        url = url.replace(':dossier_parent', data.dossier_parent);
-                        document.location.href = url;
-                    } else {
-                        toastr.error(data.message);
-                    }
-                },
-                complete: function(){
-                    $('.loading-produit-semi-fini').hide();
+            url: '{{ route('dossiers.navigate.details.proprietes') }}',
+            type: 'POST',
+            data: {
+                _token: "{{ csrf_token() }}",
+                id_model: id_model,
+                site_id: id_site,
+                dossier_id: id_dossier,
+                dossier_parent: dossier_parent,
+            },
+            dataType: 'json',
+            success: function(data){
+                if (data.status == 200) {
+                    let url = "{{ route('proprietes.model',[':id_model' ,':id_site',':id_dossier',':dossier_parent']) }}";
+                    url = url.replace(':id_model', data.id_model);
+                    url = url.replace(':id_site', data.id_site);
+                    url = url.replace(':id_dossier', data.id_dossier);
+                    url = url.replace(':dossier_parent', data.dossier_parent);
+                    document.location.href = url;
+                } else {
+                    toastr.error(data.message);
                 }
+            },
+            complete: function(){
+                $('.loading-produit-semi-fini').hide();
+            }
         });
     }
+
     </script>
