@@ -27,6 +27,7 @@ use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helper;
 use App\Models\Ressources;
+use App\Models\User;
 
 class DossiersController extends AppBaseController
 {
@@ -233,6 +234,7 @@ class DossiersController extends AppBaseController
      */
     public function treeview($id = null)
     {
+        $add_members = User::where('id','!=',Auth::user()->id)->get();
         $site_texte = Sites::where('id','=', $id)->get();
         $all = Sites::all();
         $famille = Famille::where('parent_id', '=', 0)->pluck('nom','id');
@@ -252,7 +254,6 @@ class DossiersController extends AppBaseController
         foreach ($doc as $dossier) {
             $childs = $childs->merge($dossier->childs()->get());
         }
-        // dd($childs);
         $allDoc = Dossiers::pluck('title','id')->all();
         $one_doc = Dossiers::where('sites_id','=',$id)->where('parent_id', '=', 0)->get();
         $membres = DB::table('users')
@@ -276,7 +277,8 @@ class DossiersController extends AppBaseController
             'ressource' => $ressource,
             'marque' => $marque,
             'site_texte' => $site_texte,
-            'unite' => $unite
+            'unite' => $unite,
+            'add_members' => $add_members
         );
         return view('dossiers.treeview',$view);
     }

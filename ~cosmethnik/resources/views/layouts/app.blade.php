@@ -98,8 +98,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
-                        <li class="user-header bg-primary">
-                            <img src="{{url('images/logo.png')}}" class="img-circle elevation-2" alt="User Image">
+                        <li class="user-header bg-primary" style="background-color: #28a745!important;">
+                            <img src="{{asset('images/avatar.jpg')}}" class="img-circle elevation-2" alt="User Image">
                             <p>
                                 {{ Auth::user()->name }}
                                 <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>

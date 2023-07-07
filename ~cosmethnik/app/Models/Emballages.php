@@ -86,13 +86,13 @@ class Emballages extends Model
     }
 
     public static $fields = [
-        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
-        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
-        ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
-        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
-        ['menu' => ['props' => 'Activités', 'link' => '']],
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model', 'scripts' => 'propriete']],
+        ['menu' => ['props' => 'Fiche technique', 'link' => '', 'scripts' => 'fiche']],
+        ['menu' => ['props' => 'Documents', 'link' => '', 'scripts' => 'document']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model', 'scripts' => 'cout']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model', 'scripts' => 'chimique']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '', 'scripts' => 'emplois']],
+        ['menu' => ['props' => 'Activités', 'link' => '', 'scripts' => 'activite']],
     ];
 
 }

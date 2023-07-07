@@ -7,7 +7,7 @@ hold-transition register-page
 <div class="register-box">
     <div class="register-logo">
         <a href="{{ route('home') }}">
-            <img src="{{url('/logo.png')}}" class="logo" alt="Image"/>
+            <img src="{{asset('/logo.png')}}" class="logo" alt="Image"/>
         </a>
     </div>
 

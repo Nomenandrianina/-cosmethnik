@@ -20,6 +20,7 @@ class CreateSiteUserTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('is_member');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -6,6 +6,8 @@ use App\Models\Attendance;
 use App\Models\Produit_fini;
 use App\Models\Produit_semi_finis;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Sites;
 use App\Models\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -91,7 +93,16 @@ class DashboardRepository
         $dashboard = [];
         $dashboard['dashboardInfo'] = $this->getDashboardInfo();
         $dashboard['chartUserCheckin'] = $this->getChartUserCheckinInfo();
-        $dashboard['sites'] = Sites::with('user')->where('user_id', $dashboard['dashboardInfo']["user_count"])->paginate(2);
+        $idUtilisateur = Auth::user()->id;
+        $dashboard['sites'] = DB::table('sites')
+        ->leftJoin('site_user', function ($join) use ($idUtilisateur) {
+            $join->on('sites.id', '=', 'site_user.site_id')
+                ->where('site_user.user_id', $idUtilisateur);
+        })
+        ->select('sites.*')
+        ->whereIn('sites.user_id', [$idUtilisateur, null])
+        ->orWhere('site_user.is_member', 1)
+        ->paginate(2);
         $dashboard['produit_fini'] = Produit_fini::paginate(2);
         $user = User::all();
         $select = [];

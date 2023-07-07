@@ -209,19 +209,25 @@
                         </div>
                         <div class="card-body p-0" id="site-data">
                             <ul class="list-group list-group-flush" id="list-site">
-                                @foreach ($sites as $item)
-                                    <li class="list-group-item site" id="site{{ $item->id }}">
-                                        <a href="{{ route('dossiers.treeview',$item->id) }}">
-                                            <span class="one-site">
-                                                    <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
-                                                        <span class="three-site">
-                                                            {{ $item->nom }} <br> <small>{{ $item->type }}</small>
-                                                        </span>
-                                            </span>
-                                        </a>
-                                        <span class="site-remove" onclick="delete_site({{ $item->id }})"><i class="fas fa-trash"></i></span>
+                                @if($sites->isEmpty())
+                                    <li class="list-group-item site" style="justify-content: center;">
+                                        <p>Aucun élément</p>
                                     </li>
-                                @endforeach
+                                @else
+                                    @foreach ($sites as $item)
+                                        <li class="list-group-item site" id="site{{ $item->id }}">
+                                            <a href="{{ route('dossiers.treeview',$item->id) }}">
+                                                <span class="one-site">
+                                                        <span class="two-site"><i class="fas fa-solid fa-globe fa-2x"></i></span>
+                                                            <span class="three-site">
+                                                                {{ $item->nom }} <br> <small>{{ $item->type }}</small>
+                                                            </span>
+                                                </span>
+                                            </a>
+                                            <span class="site-remove" onclick="delete_site({{ $item->id }})"><i class="fas fa-trash"></i></span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
 
                             <div class="d-flex justify-content-center">

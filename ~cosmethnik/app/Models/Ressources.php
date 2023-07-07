@@ -132,17 +132,17 @@ class Ressources extends Model
 
 
     public static $fields = [
-        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
-        ['menu' => ['props' => 'Fiches techniques', 'link' => '']],
-        ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model']],
-        ['menu' => ['props' => 'Paramètres ressource', 'link' => '']],
-        ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
-        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Prix d\'achat', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
-        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
-        ['menu' => ['props' => 'Activités', 'link' => '']],
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model', 'scripts' => 'propriete']],
+        ['menu' => ['props' => 'Fiches techniques', 'link' => 'proprietes.model', 'scripts' => 'fiche']],
+        ['menu' => ['props' => 'Documents', 'link' => 'proprietes.model', 'scripts' => 'document']],
+        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model', 'scripts' => 'process']],
+        ['menu' => ['props' => 'Paramètres ressource', 'link' => 'proprietes.model', 'scripts' => 'ressource']],
+        ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model', 'scripts' => 'allergene']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model', 'scripts' => 'cout']],
+        ['menu' => ['props' => 'Prix d\'achat', 'link' => 'proprietes.model', 'scripts' => 'achat']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model', 'scripts' => 'chimique']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => 'proprietes.model', 'scripts' => 'emploi']],
+        ['menu' => ['props' => 'Activités', 'link' => 'proprietes.model', 'scripts' => 'activite']],
     ];
 
 }

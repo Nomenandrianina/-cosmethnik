@@ -59,7 +59,7 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
-        
+
         $user = $this->userRepository->create($input);
 
         $role_data = $request->get('role_data');
@@ -120,6 +120,7 @@ class UserController extends AppBaseController
     public function update($id, UpdateUserRequest $request)
     {
         $user = $this->userRepository->find($id);
+        dd($request->get('role_data'));
 
         if (empty($user)) {
             Flash::error('User not found');

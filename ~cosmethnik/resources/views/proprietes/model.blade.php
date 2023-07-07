@@ -22,130 +22,152 @@
                         Désignation
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-primary" id="link-modal-edit" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="fas fa-edit"></i> Modifier</button>
+                        <button class="btn btn-primary" id="link-modal-edit" data-bs-toggle="modal" data-bs-target="#edit-modal" style="    background-color: #1a4a51;
+                        border: none;"><i class="fas fa-edit"></i> Modifier</button>
                     </div>
                 </div>
             </div>
 
             <div class="card-body p-0" id="div-change">
-                <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.nom')}} :</div>
-                    <div class="name-description-second">{{ $model->nom }}</div>
-                </div>
 
-                @if ($model->libelle_commerciale)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.libelle_commerciale')}} :</div>
-                        <div class="name-description-second">{{ $model->libelle_commerciale }}</div>
-                    </div>
-                @endif
+                <div class="list-group">
+                    @if ($model->nom)
+                        <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Nom :</h5>
+                            <small>{{ $model->nom }}</small>
+                        </div>
+                        </a>
+                    @endif
 
-                @if ($model->famille)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.famille')}} :</div>
-                        <div class="name-description-second"></div>
-                    </div>
-                @endif
+                    @if ($model->libelle_commerciale)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Libellé commerciale :</h5>
+                            <small>{{ $model->libelle_commerciale }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                @if ($model->famille)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.sous-famille')}} :</div>
-                        <div class="name-description-second"></div>
-                    </div>
-                @endif
+                    @if ($model->libelle_legale)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Libellé legale :</h5>
+                            <small>{{ $model->libelle_legale }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                <hr>
-                <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.libelle_legale')}} :</div>
-                    <div class="name-description-second">{{ $model->libelle_legale }}</div>
-                </div>
+                    @if ($model->description)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Description  :</h5>
+                            <small>{{ $model->description }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                <hr>
+                    @if ($model['etat_produit'])
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Désignation  :</h5>
+                            <small>{{ $model['etat_produit']->designation }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.description')}} :</div>
-                    <div class="name-description-second">{{ $model->description }}</div>
-                </div>
+                    @if ($model->code_becpg)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Code beCPG :</h5>
+                            <small>{{ $model->code_becpg }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                @if ($model['etat_produit'])
-                    <hr>
-                    <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.etat_produit_id')}} :</div>
-                        <div class="name-description-second">{{ $model['etat_produit']->designation }}</div>
-                    </div>
-                @endif
-                <hr>
-                <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.code_becpg')}} :</div>
-                    <div class="name-description-second">{{ $model->code_becpg }}</div>
-                </div>
-                <hr>
-                <div  class="name-fields">
-                    <div class="name-description">{{__('models/produitFinis.fields.code_erp')}} :</div>
-                    <div class="name-description-second">{{ $model->code_erp }}</div>
-                </div>
-                @if ($model->ean)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.ean')}} :</div>
-                        <div class="name-description-second">{{ $model->ean }}</div>
-                    </div>
-                @endif
+                    @if ($model->code_erp)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Code ERP :</h5>
+                            <small>{{ $model->code_erp }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                @if ($model->ean_coli)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.ean_colis')}} :</div>
-                        <div class="name-description-second">{{ $model->ean_colis }}</div>
-                    </div>
-                @endif
+                    @if ($model->ean)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">EAN :</h5>
+                            <small>{{ $model->ean }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                @if ($model->ean_palette)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.ean_palette')}} :</div>
-                        <div class="name-description-second">{{ $model->ean_palette }}</div>
-                    </div>
-                @endif
+                    @if ($model->ean_colis)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">EAN Colis :</h5>
+                            <small>{{ $model->ean_colis }}</small>
+                            </div>
+                        </a>
+                    @endif
 
-                @if ($model['filiale'] != null)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.filiale')}} :</div>
-                            <div class="name-description-second">{{ $model['filiale'] }}</div>
-                    </div>
-                @endif
-                @if ($model['marque'] != null)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.marque')}} :</div>
-                            <div class="name-description-second">{{ $model['marque']->description }}</div>
-                    </div>
-                @endif
-                @if ($model['usine'] != null)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.usine_id')}} :</div>
-                            <div  class="name-description-second">{{ $model['usine']->description }}</div>
-                    </div>
-                @endif
-                @if ($model['geographique'] != null)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.geographique_id')}} :</div>
-                        <div class="name-description-second">{{ $model['geographique']->description }}</div>
-                    </div>
-                @endif
-                @if ($model['client'] != null)
-                    <hr>
-                    <div  class="name-fields">
-                        <div class="name-description">{{__('models/produitFinis.fields.client')}} :</div>
-                        <div class="name-description-second">{{ $model['client'] }}</div>
-                    </div>
-                @endif
+                    @if ($model->ean_palette)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">EAN Palette :</h5>
+                            <small>{{ $model->ean_palette }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($model['filiale'] != null)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Filiale :</h5>
+                            <small>{{ $model['filiale'] }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($model['marque'] != null)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Marque :</h5>
+                            <small>{{ $model['marque']->description }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($model['usine'] != null)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Usine :</h5>
+                            <small>{{ $model['usine']->description }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($model['geographique'] != null)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Origine géographique :</h5>
+                            <small>{{ $model['geographique']->description }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($model['client'] != null)
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between" style="padding: 0px;">
+                            <h5 class="mb-1">Client :</h5>
+                            <small>{{ $model['client'] }}</small>
+                            </div>
+                        </a>
+                    @endif
+
+
+                  </div>
             </div>
         </div>
     </div>

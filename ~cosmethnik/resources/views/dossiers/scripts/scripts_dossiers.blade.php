@@ -354,15 +354,15 @@
                     url = url.replace(':id_site', data.id_site);
                     url = url.replace(':id_dossier', data.id_dossier);
                     url = url.replace(':dossier_parent', data.dossier_parent);
-                    document.location.href = url;
+
+                    setTimeout(function() {
+                        document.location.href = url;
+                    }, 600);
                 } else {
                     toastr.error(data.message);
+                    $('.loading-produit-semi-fini').hide();
                 }
-            },
-            complete: function(){
-                $('.loading-produit-semi-fini').hide();
             }
         });
     }
-
     </script>

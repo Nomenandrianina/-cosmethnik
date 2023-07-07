@@ -297,22 +297,22 @@ class Produit_semi_finis extends Model
     }
 
     public static $fields = [
-        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model']],
-        ['menu' => ['props' => 'Fiche technique', 'link' => '']],
-        ['menu' => ['props' => 'Documents', 'link' => '']],
-        ['menu' => ['props' => 'Composition', 'link' => 'compositions.model']],
-        ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model']],
-        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model']],
-        ['menu' => ['props' => 'Étiquetage', 'link' => '']],
-        ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model']],
-        ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model']],
-        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model']],
-        ['menu' => ['props' => 'Nutriments', 'link' => 'nutriments.model']],
-        ['menu' => ['props' => 'Organoleptique', 'link' => '']],
-        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model']],
-        ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model']],
-        ['menu' => ['props' => 'Cas d\'emplois', 'link' => '']],
-        ['menu' => ['props' => 'Activités', 'link' => '']],
+        ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model', 'scripts' => 'propriete']],
+        ['menu' => ['props' => 'Fiche technique', 'link' => 'proprietes.model', 'scripts' => 'fiche']],
+        ['menu' => ['props' => 'Documents', 'link' => 'proprietes.model', 'scripts' => 'document']],
+        ['menu' => ['props' => 'Composition', 'link' => 'compositions.model', 'scripts' => 'composition']],
+        ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model', 'scripts' => 'emballage']],
+        ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model', 'scripts' => 'process']],
+        ['menu' => ['props' => 'Étiquetage', 'link' => 'proprietes.model', 'scripts' => 'etiquetage']],
+        ['menu' => ['props' => 'Ingrédients', 'link' => 'ingredients.model', 'scripts' => 'ingredient']],
+        ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model', 'scripts' => 'allergene']],
+        ['menu' => ['props' => 'Coûts', 'link' => 'couts.model', 'scripts' => 'cout']],
+        ['menu' => ['props' => 'Nutriments', 'link' => 'nutriments.model', 'scripts' => 'nutriment']],
+        ['menu' => ['props' => 'Organoleptique', 'link' => 'proprietes.model', 'scripts' => 'organoleptique']],
+        ['menu' => ['props' => 'Physico-chimiques', 'link' => 'physico_chimiques.model', 'scripts' => 'chimique']],
+        ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model', 'scripts' => 'allegation']],
+        ['menu' => ['props' => 'Cas d\'emplois', 'link' => 'proprietes.model', 'scripts' => 'emploi']],
+        ['menu' => ['props' => 'Activités', 'link' => 'proprietes.model', 'scripts' => 'activite']],
     ];
 
 }

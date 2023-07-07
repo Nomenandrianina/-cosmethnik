@@ -66,4 +66,6 @@ Route::post('sites/delete', 'App\Http\Controllers\SitesController@delete')->name
 
 Route::post('dossiers/delete', 'App\Http\Controllers\DossiersController@delete')->name('dossiers.delete');
 
-// Route::post('produitFinis/{id}', 'App\Http\Controllers\Produit_finiController@update')->name('produitFinis.update');
+Route::post('site/member/add', 'App\Http\Controllers\SitesController@addMembers')->name('site.member.add');
+
+

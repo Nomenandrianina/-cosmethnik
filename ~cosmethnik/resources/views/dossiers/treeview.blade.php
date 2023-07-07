@@ -43,7 +43,14 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-header">
-                        Membres du site
+                        <div class="d-flex justify-content-between" style="padding: unset;margin-bottom: -3.5%;">
+                            <div class="text-left">
+                              <p>Membres du site</p>
+                            </div>
+                            <div class="text-right">
+                              <p style="cursor: pointer;" id="open-site-add"><i class="nav-icon fas fa-user-plus"></i> Ajouter un membre</p>
+                            </div>
+                          </div>
                     </div>
                     <div class="card-body">
                         @foreach($membres as $membre)
@@ -102,6 +109,8 @@
     @include('emballages.modals.modal_create_emballage')
     @include('ressources.modals.modal_create_ressource')
     @include('dossiers.scripts.scripts_dossiers')
+    @include('sites.modals.modal_add_members')
+    @include('sites.scripts.scripts_add_members')
     @include('produit_finis.scripts.scripts_produits_finis')
     @include('produit_semi_finis.scripts.scripts_produits_semi_finis')
     @include('matiere_premieres.scripts.scripts_matiere_premiere')

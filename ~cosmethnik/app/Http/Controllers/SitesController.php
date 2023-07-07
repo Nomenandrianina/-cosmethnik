@@ -66,7 +66,7 @@ class SitesController extends AppBaseController
             ['user_id' => $input['user_id'], 'type' => $input['type'], 'nom' => $input['nom']]
         );
 
-        DB::table('site_user')->insert(['site_id' => $id_site, 'user_id' => Auth::user()->id]);
+        DB::table('site_user')->insert(['site_id' => $id_site, 'user_id' => Auth::user()->id, 'is_member'=> 0]);
 
         $id_documents = DB::table('dossiers')->insertGetId(
             ['sites_id' => $id_site, 'name' => 'Documents', 'title' => 'Documents', 'description' => '', 'parent_id' => 0, 'link' => 'http://127.0.0.1:8000/~cosmethnik/admin/dossiers/documents']
@@ -80,6 +80,28 @@ class SitesController extends AppBaseController
             return [
                 'message' => 'success'
             ];
+        }
+    }
+
+    /**
+     * Store a newly created Sites in storage.
+     *
+     * @param CreateSitesRequest $request
+     *
+     * @return Response
+     */
+    public function addMembers(Request $request)
+    {
+        $input = $request->all();
+
+        $site_user = null;
+        foreach($input['user_id'] as $item){
+            $site_user = DB::table('site_user')->insert(['site_id' => $input['site_id'], 'user_id' => $item, 'is_member'=> 1]);
+        }
+        if($site_user){
+            return response()->json(['message' => 'Success'], 200);
+        }else{
+            return response()->json(['message' => 'Une erreur s\'est produite'], 500);
         }
     }
 

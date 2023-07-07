@@ -267,5 +267,12 @@ span.site-remove {
     transition: opacity 0.3s ease-in-out;
   }
 
+#open-site-add:hover {
+    color: #1a4a51;
+}
+
+.bootstrap-select > .dropdown-toggle {
+    height: 100% !important;
+}
 
 

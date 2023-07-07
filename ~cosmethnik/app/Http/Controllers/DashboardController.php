@@ -8,6 +8,7 @@ use App\Repositories\DashboardRepository;
 use App\Repositories\SitesRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sites;
+use Illuminate\Support\Facades\DB;
 
 
 class DashboardController extends Controller
