@@ -153,7 +153,7 @@ class Produit_semi_finis extends Model
     public static $rules = [
             'nom'=>'required',
             'libelle_commerciale'=>'required',
-            // 'code_becpg'=>'required',
+            'code_becpg'=>'required',
             'code_erp'=>'required',
             'libelle_legale'=>'required',
     ];

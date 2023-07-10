@@ -15,7 +15,7 @@ return array (
     'sous_famille' => 'Sous famille',
     'etat_produit' => 'Etat produit',
     'unite' => 'Unite',
-    'code_bcpg' => 'Code beCPG',
+    'code_becpg' => 'Code beCPG',
     'code_erp' => 'Code ERP',
     'ean' => 'Ean',
     'modele' => 'Modèle',

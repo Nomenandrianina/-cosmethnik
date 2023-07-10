@@ -30,7 +30,7 @@ class Modele_materiauxDataTable extends DataTable
      */
     public function query(Modele_materiaux $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('materiaux')->where('model_id', $this->attributes['model_id'])->where('model_type', $this->attributes['model_type']);;
     }
 
     /**
@@ -89,10 +89,10 @@ class Modele_materiauxDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'modele_type' => new Column(['title' => __('models/modeleMateriauxes.fields.modele_type'), 'data' => 'modele_type']),
-            'modele_id' => new Column(['title' => __('models/modeleMateriauxes.fields.modele_id'), 'data' => 'modele_id']),
+            // 'modele_type' => new Column(['title' => __('models/modeleMateriauxes.fields.modele_type'), 'data' => 'modele_type']),
+            // 'modele_id' => new Column(['title' => __('models/modeleMateriauxes.fields.modele_id'), 'data' => 'modele_id']),
             'poids' => new Column(['title' => __('models/modeleMateriauxes.fields.poids'), 'data' => 'poids']),
-            'materiaux_id' => new Column(['title' => __('models/modeleMateriauxes.fields.materiaux_id'), 'data' => 'materiaux_id'])
+            // 'materiaux_id' => new Column(['title' => __('models/modeleMateriauxes.fields.materiaux_id'), 'data' => 'materiaux_id'])
         ];
     }
 

@@ -32,7 +32,7 @@
         let famille = $('#famille_ressource').val();
         let sous_famille = $('#sous_famille_ressource').val();
         let commentaires = $('#commentaires_ressource').val();
-        let code_bcepg = $('#code_bcepg_ressource').val();
+        let code_becpg = $('#code_becpg_ressource').val();
         let code_erp = $('#code_erp_ressource').val();
         let etat_produit = $('#etat_produit_ressource').val();
         let libelle_legale = $('#libelle_legale_ressource').val();
@@ -50,7 +50,7 @@
                 "titre":titre,
                 "famille":famille,
                 "sous_famille":sous_famille,
-                "code_bcepg":code_bcepg,
+                "code_becpg":code_becpg,
                 "code_erp":code_erp,
                 "etat_produit":etat_produit,
                 "libelle_legale":libelle_legale,
@@ -60,7 +60,6 @@
                 "ean":ean,
                 "unite": unite,
                 "sites_id":sites,
-
             },
             success: function(data){
                 let timerInterval

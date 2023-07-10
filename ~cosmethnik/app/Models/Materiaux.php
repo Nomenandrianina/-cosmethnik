@@ -50,5 +50,4 @@ class Materiaux extends Model
         return $this->hasMany(Modele_materiaux::class);
     }
 
-
 }

@@ -295,5 +295,6 @@ class Produit_fini extends Model
         ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model', 'scripts' => 'allegation']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => 'proprietes.model', 'scripts' => 'emploi']],
         ['menu' => ['props' => 'Activités', 'link' => 'proprietes.model', 'scripts' => 'activite']],
+
     ];
 }

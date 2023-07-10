@@ -162,9 +162,7 @@ class EmballagesController extends AppBaseController
 
         $emballages = $this->emballagesRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/emballages.singular')]));
-
-        return redirect(route('emballages.index'));
+        return json_encode(array("status"=>200));
     }
 
     /**

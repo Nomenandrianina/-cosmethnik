@@ -70,7 +70,7 @@ class RessourcesController extends AppBaseController
             $ressource = Ressources::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
-                    'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $dossier[0]['id']
+                    'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_becpg' => $input['code_becpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $dossier[0]['id']
                  ]
             );
 
@@ -102,7 +102,7 @@ class RessourcesController extends AppBaseController
                 $ressource = Ressources::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
-                        'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcpg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $doc['id']
+                        'titre' => $input['titre'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_becpg' => $input['code_becpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'etat_produit_id' => $input['etat_produit'],'modele' => $input['modele'],'unite_id' => $input['unite'],'commentaires' => $input['commentaires'],'dossier_id' => $doc['id']
                     ]
                 );
                 if($ressource){
@@ -180,9 +180,7 @@ class RessourcesController extends AppBaseController
 
         $ressources = $this->ressourcesRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/ressources.singular')]));
-
-        return redirect(route('ressources.index'));
+        return json_encode(array("status"=>200));
     }
 
     /**

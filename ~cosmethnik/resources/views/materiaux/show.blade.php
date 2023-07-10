@@ -5,11 +5,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('models/materiauxes.singular')</h1>
+                    <h1>@lang('models/materiaux.singular')</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('materiauxes.index') }}">
+                       href="{{ route('materiaux.index') }}">
                          @lang('crud.back')
                     </a>
                 </div>
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('materiauxes.show_fields')
+                    @include('materiaux.show_fields')
                 </div>
             </div>
         </div>

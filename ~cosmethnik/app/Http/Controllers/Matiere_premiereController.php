@@ -69,7 +69,6 @@ class Matiere_premiereController extends AppBaseController
     public function store(CreateMatiere_premiereRequest $request)
     {
         $input = $request->all();
-        // dd($input);
 
         //Déterminer s'il y a déjà un dossier nommer Matière première
         $dossier = Dossiers::where('sites_id','=',$input['sites_id'])
@@ -84,7 +83,7 @@ class Matiere_premiereController extends AppBaseController
             Matiere_premiere::firstOrCreate(
                 [ 'nom' => $input['nom'] ],
                 [
-                    'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
+                    'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_becpg' => $input['code_becpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $dossier[0]['id']
                  ]
 
             );
@@ -93,7 +92,6 @@ class Matiere_premiereController extends AppBaseController
 
         //Si le dossier n'existe pas alors il crée d'abord le dossier avant de créer le produit fini
         }else{
-            // dd($input['sites_id']);
             $doc = Dossiers::firstOrCreate(
                 ['name' => 'Matières premières'],
                 [
@@ -109,7 +107,7 @@ class Matiere_premiereController extends AppBaseController
                 Matiere_premiere::firstOrCreate(
                     [ 'nom' => $input['nom'] ],
                     [
-                        'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_bcepg' => $input['code_bcepg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
+                        'libelle_commerciale' => $input['libelle_commerciale'], 'libelle_legale' => $input['libelle_legale'], 'description' => $input['description'],'code_becpg' => $input['code_becpg'],'code_erp' => $input['code_erp'],'ean' => $input['ean'],'ean_colis' => $input['ean_colis'],'ean_palette' => $input['ean_palette'],'etat_produit_id' => $input['etat_produit_id'],'usine_id' => $input['usine_id'],'geographique_id' => $input['geographique_id'],'marque_id' => $input['marque'],'dossier_id' => $doc['id']
                     ]
                 );
             }

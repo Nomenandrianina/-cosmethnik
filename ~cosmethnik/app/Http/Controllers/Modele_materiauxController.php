@@ -8,6 +8,8 @@ use App\Http\Requests\CreateModele_materiauxRequest;
 use App\Http\Requests\UpdateModele_materiauxRequest;
 use App\Repositories\Modele_materiauxRepository;
 use Flash;
+use App\Models\Modele_materiaux;
+
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -54,10 +56,22 @@ class Modele_materiauxController extends AppBaseController
         $input = $request->all();
 
         $modeleMateriaux = $this->modeleMateriauxRepository->create($input);
+        $input = $request->all();
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+
+        $model = DeterminateObject($dossier_parent)::find($id_model);
+
+        $modelemateriaux = new Modele_materiaux;
+        $modelemateriaux->quantite = $input['quantite'];
+        $modelemateriaux->ingredient_id = $request->ingredient;
+        $model->mmodele_ingredients()->save($modelemateriaux);
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleMateriauxes.singular')]));
 
-        return redirect(route('modeleMateriauxes.index'));
+        return back();
     }
 
     /**

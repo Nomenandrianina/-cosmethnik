@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                   @lang('models/materiauxes.plural')
+                   @lang('models/materiaux.plural')
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
@@ -25,11 +25,11 @@
 
         <div class="card">
             <div class="card-body p-0">
-                @include('materiauxes.table')
+                @include('materiaux.table')
 
                 <div class="card-footer clearfix float-right">
                     <div class="float-right">
-                        
+
                     </div>
                 </div>
             </div>

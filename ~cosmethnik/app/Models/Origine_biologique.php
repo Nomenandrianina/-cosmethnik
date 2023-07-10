@@ -24,7 +24,6 @@ class Origine_biologique extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
         'nom'
     ];

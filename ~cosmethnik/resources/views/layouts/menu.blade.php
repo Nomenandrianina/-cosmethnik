@@ -298,9 +298,9 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
 
 <li class="nav-item">
     <a href="{{ route('materiauxes.index') }}"
-       class="nav-link {{ Request::is('materiauxes*') ? 'active' : '' }}">
+       class="nav-link {{ Request::is('materiaux*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-wrench"></i>
-        <p>@lang('models/materiauxes.plural')</p>
+        <p>@lang('models/materiaux.plural') </p>
     </a>
 </li>
 

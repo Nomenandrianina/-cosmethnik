@@ -71,9 +71,9 @@
 
     <!-- Unite Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcpg', __('models/ressources.fields.code_bcpg').' (*):') !!}
-        {!! Form::text('code_bcpg', null, ['class' => 'form-control','id' => 'code_bcepg_ressource']) !!}
-        {!! Html::decode(Form::label('code_bcpg','<span class="text-danger" id="code_bcepgErrorRessource"></span>')) !!}
+        {!! Form::label('code_becpg', __('models/ressources.fields.code_becpg').' (*):') !!}
+        {!! Form::text('code_becpg', null, ['class' => 'form-control','id' => 'code_becpg_ressource']) !!}
+        {!! Html::decode(Form::label('code_becpg','<span class="text-danger" id="code_bcepgErrorRessource"></span>')) !!}
     </div>
 </div>
 
@@ -98,6 +98,5 @@
         {!! Form::label('modele', __('models/ressources.fields.modele').':') !!}
         {!! Form::select('modele', $ressource,null, ['class' => 'form-control','id' => 'modele_ressource']) !!}
     </div>
-
 </div>
 

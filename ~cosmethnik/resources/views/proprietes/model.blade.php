@@ -1,10 +1,12 @@
 @extends('clients.layouts.models.app')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
+{{--  $dossier_parent  --}}
     <section class="content-header">
         <div class="card">
-            <a class="nav-link "  id="print"  style="cursor: pointer">
-                <i class="fas fa-print"></i> Imprimer
+            <a class="nav-link "  onclick="Back_page('{{ $dossier_parent }}')"   style="cursor: pointer">
+                {{--  <i class="fas fa-print"></i> Imprimer  --}}
+                <i class="fas fa-arrow-left"></i> Retour
             </a>
         </div>
     </section>
@@ -177,5 +179,3 @@
         $('.loading-produit-semi-fini').hide();
     </script>
 @endsection
-
-

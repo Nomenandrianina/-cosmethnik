@@ -29,7 +29,7 @@ class MateriauxController extends AppBaseController
      */
     public function index(MateriauxDataTable $materiauxDataTable)
     {
-        return $materiauxDataTable->render('materiauxes.index');
+        return $materiauxDataTable->render('materiaux.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class MateriauxController extends AppBaseController
      */
     public function create()
     {
-        return view('materiauxes.create');
+        return view('materiaux.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class MateriauxController extends AppBaseController
 
         $materiaux = $this->materiauxRepository->create($input);
 
-        Flash::success(__('messages.saved', ['model' => __('models/materiauxes.singular')]));
+        Flash::success(__('messages.saved', ['model' => __('models/materiaux.singular')]));
 
         return redirect(route('materiauxes.index'));
     }
@@ -72,12 +72,12 @@ class MateriauxController extends AppBaseController
         $materiaux = $this->materiauxRepository->find($id);
 
         if (empty($materiaux)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/materiauxes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/materiaux.singular')]));
 
             return redirect(route('materiauxes.index'));
         }
 
-        return view('materiauxes.show')->with('materiaux', $materiaux);
+        return view('materiaux.show')->with('materiaux', $materiaux);
     }
 
     /**
@@ -92,12 +92,12 @@ class MateriauxController extends AppBaseController
         $materiaux = $this->materiauxRepository->find($id);
 
         if (empty($materiaux)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/materiauxes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/materiaux.singular')]));
 
             return redirect(route('materiauxes.index'));
         }
 
-        return view('materiauxes.edit')->with('materiaux', $materiaux);
+        return view('materiaux.edit')->with('materiaux', $materiaux);
     }
 
     /**
@@ -113,14 +113,14 @@ class MateriauxController extends AppBaseController
         $materiaux = $this->materiauxRepository->find($id);
 
         if (empty($materiaux)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/materiauxes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/materiaux.singular')]));
 
             return redirect(route('materiauxes.index'));
         }
 
         $materiaux = $this->materiauxRepository->update($request->all(), $id);
 
-        Flash::success(__('messages.updated', ['model' => __('models/materiauxes.singular')]));
+        Flash::success(__('messages.updated', ['model' => __('models/materiaux.singular')]));
 
         return redirect(route('materiauxes.index'));
     }
@@ -137,14 +137,14 @@ class MateriauxController extends AppBaseController
         $materiaux = $this->materiauxRepository->find($id);
 
         if (empty($materiaux)) {
-            Flash::error(__('messages.not_found', ['model' => __('models/materiauxes.singular')]));
+            Flash::error(__('messages.not_found', ['model' => __('models/materiaux.singular')]));
 
             return redirect(route('materiauxes.index'));
         }
 
         $this->materiauxRepository->delete($id);
 
-        Flash::success(__('messages.deleted', ['model' => __('models/materiauxes.singular')]));
+        Flash::success(__('messages.deleted', ['model' => __('models/materiaux.singular')]));
 
         return redirect(route('materiauxes.index'));
     }

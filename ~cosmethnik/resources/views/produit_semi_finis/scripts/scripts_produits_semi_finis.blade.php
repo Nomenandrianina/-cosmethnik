@@ -31,7 +31,7 @@
             let libelle_commerciale = $('#lib_com_semi_fini').val();
             let famille = $('#famille_semi_fini').val();
             let sous_famille = $('#sous_famille_semi_fini').val();
-            let code_bcepg = $('#code_bcepg_semi_fini').val();
+            let code_becpg = $('#code_becpg_semi_fini').val();
             let code_erp = $('#code_erp_semi_fini').val();
             let etat_produit_id = $('#etat_produit_id_semi_fini').val();
             let usine_id = $('#usine_id_semi_fini').val();
@@ -50,7 +50,7 @@
                     "libelle_commerciale":libelle_commerciale,
                     "famille":famille,
                     "sous_famille":sous_famille,
-                    "code_bcepg":code_bcepg,
+                    "code_becpg":code_becpg,
                     "code_erp":code_erp,
                     "etat_produit_id":etat_produit_id,
                     "usine_id":usine_id,

@@ -33,16 +33,16 @@
 <div class="row">
     <!-- Code Becpg Field -->
     <div class="form-group col-sm-6">
-        {!! Form::label('code_bcpg', __('models/matierePremieres.fields.code_becpg').':',['class' => 'required']) !!}
-        {!! Form::text('code_bcpg', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_bcpg_mp']) !!}
-        {!! Html::decode(Form::label('code_bcpg','<span class="text-danger" id="code_bcepgErrorMp"></span>')) !!}
+        {!! Form::label('code_becpg', __('models/matierePremieres.fields.code_becpg').':',['class' => 'required']) !!}
+        {!! Form::text('code_becpg', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_becpg_mp']) !!}
+        {!! Html::decode(Form::label('code_becpg','<span class="text-danger" id="code_bcepgErrorMp"></span>')) !!}
     </div>
 
     <!-- Code Erp Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('code_erp', __('models/matierePremieres.fields.code_erp').':',['class' => 'required']) !!}
         {!! Form::text('code_erp', null, ['class' => 'form-control','placeholder'=>'Code beCPG','id' => 'code_erp_mp']) !!}
-        {!! Html::decode(Form::label('code_becpg','<span class="text-danger" id="code_erpErrorMp"></span>')) !!}
+        {!! Html::decode(Form::label('code_erp','<span class="text-danger" id="code_erpErrorMp"></span>')) !!}
     </div>
 </div>
 

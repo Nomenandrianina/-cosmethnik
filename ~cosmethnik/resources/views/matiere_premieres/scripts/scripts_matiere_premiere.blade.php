@@ -29,7 +29,7 @@
         let libelle_commerciale = $('#lib_com_mp').val();
         let famille = $('#famille_mp').val();
         let sous_famille = $('#sous_famille_mp').val();
-        let code_bcepg = $('#code_bcpg_mp').val();
+        let code_becpg = $('#code_becpg_mp').val();
         let code_erp = $('#code_erp_mp').val();
         let etat_produit_id = $('#etat_produit_id_mp').val();
         let usine_id = $('#usine_id_mp').val();
@@ -51,7 +51,7 @@
             data:{ "_token":"{{ csrf_token() }}",
                 "nom":nom,
                 "libelle_commerciale":libelle_commerciale,
-                "code_bcepg":code_bcepg,
+                "code_becpg":code_becpg,
                 "code_erp":code_erp,
                 "etat_produit_id":etat_produit_id,
                 "usine_id":usine_id,

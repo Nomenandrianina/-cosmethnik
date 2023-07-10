@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                     @lang('models/materiauxes.singular')
+                      @lang('models/materiaux.singular')
                 </div>
             </div>
         </div>
@@ -13,23 +13,23 @@
 
     <div class="content px-3">
 
-        {{--  @include('adminlte-templates::common.errors')  --}}
+        @include('adminlte-templates::common.errors')
 
         <div class="card">
 
-            {!! Form::open(['route' => 'materiauxes.store']) !!}
+            {!! Form::model($materiaux, ['route' => ['materiaux.update', $materiaux->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
-                    @include('materiauxes.fields')
+                    @include('materiaux.fields')
                 </div>
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('materiauxes.index') }}" class="btn btn-default">
-                 @lang('crud.cancel')
-                </a>
+                <a href="{{ route('materiaux.index') }}" class="btn btn-default">
+                    @lang('crud.cancel')
+                 </a>
             </div>
 
             {!! Form::close() !!}

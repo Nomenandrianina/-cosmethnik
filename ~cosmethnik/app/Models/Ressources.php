@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $commentaires
  * @property int $etat_produit_id
  * @property int $unite_id
- * @property string $code_bcpg
+ * @property string $code_becpg
  * @property string $code_erp
  * @property string $ean
  * @property string $modele
@@ -42,7 +42,7 @@ class Ressources extends Model
         'commentaires',
         'etat_produit_id',
         'unite_id',
-        'code_bcpg',
+        'code_becpg',
         'code_erp',
         'ean',
         'modele',
@@ -63,7 +63,7 @@ class Ressources extends Model
         'commentaires' => 'string',
         'etat_produit_id' => 'integer',
         'unite_id' => 'integer',
-        'code_bcpg' => 'string',
+        'code_becpg' => 'string',
         'code_erp' => 'string',
         'ean' => 'string',
         'modele' => 'string',
@@ -78,7 +78,7 @@ class Ressources extends Model
     public static $rules = [
         'nom'=>'required',
         'libelle_legale'=>'required',
-        'code_bcepg'=>'required',
+        'code_becpg'=>'required',
         'code_erp'=> 'required',
     ];
 
