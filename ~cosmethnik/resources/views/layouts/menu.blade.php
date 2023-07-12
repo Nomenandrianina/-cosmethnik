@@ -368,46 +368,9 @@ $isPermissionActive = Request::is($urlAdmin.'*permissions*');
     </a>
 </li>  --}}
 
-
 <li class="nav-item">
     <a href="{{ route('fichiers.index') }}"
        class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
         <p>@lang('models/fichiers.plural')</p>
     </a>
 </li>
-
-<li class="nav-item">
-    <a href="{{ route('fichiers.index') }}"
-       class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
-        <p>@lang('models/fichiers.plural')</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('fichiers.index') }}"
-       class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
-        <p>@lang('models/fichiers.plural')</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('fichiers.index') }}"
-       class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
-        <p>@lang('models/fichiers.plural')</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('fichiers.index') }}"
-       class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
-        <p>@lang('models/fichiers.plural')</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('fichiers.index') }}"
-       class="nav-link {{ Request::is('fichiers*') ? 'active' : '' }}">
-        <p>@lang('models/fichiers.plural')</p>
-    </a>
-</li>
-

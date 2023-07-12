@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-elements">
         @include('adminlte-templates::common.errors')
 
-        <div class="modal-content">
+        <div class="modal-content modal-content-all">
              {{-- {!! Form::open(['id' => 'create_produit_semi_fini','onsubmit' => 'Store_produit_semi_fini(); return false']) !!} --}}
             <div class="modal-header modal-head-color">
                 <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit semi finis</h4>
@@ -23,7 +23,6 @@
                 <button id="produit_semi_fini_close" class="btn btn-default">
                     @lang('crud.cancel')
                 </button>
-
             </div>
             {{--  {!! Form::close() !!}  --}}
         </div>

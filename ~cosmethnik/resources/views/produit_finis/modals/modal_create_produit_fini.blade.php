@@ -1,7 +1,7 @@
 <div class="modal fade" id="produit-fini-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-elements">
             @include('adminlte-templates::common.errors')
-            <div class="modal-content">
+            <div class="modal-content modal-content-all">
                 {{-- {!! Form::open(['id' => 'create_produit_fini','onsubmit' => 'Store_produit_fini(); return false']) !!} --}}
                 <div class="modal-header modal-head-color">
                     <h4 class="modal-title fs-5" id="exampleModalLabel">Créer un nouveau produit fini</h4>

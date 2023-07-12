@@ -9,7 +9,11 @@ use App\Http\Requests\UpdateModele_materiauxRequest;
 use App\Repositories\Modele_materiauxRepository;
 use Flash;
 use App\Models\Modele_materiaux;
-
+use App\Models\Sites;
+use App\Models\Unites;
+use App\Models\Emballages;
+use App\Models\Materiaux;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
@@ -73,6 +77,30 @@ class Modele_materiauxController extends AppBaseController
 
         return back();
     }
+
+    /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_materiauxRepository $materiauxDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $emballages = Emballages::all();
+        $unite = Unites::all();
+        $materiaux = Materiaux::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        return $materiauxDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('modele_materiaux.model', compact('menu','materiaux','site_texte','icon','dossier_parent','model','data','emballages','unite','object'));
+    }
+
 
     /**
      * Display the specified Modele_materiaux.

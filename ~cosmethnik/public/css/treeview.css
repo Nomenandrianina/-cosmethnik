@@ -203,6 +203,10 @@
     color: white;
 }
 
+.modal-content-all{
+    width: 625px!important;
+}
+
 .success-msg{
     margin: 10px 0;
     padding: 10px;
