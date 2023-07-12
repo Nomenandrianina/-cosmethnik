@@ -150,6 +150,14 @@ a.page-link {
     color: darkgray;
 }
 
+#link-modal-image i {
+    color: rgb(0, 0, 0);
+}
+
+#link-modal-fichier i {
+    color: rgb(0, 0, 0);
+}
+
 #link-modal-produit-fini i {
     color: #4787f4;
 }

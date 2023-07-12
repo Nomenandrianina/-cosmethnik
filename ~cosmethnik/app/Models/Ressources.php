@@ -134,7 +134,7 @@ class Ressources extends Model
     public static $fields = [
         ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model', 'scripts' => 'propriete']],
         ['menu' => ['props' => 'Fiches techniques', 'link' => 'proprietes.model', 'scripts' => 'fiche']],
-        ['menu' => ['props' => 'Documents', 'link' => 'proprietes.model', 'scripts' => 'document']],
+        ['menu' => ['props' => 'Documents', 'link' => 'fichiers.model', 'scripts' => 'document']],
         ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model', 'scripts' => 'process']],
         ['menu' => ['props' => 'Paramètres ressource', 'link' => 'proprietes.model', 'scripts' => 'ressource']],
         ['menu' => ['props' => 'Allergènes', 'link' => 'allergenes.model', 'scripts' => 'allergene']],

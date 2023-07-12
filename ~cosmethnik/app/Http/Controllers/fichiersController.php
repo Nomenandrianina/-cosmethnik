@@ -10,6 +10,10 @@ use App\Repositories\fichiersRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Sites;
+use App\Models\Unites;
+use App\Models\Emballages;
+use Illuminate\Http\Request;
 
 class fichiersController extends AppBaseController
 {
@@ -58,6 +62,28 @@ class fichiersController extends AppBaseController
         Flash::success(__('messages.saved', ['model' => __('models/fichiers.singular')]));
 
         return redirect(route('fichiers.index'));
+    }
+
+    /**
+     * Show the form for creating a new Compositions.
+     *
+     * @return Response
+     */
+    public function model(Request $request,FichiersDataTable $fichiersDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $emballages = Emballages::all();
+        $unite = Unites::all();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit','usine','filiale','marque','geographique','client'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        return $fichiersDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('fichiers.model', compact('menu','site_texte','icon','dossier_parent','model','data','emballages','unite','object'));
     }
 
     /**

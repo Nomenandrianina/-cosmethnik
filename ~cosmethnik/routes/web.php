@@ -64,6 +64,8 @@ Route::get('nutriments/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}'
 
 Route::get('materiaux/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_nutrimentController@model')->name('materiaux.model');
 
+Route::get('fichiers/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\FichiersController@model')->name('fichiers.model');
+
 Route::post('sites/delete', 'App\Http\Controllers\SitesController@delete')->name('sites.delete');
 
 Route::post('dossiers/delete', 'App\Http\Controllers\DossiersController@delete')->name('dossiers.delete');

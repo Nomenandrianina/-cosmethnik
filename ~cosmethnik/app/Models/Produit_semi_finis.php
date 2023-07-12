@@ -299,7 +299,7 @@ class Produit_semi_finis extends Model
     public static $fields = [
         ['menu' => ['props' => 'Propriété', 'link' => 'proprietes.model', 'scripts' => 'propriete']],
         ['menu' => ['props' => 'Fiche technique', 'link' => 'proprietes.model', 'scripts' => 'fiche']],
-        ['menu' => ['props' => 'Documents', 'link' => 'proprietes.model', 'scripts' => 'document']],
+        ['menu' => ['props' => 'Documents', 'link' => 'fichiers.model', 'scripts' => 'document']],
         ['menu' => ['props' => 'Composition', 'link' => 'compositions.model', 'scripts' => 'composition']],
         ['menu' => ['props' => 'Emballages', 'link' => 'emballages.model', 'scripts' => 'emballage']],
         ['menu' => ['props' => 'Liste des process', 'link' => 'liste_processes.model', 'scripts' => 'process']],

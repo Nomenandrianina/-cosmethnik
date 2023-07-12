@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
- * Class fichiers
+ * Class Fichiers
  * @package App\Models
- * @version July 12, 2023, 1:54 pm +07
+ * @version July 12, 2023, 1:49 pm +07
  *
  * @property string $model_type
  * @property integer $model_id
  * @property string $chemin
  * @property string $extension
  */
-class fichiers extends Model
+class Fichiers extends Model
 {
     use SoftDeletes;
 
 
     public $table = 'fichiers';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,8 +54,13 @@ class fichiers extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+
 }
