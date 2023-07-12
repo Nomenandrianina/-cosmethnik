@@ -2,19 +2,6 @@
 
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @section('content')
-    {{--  <div class="card" id="document">
-        <div class="card-header">
-            <i class="fas fa-folder"></i>
-            @foreach($doc as $category)
-                | <a class="link-document" onclick="actions_treeview({{ $category->id }}, {{ $id }})" >
-                        Documents
-                    </a>
-                |
-            @endforeach
-            <span id="bread-change"></span>
-        </div>
-    </div>  --}}
-
     <section class="content-header" id="header">
         <div class="card">
             <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">

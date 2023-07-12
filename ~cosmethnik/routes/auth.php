@@ -124,3 +124,5 @@ Route::resource('modeleCouts', App\Http\Controllers\Modele_coutController::class
 Route::resource('nutriments', App\Http\Controllers\NutrimentsController::class);
 
 Route::resource('modeleNutriments', App\Http\Controllers\Modele_nutrimentController::class);
+
+Route::resource('fichiers', App\Http\Controllers\FichiersController::class);

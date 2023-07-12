@@ -87,7 +87,7 @@
                         });
                         location.reload();
                     }
-                    else if(dataResult.status != 201){
+                    else if(dataResult.status == 201){
                         Swal.fire({
                         title: 'Erreur!',
                         icon: 'error',
