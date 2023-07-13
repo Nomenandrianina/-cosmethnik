@@ -81,4 +81,8 @@
 
     </div>
 
+    @include('fichiers.modal.modal_add_files')
+    @include('fichiers.modal.modal_add_image')
+    @include('fichiers.scripts.script_add_files')
+
 @endsection

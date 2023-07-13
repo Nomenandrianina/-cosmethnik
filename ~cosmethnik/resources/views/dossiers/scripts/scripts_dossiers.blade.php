@@ -251,6 +251,7 @@
 
     //Children folder
     function getDetails(id_dossier,id_site,title) {
+        localStorage.removeItem('activeMenu');
         $('.loading-produit-semi-fini').show();
         $('#data-ul').remove();
         resetPagination();

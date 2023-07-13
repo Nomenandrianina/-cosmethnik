@@ -54,7 +54,7 @@ class Fichiers extends Model
      * @var array
      */
     public static $rules = [
-
+        'chemin' => 'mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:2048'
     ];
 
     public function model(): MorphTo
