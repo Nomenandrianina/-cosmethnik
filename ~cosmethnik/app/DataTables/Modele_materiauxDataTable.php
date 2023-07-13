@@ -19,7 +19,7 @@ class Modele_materiauxDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'modele_materiauxes.datatables_actions');
+        return $dataTable->addColumn('action', 'modele_materiaux.datatables_actions');
     }
 
     /**

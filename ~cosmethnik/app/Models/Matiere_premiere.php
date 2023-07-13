@@ -289,8 +289,10 @@ class Matiere_premiere extends Model
         ['menu' => ['props' => 'Organoleptique', 'link' => 'proprietes.model', 'scripts' => 'organoleptique']],
         ['menu' => ['props' => 'Physico-chimiques', 'link' => 'proprietes.model', 'scripts' => 'chimique']],
         ['menu' => ['props' => 'Allégations', 'link' => 'allegations.model', 'scripts' => 'allegation']],
+        ['menu' => ['props' => 'Matériaux', 'link' => 'materiaux.model', 'scripts' => 'Matériaux']],
         ['menu' => ['props' => 'Cas d\'emplois', 'link' => 'proprietes.model', 'scripts' => 'emploi']],
         ['menu' => ['props' => 'Activités', 'link' => 'proprietes.model', 'scripts' => 'activite']],
+
     ];
 
 

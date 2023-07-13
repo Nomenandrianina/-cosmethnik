@@ -28,7 +28,6 @@ class Modele_organoleptiques extends Model
     protected $dates = ['deleted_at'];
 
 
-
     public $fillable = [
         'caractéristique',
         'valeur',

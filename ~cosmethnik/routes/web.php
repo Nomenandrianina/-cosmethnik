@@ -62,7 +62,9 @@ Route::get('listeProcesses/model/{id_model}/{id_site}/{id_dossier}/{dossier_pare
 
 Route::get('nutriments/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_nutrimentController@model')->name('nutriments.model');
 
-Route::get('materiaux/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_nutrimentController@model')->name('materiaux.model');
+Route::get('materiaux/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_materiauxController@model')->name('materiaux.model');
+
+Route::get('organeloptique/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\Modele_organoleptiquesController@model')->name('organeloptique.model');
 
 Route::get('fichiers/model/{id_model}/{id_site}/{id_dossier}/{dossier_parent}', 'App\Http\Controllers\FichiersController@model')->name('fichiers.model');
 
@@ -71,5 +73,3 @@ Route::post('sites/delete', 'App\Http\Controllers\SitesController@delete')->name
 Route::post('dossiers/delete', 'App\Http\Controllers\DossiersController@delete')->name('dossiers.delete');
 
 Route::post('site/member/add', 'App\Http\Controllers\SitesController@addMembers')->name('site.member.add');
-
-

@@ -59,7 +59,7 @@ class Modele_materiauxController extends AppBaseController
     {
         $input = $request->all();
 
-        $modeleMateriaux = $this->modeleMateriauxRepository->create($input);
+        // $modeleMateriaux = $this->modeleMateriauxRepository->create($input);
         $input = $request->all();
         $id_model = intval($request->id_model);
         $site_id = intval($request->id_site);
@@ -69,9 +69,9 @@ class Modele_materiauxController extends AppBaseController
         $model = DeterminateObject($dossier_parent)::find($id_model);
 
         $modelemateriaux = new Modele_materiaux;
-        $modelemateriaux->quantite = $input['quantite'];
-        $modelemateriaux->ingredient_id = $request->ingredient;
-        $model->mmodele_ingredients()->save($modelemateriaux);
+        $modelemateriaux->poids = $input['poids'];
+        $modelemateriaux->materiaux_id = $request->materiaux;
+        $model->mmodele_materiaux()->save($modelemateriaux);
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleMateriauxes.singular')]));
 
@@ -83,7 +83,7 @@ class Modele_materiauxController extends AppBaseController
      *
      * @return Response
      */
-    public function model(Request $request,Modele_materiauxRepository $materiauxDataTable)
+    public function model(Request $request,Modele_materiauxDataTable $materiauxDataTable)
     {
         $id_model = intval($request->id_model);
         $site_id = intval($request->id_site);

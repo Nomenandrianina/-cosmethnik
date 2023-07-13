@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateModele_organoleptiquesRequest;
 use App\Repositories\Modele_organoleptiquesRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Organoleptiques;
+use App\Models\Sites;
+use App\Models\Modele_organoleptiques;
 use Flash;
 use Response;
 
@@ -56,12 +59,44 @@ class Modele_organoleptiquesController extends AppBaseController
     {
         $input = $request->all();
 
-        $modeleOrganoleptiques = $this->modeleOrganoleptiquesRepository->create($input);
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $model = DeterminateObject($dossier_parent)::find($id_model);
+
+        $modeleorganoleptique = new Modele_organoleptiques;
+        $modeleorganoleptique->caracteristique = $request->caracteristique;
+        $modeleorganoleptique->valeur = $request->valeur;
+        $modeleorganoleptique->organoletptique_id = $request->organoletptique_id;
+        $model->mmodele_physico_chimiques()->save($modeleorganoleptique);
 
         Flash::success(__('messages.saved', ['model' => __('models/modeleOrganoleptiques.singular')]));
 
-        return redirect(route('modeleOrganoleptiques.index'));
+        return back();
     }
+
+     /**
+     * Redirection vers la liste de la modele organoleptique
+     *
+     * @return Response
+     */
+    public function model(Request $request,Modele_organoleptiquesRepository $modeleOrganoleptiqueDataTable)
+    {
+        $id_model = intval($request->id_model);
+        $site_id = intval($request->id_site);
+        $id_dossier = intval($request->id_dossier);
+        $dossier_parent = $request->dossier_parent;
+        $data = [$id_model,$site_id,$id_dossier,$dossier_parent];
+        $site_texte = Sites::where('id','=', $site_id)->get();
+        $model = DeterminateObject($dossier_parent)::where("id","=",$id_model)->where("dossier_id","=",$id_dossier)->with(['etat_produit'])->first();
+        $menu = DeterminateObject($dossier_parent)::$fields;
+        $icon = DeterminateObject($dossier_parent)->icon_menu();
+        $object = DeterminateObject($dossier_parent)::class;
+        $organoleptique = Organoleptiques::all()->pluck('nom', 'id');
+        return $modeleOrganoleptiqueDataTable->with(['model_id' => $id_model,'model_type' => $object])->render('modele_organoleptiques.model', compact('menu','organoleptique','site_texte','icon','dossier_parent','model','data','object'));
+    }
+
 
     /**
      * Display the specified Modele_organoleptiques.
